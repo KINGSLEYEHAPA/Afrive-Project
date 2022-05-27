@@ -27,19 +27,24 @@ const Header = () => {
           <div className=" absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
       </div>
-      <div className=" mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center ">
-        <p className="w-[16px] h-[16px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+      <div className=" mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
+        <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
+          <span className="relative bottom-[5.2px] left-[5.5px] medium text-neutral-white text-[10px]">
+            1
+          </span>
+        </div>
+        <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
           {" "}
           <FiSearch />
         </p>
-        <p className="w-[20.90px] h-[18.23px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[34.77px]">
+        <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
           {" "}
           <MdOutlineFavoriteBorder />
         </p>
-        <p className="w-[18px] h-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[34px] ">
+        <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
           <FiShoppingBag />
         </p>
-        <p className="w-[16.67px] h-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35.12px] pb-[35px]">
+        <p className="text-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
           <FaRegUser />
         </p>
       </div>
