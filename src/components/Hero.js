@@ -1,5 +1,4 @@
 import hero from "../assets/bookban.jpg";
-import { motion } from "framer-motion";
 
 const Hero = () => {
   return (

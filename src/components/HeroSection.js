@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import PageSlider from "./PageSlider";
 import "../index.css";
+import hero from "../assets/bookban.jpg";
 
 const Pagination = ({ currentPage, setPage }) => {
   // Wrap all the pagination Indicators
@@ -47,10 +48,14 @@ const HeroSection = () => {
    * animations depending on the direction of travel */
   const [[currentPage, direction], setCurrentPage] = useState([0, 0]);
 
-  function setPage(newPage, newDirection) {
+  const setPage = (newPage, newDirection) => {
+    // if (newPage === pages[pages.length - 1]) {
+    //   setCurrentPage([0, 1]);
+    // }
     if (!newDirection) newDirection = newPage - currentPage;
+
     setCurrentPage([newPage, newDirection]);
-  }
+  };
 
   return (
     <div className="">
@@ -59,7 +64,7 @@ const HeroSection = () => {
         direction={direction}
         setPage={setPage}
       />
-      <div className="relative bottom-32">
+      <div className="relative bottom-32 z-10">
         {" "}
         <Pagination currentPage={currentPage} setPage={setPage} />
       </div>

@@ -1,7 +1,11 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "@popmotion/popcorn";
+import hero from "../assets/bookban.jpg";
+import book from "../assets/bookkid.jfif";
+import herobook from "../assets/books.jpg";
+import bookShowcase from "../assets/booky.jpg";
 
 // Variants in framer-motion define visual states
 // that a rendered motion component can be in at
@@ -24,15 +28,21 @@ const variants = {
   }),
 };
 
-const pages = [0, 1, 2, 3, 4];
+const pages = [0, 1, 2];
 
 const PageSlider = ({ currentPage, setPage, direction }) => {
+  useEffect(() => {
+    setInterval(() => {
+      currentPage++;
+    }, 1000);
+  }, []);
+
   /* Add and remove pages from the array to checkout
 	how the gestures and pagination animations are
 	fully data and layout-driven. */
   const hasPaginated = useRef(false);
 
-  function detectPaginationGesture(e, { offset }) {
+  const detectPaginationGesture = (e, { offset }) => {
     if (hasPaginated.current) return;
     let newPage = currentPage;
     const threshold = xOffset / 2;
@@ -53,7 +63,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
       newPage = wrap(0, pages.length, newPage);
       setPage(newPage, offset.x < 0 ? 1 : -1);
     }
-  }
+  };
 
   return (
     <div className="slider-container">
@@ -83,9 +93,53 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           // other variants, in this case initial and animate.
           custom={direction}
         >
-          {currentPage === 0 && <div>1</div>}
-          {currentPage === 1 && <div>2</div>}
-          {currentPage === 2 && <div>3</div>}
+          {currentPage === 0 && (
+            <div
+              className="h-[495px] w-full max-w-[1440px] bg-accent-rating"
+              //   style={{ background: `url(${hero})`, backgroundSize: "cover" }}
+            >
+              1
+            </div>
+          )}
+          {currentPage === 1 && (
+            <div
+              className="h-[495px] w-full max-w-[1440px] bg-neutral-30"
+              //   style={{
+              //     background: `url(${herobook})`,
+              //     backgroundSize: "cover",
+              //   }}
+            >
+              2
+            </div>
+          )}
+          {currentPage === 2 && (
+            <div
+              className="h-[495px] w-full max-w-[1440px] flex  justify-between"
+              //   style={{ background: `url(${book})`, backgroundSize: "cover" }}
+            >
+              <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
+                <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
+                  Book Focus
+                </h3>
+                <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
+                  An African Night Entertainment
+                </h2>
+                <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
+                  by Cyprian Ekwensi
+                </p>
+                <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                  Buy Now
+                </button>
+              </div>
+              <div className=" w-[209px] h-[361.94px] mr-[352.63px] my-[66.45px]">
+                <img
+                  className="w-full h-full pointer-events-none"
+                  src={bookShowcase}
+                  alt="Hero Book"
+                />
+              </div>
+            </div>
+          )}
         </motion.div>
       </AnimatePresence>
     </div>
