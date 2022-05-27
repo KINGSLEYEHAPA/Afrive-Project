@@ -1,8 +1,9 @@
+import Header from "./components/Header";
+
 function App() {
   return (
-    <div className="text-h4 text-primary-50 normal bg-primary-70 w-64 ml-10 p-2">
-      Hello
-      <p className="text-neutral-30">KIngsley</p>
+    <div className="min-h-screen max-w-[1440px] mx-auto  ">
+      <Header />
     </div>
   );
 }
