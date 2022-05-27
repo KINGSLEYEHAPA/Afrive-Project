@@ -10,3 +10,79 @@
 body{
   font-family: "circular-std-medium-500";
 }
+
+
+
+/* Hero Slider */
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #09a960;
+  } */
+  
+  * {
+  box-sizing: border-box;
+  }
+  
+  .App {
+  font-family: sans-serif;
+  text-align: center;
+  }
+  
+  .slider-container {
+  position: relative;
+  width: 100vw;
+  max-width: 1440px;
+  height: 495px;
+  
+  
+  }
+  
+  .slide {
+
+  background:#E74932;
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  }
+  
+  /* position of indicator container */
+  .Indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  }
+  
+  .Indicator-container {
+  padding: 20px;
+  cursor: pointer;
+  }
+  
+  .Indicator {
+  width: 10px;
+  height: 10px;
+  background: #fcfcfc;
+  border-radius: 50%;
+  position: relative;
+  }
+  
+  .Indicator-highlight {
+  top: -2px;
+  left: -2px;
+  background: #F67B6B;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  }
+  
+
+
+
+
+
