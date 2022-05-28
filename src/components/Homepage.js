@@ -1,5 +1,7 @@
 import React from "react";
+import BookQuote from "./BookQuote";
 import BookSection from "./BookSection";
+import Footer from "./Footer";
 import Header from "./Header";
 
 import HeroSection from "./HeroSection";
@@ -14,7 +16,9 @@ const Homepage = () => {
       <BookSection bookSectionName="Popular Books" />
       <BookSection bookSectionName="BestSellers" />
       <BookSection bookSectionName="New Arrivals" />
-      <BookSection bookSectionName="On Sale" />
+      <BookSection bookSectionName="On Sale &#128293; " />
+      <BookQuote />
+      <Footer />
     </div>
   );
 };
