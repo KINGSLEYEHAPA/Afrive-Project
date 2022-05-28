@@ -1,4 +1,5 @@
 import React from "react";
+import BookSection from "./BookSection";
 import Header from "./Header";
 
 import HeroSection from "./HeroSection";
@@ -10,6 +11,10 @@ const Homepage = () => {
       <Header />
       <HeroSection />
       <RecommendedBooks />
+      <BookSection bookSectionName="Popular Books" />
+      <BookSection bookSectionName="BestSellers" />
+      <BookSection bookSectionName="New Arrivals" />
+      <BookSection bookSectionName="On Sale" />
     </div>
   );
 };
