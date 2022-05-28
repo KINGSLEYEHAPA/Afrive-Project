@@ -4,9 +4,12 @@ import { FaRegUser } from "react-icons/fa";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import CategoriesDropdown from "./CategoriesDropdown";
 import { useState } from "react";
+import ProfileInfoDropdown from "./ProfileInfoDropdown";
+import { AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
+  const [showProfileInfo, setShowProfileInfo] = useState(false);
   return (
     <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between ">
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
@@ -29,7 +32,11 @@ const Header = () => {
             <p className="text-bodyL text-neutral-80 w-[107px] h-[24px] reg cursor-pointer py-[32px] whitespace-nowrap">
               Your e-books
             </p>
-            {showCategories && <CategoriesDropdown />}
+            <AnimatePresence>
+              {showCategories && (
+                <CategoriesDropdown setShowCategories={setShowCategories} />
+              )}
+            </AnimatePresence>
           </div>
           <div className=" absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
@@ -51,9 +58,16 @@ const Header = () => {
         <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
           <FiShoppingBag />
         </p>
-        <p className="text-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+
+        <p
+          onMouseOver={() => setShowProfileInfo(!showProfileInfo)}
+          className="text-[20px] h-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer mt-[35px] mb-[35px]"
+        >
           <FaRegUser />
         </p>
+        <AnimatePresence>
+          {showProfileInfo && <ProfileInfoDropdown />}
+        </AnimatePresence>
       </div>
     </header>
   );

@@ -95,7 +95,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
         >
           {currentPage === 0 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] bg-accent-rating"
+              className="h-[495px] w-full max-w-[1440px] bg-primary-80"
               //   style={{ background: `url(${hero})`, backgroundSize: "cover" }}
             >
               1
@@ -103,7 +103,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           )}
           {currentPage === 1 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] bg-neutral-30"
+              className="h-[495px] w-full max-w-[1440px] bg-primary-30"
               //   style={{
               //     background: `url(${herobook})`,
               //     backgroundSize: "cover",
