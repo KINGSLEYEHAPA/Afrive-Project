@@ -6,10 +6,12 @@ import CategoriesDropdown from "./CategoriesDropdown";
 import { useState } from "react";
 import ProfileInfoDropdown from "./ProfileInfoDropdown";
 import { AnimatePresence } from "framer-motion";
+import EbookDropdown from "./EbookDropdown";
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [showProfileInfo, setShowProfileInfo] = useState(false);
+  const [showEbookMenu, setShowEbookMenu] = useState(true);
   return (
     <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between ">
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
@@ -24,18 +26,32 @@ const Header = () => {
               Home
             </p>
             <p
-              onMouseOver={() => setShowCategories(!showCategories)}
+              onMouseOver={() => {
+                setShowCategories(!showCategories);
+                setShowEbookMenu(false);
+                setShowProfileInfo(false);
+              }}
               className="text-bodyL text-neutral-80 w-[89px] h-[24px] reg cursor-pointer py-[32px]"
             >
               Categories
             </p>
-            <p className="text-bodyL text-neutral-80 w-[107px] h-[24px] reg cursor-pointer py-[32px] whitespace-nowrap">
+            <p
+              onMouseOver={() => {
+                setShowEbookMenu(!showEbookMenu);
+                setShowCategories(false);
+                setShowProfileInfo(false);
+              }}
+              className="text-bodyL text-neutral-80 w-[107px] h-[24px] reg cursor-pointer py-[32px] whitespace-nowrap"
+            >
               Your e-books
             </p>
             <AnimatePresence>
               {showCategories && (
                 <CategoriesDropdown setShowCategories={setShowCategories} />
               )}
+            </AnimatePresence>
+            <AnimatePresence>
+              {showEbookMenu && <EbookDropdown />}
             </AnimatePresence>
           </div>
           <div className=" absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
@@ -60,7 +76,11 @@ const Header = () => {
         </p>
 
         <p
-          onMouseOver={() => setShowProfileInfo(!showProfileInfo)}
+          onMouseOver={() => {
+            setShowProfileInfo(!showProfileInfo);
+            setShowEbookMenu(false);
+            setShowCategories(false);
+          }}
           className="text-[20px] h-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer mt-[35px] mb-[35px]"
         >
           <FaRegUser />
