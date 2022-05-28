@@ -11,7 +11,7 @@ const EbookDropdown = () => {
       exit={{ opacity: 0, transition: { duration: 1 } }}
       className=" absolute top-[100px] z-10 right-[-388px] w-[494px] h-[410px] bg-neutral-white border-[0.5px solid rgba(0,0,0,0.1)] shadow-[0px 4px 8px rgba(0, 0, 0, 0.15)] rounded-[4px] px-[32px] pt-[29px] pb-[26.55px]  overflow-hidden overflow-y-auto scrollbar-hide"
     >
-      <div>
+      <div className="cursor-pointer">
         <div className="w-[356px] h-[86.45px] flex items-center justify-start gap-[40px]">
           <img className="w-[63px] h-[86.45px]" src={bookSmall} alt="E-Book" />
           <div className=" h-[86.45px] mt-[28px]">
