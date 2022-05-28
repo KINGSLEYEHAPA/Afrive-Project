@@ -12,7 +12,7 @@ const Footer = () => {
           </p>
           <div className="h-[55px] w-[445px] flex justify-center items-center mt-[22px] p-0 gap-0">
             <input
-              className="h-[55px] w-3/4 border-2 border-neutral-30 px-7 rounded-tl-[8px] rounded-bl-[8px] "
+              className="h-[55px] w-3/4 border-2 border-neutral-30 px-7 rounded-tl-[8px] rounded-bl-[8px] placeholder:w-[122px] placeholder:h-[18px] placeholder:text-bodyS placeholder:text-neutral-30  "
               type="text"
               placeholder="What's your email?"
             />

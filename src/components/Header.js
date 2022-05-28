@@ -2,8 +2,11 @@ import logo from "../assets/logo.png";
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import CategoriesDropdown from "./CategoriesDropdown";
+import { useState } from "react";
 
 const Header = () => {
+  const [showCategories, setShowCategories] = useState(false);
   return (
     <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between ">
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
@@ -13,16 +16,20 @@ const Header = () => {
             src={logo}
             alt="Afrive Logo"
           />
-          <div className="flex h-full w-[358px]  gap-[56px]">
+          <div className="flex h-full w-[358px]  gap-[56px] relative">
             <p className="text-bodyL text-neutral-80 w-[49px] h-[24px] reg cursor-pointer py-[32px]">
               Home
             </p>
-            <p className="text-bodyL text-neutral-80 w-[89px] h-[24px] reg cursor-pointer py-[32px]">
+            <p
+              onMouseOver={() => setShowCategories(!showCategories)}
+              className="text-bodyL text-neutral-80 w-[89px] h-[24px] reg cursor-pointer py-[32px]"
+            >
               Categories
             </p>
             <p className="text-bodyL text-neutral-80 w-[107px] h-[24px] reg cursor-pointer py-[32px] whitespace-nowrap">
               Your e-books
             </p>
+            {showCategories && <CategoriesDropdown />}
           </div>
           <div className=" absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
