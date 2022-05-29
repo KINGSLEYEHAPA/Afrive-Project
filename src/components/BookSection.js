@@ -125,7 +125,7 @@ const BookSection = ({ bookSectionName }) => {
                     alt="Book"
                   />
                 </div>
-                <h3 className="text-h3 medium text-neutral-70 mt-[18px]">
+                <h3 className="text-h3 medium text-neutral-70 mt-[18px] truncate">
                   {book.title}
                 </h3>
                 <p className="leading-8 text-[18px] text-primary-40">
