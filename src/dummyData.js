@@ -57,12 +57,12 @@ export const availableBooksDummy = [
   },
   {
     id: 5,
-    title: "Ode to a Grecian Urn",
-    author: "John Keats",
-    img: "https://0901.static.prezi.com/preview/v2/gf5krzhjnnkdkwmmlyt4sja6yd6jc3sachvcdoaizecfr3dnitcq_3_0.png",
+    title: "Without a Silver Spoon",
+    author: "Eddie Iroh",
+    img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347325638l/2301365.jpg",
     description:
       "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-    price: "N800",
+    price: "N4000",
     status: "in stock",
 
     category: ["Poetry", "Adventure"],
@@ -73,7 +73,7 @@ export const availableBooksDummy = [
     id: 6,
     title: "Sugar Girl",
     author: "Kola Onadipe",
-    img: "https://images-na.ssl-images-amazon.http://cdn.shopify.com/s/files/1/1777/3225/products/sugar-girl-by-kola-onadipe-12502489006169.jpg?v=1587722024",
+    img: "https://continentalbooksgh.com/wp-content/uploads/2020/05/Sugar-Girl.jpg",
     description:
       "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
     price: "N2500",
@@ -101,7 +101,7 @@ export const availableBooksDummy = [
     id: 8,
     title: "Adventures of Souza",
     author: "Kola Onadipe",
-    img: "http://cdn.shopify.com/s/files/1/1777/3225/products/the-adventures-of-souza-12502352134233.jpg?v=1587722387",
+    img: "https://covers.openlibrary.org/b/id/8494992-M.jpg",
     description:
       "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
     price: "N1500",

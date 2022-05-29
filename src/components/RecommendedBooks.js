@@ -8,9 +8,7 @@ import { availableBooksDummy } from "../dummyData";
 
 const RecommendedBooks = () => {
   const [bookIsFavorite, setBookIsFavorite] = useState([]);
-  const [bookIsAddedToCart, setBookIsAddedToCart] = useState(false);
-
-  console.log(bookIsFavorite);
+  const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
 
   const addBookAsFavorite = (book) => {
     if (bookIsFavorite.filter((item) => item.title === book.title).length > 0) {
@@ -19,9 +17,22 @@ const RecommendedBooks = () => {
       });
 
       setBookIsFavorite([...favoritebooks]);
-      console.log(bookIsFavorite);
     } else {
       setBookIsFavorite([...bookIsFavorite, book]);
+    }
+  };
+
+  const addToShoppingBag = (book) => {
+    if (
+      bookInShoppingBag.filter((item) => item.title === book.title).length > 0
+    ) {
+      const bookTosell = bookInShoppingBag.filter((e) => {
+        return e.title !== book.title;
+      });
+
+      setBookInShoppingBag([...bookTosell]);
+    } else {
+      setBookInShoppingBag([...bookInShoppingBag, book]);
     }
   };
 
@@ -88,10 +99,12 @@ const RecommendedBooks = () => {
                       </AnimatePresence>
                     </div>
                     <div
-                      onClick={() => setBookIsAddedToCart(!bookIsAddedToCart)}
+                      onClick={() => addToShoppingBag(book)}
                       className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[18px]"
                     >
-                      {bookIsAddedToCart ? (
+                      {bookInShoppingBag.filter(
+                        (item) => item.title === book.title
+                      ).length > 0 ? (
                         <span className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]">
                           {" "}
                           <RiShoppingBag3Fill />
