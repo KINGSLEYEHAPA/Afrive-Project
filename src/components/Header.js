@@ -7,6 +7,7 @@ import { useState } from "react";
 import ProfileInfoDropdown from "./ProfileInfoDropdown";
 import { AnimatePresence } from "framer-motion";
 import EbookDropdown from "./EbookDropdown";
+import Search from "./Search";
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
@@ -58,6 +59,7 @@ const Header = () => {
         </div>
       </div>
       <div className=" mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
+        <Search />
         <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
           <span className=" cursor-pointer relative bottom-[5.2px] left-[5.2px] medium text-neutral-white text-[10px] leading-4">
             1
