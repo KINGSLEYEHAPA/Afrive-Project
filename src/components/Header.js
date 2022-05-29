@@ -5,7 +5,7 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import CategoriesDropdown from "./CategoriesDropdown";
 import { useState } from "react";
 import ProfileInfoDropdown from "./ProfileInfoDropdown";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import EbookDropdown from "./EbookDropdown";
 import Search from "./Search";
 
@@ -59,16 +59,25 @@ const Header = () => {
         </div>
       </div>
       <div className=" mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
-        <Search />
-        <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
-          <span className=" cursor-pointer relative bottom-[5.2px] left-[5.2px] medium text-neutral-white text-[10px] leading-4">
-            1
-          </span>
-        </div>
-        <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
-          {" "}
-          <FiSearch />
-        </p>
+        <AnimateSharedLayout>
+          <Search />
+
+          <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
+            <span className=" cursor-pointer relative bottom-[5.2px] left-[5.2px] medium text-neutral-white text-[10px] leading-4">
+              1
+            </span>
+          </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1 } }}
+            exit={{ opacity: 0 }}
+            layoutId="outline"
+            className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
+          >
+            {" "}
+            <FiSearch />
+          </motion.p>
+        </AnimateSharedLayout>
         <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
           {" "}
           <MdOutlineFavoriteBorder />
