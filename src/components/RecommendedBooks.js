@@ -7,9 +7,23 @@ import { AnimatePresence, motion } from "framer-motion";
 import { availableBooksDummy } from "../dummyData";
 
 const RecommendedBooks = () => {
-  const [bookIsFavorite, setBookIsFavorite] = useState(false);
+  const [bookIsFavorite, setBookIsFavorite] = useState([]);
   const [bookIsAddedToCart, setBookIsAddedToCart] = useState(false);
-  console.log(availableBooksDummy);
+
+  console.log(bookIsFavorite);
+
+  const addBookAsFavorite = (book) => {
+    if (bookIsFavorite.filter((item) => item.title === book.title).length > 0) {
+      const favoritebooks = bookIsFavorite.filter((e) => {
+        return e.title !== book.title;
+      });
+
+      setBookIsFavorite([...favoritebooks]);
+      console.log(bookIsFavorite);
+    } else {
+      setBookIsFavorite([...bookIsFavorite, book]);
+    }
+  };
 
   return (
     <div className="w-screen max-w-[1440px] mx-auto">
@@ -30,11 +44,13 @@ const RecommendedBooks = () => {
                 <div className="w-full h-[415.81px]  relative group  ">
                   <div className="absolute w-full h-[69px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
                     <div
-                      onClick={() => setBookIsFavorite(!bookIsFavorite)}
+                      onClick={() => addBookAsFavorite(book)}
                       className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[18px]"
                     >
                       <AnimatePresence exitBeforeEnter>
-                        {bookIsFavorite ? (
+                        {bookIsFavorite.filter(
+                          (item) => item.title === book.title
+                        ).length > 0 ? (
                           <motion.span
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{

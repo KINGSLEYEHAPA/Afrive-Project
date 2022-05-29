@@ -11,7 +11,7 @@ import EbookDropdown from "./EbookDropdown";
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [showProfileInfo, setShowProfileInfo] = useState(false);
-  const [showEbookMenu, setShowEbookMenu] = useState(true);
+  const [showEbookMenu, setShowEbookMenu] = useState(false);
   return (
     <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between ">
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
