@@ -53,13 +53,12 @@ const Search = ({ showSearch, setShowSearch }) => {
         transition: { duration: 1.2 },
       }}
       layoutId="outline"
-      className="absolute z-10 top-[28px]   right-[170px] w-[467px] h-[36px] border  border-neutral-30 rounded-[120px] box-border bg-neutral-white border-[0.5px solid #C3C3C3] rounded-[120px]"
+      className="absolute z-10 top-[28px] right-[170px] w-[467px] h-[36px] border  border-neutral-30 rounded-[120px] box-border bg-neutral-white border-[0.5px solid #C3C3C3] rounded-[120px]"
     >
       <div className="relative h-full w-full">
         <AnimatePresence>
           {showSearchOption && (
             <motion.div
-              key="box"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0.5 } }}
               exit={{ opacity: 0, transition: { duration: 0.5 } }}
