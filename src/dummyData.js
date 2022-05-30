@@ -45,7 +45,7 @@ export const availableBooksDummy = [
     id: 4,
     title: "The African Child",
     author: "Camera Laye",
-    img: "https://images-na.ssl-images-amazon.com/images/I/71i0BqvO3jL.jpg",
+    img: "https://tothebalcony.files.wordpress.com/2012/08/africanchild1.jpg?w=584",
     description:
       "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
     price: "N8000",
@@ -115,7 +115,7 @@ export const availableBooksDummy = [
     id: 9,
     title: "Shaka Zulu",
     author: "E.A. Ritter",
-    img: "https://images-na.ssl-images-amazon.com/images/I/516IiVgEDDL._SX318_BO1,204,203,200_.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_OEpvX9f9lrxQI8Og49F9hs65v6QMjOWlXA&usqp=CAU",
     description:
       "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
     price: "N6000",
@@ -129,7 +129,7 @@ export const availableBooksDummy = [
     id: 10,
     title: "Things Fall Apart",
     author: "Chinua Achebe",
-    img: "https://www.ubagroup.com/57-marina/wp-content/uploads/sites/4/2017/04/thingsfallapart.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvZsNEnyODRqOnSFFr96JB5iXlsvs27w9c7e-Kb4K12opn26zK-Pt8piC1FCyZ8KJy2gU&usqp=CAU",
     description:
       "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
     price: "N8000",

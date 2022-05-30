@@ -1,9 +1,10 @@
 import React from "react";
 import { MdChevronLeft } from "react-icons/md";
+import BookSectionWithoutHeaders from "./BookSectionWithoutHeaders";
 
 const BookCategories = () => {
   return (
-    <div className="w-screen max-w-[1440px] h-[80%] ">
+    <div className="w-screen max-w-[1440px] h-[80%] mx-auto ">
       <div className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  ">
         <span className="text-[25px]">
           <MdChevronLeft />
@@ -14,6 +15,7 @@ const BookCategories = () => {
         <p className="text-h4 font-reg text-neutral-30">Category-</p>
         <span className="text-h4 font-reg text-primary-50">Action</span>
       </div>
+      <BookSectionWithoutHeaders />
     </div>
   );
 };
