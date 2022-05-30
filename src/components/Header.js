@@ -13,6 +13,8 @@ const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [showProfileInfo, setShowProfileInfo] = useState(false);
   const [showEbookMenu, setShowEbookMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
     <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between ">
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
@@ -31,6 +33,7 @@ const Header = () => {
                 setShowCategories(!showCategories);
                 setShowEbookMenu(false);
                 setShowProfileInfo(false);
+                setShowSearch(false);
               }}
               className="text-bodyL text-neutral-80 w-[89px] h-[24px] reg cursor-pointer py-[32px]"
             >
@@ -41,6 +44,7 @@ const Header = () => {
                 setShowEbookMenu(!showEbookMenu);
                 setShowCategories(false);
                 setShowProfileInfo(false);
+                setShowSearch(false);
               }}
               className="text-bodyL text-neutral-80 w-[107px] h-[24px] reg cursor-pointer py-[32px] whitespace-nowrap"
             >
@@ -60,7 +64,9 @@ const Header = () => {
       </div>
       <div className=" mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
         <AnimateSharedLayout>
-          <Search />
+          {showSearch && (
+            <Search setShowSearch={setShowSearch} showSearch={showSearch} />
+          )}
 
           <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
             <span className=" cursor-pointer relative bottom-[5.2px] left-[5.2px] medium text-neutral-white text-[10px] leading-4">
@@ -68,13 +74,18 @@ const Header = () => {
             </span>
           </div>
           <motion.p
+            onClick={() => {
+              setShowSearch(!showSearch);
+              setShowEbookMenu(false);
+              setShowCategories(false);
+              setShowProfileInfo(false);
+            }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 1 } }}
+            animate={{ opacity: 1, transition: { duration: 0.5 } }}
             exit={{ opacity: 0 }}
             layoutId="outline"
             className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
           >
-            {" "}
             <FiSearch />
           </motion.p>
         </AnimateSharedLayout>
@@ -89,6 +100,7 @@ const Header = () => {
         <p
           onMouseOver={() => {
             setShowProfileInfo(!showProfileInfo);
+            setShowSearch(false);
             setShowEbookMenu(false);
             setShowCategories(false);
           }}
