@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const CategoriesDropdown = ({ setShowCategories }) => {
   const categories = [
@@ -29,13 +30,15 @@ const CategoriesDropdown = ({ setShowCategories }) => {
       <div className="p-0 grid grid-cols-3 gap-[32px]">
         {categories.map((category) => {
           return (
-            <p
-              className="text-neutral-80 text-bodyL font-reg cursor-pointer hover:text-primary-50"
-              onClick={() => setShowCategories(false)}
-              key={category}
-            >
-              {category}
-            </p>
+            <Link to={`/category/${category}`} key={category}>
+              {" "}
+              <p
+                className="text-neutral-80 text-bodyL font-reg cursor-pointer hover:text-primary-50"
+                onClick={() => setShowCategories(false)}
+              >
+                {category}
+              </p>
+            </Link>
           );
         })}
       </div>

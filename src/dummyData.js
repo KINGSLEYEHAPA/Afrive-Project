@@ -93,7 +93,7 @@ export const availableBooksDummy = [
     price: "N4500",
     status: "in stock",
 
-    category: ["Action", "Adventure", "Drama"],
+    category: ["Action", "Adventure", "Drama", "Children"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
   },

@@ -8,6 +8,7 @@ import ProfileInfoDropdown from "./ProfileInfoDropdown";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import EbookDropdown from "./EbookDropdown";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
@@ -16,18 +17,23 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-30 ">
+    <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20 ">
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
-          <img
-            className="w-[30.36] h-[40.27] cursor-pointer"
-            src={logo}
-            alt="Afrive Logo"
-          />
+          <Link to="/">
+            {" "}
+            <img
+              className="w-[30.36] h-[40.27] cursor-pointer"
+              src={logo}
+              alt="Afrive Logo"
+            />
+          </Link>
           <div className="flex h-full w-[358px]  gap-[56px] relative">
-            <p className="text-bodyL text-neutral-80 w-[49px] h-[24px] reg cursor-pointer py-[32px]">
-              Home
-            </p>
+            <Link to="/">
+              <p className="text-bodyL text-neutral-80 w-[49px] h-[24px] reg cursor-pointer py-[32px]">
+                Home
+              </p>
+            </Link>
             <p
               onMouseOver={() => {
                 setShowCategories(!showCategories);
@@ -89,10 +95,13 @@ const Header = () => {
             <FiSearch />
           </motion.p>
         </AnimateSharedLayout>
-        <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+        <Link to="/liked-books">
           {" "}
-          <MdOutlineFavoriteBorder />
-        </p>
+          <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+            {" "}
+            <MdOutlineFavoriteBorder />
+          </p>{" "}
+        </Link>
         <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
           <FiShoppingBag />
         </p>

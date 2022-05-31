@@ -9,9 +9,6 @@ const BookSection = ({ bookSectionName }) => {
   const [bookIsFavorite, setBookIsFavorite] = useState([]);
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
 
-  console.log(bookIsFavorite);
-  console.log(bookInShoppingBag);
-
   const addBookAsFavorite = (book) => {
     if (bookIsFavorite.filter((item) => item.title === book.title).length > 0) {
       const favoritebooks = bookIsFavorite.filter((e) => {
@@ -50,10 +47,10 @@ const BookSection = ({ bookSectionName }) => {
             see more
           </p>
         </div>
-        <div className="w-full h-[492px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
+        <div className="w-full min-h-[397.54px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
           {availableBooksDummy?.slice(4, 8).map((book) => {
             return (
-              <div key={book?.id} className="w-[228.05px] h-full">
+              <div key={book?.id} className="w-[228.05px] h-[397.54px]">
                 <div className="w-full h-[312.95px]  relative group  ">
                   <div className="absolute w-full h-[65px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
                     <div

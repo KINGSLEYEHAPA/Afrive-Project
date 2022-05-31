@@ -1,10 +1,12 @@
 import React from "react";
 import { MdChevronLeft } from "react-icons/md";
+import BookQuote from "./BookQuote";
 import BookSectionWithoutHeaders from "./BookSectionWithoutHeaders";
+import { availableBooksDummy } from "../dummyData";
 
 const LikedBooks = () => {
   return (
-    <div className="w-screen max-w-[1440px] h-[80%] mx-auto ">
+    <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[100px] ">
       <div className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  ">
         <span className="text-[25px]">
           <MdChevronLeft />
@@ -18,7 +20,8 @@ const LikedBooks = () => {
           you can find the books you have liked here
         </span>
       </div>
-      <BookSectionWithoutHeaders />
+      <BookSectionWithoutHeaders booksToShow={availableBooksDummy} />
+      <BookQuote />
     </div>
   );
 };

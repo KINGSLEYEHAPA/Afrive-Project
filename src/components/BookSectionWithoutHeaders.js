@@ -5,7 +5,7 @@ import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import { availableBooksDummy } from "../dummyData";
 
-const BookSectionWithoutHeaders = () => {
+const BookSectionWithoutHeaders = ({ booksToShow }) => {
   const [bookIsFavorite, setBookIsFavorite] = useState([]);
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
 
@@ -36,11 +36,11 @@ const BookSectionWithoutHeaders = () => {
   };
 
   return (
-    <div className="w-full max-w-[1440px] mt-[56px] pl-[181px] pr-[183px]">
-      <div className="w-full h-[492px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
-        {availableBooksDummy?.map((book) => {
+    <div className="w-full max-w-[1440px] mt-[56px] pl-[181px] pr-[183px] min-h-screen">
+      <div className="w-full min-h-full mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
+        {booksToShow?.map((book) => {
           return (
-            <div key={book?.id} className="w-[228.05px] h-full">
+            <div key={book?.id} className="w-[228.05px] h-[397.54px]">
               <div className="w-full h-[312.95px]  relative group  ">
                 <div className="absolute w-full h-[65px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
                   <div
