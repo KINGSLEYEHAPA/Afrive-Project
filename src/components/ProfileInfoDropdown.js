@@ -8,7 +8,7 @@ const ProfileInfoDropdown = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
-      className=" absolute top-[100px] right-[-35px] w-[308px] h-[388px] bg-neutral-white border-[1px solid #E7E7E7] shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] p-0 "
+      className=" absolute top-[100px] right-[-35px] w-[308px] h-[388px] bg-neutral-white border border-[rgba(0,0,0,0.1)] shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] p-0 "
     >
       <div className="h-[72px] w-full p-[24px] flex justify-between">
         <h3 className="text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">

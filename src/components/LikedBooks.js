@@ -7,6 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 const LikedBooks = () => {
   const navigate = useNavigate();
+
+  const availableBooksDummyCopy = [...availableBooksDummy].map((item) => {
+    item.favorite = true;
+    return item;
+  });
+  console.log(availableBooksDummyCopy);
+
   return (
     <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[100px] ">
       <div

@@ -9,7 +9,7 @@ const EbookDropdown = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
-      className=" absolute top-[100px] z-10 right-[-388px] w-[494px] h-[410px] bg-neutral-white border-[0.5px solid rgba(0,0,0,0.1)] shadow-[0px 4px 8px rgba(0, 0, 0, 0.15)] rounded-[4px] px-[32px]   "
+      className=" absolute top-[100px] z-10 right-[-388px] w-[494px] h-[410px] bg-neutral-white border border-[rgba(0,0,0,0.1)] shadow-[0px 4px 8px rgba(0, 0, 0, 0.15)] rounded-[4px] px-[32px]   "
     >
       <div className="mt-[29px] mb-[26.55px] h-[354.45px]  overflow-hidden overflow-y-auto scrollbar-hide ">
         <div className="cursor-pointer ">

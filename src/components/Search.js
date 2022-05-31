@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { availableBooksDummy } from "../dummyData";
 
 const Search = ({ showSearch, setShowSearch }) => {
@@ -62,7 +63,7 @@ const Search = ({ showSearch, setShowSearch }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0.5 } }}
               exit={{ opacity: 0, transition: { duration: 0.5 } }}
-              className="absolute top-[45px] w-[174px] h-[118px] bg-neutral-white border border-neutral-20 shadow-[ 0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px]"
+              className="absolute top-[45px] w-[174px] h-[118px] bg-neutral-white border border-neutral-20 shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px]"
             >
               <div className="w-full h-[58px] flex justify-start items-center pl-[18px] text-bodyN text-neutral-80 font-reg">
                 <p
@@ -70,6 +71,7 @@ const Search = ({ showSearch, setShowSearch }) => {
                   onClick={() => {
                     setSearchOptionText(categoriesOptionRef.current.innerText);
                     setShowSearchOption(false);
+                    setSearchInput("");
                   }}
                   className="cursor-pointer"
                 >
@@ -83,6 +85,7 @@ const Search = ({ showSearch, setShowSearch }) => {
                   onClick={() => {
                     setSearchOptionText(authorsOptionRef.current.innerText);
                     setShowSearchOption(false);
+                    setSearchInput("");
                   }}
                   className="cursor-pointer"
                 >
@@ -100,12 +103,17 @@ const Search = ({ showSearch, setShowSearch }) => {
               className="absolute top-[45px] left-[95px] w-[372px] h-[150px] bg-neutral-white border border-neutral-20 shadow-[ 0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] py-[20px]"
             >
               <div className="overflow-hidden h-full w-full overflow-y-auto scrollbar-hide ">
+                <p className="pl-[18px] text-primary-50 text-bodyN mb-[2px]">
+                  Search Results for "{searchInput}"
+                </p>
                 {searchResults.map((book, index) => {
                   return (
                     <div key={index}>
                       <hr className="h-0 border-1 border-neutral-20 w-[100%]" />
-                      <div className="w-full h-[58px] flex justify-start items-center px-[18px] text-bodyS text-neutral-80 font-reg hover:text-primary-50">
-                        <p className="cursor-pointer">{book.title}</p>
+                      <div className="w-full h-[58px] flex justify-start items-center px-[18px] text-bodyS text-neutral-80 font-reg ">
+                        <Link to={`/book/${book.title}`}>
+                          <p className="cursor-pointer">{book.title}</p>
+                        </Link>
                       </div>
                       <hr className="h-0 border-1 border-neutral-20 w-[100%]" />
                     </div>

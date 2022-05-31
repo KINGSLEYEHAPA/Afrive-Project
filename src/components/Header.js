@@ -41,7 +41,7 @@ const Header = () => {
               </p>
             </Link>
             <p
-              onMouseOver={() => {
+              onClick={() => {
                 setShowCategories(!showCategories);
                 setShowEbookMenu(false);
                 setShowProfileInfo(false);
@@ -52,7 +52,7 @@ const Header = () => {
               Categories
             </p>
             <p
-              onMouseOver={() => {
+              onClick={() => {
                 setShowEbookMenu(!showEbookMenu);
                 setShowCategories(false);
                 setShowProfileInfo(false);
@@ -129,7 +129,7 @@ const Header = () => {
         </Link>
 
         <p
-          onMouseOver={() => {
+          onClick={() => {
             setShowProfileInfo(!showProfileInfo);
             setShowSearch(false);
             setShowEbookMenu(false);
