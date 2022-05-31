@@ -15,7 +15,7 @@ export const availableBooksDummy = [
   },
   {
     id: 2,
-    title: "Half of a yellow sun",
+    title: "Half of a Yellow Sun",
     author: "Chimamanda Adieche",
     img: "https://farafinabooks.files.wordpress.com/2013/04/half-of-a-yellow-sun.jpg",
     description:

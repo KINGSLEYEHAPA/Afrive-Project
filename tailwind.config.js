@@ -36,6 +36,7 @@ module.exports = {
       bodyN: ["16px", { lineHeight: "24px" }],
       bodyS: ["14px", { lineHeight: "18px" }],
       buttonT: ["18px", { lineHeight: "18px" }],
+      buttonT2: ["18px", { lineHeight: "32px" }],
       sub: ["12px", { lineHeight: "16px" }],
     },
     fontWeight: {

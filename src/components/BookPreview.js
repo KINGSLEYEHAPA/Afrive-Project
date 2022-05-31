@@ -10,8 +10,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import RatingStars from "./RatingStars";
 
 const BookPreview = () => {
-  const [bookIsFavorite, setBookIsFavorite] = useState();
+  const [bookIsFavorite, setBookIsFavorite] = useState([]);
   const [bookInShoppingBag, setBookInShoppingBag] = useState();
+  const [eBookPreview, setEBookPreview] = useState(false);
+  console.log(bookIsFavorite);
 
   let params = useParams();
   let navigate = useNavigate();
@@ -20,7 +22,12 @@ const BookPreview = () => {
     return item.title === params.bookId;
   });
 
-  const addBookAsFavorite = () => {};
+  const addBookAsFavorite = (book) => {
+    if (bookIsFavorite.length > 0) setBookIsFavorite([]);
+    else if (bookIsFavorite.length === 0) {
+      setBookIsFavorite([selectedBook]);
+    }
+  };
 
   const addToShoppingBag = (book) => {};
   return (
@@ -32,7 +39,9 @@ const BookPreview = () => {
         <span className="text-[25px]">
           <MdChevronLeft />
         </span>
-        <p className="text-h4 font-reg text-[#000000] cursor-pointer">Back</p>
+        <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+          Back
+        </p>
       </div>
       <div className="w-full h-[470.70px] flex justify-start items-center pr-[280px] pl-[182px] gap-[98px]">
         <div className="h-full w-[343px] ">
@@ -40,11 +49,11 @@ const BookPreview = () => {
             <div className="w-full h-full  relative group  ">
               <div className="absolute w-full h-[91px]  opacity-0 flex justify-between items-center mx-auto group-hover:opacity-100  ">
                 <div
-                  onClick={() => addBookAsFavorite()}
+                  onClick={() => addBookAsFavorite(selectedBook)}
                   className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[20px]"
                 >
                   <AnimatePresence exitBeforeEnter>
-                    {true ? (
+                    {bookIsFavorite.length > 0 ? (
                       <motion.span
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{
@@ -92,11 +101,32 @@ const BookPreview = () => {
         </div>
         <div className="w-[537px] h-full ">
           <div className="h-[84px] w-full  flex flex-col items-start justify-center pt-10 mb-[18px] ">
-            <h2 className="text-h3 font-medium text-neutral-80">Book Title</h2>
+            <div className="flex gap-[20px]">
+              <h2 className="text-h3 font-medium text-neutral-80">
+                {selectedBook?.title}
+              </h2>
+              <AnimatePresence>
+                {eBookPreview && (
+                  <motion.div
+                    onClick={() => setEBookPreview(false)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 1 } }}
+                    exit={{ opacity: 0 }}
+                    className="flex items-center justify-center w-[86px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] "
+                  >
+                    {" "}
+                    <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                      {" "}
+                      E-book
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <span className="text-bodyL text-neutral-30 font-reg">
               by{" "}
               <span className="text-h4 text-neutral-40 font-reg ">
-                Author Name
+                {selectedBook?.author}
               </span>
             </span>
           </div>
@@ -110,26 +140,47 @@ const BookPreview = () => {
             <RatingStars />
             <p>(23)</p>
           </div>
-          <div className="mt-[40px] flex w-full h-[32px] justify-between items-center">
-            <p className="text-primary-50 text-h3 font-medium">N3000</p>
+          <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
+            <p className="text-primary-50 text-h3 font-medium">
+              {selectedBook?.price}
+            </p>
             <span className="text-bodyN text-neutral-60">
-              Status:<span className="text-bodyS neutral-40">In stock</span>
+              Status: &nbsp;
+              <span className="text-bodyS neutral-40">In stock</span>
             </span>
-            <div className="flex items-center justify-center w-[152px] h-[29.78px] rounded-[14px] border-2 border-2-[#feeae7]  bg-primary-10 px-[7.28px] ">
-              {" "}
-              <p className="w-[121px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap ">
-                {" "}
-                E-book Available
-              </p>
-            </div>
+            <AnimatePresence>
+              {!eBookPreview && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 1.5 } }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setEBookPreview(true)}
+                  className="flex items-center justify-center w-[152px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] "
+                >
+                  {" "}
+                  <p className="w-[121px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                    {" "}
+                    E-book Available
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-          <div>
-            <button>Buy Now</button>
-            <button>Add to Bag</button>
+          <div className="w-full h-[52px] flex gap-[25px] justify-start items-center">
+            <button className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50">
+              {eBookPreview ? "Buy e-book Now" : "Buy Now"}
+            </button>
+            <button className="w-[155px] h-[52px] rounded-[4px] text-primary-50 p-[10px] bg-neutral-white text-buttonT2  border-2 border-primary-50">
+              Add to Bag
+            </button>
           </div>
-          <div>
-            <h3>Category:</h3>
-            <p>Action & Adventure</p>
+          <div className="mt-[24px] w-[391px] h-[32px] flex justify-start items-center text-neutral-80 font-reg text-bodyN">
+            <h3>Category: &nbsp;</h3>
+            <p className="text-primary-30">
+              {selectedBook?.category.map((item) => {
+                return <span key={item}>{item},&nbsp;</span>;
+              })}
+            </p>
           </div>
         </div>
       </div>
