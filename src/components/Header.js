@@ -1,20 +1,26 @@
 import logo from "../assets/logo.png";
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import CategoriesDropdown from "./CategoriesDropdown";
 import { useState } from "react";
 import ProfileInfoDropdown from "./ProfileInfoDropdown";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import { RiShoppingBag3Fill } from "react-icons/ri";
 import EbookDropdown from "./EbookDropdown";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [showProfileInfo, setShowProfileInfo] = useState(false);
   const [showEbookMenu, setShowEbookMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+
+  const location = useLocation();
+  const path = location.pathname;
+  console.log(path);
 
   return (
     <header className=" w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20 ">
@@ -95,16 +101,32 @@ const Header = () => {
             <FiSearch />
           </motion.p>
         </AnimateSharedLayout>
+
         <Link to="/liked-books">
-          {" "}
-          <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
-            {" "}
-            <MdOutlineFavoriteBorder />
-          </p>{" "}
+          {path === "/liked-books" ? (
+            <p className="text-[20px]  text-primary-70 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+              {" "}
+              <MdFavorite />
+            </p>
+          ) : (
+            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+              {" "}
+              <MdOutlineFavoriteBorder />
+            </p>
+          )}
         </Link>
-        <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
-          <FiShoppingBag />
-        </p>
+
+        <Link to="/shopping-bag">
+          {path === "/shopping-bag" ? (
+            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
+              <RiShoppingBag3Fill />
+            </p>
+          ) : (
+            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
+              <FiShoppingBag />
+            </p>
+          )}
+        </Link>
 
         <p
           onMouseOver={() => {

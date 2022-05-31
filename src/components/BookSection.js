@@ -4,6 +4,7 @@ import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import { availableBooksDummy } from "../dummyData";
+import { Link } from "react-router-dom";
 
 const BookSection = ({ bookSectionName }) => {
   const [bookIsFavorite, setBookIsFavorite] = useState([]);
@@ -122,9 +123,11 @@ const BookSection = ({ bookSectionName }) => {
                     alt="Book"
                   />
                 </div>
-                <h3 className="text-h3 medium text-neutral-70 mt-[18px] truncate">
-                  {book.title}
-                </h3>
+                <Link to={`/book/${book?.title}`}>
+                  <h3 className="text-h3 medium text-neutral-70 mt-[18px] truncate">
+                    {book.title}
+                  </h3>
+                </Link>
                 <p className="leading-8 text-[18px] text-primary-40">
                   {book.price}
                 </p>

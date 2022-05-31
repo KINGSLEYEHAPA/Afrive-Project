@@ -3,11 +3,16 @@ import { MdChevronLeft } from "react-icons/md";
 import BookQuote from "./BookQuote";
 import BookSectionWithoutHeaders from "./BookSectionWithoutHeaders";
 import { availableBooksDummy } from "../dummyData";
+import { useNavigate } from "react-router-dom";
 
 const LikedBooks = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[100px] ">
-      <div className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  ">
+      <div
+        onClick={() => navigate(-1)}
+        className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
+      >
         <span className="text-[25px]">
           <MdChevronLeft />
         </span>

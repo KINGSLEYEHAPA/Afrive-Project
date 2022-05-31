@@ -4,6 +4,7 @@ import BookCategory from "./BookCategory";
 import BookPreview from "./BookPreview";
 import Homepage from "./Homepage";
 import LikedBooks from "./LikedBooks";
+import ShoppingBag from "./ShoppingBag";
 
 const ApplicationsRoute = () => {
   return (
@@ -15,6 +16,7 @@ const ApplicationsRoute = () => {
             <Route path="/category/:catName" element={<BookCategory />} />
             <Route path="/liked-books" element={<LikedBooks />} />
             <Route path="/book/:bookId" element={<BookPreview />} />
+            <Route path="/shopping-bag" element={<ShoppingBag />} />
           </Route>
         </Routes>
       </BrowserRouter>
