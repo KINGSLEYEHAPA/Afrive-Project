@@ -14,6 +14,7 @@ import {
   removeFavoriteBook,
   addToBag,
 } from "../features/books/bookSlice";
+import CustomerBookReview from "./CustomerBookReview";
 
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
@@ -32,10 +33,6 @@ const BookPreview = () => {
   const dispatch = useDispatch();
 
   const addBookAsFavorite = (book) => {
-    if (book.favorite === undefined) {
-      book.favorite = true;
-    }
-
     dispatch(addAFavoriteBook(book));
   };
 
@@ -276,7 +273,7 @@ const BookPreview = () => {
           </div>
         </div>
       </div>
-      <div className="h-[100px]"></div>
+      <CustomerBookReview />
     </div>
   );
 };
