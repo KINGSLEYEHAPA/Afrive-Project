@@ -17,6 +17,7 @@ import {
 import CustomerBookReview from "./CustomerBookReview";
 import BookSection from "./BookSection";
 import BookQuote from "./BookQuote";
+import { Link as ALink } from "react-scroll";
 
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
@@ -129,7 +130,10 @@ const BookPreview = () => {
         <div className="w-[537px] h-full ">
           <div className="h-[84px] w-full  flex flex-col items-start justify-center pt-10 mb-[18px] ">
             <div className="flex gap-[20px]">
-              <h2 className="text-h3 font-medium text-neutral-80">
+              <h2
+                className="text-h3 font-medium text-neutral-80"
+                id="preview-title"
+              >
                 {selectedBook?.title}
               </h2>
               <AnimatePresence>
@@ -283,9 +287,17 @@ const BookPreview = () => {
           <span className="text-[25px]">
             <FiArrowUpLeft />
           </span>
-          <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
-            Back to Top
-          </p>
+          <ALink
+            to="preview-title"
+            spy={true}
+            smooth={true}
+            offset={-120}
+            duration={1000}
+          >
+            <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+              Back to Top
+            </p>
+          </ALink>
         </div>
       </div>
       <BookQuote />

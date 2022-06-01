@@ -12,6 +12,7 @@ import {
   addToBag,
   removeFromBag,
 } from "../features/books/bookSlice";
+import RatingStars from "./RatingStars";
 
 const BookSectionWithoutHeaders = ({ booksToShow }) => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
@@ -107,6 +108,9 @@ const BookSectionWithoutHeaders = ({ booksToShow }) => {
                       </span>
                     )}
                   </div>
+                </div>
+                <div className="h-[40px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
+                  <RatingStars />
                 </div>
                 <img
                   className="w-full h-[312.95px]  mb-[18.19px]"

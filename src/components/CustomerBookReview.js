@@ -34,7 +34,7 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
   const pushReview = () => {
     setUserReview(reviewInput);
     setReviewInput("");
-    setWriteAReview(false);
+    setWriteAReview(2);
   };
   return (
     <motion.div
@@ -60,7 +60,7 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
       <div className="w-full h-[52px] flex justify-end items-center mt-[47.71px]">
         <div className="w-[402px] h-full p-0 space-x-[10px] ">
           <button
-            onClick={() => setWriteAReview(false)}
+            onClick={() => setWriteAReview(0)}
             className="h-[52px] w-[196px] text-primary-40 rounded-[4px] border border-primary-40 "
           >
             Cancel
@@ -78,14 +78,14 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
 };
 
 const CustomerBookReview = () => {
-  const [writeAReview, setWriteAReview] = useState(false);
+  const [writeAReview, setWriteAReview] = useState(2);
   const [userReview, setUserReview] = useState("");
   console.log(userReview);
 
   return (
     <div className="w-screen max-w-[1440px] mx-auto h-[468px] bg-primary-10 mt-[112.30px]  px-[182px] pt-[55.43px] pb-[98px] relative mb-[100px] ">
       <AnimatePresence>
-        {!writeAReview && (
+        {writeAReview === 0 && (
           <div className="w-full h-full">
             <div className="w-full h-[32px]  flex justify-between items-center">
               <h3 className="text-h3 font-reg text-neutral-80">
@@ -103,19 +103,39 @@ const CustomerBookReview = () => {
             </div>
           </div>
         )}
-        {!writeAReview && (
+        {writeAReview === 0 && (
           <div
-            onClick={() => setWriteAReview(true)}
+            onClick={() => setWriteAReview(1)}
             className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
           >
             <img className="" src={pen} alt="Pen" />
           </div>
         )}
-        {writeAReview && (
+        {writeAReview === 1 && (
           <WriteReview
             setUserReview={setUserReview}
             setWriteAReview={setWriteAReview}
           />
+        )}
+        {writeAReview === 2 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.2 } }}
+            exit={{ opacity: 0, transition: { duration: 1.2 } }}
+            className="w-full h-full  flex justify-center items-center "
+          >
+            <div className="w-[407px] h-[122px] flex flex-col items-center gap-[38px] mt-[38px] ">
+              <h4 className="text-h4 font-reg text-primary-50 whitespace-nowrap">
+                Your Review has been successfully submitted!{" "}
+              </h4>
+              <button
+                onClick={() => setWriteAReview(0)}
+                className="h-[52px] w-[196px] text-primary-50 rounded-[4px] border border-primary-40 "
+              >
+                Back to Reviews
+              </button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

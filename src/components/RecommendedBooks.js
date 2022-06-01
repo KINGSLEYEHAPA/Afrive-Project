@@ -13,6 +13,7 @@ import {
   addToBag,
   removeFromBag,
 } from "../features/books/bookSlice";
+import RatingStars from "./RatingStars";
 
 const RecommendedBooks = () => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
@@ -119,6 +120,10 @@ const RecommendedBooks = () => {
                       )}
                     </div>
                   </div>
+                  <div className="h-[56px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
+                    <RatingStars />
+                  </div>
+
                   <img
                     className="w-full h-[415.81px]  mb-[16.19px]"
                     src={book?.img}
