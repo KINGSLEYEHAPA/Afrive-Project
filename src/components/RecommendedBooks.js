@@ -121,7 +121,7 @@ const RecommendedBooks = () => {
                     </div>
                   </div>
                   <div className="h-[56px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
-                    <RatingStars />
+                    <RatingStars book={book} />
                   </div>
 
                   <img

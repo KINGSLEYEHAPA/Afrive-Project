@@ -3,8 +3,10 @@ import RatingStars from "./RatingStars";
 import pen from "../assets/pen.svg";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { BsStar } from "react-icons/bs";
+import { AnimateSharedLayout } from "framer-motion";
 
-export const ViewReview = ({ title }) => {
+export const ViewReview = ({ title, book }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -77,10 +79,11 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
   );
 };
 
-const CustomerBookReview = () => {
-  const [writeAReview, setWriteAReview] = useState(2);
+const CustomerBookReview = (book) => {
+  const [writeAReview, setWriteAReview] = useState(0);
   const [userReview, setUserReview] = useState("");
   console.log(userReview);
+  const [rateABook, setRateABook] = useState(false);
 
   return (
     <div className="w-screen max-w-[1440px] mx-auto h-[468px] bg-primary-10 mt-[112.30px]  px-[182px] pt-[55.43px] pb-[98px] relative mb-[100px] ">
@@ -104,11 +107,36 @@ const CustomerBookReview = () => {
           </div>
         )}
         {writeAReview === 0 && (
-          <div
-            onClick={() => setWriteAReview(1)}
-            className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
-          >
-            <img className="" src={pen} alt="Pen" />
+          <div className="">
+            <div
+              onClick={() => setRateABook(true)}
+              className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
+            >
+              <BsStar />
+            </div>
+            <AnimateSharedLayout>
+              {rateABook && (
+                <motion.div
+                  initial={{ opacity: 0, width: 59 }}
+                  animate={{
+                    opacity: 1,
+                    width: [100, 177],
+                    transition: { duration: 1 },
+                  }}
+                  exit={{ opacity: 0, width: 59 }}
+                  className=" absolute cursor-pointer w-[177px] h-[59px] bottom-[41px] right-[253px] rounded-full bg-primary-50 flex justify-center items-center pr-[20px] "
+                >
+                  <RatingStars book={book} />
+                </motion.div>
+              )}
+            </AnimateSharedLayout>
+
+            <div
+              onClick={() => setWriteAReview(1)}
+              className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
+            >
+              <img className="" src={pen} alt="Pen" />
+            </div>
           </div>
         )}
         {writeAReview === 1 && (

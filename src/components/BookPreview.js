@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 
 import { FiShoppingBag, FiArrowUpLeft } from "react-icons/fi";
+import { Link as ALink } from "react-scroll";
+
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
@@ -17,7 +19,6 @@ import {
 import CustomerBookReview from "./CustomerBookReview";
 import BookSection from "./BookSection";
 import BookQuote from "./BookQuote";
-import { Link as ALink } from "react-scroll";
 
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
@@ -171,7 +172,7 @@ const BookPreview = () => {
             </p>
           </div>
           <div className=" w-full flex justify-start items-center h-[24px] gap-[40px]">
-            <RatingStars />
+            <RatingStars book={selectedBook} />
             <p>(23)</p>
           </div>
           <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
@@ -279,7 +280,7 @@ const BookPreview = () => {
           </div>
         </div>
       </div>
-      <CustomerBookReview />
+      <CustomerBookReview book={selectedBook} />
       <BookSection bookSectionName="Similar Books" />
       <BookSection bookSectionName="Best Sellers" />
       <div className="w-full mt-[72.51px] flex justify-end items-center pr-[117.23px] mb-[-19px]">

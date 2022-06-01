@@ -12,6 +12,37 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Fantasy", "Drama"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 4.2,
+      ratings: [
+        {
+          name: "P. John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Faith",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 2,
+        },
+        {
+          name: "Ade Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 2,
@@ -24,8 +55,39 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Fantasy", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 4.2,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 3,
@@ -40,6 +102,36 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Fantasy", "Drama"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 3.4,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pam J.",
+          comment: "AFHSHFJKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 1,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A  book! What a read! but",
+          starRating: 2,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 4,
@@ -54,6 +146,37 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Fantasy", "Drama"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 3.2,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 4,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 2,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 3,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 2,
+        },
+      ],
+    },
   },
   {
     id: 5,
@@ -68,6 +191,37 @@ export const availableBooksDummy = [
     category: ["Poetry", "Adventure"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 2.6,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A gre! What a read!",
+          starRating: 2,
+        },
+        {
+          name: "Joshua o",
+          comment: "I love thiShe is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 2,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 1,
+        },
+      ],
+    },
   },
   {
     id: 6,
@@ -82,6 +236,38 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Drama"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+
+    bookRating: {
+      averageRating: 2,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 7,
@@ -96,6 +282,37 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Drama", "Children"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 2,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 8,
@@ -110,6 +327,37 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Drama"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 1,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 9,
@@ -124,6 +372,37 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Drama"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 3,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
   {
     id: 10,
@@ -138,5 +417,36 @@ export const availableBooksDummy = [
     category: ["Action", "Adventure", "Drama", "Fantasy"],
     averageRating: [4, "23 users"],
     eBook: { status: "available", format: ["PDF", "PUB"] },
+    bookRating: {
+      averageRating: 5,
+      ratings: [
+        {
+          name: "King John",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Joshua Oyedepo",
+          comment: "I love this book.She is good writer",
+          starRating: 5,
+        },
+        {
+          name: "Pamela Obodo",
+          comment:
+            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
+          starRating: 3,
+        },
+        {
+          name: "Kay Johnson",
+          comment: "A great book! What a read!",
+          starRating: 4,
+        },
+        {
+          name: "Adewole Femi John",
+          comment: "A great book! What a read!",
+          starRating: 5,
+        },
+      ],
+    },
   },
 ];
