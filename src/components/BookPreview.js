@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 
-import { FiShoppingBag } from "react-icons/fi";
+import { FiShoppingBag, FiArrowUpLeft } from "react-icons/fi";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
@@ -15,6 +15,8 @@ import {
   addToBag,
 } from "../features/books/bookSlice";
 import CustomerBookReview from "./CustomerBookReview";
+import BookSection from "./BookSection";
+import BookQuote from "./BookQuote";
 
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
@@ -274,6 +276,19 @@ const BookPreview = () => {
         </div>
       </div>
       <CustomerBookReview />
+      <BookSection bookSectionName="Similar Books" />
+      <BookSection bookSectionName="Best Sellers" />
+      <div className="w-full mt-[72.51px] flex justify-end items-center pr-[117.23px] mb-[-19px]">
+        <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
+          <span className="text-[25px]">
+            <FiArrowUpLeft />
+          </span>
+          <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+            Back to Top
+          </p>
+        </div>
+      </div>
+      <BookQuote />
     </div>
   );
 };
