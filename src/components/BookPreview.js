@@ -8,14 +8,17 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { availableBooksDummy } from "../dummyData";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingStars from "./RatingStars";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addAFavoriteBook,
+  removeFavoriteBook,
+  addToBag,
+} from "../features/books/bookSlice";
 
 const BookPreview = () => {
-  const [bookIsFavorite, setBookIsFavorite] = useState([]);
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
   const [eBookPreview, setEBookPreview] = useState(false);
   const [eBookFormat, setEBookFormat] = useState(false);
-  console.log(bookIsFavorite);
-  console.log(bookInShoppingBag);
 
   let params = useParams();
   let navigate = useNavigate();
@@ -24,11 +27,20 @@ const BookPreview = () => {
     return item.title === params.bookId;
   });
 
+  const favoriteBooks = useSelector((state) => state.books.likedBooks);
+  console.log(favoriteBooks);
+  const dispatch = useDispatch();
+
   const addBookAsFavorite = (book) => {
-    if (bookIsFavorite.length > 0) setBookIsFavorite([]);
-    else if (bookIsFavorite.length === 0) {
-      setBookIsFavorite([book]);
+    if (book.favorite === undefined) {
+      book.favorite = true;
     }
+
+    dispatch(addAFavoriteBook(book));
+  };
+
+  const removeBookAsFavorite = (book) => {
+    dispatch(removeFavoriteBook(book));
   };
 
   const buyBook = (book) => {
@@ -42,8 +54,8 @@ const BookPreview = () => {
 
   const buyEBook = (book) => {};
 
-  const addToShoppingBag = (book) => {
-    setBookInShoppingBag([book]);
+  const addItemToBag = (book) => {
+    dispatch(addToBag(book));
   };
   return (
     <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] ">
@@ -63,12 +75,11 @@ const BookPreview = () => {
           <div className="w-full h-full">
             <div className="w-full h-full  relative group  ">
               <div className="absolute w-full h-[91px]  opacity-0 flex justify-between items-center mx-auto group-hover:opacity-100  ">
-                <div
-                  onClick={() => addBookAsFavorite(selectedBook)}
-                  className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[20px]"
-                >
+                <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[20px]">
                   <AnimatePresence exitBeforeEnter>
-                    {bookIsFavorite.length > 0 ? (
+                    {favoriteBooks.filter(
+                      (item) => item.title === selectedBook.title
+                    ).length > 0 ? (
                       <motion.span
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{
@@ -81,6 +92,7 @@ const BookPreview = () => {
                           opacity: 0,
                           transition: { duration: 1 },
                         }}
+                        onClick={() => removeBookAsFavorite(selectedBook)}
                         className="text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
                       >
                         <MdFavorite />
@@ -98,6 +110,7 @@ const BookPreview = () => {
                           opacity: 0,
                           transition: { duration: 1 },
                         }}
+                        onClick={() => addBookAsFavorite(selectedBook)}
                         className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
                       >
                         <MdOutlineFavoriteBorder />
@@ -247,7 +260,7 @@ const BookPreview = () => {
               {eBookPreview ? "Buy e-book Now" : "Buy Now"}
             </button>
             <button
-              onClick={() => addToShoppingBag(selectedBook)}
+              onClick={() => addItemToBag(selectedBook)}
               className="w-[155px] h-[52px] rounded-[4px] text-primary-50 p-[10px] bg-neutral-white text-buttonT2  border-2 border-primary-50"
             >
               Add to Bag

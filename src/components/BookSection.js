@@ -9,13 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addAFavoriteBook,
   removeFavoriteBook,
+  addToBag,
+  removeFromBag,
 } from "../features/books/bookSlice";
 
 const BookSection = ({ bookSectionName }) => {
-  const [bookIsFavorite, setBookIsFavorite] = useState([]);
-  const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
-  console.log(favoriteBooks);
+  const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
+  console.log(booksInShoppingBag);
   const dispatch = useDispatch();
 
   const addBookAsFavorite = (book) => {
@@ -29,19 +30,12 @@ const BookSection = ({ bookSectionName }) => {
   const removeBookAsFavorite = (book) => {
     dispatch(removeFavoriteBook(book));
   };
+  const addItemToBag = (book) => {
+    dispatch(addToBag(book));
+  };
 
-  const addToShoppingBag = (book) => {
-    if (
-      bookInShoppingBag.filter((item) => item.title === book.title).length > 0
-    ) {
-      const bookTosell = bookInShoppingBag.filter((e) => {
-        return e.title !== book.title;
-      });
-
-      setBookInShoppingBag([...bookTosell]);
-    } else {
-      setBookInShoppingBag([...bookInShoppingBag, book]);
-    }
+  const removeItemFromBag = (book) => {
+    dispatch(removeFromBag(book));
   };
 
   return (
@@ -105,19 +99,22 @@ const BookSection = ({ bookSectionName }) => {
                         )}
                       </AnimatePresence>
                     </div>
-                    <div
-                      onClick={() => addToShoppingBag(book)}
-                      className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[14px]"
-                    >
-                      {bookInShoppingBag.filter(
+                    <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[14px]">
+                      {booksInShoppingBag.filter(
                         (item) => item.title === book.title
                       ).length > 0 ? (
-                        <span className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]">
+                        <span
+                          onClick={() => removeItemFromBag(book)}
+                          className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                        >
                           {" "}
                           <RiShoppingBag3Fill />
                         </span>
                       ) : (
-                        <span className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]">
+                        <span
+                          onClick={() => addItemToBag(book)}
+                          className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                        >
                           {" "}
                           <FiShoppingBag />
                         </span>
