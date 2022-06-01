@@ -17,13 +17,10 @@ const BookSectionWithoutHeaders = ({ booksToShow }) => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
   console.log(booksInShoppingBag);
+  console.log(favoriteBooks);
   const dispatch = useDispatch();
 
   const addBookAsFavorite = (book) => {
-    if (book.favorite === undefined) {
-      book.favorite = true;
-    }
-
     dispatch(addAFavoriteBook(book));
   };
 

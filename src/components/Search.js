@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { availableBooksDummy } from "../dummyData";
 
 const Search = ({ showSearch, setShowSearch }) => {
@@ -33,9 +33,13 @@ const Search = ({ showSearch, setShowSearch }) => {
     }
   };
 
-  const navigate = () => {
+  const navigate = useNavigate();
+
+  const searchedBook = (book) => {
     setSearchResults([]);
     setSearchInput("");
+    setShowSearch(false);
+    navigate(`/book/${book.title}`);
   };
 
   return (
@@ -111,9 +115,12 @@ const Search = ({ showSearch, setShowSearch }) => {
                     <div key={index}>
                       <hr className="h-0 border-1 border-neutral-20 w-[100%]" />
                       <div className="w-full h-[58px] flex justify-start items-center px-[18px] text-bodyS text-neutral-80 font-reg ">
-                        <Link to={`/book/${book.title}`}>
-                          <p className="cursor-pointer">{book.title}</p>
-                        </Link>
+                        <p
+                          onClick={() => searchedBook(book)}
+                          className="cursor-pointer"
+                        >
+                          {book.title}
+                        </p>
                       </div>
                       <hr className="h-0 border-1 border-neutral-20 w-[100%]" />
                     </div>

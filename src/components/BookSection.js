@@ -20,10 +20,6 @@ const BookSection = ({ bookSectionName }) => {
   const dispatch = useDispatch();
 
   const addBookAsFavorite = (book) => {
-    if (book.favorite === undefined) {
-      book.favorite = true;
-    }
-
     dispatch(addAFavoriteBook(book));
   };
 
