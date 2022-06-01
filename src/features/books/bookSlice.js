@@ -1,18 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  books: [],
+  booksInStock: [],
+  likedBooks: [],
+  recommendedBooks: [],
 };
 
 export const bookSlice = createSlice({
   name: "books",
   initialState,
   reducers: {
-    addABook: (state, action) => {
-      state.books.push(action.payload);
+    addAFavoriteBook: (state, action) => {
+      const bookExist = state.likedBooks?.filter((item) => {
+        return state.likedBooks.length !== 0 && item?.id === action.payload.id;
+      });
+
+      if (bookExist.length === 0) {
+        state.likedBooks.push(action.payload);
+      }
+      return state;
+    },
+    removeFavoriteBook: (state, action) => {
+      const otherbooks = state.likedBooks.filter((item) => {
+        return item.id !== action.payload.id;
+      });
+
+      state.likedBooks = otherbooks;
     },
   },
 });
 
-export const { addABook } = bookSlice.actions;
+export const { addAFavoriteBook, removeFavoriteBook } = bookSlice.actions;
 export default bookSlice.reducer;

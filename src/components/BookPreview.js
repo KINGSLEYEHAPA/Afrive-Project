@@ -4,12 +4,7 @@ import { MdChevronLeft } from "react-icons/md";
 import { FiShoppingBag } from "react-icons/fi";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
-import {
-  AnimatePresence,
-  AnimateSharedLayout,
-  LayoutGroup,
-  motion,
-} from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { availableBooksDummy } from "../dummyData";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingStars from "./RatingStars";
@@ -193,27 +188,54 @@ const BookPreview = () => {
             <AnimateSharedLayout>
               {eBookFormat && eBookPreview && (
                 <motion.div
-                  initial={{ height: 52 }}
+                  initial={{ height: 0 }}
                   animate={{
-                    height: 145,
-                    transition: { duration: 2.5 },
+                    height: [52, 104, 156],
+                    transition: { duration: 1.5 },
                   }}
                   exit={{
                     height: 0,
-                    transition: { duration: 2.5 },
+                    transition: { duration: 1 },
                   }}
                   layoutId="outline"
-                  className="w-[318px] h-[145px] absolute space-y-[1px] top-0 left-0"
+                  className="w-[318px] h-[156px] absolute space-y-[1px] top-0 left-0"
                 >
-                  <button className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50">
+                  <motion.button
+                    initial={{ height: 52 }}
+                    animate={{
+                      height: 52,
+                      transition: { duration: 0 },
+                    }}
+                    layoutId="outline"
+                    className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
+                  >
                     EPUB
-                  </button>
-                  <button className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50">
+                  </motion.button>
+                  <motion.button
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{
+                      height: 52,
+                      opacity: 1,
+                      transition: { duration: 0.5, delay: 0.3 },
+                    }}
+                    layoutId="outline"
+                    className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
+                  >
                     PDF
-                  </button>
-                  <button className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50">
+                  </motion.button>
+                  <motion.button
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{
+                      height: 52,
+                      opacity: 1,
+
+                      transition: { duration: 0.5, delay: 0.5 },
+                    }}
+                    layoutId="outline"
+                    className="w-[318px] h-[52px] rounded-[4px] text-primary-50 p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
+                  >
                     Mobi
-                  </button>
+                  </motion.button>
                 </motion.div>
               )}
             </AnimateSharedLayout>

@@ -4,15 +4,10 @@ import BookQuote from "./BookQuote";
 import BookSectionWithoutHeaders from "./BookSectionWithoutHeaders";
 import { availableBooksDummy } from "../dummyData";
 import { useNavigate } from "react-router-dom";
+import LikedbookSection from "./LikedbookSection";
 
 const LikedBooks = () => {
   const navigate = useNavigate();
-
-  const availableBooksDummyCopy = [...availableBooksDummy].map((item) => {
-    item.favorite = true;
-    return item;
-  });
-  console.log(availableBooksDummyCopy);
 
   return (
     <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[100px] ">
@@ -36,7 +31,7 @@ const LikedBooks = () => {
           you can find the books you have liked here
         </span>
       </div>
-      <BookSectionWithoutHeaders booksToShow={availableBooksDummy} />
+      <LikedbookSection />
       <BookQuote />
     </div>
   );
