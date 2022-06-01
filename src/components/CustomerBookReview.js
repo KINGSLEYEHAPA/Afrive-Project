@@ -95,7 +95,7 @@ const CustomerBookReview = () => {
                 see more
               </p>
             </div>
-            <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px]">
+            <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px] my-[20px]">
               <ViewReview title="Kingsley Ehapa" />
               <ViewReview title="Joshua Oyedepo" />
               <ViewReview title="Patrick Njoli" />
