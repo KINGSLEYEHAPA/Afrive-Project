@@ -72,7 +72,6 @@ const LikedbookSection = () => {
                       >
                         <MdFavorite />
                       </motion.span>
-                      )
                     </div>
                     <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[14px]">
                       {booksInShoppingBag.filter(

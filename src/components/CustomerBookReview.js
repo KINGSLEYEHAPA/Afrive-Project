@@ -1,10 +1,11 @@
 import React from "react";
-import RatingStars, { UserStarRating, LiveRating } from "./RatingStars";
+import RatingStars, { UserStarRating } from "./RatingStars";
 import pen from "../assets/pen.svg";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsStar } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
+import LiveRating from "./LiveRating";
 
 export const ViewReview = ({ title, comment, userRating, index }) => {
   return (
@@ -85,6 +86,7 @@ const CustomerBookReview = ({ book }) => {
   const [userReview, setUserReview] = useState("");
   console.log(userReview);
   const [rateABook, setRateABook] = useState(false);
+  const [rating, setRating] = useState(null);
 
   return (
     <div className="w-screen max-w-[1440px] mx-auto h-[468px] bg-primary-10 mt-[112.30px]  px-[182px] pt-[55.43px] pb-[98px] relative mb-[100px] ">
@@ -133,7 +135,11 @@ const CustomerBookReview = ({ book }) => {
                     exit={{ opacity: 0, width: 59 }}
                     className=" absolute cursor-pointer w-[177px] h-[59px] bottom-[41px] right-[253px] rounded-full bg-primary-50 flex justify-center items-center pr-[20px] "
                   >
-                    <LiveRating setRateABook={setRateABook} />
+                    <LiveRating
+                      rating={rating}
+                      setRating={setRating}
+                      setRateABook={setRateABook}
+                    />
                   </motion.div>
                 )}
               </AnimateSharedLayout>

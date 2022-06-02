@@ -10,7 +10,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Fantasy", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
       averageRating: 4.2,
@@ -100,10 +100,10 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Fantasy", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
-      averageRating: 3.4,
+      averageRating: 3.2,
       ratings: [
         {
           name: "King John",
@@ -122,8 +122,8 @@ export const availableBooksDummy = [
         },
         {
           name: "Kay Johnson",
-          comment: "A  book! What a read! but",
-          starRating: 2,
+          comment: "I hate this book",
+          starRating: 1,
         },
         {
           name: "Adewole Femi John",
@@ -144,7 +144,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Fantasy", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
       averageRating: 3.2,
@@ -189,7 +189,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Poetry", "Adventure"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
       averageRating: 2.6,
@@ -234,7 +234,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
 
     bookRating: {
@@ -280,7 +280,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Drama", "Children"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
       averageRating: 2,
@@ -325,10 +325,10 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
-      averageRating: 1,
+      averageRating: 2,
       ratings: [
         {
           name: "King John",
@@ -370,7 +370,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Drama"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
       averageRating: 3,
@@ -410,7 +410,7 @@ export const availableBooksDummy = [
     status: "in stock",
 
     category: ["Action", "Adventure", "Drama", "Fantasy"],
-    averageRating: [4, "23 users"],
+
     eBook: { status: "available", format: ["PDF", "PUB"] },
     bookRating: {
       averageRating: 5,
