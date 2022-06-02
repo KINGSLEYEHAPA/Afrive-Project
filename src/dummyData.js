@@ -396,11 +396,6 @@ export const availableBooksDummy = [
           comment: "A great book! What a read!",
           starRating: 4,
         },
-        {
-          name: "Adewole Femi John",
-          comment: "A great book! What a read!",
-          starRating: 5,
-        },
       ],
     },
   },

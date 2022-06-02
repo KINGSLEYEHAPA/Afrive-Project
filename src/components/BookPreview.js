@@ -173,7 +173,7 @@ const BookPreview = () => {
           </div>
           <div className=" w-full flex justify-start items-center h-[24px] gap-[40px]">
             <RatingStars book={selectedBook} />
-            <p>(23)</p>
+            <p>({selectedBook.bookRating.ratings.length})</p>
           </div>
           <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
             <p className="text-primary-50 text-h3 font-medium">

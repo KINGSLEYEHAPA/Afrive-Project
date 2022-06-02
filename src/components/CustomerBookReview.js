@@ -1,28 +1,29 @@
 import React from "react";
-import RatingStars from "./RatingStars";
+import RatingStars, { UserStarRating, LiveRating } from "./RatingStars";
 import pen from "../assets/pen.svg";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsStar } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
 
-export const ViewReview = ({ title, book }) => {
+export const ViewReview = ({ title, comment, userRating, index }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 1.2 } }}
-      exit={{ opacity: 0, transition: { duration: 1.2 } }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.5, delay: index * 0.5 },
+      }}
+      exit={{ opacity: 0, transition: { duration: 0.5 } }}
       className="w-full h-[100px]  mt-[32px] flex gap-[20px] mb-[61px]"
     >
       <div className="flex justify-start items-start w-[201px] ">
         <h3 className="bodyL text-neutral-50 font-reg">{title}</h3>
       </div>
       <div className="w-[871px] h-[64px] ">
-        <RatingStars />
+        <UserStarRating userRating={userRating} />
         <p className="mt-[11.63px] text-[rgba(0,0,0,0.90)] text-buttonT2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placerat ac
-          turpis id imperdiet ipsum tincidunt nunc ipsum. Ac vitae, imperdiet
-          aliquam tortor. Porttitor sed at bibendum pellentesque.
+          {comment}
         </p>
       </div>
     </motion.div>
@@ -43,7 +44,7 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1.2 } }}
       exit={{ opacity: 0, transition: { duration: 1.2 } }}
-      className="w-full h-full "
+      className="w-full h-full"
     >
       <div className="w-full h-[32px]  flex justify-start items-center">
         <h3 className="text-h3 font-reg text-neutral-80">Write a Review</h3>
@@ -79,7 +80,7 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
   );
 };
 
-const CustomerBookReview = (book) => {
+const CustomerBookReview = ({ book }) => {
   const [writeAReview, setWriteAReview] = useState(0);
   const [userReview, setUserReview] = useState("");
   console.log(userReview);
@@ -89,56 +90,64 @@ const CustomerBookReview = (book) => {
     <div className="w-screen max-w-[1440px] mx-auto h-[468px] bg-primary-10 mt-[112.30px]  px-[182px] pt-[55.43px] pb-[98px] relative mb-[100px] ">
       <AnimatePresence>
         {writeAReview === 0 && (
-          <div className="w-full h-full">
-            <div className="w-full h-[32px]  flex justify-between items-center">
-              <h3 className="text-h3 font-reg text-neutral-80">
-                Customers Reviews
-              </h3>
-              <p className=" text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
-                see more
-              </p>
+          <div>
+            <div className="w-full h-full">
+              <div className="w-full h-[32px]  flex justify-between items-center">
+                <h3 className="text-h3 font-reg text-neutral-80">
+                  Customers Reviews
+                </h3>
+                <p className=" text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
+                  see more
+                </p>
+              </div>
+              <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px] my-[20px] ">
+                {book?.bookRating?.ratings?.map((rating, index) => {
+                  return (
+                    <ViewReview
+                      key={rating.name}
+                      title={rating.name}
+                      comment={rating.comment}
+                      userRating={rating.starRating}
+                      index={index}
+                    />
+                  );
+                })}
+              </div>
             </div>
-            <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px] my-[20px]">
-              <ViewReview title="Kingsley Ehapa" />
-              <ViewReview title="Joshua Oyedepo" />
-              <ViewReview title="Patrick Njoli" />
-              <ViewReview title="Faith Obodo" />
-            </div>
-          </div>
-        )}
-        {writeAReview === 0 && (
-          <div className="">
-            <div
-              onClick={() => setRateABook(true)}
-              className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
-            >
-              <BsStar />
-            </div>
-            <AnimateSharedLayout>
-              {rateABook && (
-                <motion.div
-                  initial={{ opacity: 0, width: 59 }}
-                  animate={{
-                    opacity: 1,
-                    width: [100, 177],
-                    transition: { duration: 1 },
-                  }}
-                  exit={{ opacity: 0, width: 59 }}
-                  className=" absolute cursor-pointer w-[177px] h-[59px] bottom-[41px] right-[253px] rounded-full bg-primary-50 flex justify-center items-center pr-[20px] "
-                >
-                  <RatingStars book={book} />
-                </motion.div>
-              )}
-            </AnimateSharedLayout>
+            <div className="w-full h-full">
+              <div
+                onClick={() => setRateABook(true)}
+                className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
+              >
+                <BsStar />
+              </div>
+              <AnimateSharedLayout>
+                {rateABook && (
+                  <motion.div
+                    initial={{ opacity: 0, width: 59 }}
+                    animate={{
+                      opacity: 1,
+                      width: [100, 177],
+                      transition: { duration: 1 },
+                    }}
+                    exit={{ opacity: 0, width: 59 }}
+                    className=" absolute cursor-pointer w-[177px] h-[59px] bottom-[41px] right-[253px] rounded-full bg-primary-50 flex justify-center items-center pr-[20px] "
+                  >
+                    <LiveRating setRateABook={setRateABook} />
+                  </motion.div>
+                )}
+              </AnimateSharedLayout>
 
-            <div
-              onClick={() => setWriteAReview(1)}
-              className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
-            >
-              <img className="" src={pen} alt="Pen" />
+              <div
+                onClick={() => setWriteAReview(1)}
+                className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
+              >
+                <img className="" src={pen} alt="Pen" />
+              </div>
             </div>
           </div>
         )}
+
         {writeAReview === 1 && (
           <WriteReview
             setUserReview={setUserReview}
