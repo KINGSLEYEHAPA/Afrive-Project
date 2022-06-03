@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useState } from "react";
 
-import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import { BsStarFill, BsStar } from "react-icons/bs";
 import uuid from "uuid-random";
 
 const LiveRating = ({ setRateABook, rating, setRating }) => {
@@ -27,18 +26,18 @@ const LiveRating = ({ setRateABook, rating, setRating }) => {
                 setRateABook(false);
               }}
             />
-            <motion.span
+            <span
               onMouseEnter={() => setHover(ratingValue)}
               onMouseLeave={() => setHover(null)}
               key={randomNumber + "c" + index}
               className={
                 ratingValue <= (hover || rating)
-                  ? "h-full text-accent-rating text-[15px]  transition-colors duration-200 "
-                  : "h-full text-neutral-white text-[15px]  transition-colors duration-200 "
+                  ? "h-full text-accent-rating text-[15px]  transition-colors duration-200 cursor-pointer "
+                  : "h-full text-neutral-white text-[15px]  transition-colors duration-200 cursor-pointer"
               }
             >
               {ratingValue <= (hover || rating) ? <BsStarFill /> : <BsStar />}
-            </motion.span>
+            </span>
           </label>
         );
       })}

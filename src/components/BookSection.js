@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { FiShoppingBag } from "react-icons/fi";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";

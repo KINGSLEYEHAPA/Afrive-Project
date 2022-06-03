@@ -199,11 +199,7 @@ export const availableBooksDummy = [
           comment: "A gre! What a read!",
           starRating: 2,
         },
-        {
-          name: "Joshua o",
-          comment: "I love thiShe is good writer",
-          starRating: 5,
-        },
+
         {
           name: "Pamela Obodo",
           comment:
@@ -218,7 +214,7 @@ export const availableBooksDummy = [
         {
           name: "Adewole Femi John",
           comment: "A great book! What a read!",
-          starRating: 1,
+          starRating: 5,
         },
       ],
     },

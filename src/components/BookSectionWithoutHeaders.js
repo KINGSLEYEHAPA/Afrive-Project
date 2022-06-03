@@ -118,7 +118,7 @@ const BookSectionWithoutHeaders = ({ booksToShow }) => {
                   alt="Book"
                 />
               </div>
-              <Link to={`/book/${book?.title}`}>
+              <Link to={`/book/${book.title}`}>
                 <h3 className="text-h3 medium text-neutral-70 mt-[18px] truncate">
                   {book.title}
                 </h3>
