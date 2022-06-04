@@ -11,12 +11,14 @@ import EbookDropdown from "./EbookDropdown";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [showProfileInfo, setShowProfileInfo] = useState(false);
   const [showEbookMenu, setShowEbookMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const shoppingBag = useSelector((state) => state.books.shoppingBag);
 
   const location = useLocation();
   const path = location.pathname;
@@ -81,8 +83,14 @@ const Header = () => {
           )}
 
           <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
-            <span className=" cursor-pointer relative bottom-[5.2px] left-[5.2px] medium text-neutral-white text-[10px] leading-4">
-              1
+            <span
+              className={
+                shoppingBag.length >= 10
+                  ? " cursor-pointer relative bottom-[5.8px] left-[2.2px] medium text-neutral-white text-[10px] leading-4"
+                  : " cursor-pointer relative bottom-[5.8px] left-[4.5px] medium text-neutral-white text-[10px] leading-4"
+              }
+            >
+              {shoppingBag.length}
             </span>
           </div>
           <motion.p
