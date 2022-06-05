@@ -23,21 +23,36 @@ const ShoppingBag = () => {
 
   const booksInCart = shoppingBag.map((item) => ({ ...item }));
   const [shoppingBagBooks, setShoppingBagBooks] = useState([]);
+  const [totalCostOfBooks, setTotalCostOfBooks] = useState(0);
+  const [couponVoucher, setCouponVoucher] = useState(false);
+  const [voucher, setVoucher] = useState("");
 
   booksInCart.forEach((item) => {
-    item.quantity = 2;
+    item.quantity = 1;
+    item.totalAmount = item.price;
   });
 
   useEffect(() => {
     setShoppingBagBooks([...booksInCart]);
   }, []);
 
+  useEffect(() => {
+    let totalCost = 0;
+    shoppingBagBooks.map((item) => {
+      totalCost += Number(item.totalAmount.substring(1));
+
+      setTotalCostOfBooks("N" + totalCost);
+
+      return null;
+    });
+  });
+  console.log(totalCostOfBooks);
+
   const decrementQuantity = (index) => {
     const book = shoppingBagBooks[index];
-    book.quantity -= 1;
+    if (book.quantity > 1) book.quantity -= 1;
 
     book.totalAmount = "N" + Number(book.price.substring(1)) * book.quantity;
-    console.log(book.totalAmount);
 
     setShoppingBagBooks((shoppingBagBooks) => {
       return [
@@ -45,6 +60,34 @@ const ShoppingBag = () => {
         book,
         ...shoppingBagBooks.slice(index + 1, shoppingBagBooks.length),
       ];
+    });
+    let totalCost = 0;
+    shoppingBagBooks.map((item) => {
+      totalCost += Number(item.totalAmount.substring(1));
+
+      setTotalCostOfBooks("N" + totalCost);
+      return null;
+    });
+  };
+  const incrementQuantity = (index) => {
+    const book = shoppingBagBooks[index];
+    if (book.quantity >= 1) book.quantity += 1;
+
+    book.totalAmount = "N" + Number(book.price.substring(1)) * book.quantity;
+
+    setShoppingBagBooks((shoppingBagBooks) => {
+      return [
+        ...shoppingBagBooks.slice(0, index),
+        book,
+        ...shoppingBagBooks.slice(index + 1, shoppingBagBooks.length),
+      ];
+    });
+    let totalCost = 0;
+    shoppingBagBooks.map((item) => {
+      totalCost += Number(item.totalAmount.substring(1));
+
+      setTotalCostOfBooks("N" + totalCost);
+      return null;
     });
   };
 
@@ -58,6 +101,11 @@ const ShoppingBag = () => {
     });
     setShoppingBagBooks([...filteredBooks]);
     dispatch(removeFromBag(book));
+  };
+
+  const handleCoupon = () => {
+    setVoucher("");
+    setCouponVoucher(false);
   };
 
   return (
@@ -165,11 +213,16 @@ const ShoppingBag = () => {
                         </h3>
                         <p className="text-bodyL whitespace-nowrap text-neutral-30">
                           Total:&nbsp;{" "}
-                          <span className="text-primary-50">{book.price}</span>
+                          <span className="text-primary-50">
+                            {book.totalAmount}
+                          </span>
                         </p>
                       </div>
                       <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
-                        <span className="w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white">
+                        <span
+                          onClick={() => incrementQuantity(index)}
+                          className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                        >
                           +
                         </span>
                         <span className="text-bodyL text-primary-50 font-reg">
@@ -177,7 +230,7 @@ const ShoppingBag = () => {
                         </span>
                         <span
                           onClick={() => decrementQuantity(index)}
-                          className="w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                          className=" cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
                         >
                           -
                         </span>
@@ -194,7 +247,7 @@ const ShoppingBag = () => {
         <div className="w-1/2 h-[353px] pl-[31.67px] pr-[185.33px]">
           <div className="w-full h-[24px] flex justify-between ">
             <p className="text-bodyL text-neutral-80">Subtotal</p>
-            <p className="text-bodyL text-neutral-70">N8000</p>
+            <p className="text-bodyL text-neutral-70">{totalCostOfBooks}</p>
           </div>
           <div className="w-full h-[24px] flex justify-between mt-[26px] ">
             <p className="text-bodyL text-neutral-80">Total Weight</p>
@@ -205,17 +258,36 @@ const ShoppingBag = () => {
             <p className="text-bodyL text-neutral-70">N20000</p>
           </div>
           <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
-            <div className="w-[279px] h-full relative rounded-[4px]">
-              <input
-                className=" border border-neutral-30 w-full h-full rounded-[4px] pl-[16px] pr-[86px] text-neutral-20 text-sub placeholder:text-neutral-20 placeholder:text-sub"
-                type="text"
-                name="coupon"
-                placeholder="Type in voucher or coupon code"
-              />
-              <button className="h-full absolute w-[58px] top-0 right-0 z-10 bg-neutral-60 text-neutral-white">
-                Verify
-              </button>
-            </div>
+            {!couponVoucher && (
+              <div className="w-full h-full flex justify-center items-center mb-[32px] mt-[64px]">
+                <p
+                  onClick={() => setCouponVoucher(true)}
+                  className="text-bodyL text-neutral-30 font-reg cursor-pointer"
+                >
+                  Add Coupon or Voucher
+                </p>
+              </div>
+            )}
+            {couponVoucher && (
+              <div className="w-[279px] h-full relative rounded-[4px]">
+                <input
+                  className=" outline-none border border-neutral-30 w-full h-full rounded-[4px] pl-[16px] pr-[86px] text-neutral-20 text-sub placeholder:text-neutral-20 placeholder:text-sub"
+                  type="text"
+                  name="coupon"
+                  value={voucher}
+                  placeholder="Type in voucher or coupon code"
+                  onChange={(e) => {
+                    setVoucher(e.target.value);
+                  }}
+                />
+                <button
+                  onClick={() => handleCoupon()}
+                  className="h-full absolute w-[58px] top-0 right-0 z-20 bg-neutral-60 text-neutral-white rounded-tr-[4px] rounded-br-[4px]"
+                >
+                  Verify
+                </button>
+              </div>
+            )}
           </div>
           <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
             Proceed to Checkout
