@@ -18,6 +18,8 @@ import RatingStars from "./RatingStars";
 const RecommendedBooks = () => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
+  const availableBooks = useSelector((state) => state.books.booksInStock);
+  console.log(availableBooks);
   console.log(booksInShoppingBag);
   const dispatch = useDispatch();
 
@@ -50,7 +52,7 @@ const RecommendedBooks = () => {
           </p>
         </div>
         <div className="w-full h-[492px] mt-[32px] grid grid-cols-3 px-0  gap-[81.59px]  ">
-          {availableBooksDummy?.slice(0, 3).map((book) => {
+          {availableBooks?.slice(0, 3).map((book) => {
             return (
               <div key={book.id} className="w-[303px] h-full cursor-pointer">
                 <div className="w-full h-[415.81px]  relative group  ">

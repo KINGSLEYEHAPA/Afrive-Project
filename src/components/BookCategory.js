@@ -7,12 +7,15 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FiArrowUpLeft } from "react-icons/fi";
 import { Link as ALink } from "react-scroll";
+import { useSelector } from "react-redux";
 
 const BookCategory = () => {
   let params = useParams();
   const navigate = useNavigate();
+  const availableBooks = useSelector((state) => state.books.booksInStock);
+  console.log(availableBooks);
 
-  const bookCategory = availableBooksDummy.filter((item) => {
+  const bookCategory = availableBooks.filter((item) => {
     return item.category.includes(params.catName);
   });
 

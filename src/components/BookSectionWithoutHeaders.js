@@ -3,7 +3,6 @@ import { FiShoppingBag } from "react-icons/fi";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
-import { availableBooksDummy } from "../dummyData";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {

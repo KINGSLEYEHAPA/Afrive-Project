@@ -2,7 +2,6 @@ import { FiShoppingBag } from "react-icons/fi";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
-import { availableBooksDummy } from "../dummyData";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -16,6 +15,8 @@ import RatingStars from "./RatingStars";
 const BookSection = ({ bookSectionName }) => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
+  const availableBooks = useSelector((state) => state.books.booksInStock);
+  console.log(availableBooks);
   console.log(booksInShoppingBag);
   const dispatch = useDispatch();
 
@@ -47,7 +48,7 @@ const BookSection = ({ bookSectionName }) => {
           </p>
         </div>
         <div className="w-full min-h-[397.54px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
-          {availableBooksDummy?.slice(4, 8).map((book) => {
+          {availableBooks?.slice(4, 8).map((book) => {
             return (
               <div key={book?.id} className="w-[228.05px] h-[397.54px]">
                 <div className="w-full h-[312.95px]  relative group  ">

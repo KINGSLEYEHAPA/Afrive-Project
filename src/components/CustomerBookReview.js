@@ -1,11 +1,13 @@
-import React from "react";
-import RatingStars, { UserStarRating } from "./RatingStars";
+import React, { useEffect } from "react";
+import { UserStarRating } from "./RatingStars";
 import pen from "../assets/pen.svg";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { BsStar } from "react-icons/bs";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
+import { commentOnABook } from "../features/books/bookSlice";
+import { useDispatch } from "react-redux";
 
 export const ViewReview = ({ title, comment, userRating, index }) => {
   return (
@@ -37,8 +39,9 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
   console.log(reviewInput);
   const pushReview = () => {
     setUserReview(reviewInput);
-    setReviewInput("");
+
     setWriteAReview(2);
+    setReviewInput("");
   };
   return (
     <motion.div
@@ -87,6 +90,31 @@ const CustomerBookReview = ({ book }) => {
   console.log(userReview);
   const [rateABook, setRateABook] = useState(false);
   const [rating, setRating] = useState(null);
+  const dispatch = useDispatch();
+
+  const bookForComment = {
+    ...book,
+    bookRating: {
+      ...book.bookRating,
+      ratings: [
+        ...book.bookRating.ratings,
+        {
+          name: "Kingsley John Boro",
+          comment: userReview,
+          starRating: rating,
+        },
+      ],
+    },
+  };
+
+  useEffect(() => {
+    handleReview();
+  }, [userReview, rating]);
+
+  const handleReview = () => {
+    if (rating !== null && userReview !== "")
+      dispatch(commentOnABook(bookForComment));
+  };
 
   return (
     <div className="w-screen max-w-[1440px] mx-auto h-[468px] bg-primary-10 mt-[112.30px]  px-[182px] pt-[55.43px] pb-[98px] relative mb-[100px] ">
@@ -119,9 +147,13 @@ const CustomerBookReview = ({ book }) => {
             <div className="w-full h-full">
               <div
                 onClick={() => setRateABook(true)}
-                className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
+                className={
+                  rating === null
+                    ? "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
+                    : "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-accent-rating"
+                }
               >
-                <BsStar />
+                {rating === null ? <BsStar /> : <BsStarFill />}
               </div>
               <AnimateSharedLayout>
                 {rateABook && (
@@ -158,6 +190,7 @@ const CustomerBookReview = ({ book }) => {
           <WriteReview
             setUserReview={setUserReview}
             setWriteAReview={setWriteAReview}
+            handleReview={handleReview}
           />
         )}
         {writeAReview === 2 && (

@@ -255,7 +255,7 @@ const ShoppingBag = () => {
           </div>
           <div className="w-full h-[24px] flex justify-between mt-[40px] ">
             <p className="text-bodyL text-neutral-80">Total:</p>
-            <p className="text-bodyL text-neutral-70">N20000</p>
+            <p className="text-bodyL text-neutral-70">{totalCostOfBooks}</p>
           </div>
           <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
             {!couponVoucher && (

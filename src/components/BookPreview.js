@@ -7,7 +7,6 @@ import { Link as ALink } from "react-scroll";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { availableBooksDummy } from "../dummyData";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingStars from "./RatingStars";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,11 +23,13 @@ const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
   const [eBookPreview, setEBookPreview] = useState(false);
   const [eBookFormat, setEBookFormat] = useState(false);
+  const availableBooks = useSelector((state) => state.books.booksInStock);
+  console.log(availableBooks);
 
   let params = useParams();
   let navigate = useNavigate();
 
-  const selectedBook = availableBooksDummy.find((item) => {
+  const selectedBook = availableBooks.find((item) => {
     return item.title === params.bookId;
   });
 
