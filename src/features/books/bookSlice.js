@@ -14,7 +14,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 4.2,
         ratings: [
@@ -59,7 +59,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 4.2,
         ratings: [
@@ -104,7 +104,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 3.2,
         ratings: [
@@ -148,7 +148,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 3.2,
         ratings: [
@@ -193,7 +193,7 @@ const initialState = {
 
       category: ["Poetry", "Adventure"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 2.6,
         ratings: [
@@ -234,7 +234,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
 
       bookRating: {
         averageRating: 2,
@@ -280,7 +280,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama", "Children"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 2,
         ratings: [
@@ -325,7 +325,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 2,
         ratings: [
@@ -370,7 +370,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 3,
         ratings: [
@@ -410,7 +410,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama", "Fantasy"],
 
-      eBook: { status: "available", format: ["PDF", "PUB"] },
+      eBook: { status: "no", format: "" },
       bookRating: {
         averageRating: 5,
         ratings: [
@@ -447,6 +447,7 @@ const initialState = {
   likedBooks: [],
   recommendedBooks: [],
   shoppingBag: [],
+  bookPagesDropdownFunction: null,
 };
 
 export const bookSlice = createSlice({
@@ -496,6 +497,9 @@ export const bookSlice = createSlice({
       state.booksInStock.push(action.payload);
       return state;
     },
+    // storePageFunctions: (state, action) => {
+    //   state.bookPagesDropdownFunction = action.payload;
+    // },
   },
 });
 

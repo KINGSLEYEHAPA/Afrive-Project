@@ -23,6 +23,7 @@ const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
   const [eBookPreview, setEBookPreview] = useState(false);
   const [eBookFormat, setEBookFormat] = useState(false);
+  const [bookFormat, setBookFormat] = useState("");
   const availableBooks = useSelector((state) => state.books.booksInStock);
   console.log(availableBooks);
 
@@ -57,7 +58,16 @@ const BookPreview = () => {
   const buyEBook = (book) => {};
 
   const addItemToBag = (book) => {
-    dispatch(addToBag(book));
+    if (eBookPreview) {
+      const ebook = {
+        ...book,
+        eBook: { ...book.eBook, status: "yes", format: bookFormat },
+      };
+
+      dispatch(addToBag(ebook));
+    } else {
+      dispatch(addToBag(book));
+    }
   };
   return (
     <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] ">
@@ -138,6 +148,7 @@ const BookPreview = () => {
               >
                 {selectedBook?.title}
               </h2>
+
               <AnimatePresence>
                 {eBookPreview && (
                   <motion.div
@@ -174,7 +185,7 @@ const BookPreview = () => {
           </div>
           <div className=" w-full flex justify-start items-center h-[24px] gap-[40px]">
             <RatingStars book={selectedBook} />
-            <p>({selectedBook.bookRating.ratings.length})</p>
+            <p>({selectedBook.bookRating?.ratings?.length})</p>
           </div>
           <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
             <p className="text-primary-50 text-h3 font-medium">

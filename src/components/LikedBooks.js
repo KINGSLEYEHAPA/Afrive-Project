@@ -2,7 +2,6 @@ import React from "react";
 import { MdChevronLeft } from "react-icons/md";
 import BookQuote from "./BookQuote";
 import BookSectionWithoutHeaders from "./BookSectionWithoutHeaders";
-import { availableBooksDummy } from "../dummyData";
 import { useNavigate } from "react-router-dom";
 import LikedbookSection from "./LikedbookSection";
 import { FiArrowUpLeft } from "react-icons/fi";

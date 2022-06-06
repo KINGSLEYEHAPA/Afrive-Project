@@ -99,7 +99,7 @@ const CustomerBookReview = ({ book }) => {
       ratings: [
         ...book.bookRating.ratings,
         {
-          name: "Kingsley John Boro",
+          name: "Kingsley John Boro Just Testing",
           comment: userReview,
           starRating: rating,
         },
@@ -112,8 +112,11 @@ const CustomerBookReview = ({ book }) => {
   }, [userReview, rating]);
 
   const handleReview = () => {
-    if (rating !== null && userReview !== "")
+    if (rating !== null && userReview !== "") {
       dispatch(commentOnABook(bookForComment));
+      setRating(null);
+      setUserReview("");
+    }
   };
 
   return (

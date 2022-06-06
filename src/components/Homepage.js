@@ -12,7 +12,6 @@ import { Link as ALink } from "react-scroll";
 const Homepage = () => {
   return (
     <div className="w-screen max-w-[1440px] mx-auto mt-[88px]  " id="home">
-      <Header />
       <HeroSection />
       <RecommendedBooks />
       <BookSection bookSectionName="Popular Books" />

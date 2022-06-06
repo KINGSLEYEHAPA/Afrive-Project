@@ -11,6 +11,7 @@ import {
   removeFavoriteBook,
 } from "../features/books/bookSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ShoppingBag = () => {
   let navigate = useNavigate();
@@ -130,113 +131,123 @@ const ShoppingBag = () => {
             <AnimatePresence>
               {shoppingBagBooks.map((book, index) => {
                 return (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { duration: 1 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 1 },
-                    }}
-                    key={book.id}
-                    className="w-full h-[312.95px]  flex gap-[53.23px] mb-[127.96px]"
-                  >
-                    <div className="h-full w-[228.05px] relative group">
-                      <div className="absolute w-full h-[91px]  opacity-0 flex justify-between items-center mx-auto group-hover:opacity-100  ">
-                        <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[20px]">
-                          {favoriteBooks.filter(
-                            (item) => item.title === book.title
-                          ).length > 0 ? (
-                            <motion.span
-                              initial={{ scale: 0, opacity: 0 }}
-                              animate={{
-                                scale: 1,
-                                opacity: 1,
-                                transition: { duration: 1 },
-                              }}
-                              exit={{
-                                scale: 0,
-                                opacity: 0,
-                                transition: { duration: 1 },
-                              }}
-                              onClick={() => removeBookAsFavorite(book)}
-                              className="text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
-                            >
-                              <MdFavorite />
-                            </motion.span>
-                          ) : (
-                            <motion.span
-                              initial={{ scale: 0, opacity: 0 }}
-                              animate={{
-                                scale: 1,
-                                opacity: 1,
-                                transition: { duration: 1 },
-                              }}
-                              exit={{
-                                scale: 0,
-                                opacity: 0,
-                                transition: { duration: 1 },
-                              }}
-                              onClick={() => addBookAsFavorite(book)}
-                              className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
-                            >
-                              <MdOutlineFavoriteBorder />
-                            </motion.span>
-                          )}
+                  <div key={book.id} className="mb-[127.96px]">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: { duration: 1 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 1 },
+                      }}
+                      className="w-full h-[312.95px]  flex gap-[53.23px] "
+                    >
+                      <div className="h-full w-[228.05px] relative group">
+                        <div className="absolute w-full h-[91px]  opacity-0 flex justify-between items-center mx-auto group-hover:opacity-100  ">
+                          <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[20px]">
+                            {favoriteBooks.filter(
+                              (item) => item.title === book.title
+                            ).length > 0 ? (
+                              <motion.span
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{
+                                  scale: 1,
+                                  opacity: 1,
+                                  transition: { duration: 1 },
+                                }}
+                                exit={{
+                                  scale: 0,
+                                  opacity: 0,
+                                  transition: { duration: 1 },
+                                }}
+                                onClick={() => removeBookAsFavorite(book)}
+                                className="text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
+                              >
+                                <MdFavorite />
+                              </motion.span>
+                            ) : (
+                              <motion.span
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{
+                                  scale: 1,
+                                  opacity: 1,
+                                  transition: { duration: 1 },
+                                }}
+                                exit={{
+                                  scale: 0,
+                                  opacity: 0,
+                                  transition: { duration: 1 },
+                                }}
+                                onClick={() => addBookAsFavorite(book)}
+                                className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                              >
+                                <MdOutlineFavoriteBorder />
+                              </motion.span>
+                            )}
+                          </div>
                         </div>
+                        <img
+                          className="w-full h-full"
+                          src={book?.img}
+                          alt="Book"
+                        />
                       </div>
-                      <img
-                        className="w-full h-full"
-                        src={book?.img}
-                        alt="Book"
-                      />
-                    </div>
-                    <div className="h-full w-[257px]">
-                      <div className="h-[12px] w-full flex justify-end items-center pr-[172.72px]">
-                        <span
-                          onClick={() => removeBookFromQueue(book)}
-                          className="w-[12px] h-[12px] text-[20px] text-neutral-30 cursor-pointer"
-                        >
-                          <AiOutlineClose />
-                        </span>
-                      </div>
-                      <div className="w-[257px] mt-[84.21px] space-y-[12px]">
-                        <div className="flex items-center justify-center w-[84px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
-                          <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
-                            Ebook
+                      <div className="h-full w-[257px]">
+                        <div className="h-[12px] w-full flex justify-end items-center pr-[172.72px]">
+                          <span
+                            onClick={() => removeBookFromQueue(book)}
+                            className="w-[12px] h-[12px] text-[20px] text-neutral-30 cursor-pointer"
+                          >
+                            <AiOutlineClose />
+                          </span>
+                        </div>
+                        <div className="w-[257px] mt-[84.21px] space-y-[12px]">
+                          {book.eBook.status === "yes" && (
+                            <div className="flex items-center justify-center w-[84px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                              <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                                Ebook
+                              </p>
+                            </div>
+                          )}
+                          <Link to={`/book/${book.title}`}>
+                            <h3 className="text-h4 font-reg text-neutral-80">
+                              {book?.title}
+                            </h3>
+                          </Link>
+                          <p className="text-bodyL whitespace-nowrap text-neutral-30">
+                            Total:&nbsp;{" "}
+                            <span className="text-primary-50">
+                              {book.totalAmount}
+                            </span>
                           </p>
                         </div>
-                        <h3 className="text-h4 font-reg text-neutral-80">
-                          {book?.title}
-                        </h3>
-                        <p className="text-bodyL whitespace-nowrap text-neutral-30">
-                          Total:&nbsp;{" "}
-                          <span className="text-primary-50">
-                            {book.totalAmount}
+                        <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
+                          <span
+                            onClick={() => incrementQuantity(index)}
+                            className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                          >
+                            +
                           </span>
-                        </p>
+                          <span className="text-bodyL text-primary-50 font-reg">
+                            {book.quantity}
+                          </span>
+                          <span
+                            onClick={() => decrementQuantity(index)}
+                            className=" cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                          >
+                            -
+                          </span>
+                        </div>
                       </div>
-                      <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
-                        <span
-                          onClick={() => incrementQuantity(index)}
-                          className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
-                        >
-                          +
-                        </span>
-                        <span className="text-bodyL text-primary-50 font-reg">
-                          {book.quantity}
-                        </span>
-                        <span
-                          onClick={() => decrementQuantity(index)}
-                          className=" cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
-                        >
-                          -
-                        </span>
+                    </motion.div>
+                    {book.eBook.status === "yes" && (
+                      <div className="w-full h-[24px] text-bodyL text-neutral-black mt-[21.58px]">
+                        E-books will be downloaded to ‘Your e-books’.
                       </div>
-                    </div>
-                  </motion.div>
+                    )}
+                  </div>
                 );
               })}
             </AnimatePresence>

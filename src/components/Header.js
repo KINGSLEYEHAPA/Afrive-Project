@@ -3,7 +3,6 @@ import { FiShoppingBag, FiSearch } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import CategoriesDropdown from "./CategoriesDropdown";
-import { useState } from "react";
 import ProfileInfoDropdown from "./ProfileInfoDropdown";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { RiShoppingBag3Fill } from "react-icons/ri";
@@ -13,11 +12,16 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Header = () => {
-  const [showCategories, setShowCategories] = useState(false);
-  const [showProfileInfo, setShowProfileInfo] = useState(false);
-  const [showEbookMenu, setShowEbookMenu] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
+const Header = ({
+  showCategories,
+  setShowCategories,
+  showEbookMenu,
+  setShowEbookMenu,
+  showSearch,
+  setShowSearch,
+  showProfileInfo,
+  setShowProfileInfo,
+}) => {
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
 
   const location = useLocation();
@@ -43,7 +47,7 @@ const Header = () => {
               </p>
             </Link>
             <p
-              onClick={() => {
+              onClick={(e) => {
                 setShowCategories(!showCategories);
                 setShowEbookMenu(false);
                 setShowProfileInfo(false);
@@ -106,7 +110,7 @@ const Header = () => {
             layoutId="outline"
             className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
           >
-            <FiSearch />
+            {!showSearch && <FiSearch />}
           </motion.p>
         </AnimateSharedLayout>
 
