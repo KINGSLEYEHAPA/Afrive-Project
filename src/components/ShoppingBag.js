@@ -40,9 +40,9 @@ const ShoppingBag = () => {
   useEffect(() => {
     let totalCost = 0;
     shoppingBagBooks.map((item) => {
-      totalCost += Number(item.totalAmount.substring(1));
+      totalCost += item.totalAmount;
 
-      setTotalCostOfBooks("N" + totalCost);
+      setTotalCostOfBooks(totalCost);
 
       return null;
     });
@@ -53,7 +53,7 @@ const ShoppingBag = () => {
     const book = shoppingBagBooks[index];
     if (book.quantity > 1) book.quantity -= 1;
 
-    book.totalAmount = "N" + Number(book.price.substring(1)) * book.quantity;
+    book.totalAmount = book.price * book.quantity;
 
     setShoppingBagBooks((shoppingBagBooks) => {
       return [
@@ -64,9 +64,9 @@ const ShoppingBag = () => {
     });
     let totalCost = 0;
     shoppingBagBooks.map((item) => {
-      totalCost += Number(item.totalAmount.substring(1));
+      totalCost += item.totalAmount;
 
-      setTotalCostOfBooks("N" + totalCost);
+      setTotalCostOfBooks(totalCost);
       return null;
     });
   };
@@ -74,7 +74,7 @@ const ShoppingBag = () => {
     const book = shoppingBagBooks[index];
     if (book.quantity >= 1) book.quantity += 1;
 
-    book.totalAmount = "N" + Number(book.price.substring(1)) * book.quantity;
+    book.totalAmount = book.price * book.quantity;
 
     setShoppingBagBooks((shoppingBagBooks) => {
       return [
@@ -85,9 +85,9 @@ const ShoppingBag = () => {
     });
     let totalCost = 0;
     shoppingBagBooks.map((item) => {
-      totalCost += Number(item.totalAmount.substring(1));
+      totalCost += item.totalAmount;
 
-      setTotalCostOfBooks("N" + totalCost);
+      setTotalCostOfBooks(totalCost);
       return null;
     });
   };
@@ -219,7 +219,7 @@ const ShoppingBag = () => {
                           <p className="text-bodyL whitespace-nowrap text-neutral-30">
                             Total:&nbsp;{" "}
                             <span className="text-primary-50">
-                              {book.totalAmount}
+                              N{book.totalAmount}
                             </span>
                           </p>
                         </div>
@@ -258,7 +258,7 @@ const ShoppingBag = () => {
         <div className="w-1/2 h-[353px] pl-[31.67px] pr-[185.33px]">
           <div className="w-full h-[24px] flex justify-between ">
             <p className="text-bodyL text-neutral-80">Subtotal</p>
-            <p className="text-bodyL text-neutral-70">{totalCostOfBooks}</p>
+            <p className="text-bodyL text-neutral-70">N{totalCostOfBooks}</p>
           </div>
           <div className="w-full h-[24px] flex justify-between mt-[26px] ">
             <p className="text-bodyL text-neutral-80">Total Weight</p>
@@ -266,7 +266,7 @@ const ShoppingBag = () => {
           </div>
           <div className="w-full h-[24px] flex justify-between mt-[40px] ">
             <p className="text-bodyL text-neutral-80">Total:</p>
-            <p className="text-bodyL text-neutral-70">{totalCostOfBooks}</p>
+            <p className="text-bodyL text-neutral-70">N{totalCostOfBooks}</p>
           </div>
           <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
             {!couponVoucher && (

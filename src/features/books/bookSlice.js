@@ -9,7 +9,7 @@ const initialState = {
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYSZI4k6afyB1AUj8OR74jFcsaYr2E6NkHLg&usqp=CAU",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N8000",
+      price: 8000,
       status: "in stock",
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
@@ -54,7 +54,7 @@ const initialState = {
       img: "https://farafinabooks.files.wordpress.com/2013/04/half-of-a-yellow-sun.jpg",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N10000",
+      price: 10000,
       status: "in stock",
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
@@ -99,7 +99,7 @@ const initialState = {
       img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1281647970l/1199163.jpg",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N5000",
+      price: 5000,
       status: "in stock",
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
@@ -143,7 +143,7 @@ const initialState = {
       img: "https://tothebalcony.files.wordpress.com/2012/08/africanchild1.jpg?w=584",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N8000",
+      price: 7000,
       status: "in stock",
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
@@ -188,7 +188,7 @@ const initialState = {
       img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347325638l/2301365.jpg",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N4000",
+      price: 4000,
       status: "in stock",
 
       category: ["Poetry", "Adventure"],
@@ -229,7 +229,7 @@ const initialState = {
       img: "https://continentalbooksgh.com/wp-content/uploads/2020/05/Sugar-Girl.jpg",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N2500",
+      price: 2500,
       status: "in stock",
 
       category: ["Action", "Adventure", "Drama"],
@@ -275,7 +275,7 @@ const initialState = {
       img: "https://folioreview.files.wordpress.com/2020/04/f21df8d465645236f369031b1dda8746.jpg",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N4500",
+      price: 4500,
       status: "in stock",
 
       category: ["Action", "Adventure", "Drama", "Children"],
@@ -320,7 +320,7 @@ const initialState = {
       img: "https://covers.openlibrary.org/b/id/8494992-M.jpg",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N1500",
+      price: 1500,
       status: "in stock",
 
       category: ["Action", "Adventure", "Drama"],
@@ -365,7 +365,7 @@ const initialState = {
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_OEpvX9f9lrxQI8Og49F9hs65v6QMjOWlXA&usqp=CAU",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N6000",
+      price: 6000,
       status: "in stock",
 
       category: ["Action", "Adventure", "Drama"],
@@ -405,7 +405,7 @@ const initialState = {
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvZsNEnyODRqOnSFFr96JB5iXlsvs27w9c7e-Kb4K12opn26zK-Pt8piC1FCyZ8KJy2gU&usqp=CAU",
       description:
         "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-      price: "N8000",
+      price: 8000,
       status: "in stock",
 
       category: ["Action", "Adventure", "Drama", "Fantasy"],
@@ -447,7 +447,7 @@ const initialState = {
   likedBooks: [],
   recommendedBooks: [],
   shoppingBag: [],
-  bookPagesDropdownFunction: null,
+  shoppingBagBuyNow: null,
 };
 
 export const bookSlice = createSlice({
@@ -497,9 +497,12 @@ export const bookSlice = createSlice({
       state.booksInStock.push(action.payload);
       return state;
     },
-    // storePageFunctions: (state, action) => {
-    //   state.bookPagesDropdownFunction = action.payload;
-    // },
+    buyBookNow: (state, action) => {
+      state.shoppingBagBuyNow = action.payload;
+    },
+    clearBuyBookNow: (state, action) => {
+      state.shoppingBagBuyNow = null;
+    },
   },
 });
 
@@ -509,5 +512,7 @@ export const {
   addToBag,
   removeFromBag,
   commentOnABook,
+  buyBookNow,
+  clearBuyBookNow,
 } = bookSlice.actions;
 export default bookSlice.reducer;

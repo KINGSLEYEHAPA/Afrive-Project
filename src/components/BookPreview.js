@@ -14,6 +14,7 @@ import {
   addAFavoriteBook,
   removeFavoriteBook,
   addToBag,
+  buyBookNow,
 } from "../features/books/bookSlice";
 import CustomerBookReview from "./CustomerBookReview";
 import BookSection from "./BookSection";
@@ -49,13 +50,23 @@ const BookPreview = () => {
   const buyBook = (book) => {
     if (eBookPreview) {
       setEBookFormat(true);
+      const ebook = {
+        ...book,
+        eBook: { ...book.eBook, status: "yes", format: bookFormat },
+      };
+      dispatch(buyBookNow(ebook));
+      navigate("/buynow");
     } else {
       setBookInShoppingBag(book);
       navigate("/shopping-bag");
     }
   };
 
-  const buyEBook = (book) => {};
+  const buyBookOnformat = (book) => {
+    if (eBookPreview && bookFormat) {
+      dispatch(buyBookNow(book));
+    }
+  };
 
   const addItemToBag = (book) => {
     if (eBookPreview) {
@@ -189,7 +200,7 @@ const BookPreview = () => {
           </div>
           <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
             <p className="text-primary-50 text-h3 font-medium">
-              {selectedBook?.price}
+              N{selectedBook?.price}
             </p>
             <span className="text-bodyN text-neutral-60">
               Status: &nbsp;
@@ -276,7 +287,10 @@ const BookPreview = () => {
               {eBookPreview ? "Buy e-book Now" : "Buy Now"}
             </button>
             <button
-              onClick={() => addItemToBag(selectedBook)}
+              onClick={() => {
+                addItemToBag(selectedBook);
+                buyBook(selectedBook);
+              }}
               className="w-[155px] h-[52px] rounded-[4px] text-primary-50 p-[10px] bg-neutral-white text-buttonT2  border-2 border-primary-50"
             >
               Add to Bag

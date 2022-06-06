@@ -10,7 +10,7 @@ function App() {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <div className="w-screen   min-h-screen max-w-[1440px] mx-auto">
+    <div className="w-screen min-h-screen max-w-[1440px] mx-auto p-0">
       <Header
         showCategories={showCategories}
         setShowCategories={setShowCategories}

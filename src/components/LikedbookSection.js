@@ -109,7 +109,7 @@ const LikedbookSection = () => {
                   </h3>
                 </Link>
                 <p className="leading-8 text-[18px] text-primary-40">
-                  {book.price}
+                  N{book.price}
                 </p>
               </motion.div>
             );
