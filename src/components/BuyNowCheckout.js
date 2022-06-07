@@ -5,7 +5,7 @@ import masterCardLogo from "../assets/mastercard2.webp";
 const BuyNowCheckout = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] ">
+    <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] pb-[521px]">
       <div
         onClick={() => navigate(-1)}
         className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
@@ -30,7 +30,7 @@ const BuyNowCheckout = () => {
               E-books are automatically added to ‘Your e-books’ on checkout.
             </p>
           </div>
-          <hr className="w-[80%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
+          <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
           <div className="h-[29.78px] w-full  flex items-center gap-[56px] mt-[56px]">
             <p className="whitespace-nowrap text-h4 font-medium text-neutral-70">
               Coupon:
@@ -44,7 +44,7 @@ const BuyNowCheckout = () => {
               </div>
             </div>
           </div>
-          <hr className="w-[80%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
+          <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
           <div className="h-[96px] w-full  flex justify-between items-start gap-[56px] mt-[56.41px]">
             <p className="whitespace-nowrap mt-[34px] text-h4 font-medium text-neutral-70">
               Payment:

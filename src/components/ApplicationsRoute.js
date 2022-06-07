@@ -7,6 +7,7 @@ import BuyNowShoppingBag from "./BuyNowShoppingBag";
 import Homepage from "./Homepage";
 import LikedBooks from "./LikedBooks";
 import ShoppingBag from "./ShoppingBag";
+import Checkout from "./Checkout";
 
 const ApplicationsRoute = () => {
   return (
@@ -21,6 +22,7 @@ const ApplicationsRoute = () => {
             <Route path="/shopping-bag" element={<ShoppingBag />} />
             <Route path="/buynow" element={<BuyNowShoppingBag />} />
             <Route path="/buynow-checkout" element={<BuyNowCheckout />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </BrowserRouter>
