@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../App";
 import BookCategory from "./BookCategory";
 import BookPreview from "./BookPreview";
+import BuyNowCheckout from "./BuyNowCheckout";
 import BuyNowShoppingBag from "./BuyNowShoppingBag";
 import Homepage from "./Homepage";
 import LikedBooks from "./LikedBooks";
@@ -19,6 +20,7 @@ const ApplicationsRoute = () => {
             <Route path="/book/:bookId" element={<BookPreview />} />
             <Route path="/shopping-bag" element={<ShoppingBag />} />
             <Route path="/buynow" element={<BuyNowShoppingBag />} />
+            <Route path="/buynow-checkout" element={<BuyNowCheckout />} />
           </Route>
         </Routes>
       </BrowserRouter>

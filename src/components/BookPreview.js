@@ -59,6 +59,7 @@ const BookPreview = () => {
     } else {
       setBookInShoppingBag(book);
       navigate("/shopping-bag");
+      dispatch(addToBag(book));
     }
   };
 

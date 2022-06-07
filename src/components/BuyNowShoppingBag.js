@@ -24,53 +24,7 @@ const BuyNowShoppingBag = () => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const [couponVoucher, setCouponVoucher] = useState(false);
   const [voucher, setVoucher] = useState("");
-  const [selectedBook, setSelectedBook] = useState({
-    id: 10,
-    title: "Things Fall Apart",
-    author: "Chinua Achebe",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvZsNEnyODRqOnSFFr96JB5iXlsvs27w9c7e-Kb4K12opn26zK-Pt8piC1FCyZ8KJy2gU&usqp=CAU",
-    description:
-      "lorem jsdsh ikkkad hhjkjaa jkhjsks jkhsk js jusuhds ggtgywjhws n lorem djsjds loejh jklsdj kjsdjksdshn nf ndjh",
-    price: 8000,
-    status: "in stock",
-
-    category: ["Action", "Adventure", "Drama", "Fantasy"],
-
-    quantity: 1,
-
-    eBook: { status: "yes", format: "" },
-    bookRating: {
-      averageRating: 5,
-      ratings: [
-        {
-          name: "King John",
-          comment: "A great book! What a read!",
-          starRating: 4,
-        },
-        {
-          name: "Joshua Oyedepo",
-          comment: "I love this book.She is good writer",
-          starRating: 5,
-        },
-        {
-          name: "Pamela Obodo",
-          comment:
-            "AFHSHF JKFHKHSF JKKSLJ SFJS JFSJ JKSFHKFKJS KJSFHS KJHSFKS!",
-          starRating: 3,
-        },
-        {
-          name: "Kay Johnson",
-          comment: "A great book! What a read!",
-          starRating: 4,
-        },
-        {
-          name: "Adewole Femi John",
-          comment: "A great book! What a read!",
-          starRating: 5,
-        },
-      ],
-    },
-  });
+  const [selectedBook, setSelectedBook] = useState(null);
   console.log(selectedBook);
   useEffect(() => {
     const book = {
@@ -137,7 +91,7 @@ const BuyNowShoppingBag = () => {
       <div className="w-full h-[753.86px] flex items-start justify-start gap-0 relative mt-[72px]">
         <div className="w-1/2 h-full pl-[181px] pr-[10px]  ">
           <AnimatePresence>
-            {selectedBook !== null && (
+            {shoppingBagBuyNow !== null && (
               <div className="mb-[127.96px]">
                 <motion.div
                   initial={{ opacity: 0 }}
