@@ -8,6 +8,7 @@ import Homepage from "./Homepage";
 import LikedBooks from "./LikedBooks";
 import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
+import ChangeBillingAddress from "./ChangeBillingAddress";
 
 const ApplicationsRoute = () => {
   return (
@@ -23,6 +24,7 @@ const ApplicationsRoute = () => {
             <Route path="/buynow" element={<BuyNowShoppingBag />} />
             <Route path="/buynow-checkout" element={<BuyNowCheckout />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/billing-address" element={<ChangeBillingAddress />} />
           </Route>
         </Routes>
       </BrowserRouter>
