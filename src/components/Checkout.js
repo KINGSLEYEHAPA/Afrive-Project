@@ -2,11 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { MdChevronLeft } from "react-icons/md";
 import masterCardLogo from "../assets/mastercard2.webp";
 import { HiOutlineInformationCircle } from "react-icons/hi";
+import OptionsModal from "./OptionsModal";
 
 const Checkout = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] pb-[162px] ">
+    <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] pb-[162px] relative mb-0 ">
+      <OptionsModal />
       <div
         onClick={() => navigate(-1)}
         className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
@@ -31,7 +33,11 @@ const Checkout = () => {
               1901 Thornridge Cir. Shiloh, Hawaii 81063
             </p>
           </div>
-          <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
+          <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
+            {" "}
+            <p className="text-bodyL text-neutral-30">Change</p>
+          </div>
+          <hr className="w-[100%] h-0 border border-primary-10 mt-[31px] mx-auto   " />
           <div className="h-[96px] w-full  flex justify-between items-center gap-[56px] my-[56px]">
             <p className="whitespace-nowrap  text-h4 font-medium text-neutral-70">
               Email:
