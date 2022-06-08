@@ -9,11 +9,14 @@ import LikedBooks from "./LikedBooks";
 import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
 import ChangeBillingAddress from "./ChangeBillingAddress";
+import Signup from "./Signup";
+import ScrollToTop from "./ScrollToTop";
 
 const ApplicationsRoute = () => {
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Homepage />} />
@@ -25,6 +28,7 @@ const ApplicationsRoute = () => {
             <Route path="/buynow-checkout" element={<BuyNowCheckout />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/billing-address" element={<ChangeBillingAddress />} />
+            <Route path="/sign-up" element={<Signup />} />
           </Route>
         </Routes>
       </BrowserRouter>

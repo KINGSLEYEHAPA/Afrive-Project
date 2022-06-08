@@ -368,7 +368,7 @@ const initialState = {
       price: 6000,
       status: "in stock",
 
-      category: ["Action", "Adventure", "Drama"],
+      category: ["Action", "Adventure", "Drama", "Autobiography"],
 
       eBook: { status: "no", format: "" },
       bookRating: {

@@ -22,7 +22,7 @@ const ChangeBillingAddress = () => {
       <div className="w-full  h-[1041px] mt-[40px] flex justify-center pb-[101px] h-[1118px]">
         <div className="w-[538px] h-full  space-y-[24px] ">
           <div className="w-full h-[97px]">
-            <label>First Name</label>
+            <label className="text-bodyN text-neutral-70">First Name</label>
             <input
               type="text"
               name="firstName"
@@ -30,7 +30,7 @@ const ChangeBillingAddress = () => {
             />
           </div>
           <div className="w-full h-[97px]">
-            <label>Last Name</label>
+            <label className="text-bodyN text-neutral-70">Last Name</label>
             <input
               type="text"
               name="lastName"
@@ -38,7 +38,7 @@ const ChangeBillingAddress = () => {
             />
           </div>
           <div className="w-full h-[97px]">
-            <label>Email</label>
+            <label className="text-bodyN text-neutral-70">Email</label>
             <input
               type="email"
               name="email"
@@ -46,7 +46,7 @@ const ChangeBillingAddress = () => {
             />
           </div>
           <div className="w-full h-[97px]">
-            <label>State</label>
+            <label className="text-bodyN text-neutral-70">State</label>
             <input
               type="text"
               name="state"
@@ -54,7 +54,7 @@ const ChangeBillingAddress = () => {
             />
           </div>
           <div className="w-full h-[97px]">
-            <label>Postal Code</label>
+            <label className="text-bodyN text-neutral-70">Postal Code</label>
             <input
               type="number"
               name="postalCode"
@@ -62,7 +62,7 @@ const ChangeBillingAddress = () => {
             />
           </div>
           <div className="w-full h-[97px]">
-            <label>House Address</label>
+            <label className="text-bodyN text-neutral-70">House Address</label>
             <input
               type="text"
               name="houseAddress"
