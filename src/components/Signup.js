@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 
 const Signup = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState();
+  console.log(user);
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    setUser({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+    });
+
+    setFirstName("");
+    setLastName("");
+    setPassword("");
+    setEmail("");
+  };
+
   return (
     <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] h-[1024px] flex">
       <div className="w-[553px] h-[1024px] bg-primary-40 flex justify-center items-center">
@@ -16,12 +38,14 @@ const Signup = () => {
       <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[144.59px]">
         <div className="h-[839px] w-[551px] ">
           <h2 className="text-h2 font-medium text-primary-50 ">Sign Up</h2>
-          <form>
+          <form onSubmit={handleSignIn}>
             <div className="w-full flex gap-[23px] mt-[48px]">
               <div className="w-full h-[86px]">
                 <label className="text-bodyS text-neutral-70">First Name</label>
                 <input
                   type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   name="firstName"
                   className="   outline-none w-[264px] h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
                 />
@@ -30,6 +54,8 @@ const Signup = () => {
                 <label className="text-bodyS text-neutral-70">Last Name</label>
                 <input
                   type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   name="lastName"
                   className="   outline-none w-[264px] h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
                 />
@@ -41,6 +67,8 @@ const Signup = () => {
               </label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 name="email"
                 className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
               />
@@ -51,6 +79,8 @@ const Signup = () => {
               </label>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 name="password"
                 className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
               />
@@ -65,7 +95,10 @@ const Signup = () => {
               <p className="text-bodyS text-neutral-70">Forgot Password?</p>
             </div>
             <div className="w-full mt-[42.92px] space-y-[16px]">
-              <button className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg">
+              <button
+                type="submit"
+                className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
+              >
                 Sign Up
               </button>
               <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
