@@ -41,7 +41,14 @@ export const UserStarRating = ({ userRating }) => {
 const RatingStars = ({ book }) => {
   const stars = [1, 2, 3, 4, 5];
 
-  const averageRating = Math.round(book?.bookRating?.averageRating);
+  let average = 0;
+
+  book.bookRating.ratings.map((rate) => {
+    average += rate.starRating;
+    return null;
+  });
+  const averageRating = Math.floor(average / book.bookRating.ratings.length);
+
   const ratingDiff = 5 - averageRating;
 
   const randomNumber = Math.random() * 1000000 + uuid();
