@@ -93,7 +93,9 @@ const SignUp = () => {
                 </span>
                 <span>Minimum of 7 letters</span>
               </div>
-              <p className="text-bodyS text-neutral-70">Forgot Password?</p>
+              <Link to="/forgot-password">
+                <p className="text-bodyS text-neutral-70">Forgot Password?</p>
+              </Link>
             </div>
             <div className="w-full mt-[42.92px] space-y-[16px]">
               <button

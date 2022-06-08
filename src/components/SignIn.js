@@ -29,7 +29,7 @@ const SignIn = () => {
           </p>
         </div>
       </div>
-      <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[144.59px]">
+      <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[164.50px] pb-[50.41px]">
         <div className="h-[839px] w-[551px] ">
           <h2 className="text-h2 font-medium text-primary-50 ">Sign In</h2>
           <form onSubmit={handleSignIn}>
@@ -65,7 +65,9 @@ const SignIn = () => {
                   Remember Me{" "}
                 </span>
               </div>
-              <p className="text-bodyS text-neutral-70">Forgot Password?</p>
+              <Link to="/forgot-password">
+                <p className="text-bodyS text-neutral-70">Forgot Password?</p>
+              </Link>
             </div>
             <div className="w-full mt-[42.92px] space-y-[16px]">
               <button

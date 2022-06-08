@@ -12,6 +12,7 @@ import ChangeBillingAddress from "./ChangeBillingAddress";
 import SignUp from "./SignUp";
 import ScrollToTop from "./ScrollToTop";
 import SignIn from "./SignIn";
+import ForgotPassword from "./ForgotPassword";
 
 const ApplicationsRoute = () => {
   return (
@@ -31,6 +32,7 @@ const ApplicationsRoute = () => {
             <Route path="/billing-address" element={<ChangeBillingAddress />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
           </Route>
         </Routes>
       </BrowserRouter>
