@@ -1,25 +1,18 @@
 import { useState } from "react";
-import { HiOutlineInformationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
   console.log(user);
-  const handleSignUp = (e) => {
+  const handleSignIn = (e) => {
     e.preventDefault();
     setUser({
-      firstName: firstName,
-      lastName: lastName,
       email: email,
       password: password,
     });
 
-    setFirstName("");
-    setLastName("");
     setPassword("");
     setEmail("");
   };
@@ -38,31 +31,9 @@ const SignUp = () => {
       </div>
       <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[144.59px]">
         <div className="h-[839px] w-[551px] ">
-          <h2 className="text-h2 font-medium text-primary-50 ">Sign Up</h2>
-          <form onSubmit={handleSignUp}>
-            <div className="w-full flex gap-[23px] mt-[48px]">
-              <div className="w-full h-[86px]">
-                <label className="text-bodyS text-neutral-70">First Name</label>
-                <input
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  name="firstName"
-                  className="   outline-none w-[264px] h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                />
-              </div>
-              <div className="w-full h-[86px]">
-                <label className="text-bodyS text-neutral-70">Last Name</label>
-                <input
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  name="lastName"
-                  className="   outline-none w-[264px] h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                />
-              </div>
-            </div>
-            <div className="w-full h-[86px] mt-[32px]">
+          <h2 className="text-h2 font-medium text-primary-50 ">Sign In</h2>
+          <form onSubmit={handleSignIn}>
+            <div className="w-full h-[86px] mt-[48px]">
               <label className="text-bodyS text-neutral-70">
                 Your Email Address
               </label>
@@ -87,11 +58,12 @@ const SignUp = () => {
               />
             </div>
             <div className="w-full h-[18px] flex justify-between  mt-[10.51px]">
-              <div className="flex items-center gap-[11.51px] text-bodyS text-primary-50">
-                <span className="text-[18px]">
-                  <HiOutlineInformationCircle />
+              <div className="flex items-center gap-[10px] text-bodyS text-primary-50">
+                <div className="w-[16px] h-[18px] border border-primary-30"></div>
+
+                <span className="text-[18px] text-bodyS text-neutral-70 font-reg">
+                  Remember Me{" "}
                 </span>
-                <span>Minimum of 7 letters</span>
               </div>
               <p className="text-bodyS text-neutral-70">Forgot Password?</p>
             </div>
@@ -100,19 +72,19 @@ const SignUp = () => {
                 type="submit"
                 className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
               >
-                Sign Up
+                Sign In
               </button>
               <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
                 Continue with Google
               </button>
             </div>
-            <p className="text-center mt-[66px] text-bodyN text-neutral-black">
-              Already have an Account?{" "}
-              <Link to="/sign-in">
-                <span className="text-primary-50">Sign in</span>
+            <p className="text-center mt-[156.09px] text-bodyN text-neutral-black">
+              Don't have an Account?
+              <Link to="/sign-up">
+                <span className="text-primary-50">Sign Up</span>
               </Link>
             </p>
-            <p className="text-center mt-[108px] text-primary-50">
+            <p className="text-center mt-[116px] text-primary-50">
               Are you an Author? Submit your work to us.
             </p>
           </form>
@@ -122,4 +94,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

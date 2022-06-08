@@ -9,8 +9,9 @@ import LikedBooks from "./LikedBooks";
 import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
 import ChangeBillingAddress from "./ChangeBillingAddress";
-import Signup from "./Signup";
+import SignUp from "./SignUp";
 import ScrollToTop from "./ScrollToTop";
+import SignIn from "./SignIn";
 
 const ApplicationsRoute = () => {
   return (
@@ -28,7 +29,8 @@ const ApplicationsRoute = () => {
             <Route path="/buynow-checkout" element={<BuyNowCheckout />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/billing-address" element={<ChangeBillingAddress />} />
-            <Route path="/sign-up" element={<Signup />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-in" element={<SignIn />} />
           </Route>
         </Routes>
       </BrowserRouter>
