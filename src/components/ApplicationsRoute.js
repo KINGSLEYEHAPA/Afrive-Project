@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import App from "../App";
 import BookCategory from "./BookCategory";
 import BookPreview from "./BookPreview";
@@ -14,13 +14,15 @@ import ScrollToTop from "./ScrollToTop";
 import SignIn from "./SignIn";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import { AnimatePresence } from "framer-motion";
 
 const ApplicationsRoute = () => {
+  const location = useLocation();
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto">
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
+      <ScrollToTop />
+      <AnimatePresence exitBeforeEnter>
+        <Routes key={location.pathname} location={location}>
           <Route path="/" element={<App />}>
             <Route index element={<Homepage />} />
             <Route path="/category/:catName" element={<BookCategory />} />
@@ -37,7 +39,7 @@ const ApplicationsRoute = () => {
             <Route path="/reset-password" element={<ResetPassword />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </AnimatePresence>
     </div>
   );
 };
