@@ -1,34 +1,108 @@
 import { useState } from "react";
-import { HiOutlineInformationCircle } from "react-icons/hi";
+
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
+import bgId from "../assets/mesh1.jpg";
+import SmallFormInput from "./SmallFormInput";
+import FormInput from "./FormInput";
 
 const SignUp = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
-  console.log(user);
+  const [loginValues, setLoginValues] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const onChange = (e) => {
+    setLoginValues({ ...loginValues, [e.target.name]: e.target.value });
+  };
+
+  const inputs = [
+    {
+      id: 1,
+      name: "firstName",
+      type: "text",
+      placeholder: "",
+      errorMessage: "It should be atleast one character",
+      label: "First Name",
+
+      required: true,
+    },
+    {
+      id: 2,
+      name: "lastName",
+      type: "text",
+      placeholder: "",
+      errorMessage: "It should be atleast one character",
+      label: "Last Name",
+
+      required: true,
+    },
+    {
+      id: 3,
+      name: "userName",
+      type: "text",
+      placeholder: "",
+      errorMessage: "it should be atleast one letter and one number",
+      pattern: "([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*",
+      label: "Username",
+      required: true,
+    },
+
+    {
+      id: 4,
+      name: "email",
+      type: "email",
+      placeholder: "",
+      errorMessage: "It should be a valid email address",
+      label: "Your Email Address",
+      required: true,
+    },
+    {
+      id: 5,
+      name: "password",
+      type: "password",
+      placeholder: "",
+      errorMessage:
+        "Minimum eight characters, at least one letter and one number",
+      label: "Your Password",
+      pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+      required: true,
+    },
+    {
+      id: 6,
+      name: "confirmPassword",
+      type: "password",
+      placeholder: "",
+      errorMessage: "Passwords don't match",
+      label: "Your Password",
+      pattern: loginValues.password,
+      required: true,
+    },
+  ];
+
+  console.log(loginValues);
   const handleSignUp = (e) => {
     e.preventDefault();
-    setUser({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
+    setLoginValues({
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     });
-
-    setFirstName("");
-    setLastName("");
-    setPassword("");
-    setEmail("");
   };
 
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] h-[1024px] flex">
-        <div className="w-[553px] h-[1024px] bg-primary-40 flex justify-center items-center">
+        <div
+          className="w-[553px] h-[1024px] flex justify-center items-center"
+          style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
+        >
           <div className="h-[133px] w-[256px]">
             <h1 className=" font-[542] leading-[98px] text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
               Àfrive
@@ -38,71 +112,30 @@ const SignUp = () => {
             </p>
           </div>
         </div>
-        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[144.59px]">
+        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[34px]">
           <div className="h-[839px] w-[551px] ">
             <h2 className="text-h2 font-medium text-primary-50 ">Sign Up</h2>
             <form onSubmit={handleSignUp}>
               <div className="w-full flex gap-[23px] mt-[48px]">
-                <div className="w-full h-[86px]">
-                  <label className="text-bodyS text-neutral-70">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    name="firstName"
-                    className="   outline-none w-[264px] h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
+                {inputs.slice(0, 2).map((input) => (
+                  <SmallFormInput
+                    key={input.id}
+                    {...input}
+                    value={loginValues[input.name]}
+                    onChange={onChange}
                   />
-                </div>
-                <div className="w-full h-[86px]">
-                  <label className="text-bodyS text-neutral-70">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    name="lastName"
-                    className="   outline-none w-[264px] h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                  />
-                </div>
+                ))}
               </div>
-              <div className="w-full h-[86px] mt-[32px]">
-                <label className="text-bodyS text-neutral-70">
-                  Your Email Address
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  name="email"
-                  className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
+              {inputs.slice(2, 6).map((input) => (
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  value={loginValues[input.name]}
+                  onChange={onChange}
+                  formType=""
                 />
-              </div>
-              <div className="w-full h-[86px] mt-[32px]">
-                <label className="text-bodyS text-neutral-70">
-                  Your Password
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  name="password"
-                  className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                />
-              </div>
-              <div className="w-full h-[18px] flex justify-between  mt-[10.51px]">
-                <div className="flex items-center gap-[11.51px] text-bodyS text-primary-50">
-                  <span className="text-[18px]">
-                    <HiOutlineInformationCircle />
-                  </span>
-                  <span>Minimum of 7 letters</span>
-                </div>
-                <Link to="/forgot-password">
-                  <p className="text-bodyS text-neutral-70">Forgot Password?</p>
-                </Link>
-              </div>
+              ))}
+
               <div className="w-full mt-[42.92px] space-y-[16px]">
                 <button
                   type="submit"
@@ -120,7 +153,7 @@ const SignUp = () => {
                   <span className="text-primary-50">Sign in</span>
                 </Link>
               </p>
-              <p className="text-center mt-[108px] text-primary-50">
+              <p className="text-center mt-[28px] text-primary-50">
                 Are you an Author? Submit your work to us.
               </p>
             </form>

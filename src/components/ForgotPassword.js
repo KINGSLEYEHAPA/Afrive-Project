@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
+import bgId from "../assets/mesh1.jpg";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,10 @@ const ForgotPassword = () => {
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] h-[1024px] flex">
-        <div className="w-[553px] h-[1024px] bg-primary-40 flex justify-center items-center">
+        <div
+          className="w-[553px] h-[1024px]  flex justify-center items-center"
+          style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
+        >
           <div className="h-[133px] w-[256px]">
             <h1 className=" font-[542] leading-[98px] text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
               Àfrive
@@ -47,6 +51,7 @@ const ForgotPassword = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     name="email"
+                    required
                     className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
                   />
                 </div>

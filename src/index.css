@@ -11,6 +11,16 @@ body{
   font-family: "circular-std-medium-500";
 
 }
+.error{
+  display: none;
+}
+
+/* input:invalid + .error{
+  display: inline-block;
+} */
+input:focus:invalid + .error {
+  display: block; 
+}
 
 
 

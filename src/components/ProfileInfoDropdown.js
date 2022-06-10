@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ProfileInfoDropdown = () => {
   return (
@@ -14,9 +15,21 @@ const ProfileInfoDropdown = () => {
         <h3 className="text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">
           Hi Faith
         </h3>
-        <p className="text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
-          Sign Out
-        </p>
+        {false && (
+          <Link to="/">
+            {" "}
+            <p className="text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
+              Sign Out
+            </p>
+          </Link>
+        )}
+        {true && (
+          <Link to="/sign-in">
+            <p className="text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
+              Sign In
+            </p>
+          </Link>
+        )}
       </div>
       <hr className="w-[100%]  h-0 border-1 border-neutral-20" />
       <div className="h-[76px] w-full flex pt-[12px] justify-center flex-col items-start px-[24px] cursor-pointer hover:bg-primary-10 pb-[8px]">
@@ -37,9 +50,11 @@ const ProfileInfoDropdown = () => {
         My Orders
       </h3>
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-      <h3 className="text-neutral-80 text-bodyN font-reg  px-[24px] py-[16px]  cursor-pointer hover:bg-primary-10">
-        Billing Address
-      </h3>
+      <Link to="/billing-address">
+        <h3 className="text-neutral-80 text-bodyN font-reg  px-[24px] py-[16px]  cursor-pointer hover:bg-primary-10">
+          Billing Address
+        </h3>
+      </Link>
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
       <h3 className="text-neutral-80 text-bodyN font-reg  px-[24px]  py-[16px] cursor-pointer hover:bg-primary-10">
         Coupons & Vouchers

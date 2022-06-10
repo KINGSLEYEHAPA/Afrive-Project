@@ -1,27 +1,58 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
+import FormInput from "./FormInput";
+import bgId from "../assets/mesh1.jpg";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
-  console.log(user);
+  const [loginValues, setLoginValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const inputs = [
+    {
+      id: 1,
+      name: "email",
+      type: "email",
+      placeholder: "",
+      errorMessage: "It should be a valid email address",
+      label: "Your Email Address",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "password",
+      type: "password",
+      placeholder: "",
+      errorMessage:
+        "Minimum eight characters, at least one letter and one number:",
+      label: "Your Password",
+      pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+      required: true,
+    },
+  ];
+
+  console.log(loginValues);
   const handleSignIn = (e) => {
     e.preventDefault();
-    setUser({
-      email: email,
-      password: password,
-    });
 
-    setPassword("");
-    setEmail("");
+    setLoginValues({
+      email: "",
+      password: "",
+    });
+  };
+  const onChange = (e) => {
+    setLoginValues({ ...loginValues, [e.target.name]: e.target.value });
   };
 
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] h-[1024px] flex">
-        <div className="w-[553px] h-[1024px] bg-primary-40 flex justify-center items-center">
+        <div
+          className="w-[553px] h-[1024px]  flex justify-center items-center"
+          style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
+        >
           <div className="h-[133px] w-[256px]">
             <h1 className=" font-[542] leading-[98px] text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
               Àfrive
@@ -31,35 +62,20 @@ const SignIn = () => {
             </p>
           </div>
         </div>
-        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[164.50px] pb-[50.41px]">
+        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[164.50px] pb-[20.41px]">
           <div className="h-[839px] w-[551px] ">
             <h2 className="text-h2 font-medium text-primary-50 ">Sign In</h2>
             <form onSubmit={handleSignIn}>
-              <div className="w-full h-[86px] mt-[48px]">
-                <label className="text-bodyS text-neutral-70">
-                  Your Email Address
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  name="email"
-                  className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
+              {inputs.map((input) => (
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  value={loginValues[input.name]}
+                  onChange={onChange}
                 />
-              </div>
-              <div className="w-full h-[86px] mt-[32px]">
-                <label className="text-bodyS text-neutral-70">
-                  Your Password
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  name="password"
-                  className=" outline-none w-full h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                />
-              </div>
-              <div className="w-full h-[18px] flex justify-between  mt-[10.51px]">
+              ))}
+
+              <div className="w-full h-[18px] flex justify-between  mt-[45.51px]">
                 <div className="flex items-center gap-[10px] text-bodyS text-primary-50">
                   <div className="w-[16px] h-[18px] border border-primary-30"></div>
 
@@ -88,7 +104,7 @@ const SignIn = () => {
                   <span className="text-primary-50">Sign Up</span>
                 </Link>
               </p>
-              <p className="text-center mt-[116px] text-primary-50">
+              <p className="text-center mt-[85px] text-primary-50">
                 Are you an Author? Submit your work to us.
               </p>
             </form>

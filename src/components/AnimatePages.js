@@ -8,9 +8,9 @@ const AnimatePages = ({ children }) => {
     animate: {
       opacity: 1,
 
-      transition: { duration: 0.3 },
+      transition: { duration: 0.25 },
     },
-    exit: { opacity: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, transition: { duration: 0.25 } },
   };
   return (
     <motion.div
