@@ -159,63 +159,8 @@ const ChangeBillingAddress = () => {
                 formtyp="billing"
               />
             ))}
-            {/* 
-            <div className="w-full h-[97px]">
-              <label className="text-bodyN text-neutral-70">First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                className=" outline-none w-full h-[57px] mt-[7.62px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-              />
-            </div> */}
 
-            {/*
-            <div className="w-full h-[97px]">
-              <label className="text-bodyN text-neutral-70">Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                className="    outline-none w-full h-[57px] mt-[7.62px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-              />
-            </div>
-            <div className="w-full h-[97px]">
-              <label className="text-bodyN text-neutral-70">Email</label>
-              <input
-                type="email"
-                name="email"
-                className="   outline-none w-full h-[57px] mt-[7.62px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-              />
-            </div>
-            <div className="w-full h-[97px]">
-              <label className="text-bodyN text-neutral-70">State</label>
-              <input
-                type="text"
-                name="state"
-                className="   outline-none w-full h-[57px] mt-[7.62px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-              />
-            </div>
-            <div className="w-full h-[97px]">
-              <label className="text-bodyN text-neutral-70">Postal Code</label>
-              <input
-                type="number"
-                name="postalCode"
-                className="   outline-none w-full h-[57px] mt-[7.62px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-              />
-            </div>
-            <div className="w-full h-[97px]">
-              <label className="text-bodyN text-neutral-70">
-                House Address
-              </label>
-              <input
-                type="text"
-                name="houseAddress"
-                className="   outline-none w-full h-[57px] mt-[7.62px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-              />
-            </div> */}
             <div>
-              {/* <p className="font-medium text-neutral-70 text-bodyN mb-[22px]">
-                Add Card for Payment
-              </p> */}
               <div className="w-[538px.71] h-[283px] mt-[-20px]  ">
                 {inputs.slice(6, 7).map((input) => (
                   <FormInput
@@ -227,11 +172,6 @@ const ChangeBillingAddress = () => {
                   />
                 ))}
 
-                {/* <input
-                  type="number"
-                  placeholder="Card Number"
-                  className="   outline-none w-full h-[57px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                /> */}
                 <div className="w-full flex justify-between gap-[14.56px] mt-[-25px] mb-[32px]">
                   {inputs.slice(7, 9).map((input) => (
                     <SmallFormInput
@@ -241,17 +181,6 @@ const ChangeBillingAddress = () => {
                       onChange={onChange}
                     />
                   ))}
-
-                  {/* <input
-                    type="text"
-                    placeholder="MM/YY"
-                    className="   outline-none w-[253px] h-[57px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                  />
-                  <input
-                    type="number"
-                    placeholder="CVV"
-                    className="  outline-none w-[253px] h-[57px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
-                  /> */}
                 </div>
                 <div className="flex justify-center items-center mt-[84px]">
                   <button className="w-[390px] h-[65px] text-h4 medium bg-primary-50 text-neutral-white rounded-[4px]">
