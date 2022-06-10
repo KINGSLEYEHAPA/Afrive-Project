@@ -3,6 +3,7 @@ import { MdChevronLeft } from "react-icons/md";
 
 import { FiShoppingBag, FiArrowUpLeft } from "react-icons/fi";
 import { Link as ALink } from "react-scroll";
+import { AiOutlineClose } from "react-icons/ai";
 
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -173,13 +174,16 @@ const BookPreview = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1, transition: { duration: 1 } }}
                       exit={{ opacity: 0 }}
-                      className="flex items-center justify-center w-[86px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] "
+                      className="flex items-center justify-center w-[100px] gap-[5px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] "
                     >
                       {" "}
                       <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
                         {" "}
-                        E-book
+                        E-book{" "}
                       </p>
+                      <span className="font-medium text-primary-50 text-[18px]">
+                        <AiOutlineClose />{" "}
+                      </span>
                     </motion.div>
                   )}
                 </AnimatePresence>

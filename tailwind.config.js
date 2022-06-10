@@ -47,6 +47,23 @@ module.exports = {
       medium: "500",
     },
 
+    screens: {
+      mobile: "360px",
+      // => @media (min-width: 640px) { ... }
+
+      "m-tablet": "860px",
+      // => @media (min-width: 640px) { ... }
+
+      tablet: "1024px",
+      // => @media (min-width: 640px) { ... }
+
+      laptop: "1366px",
+      // => @media (min-width: 1024px) { ... }
+
+      desktop: "1440px",
+      // => @media (min-width: 1280px) { ... }
+    },
+
     extend: {},
   },
 

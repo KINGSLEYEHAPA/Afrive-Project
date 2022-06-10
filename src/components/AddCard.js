@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const AddCard = () => {
   return (
-    <div className="w-full h-full ">
+    <div className="w-[505px] h-[350px] bg-neutral-white rounded-md p-[34px]">
       <div className="w-full flex justify-end h-[12px]  mb-[12px]">
         <span className="w-[12px] h-[12px] text-neutral-30 text-[20px] font-medium cursor-pointer ">
           <AiOutlineClose />
