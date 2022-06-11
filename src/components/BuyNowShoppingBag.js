@@ -15,6 +15,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import AnimatePages from "./AnimatePages";
+import BookQuote from "./BookQuote";
 
 const BuyNowShoppingBag = () => {
   let navigate = useNavigate();
@@ -75,7 +76,7 @@ const BuyNowShoppingBag = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] ">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] ">
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
@@ -225,8 +226,12 @@ const BuyNowShoppingBag = () => {
                 N{selectedBook?.price || 0}
               </p>
             </div>
+            <div className="w-full h-[24px] flex justify-between mt-[26px] ">
+              <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
+              <p className="text-bodyL text-neutral-70">-N1000</p>
+            </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
-              <p className="text-bodyL text-neutral-80">Total:</p>
+              <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">
                 N{selectedBook?.totalAmount}
               </p>
@@ -269,6 +274,7 @@ const BuyNowShoppingBag = () => {
           </div>
         </div>
       </div>
+      <BookQuote />
     </AnimatePages>
   );
 };

@@ -84,21 +84,21 @@ const Quiz = ({ setShowQuiz }) => {
           </div>
         )}
         {quizCard === 0 && (
-          <div key="2" className="p-0 grid grid-cols-3 gap-[35px] mt-[32.51px]">
+          <div key="2" className="p-0 grid grid-cols-3 gap-[32px] mt-[32.51px]">
             {genres.map((genre) => {
               return (
                 <div key={genre} className="flex items-center ">
                   <label
                     htmlFor={genre}
-                    className="text-neutral-70 text-bodyS font-reg cursor-pointer hover:text-primary-50 flex items-center gap-[5px]"
+                    className="text-neutral-70 text-bodyS font-reg cursor-pointer hover:text-primary-50 flex items-center gap-[10px]"
                   >
                     <input
-                      className="border-2 border-primary-40 text-primary-40 hidden input-circle "
+                      className="border-2 border-primary-40 text-primary-40  input-circle hidden"
                       type="checkbox"
                       id={genre}
                       onClick={() => handleQuiz(genre)}
                     />
-                    <div className="w-[11px] h-[11px] rounded-full border border-primary-40 border-box p-[1px] circle"></div>
+                    <div className="w-[11px] h-[11px] flex justify-center items-center rounded-full border border-primary-40 border-box p-[1px] circle"></div>
                     {genre}
                   </label>
                 </div>

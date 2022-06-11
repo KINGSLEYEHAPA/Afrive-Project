@@ -21,7 +21,7 @@ const ForgotPassword = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] h-[1024px] flex">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] h-[1024px] flex">
         <div
           className="w-[553px] h-[1024px]  flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}

@@ -16,12 +16,12 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import { AnimatePresence } from "framer-motion";
 import PageNotFound from "./PageNotFound";
+import MyOrders from "./MyOrders";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto">
-      <ScrollToTop />
       <AnimatePresence exitBeforeEnter>
         <Routes key={location.pathname} location={location}>
           <Route path="/" element={<App />}>
@@ -38,6 +38,7 @@ const ApplicationsRoute = () => {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/orders" element={<MyOrders />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>

@@ -10,7 +10,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] pb-[162px] relative mb-0 ">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[162px] relative mb-0 ">
         {/* <OptionsModal /> */}
         <div
           onClick={() => navigate(-1)}

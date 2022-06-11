@@ -85,7 +85,7 @@ const BookPreview = () => {
   };
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] ">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] ">
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
@@ -181,7 +181,7 @@ const BookPreview = () => {
                         {" "}
                         E-book{" "}
                       </p>
-                      <span className="font-medium text-primary-50 text-[18px]">
+                      <span className="font-medium text-primary-50 text-[18px] cursor-pointer">
                         <AiOutlineClose />{" "}
                       </span>
                     </motion.div>

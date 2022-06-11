@@ -13,6 +13,7 @@ import {
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
+import BookQuote from "./BookQuote";
 
 const ShoppingBag = () => {
   let navigate = useNavigate();
@@ -112,7 +113,7 @@ const ShoppingBag = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] ">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] ">
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
@@ -265,11 +266,15 @@ const ShoppingBag = () => {
               <p className="text-bodyL text-neutral-70">N{totalCostOfBooks}</p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[26px] ">
-              <p className="text-bodyL text-neutral-80">Total Weight</p>
-              <p className="text-bodyL text-neutral-70">0.68Kg</p>
+              <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
+              <p className="text-bodyL text-neutral-70">-N1000</p>
+            </div>
+            <div className="w-full h-[24px] flex justify-between mt-[26px] ">
+              <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
+              <p className="text-bodyL text-neutral-70">N3000</p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
-              <p className="text-bodyL text-neutral-80">Total:</p>
+              <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">N{totalCostOfBooks}</p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
@@ -310,6 +315,7 @@ const ShoppingBag = () => {
           </div>
         </div>
       </div>
+      <BookQuote />
     </AnimatePages>
   );
 };

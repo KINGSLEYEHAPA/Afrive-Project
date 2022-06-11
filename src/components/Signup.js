@@ -98,9 +98,9 @@ const SignUp = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[100px] h-[1024px] flex">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] h-[1074px] flex">
         <div
-          className="w-[553px] h-[1024px] flex justify-center items-center"
+          className="w-[553px] h-[1074px] flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
         >
           <div className="h-[133px] w-[256px]">
@@ -112,11 +112,11 @@ const SignUp = () => {
             </p>
           </div>
         </div>
-        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[34px]">
+        <div className="w-[887px] h-[1074px] pr-[181px] pl-[165px] pt-[34px]">
           <div className="h-[839px] w-[551px] ">
             <h2 className="text-h2 font-medium text-primary-50 ">Sign Up</h2>
             <form onSubmit={handleSignUp}>
-              <div className="w-full flex gap-[23px] mt-[48px]">
+              <div className="w-full flex gap-[23px] mt-[18px]">
                 {inputs.slice(0, 2).map((input) => (
                   <SmallFormInput
                     key={input.id}
