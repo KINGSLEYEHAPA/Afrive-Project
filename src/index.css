@@ -22,6 +22,26 @@ input:focus:invalid + .error {
   display: block; 
 }
 
+.circle::after{
+  content:"";
+  width:100%;
+  height: 100%;
+  display: block;
+  background-color:  #F45C45;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.15s;
+
+
+}
+.input-circle:checked + .circle::after{
+transform: scale(1);
+
+
+
+
+}
+
 
 
 /* Hero Slider */

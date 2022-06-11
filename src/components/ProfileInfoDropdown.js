@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const ProfileInfoDropdown = () => {
+const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
   return (
     <motion.div
       key="box"
@@ -32,7 +32,13 @@ const ProfileInfoDropdown = () => {
         )}
       </div>
       <hr className="w-[100%]  h-0 border-1 border-neutral-20" />
-      <div className="h-[76px] w-full flex pt-[12px] justify-center flex-col items-start px-[24px] cursor-pointer hover:bg-primary-10 pb-[8px]">
+      <div
+        onClick={() => {
+          setShowQuiz(true);
+          setShowProfileInfo(false);
+        }}
+        className="h-[76px] w-full flex pt-[12px] justify-center flex-col items-start px-[24px] cursor-pointer hover:bg-primary-10 pb-[8px]"
+      >
         {" "}
         <div className="flex justify-start items-center gap-[8px]">
           <h4 className="text-neutral-80 text-bodyN font-reg ">
