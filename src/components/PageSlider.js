@@ -93,9 +93,9 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           // other variants, in this case initial and animate.
           custom={direction}
         >
-          {currentPage === 0 && (
+          {currentPage === 2 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] bg-primary-80"
+              className="h-[495px] w-full max-w-[1440px] bg-primary-10"
               //   style={{ background: `url(${hero})`, backgroundSize: "cover" }}
             >
               1
@@ -103,7 +103,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           )}
           {currentPage === 1 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] bg-primary-30"
+              className="h-[495px] w-full max-w-[1440px] bg-primary-50"
               //   style={{
               //     background: `url(${herobook})`,
               //     backgroundSize: "cover",
@@ -112,7 +112,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
               2
             </div>
           )}
-          {currentPage === 2 && (
+          {currentPage === 0 && (
             <div
               className="h-[495px] w-full max-w-[1440px] flex  justify-between"
               //   style={{ background: `url(${book})`, backgroundSize: "cover" }}

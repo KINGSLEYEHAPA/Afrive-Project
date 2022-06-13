@@ -17,6 +17,7 @@ import ResetPassword from "./ResetPassword";
 import { AnimatePresence } from "framer-motion";
 import PageNotFound from "./PageNotFound";
 import MyOrders from "./MyOrders";
+import Coupon from "./Coupon";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
@@ -39,6 +40,7 @@ const ApplicationsRoute = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/orders" element={<MyOrders />} />
+            <Route path="/coupon" element={<Coupon />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
