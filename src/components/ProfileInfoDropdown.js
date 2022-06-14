@@ -69,7 +69,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         </h3>
       </Link>
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-      <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] lap:h-[68px] tab:h-[56px] h-[38px]  py-[12px] lap:py-[16px] rounded-br-[8px] rounded-bl-[8px]  cursor-pointer hover:bg-primary-10">
+      <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] lap:h-[68px] tab:h-[44px] h-[38px]  py-[12px] lap:py-[16px] rounded-br-[8px] rounded-bl-[8px]  cursor-pointer hover:bg-primary-10">
         Support
       </h3>
     </motion.div>
