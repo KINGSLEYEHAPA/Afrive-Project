@@ -44,7 +44,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
           <h4 className="text-neutral-80 text-sub lap:text-bodyN font-reg ">
             Take Out Quiz
           </h4>{" "}
-          <div className="w-[8px] h-[8px] bg-primary-50 rounded full"></div>
+          <div className=" w-[4.87px] h-[4.87px] tab:w-[6.49px] tab:h-[6.49px]      lap:w-[8px] lap:h-[8px]  bg-primary-50 rounded full"></div>
         </div>
         <p className=" w-full text-neutral-30 text-[8.92px] leading-[13px]  lap:text-[11px] lap:leading-4 whitespace-nowrap mb-[16px] hidden tab:block">
           This would help us recommend better books for you.
