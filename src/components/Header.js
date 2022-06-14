@@ -95,34 +95,34 @@ const Header = ({
           {showSearch && (
             <Search setShowSearch={setShowSearch} showSearch={showSearch} />
           )}
-
-          <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
-            <span
-              className={
-                shoppingBag.length >= 10
-                  ? " cursor-pointer relative bottom-[5.8px] left-[2.2px] medium text-neutral-white text-[10px] leading-4"
-                  : " cursor-pointer relative bottom-[5.8px] left-[4.5px] medium text-neutral-white text-[10px] leading-4"
-              }
-            >
-              {shoppingBag.length}
-            </span>
-          </div>
-          <motion.p
-            onClick={() => {
-              setShowSearch(!showSearch);
-              setShowEbookMenu(false);
-              setShowCategories(false);
-              setShowProfileInfo(false);
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.5 } }}
-            exit={{ opacity: 0 }}
-            layoutId="outline"
-            className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
-          >
-            {!showSearch && <FiSearch />}
-          </motion.p>
         </AnimateSharedLayout>
+
+        <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
+          <span
+            className={
+              shoppingBag.length >= 10
+                ? " cursor-pointer relative bottom-[5.8px] left-[2.2px] medium text-neutral-white text-[10px] leading-4"
+                : " cursor-pointer relative bottom-[5.8px] left-[4.5px] medium text-neutral-white text-[10px] leading-4"
+            }
+          >
+            {shoppingBag.length}
+          </span>
+        </div>
+        <motion.p
+          onClick={() => {
+            setShowSearch(!showSearch);
+            setShowEbookMenu(false);
+            setShowCategories(false);
+            setShowProfileInfo(false);
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.5 } }}
+          exit={{ opacity: 0 }}
+          layoutId="outline"
+          className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
+        >
+          {!showSearch && <FiSearch />}
+        </motion.p>
 
         <Link to="/liked-books">
           {path === "/liked-books" ? (

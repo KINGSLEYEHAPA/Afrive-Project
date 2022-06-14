@@ -8,7 +8,7 @@ import {
 
 import BookCard from "./BookCard";
 
-const BookSection = ({ bookSectionName }) => {
+const BookSection = ({ bookSectionName, emoji }) => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
   const availableBooks = useSelector((state) => state.books.booksInStock);
@@ -36,9 +36,14 @@ const BookSection = ({ bookSectionName }) => {
       {" "}
       <div className="h-[438.49px] w-screen max-w-[74.45%] ml-[12.63%] mr-[12.63%] p-0 ">
         <div className="w-full h-[32px]  flex justify-between items-center">
-          <h3 className="text-h3 font-reg text-neutral-70">
-            {bookSectionName}
-          </h3>
+          <div className="flex items-center gap-[7px]">
+            <h3 className="text-h3 font-reg text-neutral-70">
+              {bookSectionName}
+            </h3>
+            {bookSectionName === "On Sale" && (
+              <img className="w-[20px] h-[20px]" src={emoji} alt="" />
+            )}
+          </div>
           <p className="mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
             see more
           </p>

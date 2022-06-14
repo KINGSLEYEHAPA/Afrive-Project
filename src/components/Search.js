@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { availableBooksDummy } from "../dummyData";
+import { FiSearch } from "react-icons/fi";
 
 const Search = ({ showSearch, setShowSearch }) => {
   const [showSearchOption, setShowSearchOption] = useState(false);
@@ -23,6 +24,7 @@ const Search = ({ showSearch, setShowSearch }) => {
   const authorsOptionRef = useRef();
   console.log(searchResults);
   const filteredBooks = (e) => {
+    setShowSearchOption(false);
     const searchedWord = e.target.value;
     setSearchInput(searchedWord);
     const newFilter = availableBooksDummy.filter((value) => {
@@ -57,20 +59,16 @@ const Search = ({ showSearch, setShowSearch }) => {
       initial={{
         opacity: 1,
         width:
-          20 ||
+          36 ||
           (searchWidth.width >= 860 && searchWidth.width < 1366 && 276.23),
         height: 36,
       }}
       animate={{
         opacity: 1,
         width:
-          (searchWidth.width >= 1440 && [
-            100, 150, 200, 250, 300, 350, 400, 467,
-          ]) ||
+          (searchWidth.width >= 1440 && [100, 300, 467]) ||
           (searchWidth.width >= 1366 &&
-            searchWidth.width < 1440 && [
-              100, 150, 200, 250, 300, 350, 400, 443,
-            ]) ||
+            searchWidth.width < 1440 && [100, 300, 443]) ||
           (searchWidth.width >= 860 && searchWidth.width < 1366 && 276.23),
 
         height: 36,
@@ -92,9 +90,9 @@ const Search = ({ showSearch, setShowSearch }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0.5 } }}
               exit={{ opacity: 0, transition: { duration: 0.5 } }}
-              className="absolute top-[45px] w-[174px] h-[118px] bg-neutral-white border border-neutral-20 shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px]"
+              className="absolute top-[45px] desk:w-[174px] desk:h-[118px]    mtab:w-[139px] lap:h-[90px] bg-neutral-white border border-neutral-20 shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px]"
             >
-              <div className="w-full h-[58px] flex justify-start items-center pl-[18px] text-bodyN text-neutral-80 font-reg">
+              <div className="w-full h-[44px] desk:h-[58px] flex justify-start items-center pl-[18px] text-sub desk:text-bodyN  text-neutral-80 font-reg">
                 <p
                   ref={categoriesOptionRef}
                   onClick={() => {
@@ -108,7 +106,7 @@ const Search = ({ showSearch, setShowSearch }) => {
                 </p>
               </div>
               <hr className="h-0 border-1 border-neutral-20 w-[80%] ml-[20%]" />
-              <div className="w-full h-[58px] flex justify-start items-center  pl-[18px] text-bodyN text-neutral-80 font-reg">
+              <div className="w-full h-[44px] desk:h-[58px] flex justify-start items-center  pl-[18px] text-sub desk:text-bodyN text-neutral-80 font-reg">
                 <p
                   ref={authorsOptionRef}
                   onClick={() => {
@@ -129,7 +127,7 @@ const Search = ({ showSearch, setShowSearch }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 1 } }}
               exit={{ opacity: 0, transition: { duration: 1 } }}
-              className="absolute top-[45px] left-[95px] w-[372px] h-[150px] bg-neutral-white border border-neutral-20 shadow-[ 0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] py-[20px]"
+              className="absolute top-[45px] left-[5px] mtab:w-[272px] lap:w-[435px] desk:w-full h-[325px] bg-neutral-white border border-neutral-20 shadow-[ 0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] py-[20px]"
             >
               <div className="overflow-hidden h-full w-full overflow-y-auto scrollbar-hide ">
                 <p className="pl-[18px] text-primary-50 text-bodyN mb-[2px]">
@@ -138,8 +136,14 @@ const Search = ({ showSearch, setShowSearch }) => {
                 {searchResults.map((book, index) => {
                   return (
                     <div key={index}>
-                      <hr className="h-0 border-1 border-neutral-20 w-[100%]" />
-                      <div className="w-full h-[58px] flex justify-start items-center px-[18px] text-bodyS text-neutral-80 font-reg ">
+                      {/* <hr className="h-0 border-1 border-neutral-20 w-[100%]" /> */}
+                      <div
+                        onClick={() => searchedBook(book)}
+                        className="w-full h-[44px] desk:h-[58px] hover:bg-neutral-20 flex gap-[4px] justify-start items-center px-[18px] text-sub lap:text-bodyS text-neutral-80 font-reg cursor-pointer"
+                      >
+                        <span>
+                          <FiSearch />
+                        </span>
                         <p
                           onClick={() => searchedBook(book)}
                           className="cursor-pointer"
@@ -147,7 +151,7 @@ const Search = ({ showSearch, setShowSearch }) => {
                           {book.title}
                         </p>
                       </div>
-                      <hr className="h-0 border-1 border-neutral-20 w-[100%]" />
+                      {/* <hr className="h-0 border-1 border-neutral-20 w-[100%]" /> */}
                     </div>
                   );
                 })}
@@ -155,15 +159,28 @@ const Search = ({ showSearch, setShowSearch }) => {
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="absolute top-0 left-0 w-[90px] h-full flex justify-center items-center gap-[12px] cursor-pointer">
+        <div
+          className={
+            searchWidth.width >= 1366
+              ? "absolute top-0 left-0 w-[90px] h-full flex justify-center items-center gap-[12px] cursor-pointer"
+              : "absolute top-0 left-0 w-[40px] h-full flex justify-center items-center gap-[12px] cursor-pointer"
+          }
+        >
           {" "}
           <p
             onClick={() => {
               setShowSearchOption(!showSearchOption);
+              setSearchResults("");
             }}
             className="text-bodyS pl-[24px] whitespace-nowrap font-reg text-neutral-60"
           >
-            {searchOptionText}
+            {searchWidth.width >= 1366 ? (
+              searchOptionText
+            ) : (
+              <span className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer">
+                <FiSearch />
+              </span>
+            )}
           </p>
           <p className="text-neutral-20">|</p>
         </div>
@@ -172,7 +189,7 @@ const Search = ({ showSearch, setShowSearch }) => {
           value={searchInput}
           onChange={(e) => filteredBooks(e)}
           placeholder="What would you like to read today?"
-          className=" pl-[102px] pr-[24px]  text-neutral-30 placeholder:text-sub placeholder:text-neutral-30 border-[0.5px solid #C3C3C3] rounded-[120px] w-full h-full bg-neutral-white outline-none text-bodyN"
+          className=" pl-[58px] mtab:pl-[52px] tab:pl-[56px] lap:pl-[102px] pr-[24px]  text-neutral-30 placeholder:text-sub placeholder:text-neutral-30 border-[0.5px solid #C3C3C3] rounded-[120px] w-full h-full bg-neutral-white outline-none text-bodyN"
         />
       </div>
     </motion.div>

@@ -2,7 +2,7 @@ import React from "react";
 import BookQuote from "./BookQuote";
 import BookSection from "./BookSection";
 import Footer from "./Footer";
-import Header from "./Header";
+import fire from "../assets/fire.png";
 
 import HeroSection from "./HeroSection";
 import RecommendedBooks from "./RecommendedBooks";
@@ -19,7 +19,7 @@ const Homepage = () => {
         <BookSection bookSectionName="Popular Books" />
         <BookSection bookSectionName="BestSellers" />
         <BookSection bookSectionName="New Arrivals" />
-        <BookSection bookSectionName="On Sale &#128293; " />
+        <BookSection bookSectionName="On Sale" emoji={fire} />
         <div className="w-full mt-[72.51px] flex justify-end items-center pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
             <span className="text-[25px]">
