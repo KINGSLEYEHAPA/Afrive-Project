@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { availableBooksDummy } from "../dummyData";
 
@@ -8,6 +8,16 @@ const Search = ({ showSearch, setShowSearch }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchOptionText, setSearchOptionText] = useState("Search by");
   const [searchInput, setSearchInput] = useState("");
+  const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
+
+  useEffect(() => {
+    function handleResize() {
+      // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+      setSearchWidth({ width: window.innerWidth });
+    }
+
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const categoriesOptionRef = useRef();
   const authorsOptionRef = useRef();
@@ -44,21 +54,36 @@ const Search = ({ showSearch, setShowSearch }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 1, width: 36, height: 36 }}
+      initial={{
+        opacity: 1,
+        width:
+          20 ||
+          (searchWidth.width >= 860 && searchWidth.width < 1366 && 276.23),
+        height: 36,
+      }}
       animate={{
         opacity: 1,
-        width: [100, 467],
+        width:
+          (searchWidth.width >= 1440 && [
+            100, 150, 200, 250, 300, 350, 400, 467,
+          ]) ||
+          (searchWidth.width >= 1366 &&
+            searchWidth.width < 1440 && [
+              100, 150, 200, 250, 300, 350, 400, 443,
+            ]) ||
+          (searchWidth.width >= 860 && searchWidth.width < 1366 && 276.23),
+
         height: 36,
         transition: { duration: 1.2, delay: 0.5 },
       }}
       exit={{
         opacity: 0,
-        width: 36,
-        height: 36,
+        width: 20,
+        height: 20,
         transition: { duration: 1.2 },
       }}
       layoutId="outline"
-      className="absolute z-10 top-[28px] right-[170px] w-[467px] h-[36px] border  border-neutral-30 rounded-[120px] box-border bg-neutral-white border-[0.5px solid #C3C3C3] rounded-[120px]"
+      className="absolute z-10 top-[28px] right-[170px] tab:w-[276px]  lap:w-[443px] desk:w-[467px] h-[36px] border  border-neutral-30 rounded-[120px] box-border bg-neutral-white border-[0.5px solid #C3C3C3] rounded-[120px]"
     >
       <div className="relative h-full w-full">
         <AnimatePresence>

@@ -2,9 +2,9 @@ import React from "react";
 import { useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "@popmotion/popcorn";
-import hero from "../assets/bookban.jpg";
-import book from "../assets/bookkid.jfif";
-import herobook from "../assets/books.jpg";
+import longway from "../assets/book-focus-longway.png";
+import lootingMachine from "../assets/book-focus-looting.png";
+import vagabonds from "../assets/book-focus-vagabonds.png";
 import bookShowcase from "../assets/booky.jpg";
 
 // Variants in framer-motion define visual states
@@ -95,49 +95,81 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
         >
           {currentPage === 2 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] bg-primary-10"
-              //   style={{ background: `url(${hero})`, backgroundSize: "cover" }}
-            >
-              1
-            </div>
-          )}
-          {currentPage === 1 && (
-            <div
-              className="h-[495px] w-full max-w-[1440px] bg-primary-50"
-              //   style={{
-              //     background: `url(${herobook})`,
-              //     backgroundSize: "cover",
-              //   }}
-            >
-              2
-            </div>
-          )}
-          {currentPage === 0 && (
-            <div
               className="h-[495px] w-full max-w-[1440px] flex  justify-between"
-              //   style={{ background: `url(${book})`, backgroundSize: "cover" }}
+              style={{
+                background: `url(${lootingMachine})`,
+                backgroundSize: "cover",
+              }}
             >
               <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
                 <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
-                  An African Night Entertainment
+                  The Looting Machine
                 </h2>
                 <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
-                  by Cyprian Ekwensi
+                  by Tom Burtis
                 </p>
                 <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>
-              <div className=" w-[209px] h-[361.94px] mr-[352.63px] my-[66.45px]">
+            </div>
+          )}
+          {currentPage === 1 && (
+            <div
+              className="h-[495px] w-full max-w-[1440px] flex  justify-between"
+              style={{
+                background: `url(${longway})`,
+                backgroundSize: "cover",
+              }}
+            >
+              <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
+                <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
+                  Book Focus
+                </h3>
+                <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
+                  Long Way to Freedom
+                </h2>
+                <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
+                  by Nelson Mandela
+                </p>
+                <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                  Buy Now
+                </button>
+              </div>
+            </div>
+          )}
+          {currentPage === 0 && (
+            <div
+              className="h-[495px] w-full max-w-[1440px] flex  justify-between"
+              style={{
+                background: `url(${vagabonds})`,
+                backgroundSize: "cover",
+              }}
+            >
+              <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
+                <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
+                  Book Focus
+                </h3>
+                <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
+                  Vagabonds
+                </h2>
+                <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
+                  by Eloghosa Osunde
+                </p>
+                <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                  Buy Now
+                </button>
+              </div>
+              {/* <div className=" w-[209px] h-[361.94px] mr-[352.63px] my-[66.45px]">
                 <img
                   className="w-full h-full pointer-events-none"
                   src={bookShowcase}
                   alt="Hero Book"
                 />
-              </div>
+              </div> */}
             </div>
           )}
         </motion.div>

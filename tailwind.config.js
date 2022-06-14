@@ -48,19 +48,19 @@ module.exports = {
     },
 
     screens: {
-      mobile: "360px",
+      mob: "375px",
       // => @media (min-width: 640px) { ... }
 
-      "m-tablet": "860px",
+      mtab: "860px",
       // => @media (min-width: 640px) { ... }
 
-      tablet: "1024px",
+      tab: "1024px",
       // => @media (min-width: 640px) { ... }
 
-      laptop: "1366px",
+      lap: "1366px",
       // => @media (min-width: 1024px) { ... }
 
-      desktop: "1440px",
+      desk: "1440px",
       // => @media (min-width: 1280px) { ... }
     },
 

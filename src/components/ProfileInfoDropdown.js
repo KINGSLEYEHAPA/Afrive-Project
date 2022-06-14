@@ -64,9 +64,11 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         </h3>
       </Link>
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-      <h3 className="text-neutral-80 text-bodyN font-reg  px-[24px]  py-[16px] cursor-pointer hover:bg-primary-10">
-        Coupons & Vouchers
-      </h3>
+      <Link to="/coupon" onClick={() => setShowProfileInfo(false)}>
+        <h3 className="text-neutral-80 text-bodyN font-reg  px-[24px]  py-[16px] cursor-pointer hover:bg-primary-10">
+          Coupons & Vouchers
+        </h3>
+      </Link>
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
       <h3 className="text-neutral-80 text-bodyN font-reg  px-[24px]  py-[16px] h-[68px] rounded-br-[8px] rounded-bl-[8px] cursor-pointer hover:bg-primary-10">
         Support

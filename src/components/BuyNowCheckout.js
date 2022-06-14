@@ -8,10 +8,10 @@ const BuyNowCheckout = () => {
   const navigate = useNavigate();
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[521px]">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[521px] pt-[32px]">
         <div
           onClick={() => navigate(-1)}
-          className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
+          className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
         >
           <span className="text-[25px]">
             <MdChevronLeft />

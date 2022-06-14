@@ -33,12 +33,13 @@ const Header = ({
   console.log(path);
 
   return (
-    <header className=" w-screen max-w-[1440px]  h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20 ">
+    <header className="mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20  ">
       {showQuiz && (
         <OptionsModal>
           <Quiz setShowQuiz={setShowQuiz} />
         </OptionsModal>
       )}
+
       <div className=" w-[546px] pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
           <Link to="/">
@@ -89,7 +90,7 @@ const Header = ({
           <div className=" absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
       </div>
-      <div className=" mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
+      <div className=" mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
         <AnimateSharedLayout>
           {showSearch && (
             <Search setShowSearch={setShowSearch} showSearch={showSearch} />
@@ -117,7 +118,7 @@ const Header = ({
             animate={{ opacity: 1, transition: { duration: 0.5 } }}
             exit={{ opacity: 0 }}
             layoutId="outline"
-            className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
+            className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
           >
             {!showSearch && <FiSearch />}
           </motion.p>

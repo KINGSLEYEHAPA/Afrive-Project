@@ -113,10 +113,10 @@ const ShoppingBag = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] ">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pt-[32px]">
         <div
           onClick={() => navigate(-1)}
-          className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
+          className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
         >
           <span className="text-[25px]">
             <MdChevronLeft />
@@ -203,7 +203,7 @@ const ShoppingBag = () => {
                           <div className="h-[12px] w-full flex justify-end items-center pr-[172.72px]">
                             <span
                               onClick={() => removeBookFromQueue(book)}
-                              className="w-[12px] h-[12px] text-[20px] text-neutral-30 cursor-pointer"
+                              className="w-[12px] h-[12px] text-[20px] text-neutral-30 cursor-pointer hover:text-neutral-black"
                             >
                               <AiOutlineClose />
                             </span>
@@ -309,7 +309,7 @@ const ShoppingBag = () => {
                 </div>
               )}
             </div>
-            <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
+            <button className="  w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
               Proceed to Checkout
             </button>
           </div>
