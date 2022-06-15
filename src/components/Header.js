@@ -33,7 +33,9 @@ const Header = ({
   console.log(path);
 
   return (
-    <header className="mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20  ">
+    <header className="w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20  ">
+      {/* 
+mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] */}
       {showQuiz && (
         <OptionsModal>
           <Quiz setShowQuiz={setShowQuiz} />

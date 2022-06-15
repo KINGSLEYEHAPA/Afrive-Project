@@ -95,13 +95,18 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
         >
           {currentPage === 2 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] flex  justify-between"
-              style={{
-                background: `url(${lootingMachine})`,
-                backgroundSize: "cover",
-              }}
+              className="h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between "
+              // style={{
+              //   background: `url(${lootingMachine})`,
+              //   backgroundSize: "cover",
+              // }}
             >
-              <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
+              <img
+                className="w-full h-full z-[-1] absolute top-0 left-0"
+                src={lootingMachine}
+                alt="Hero"
+              />
+              <div className=" w-[178px] h-[240px] mt-[96px] ml-[73px] tab:ml-[86px] lap:ml-[183px] mb-[159px]">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
@@ -119,13 +124,18 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           )}
           {currentPage === 1 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] flex  justify-between"
-              style={{
-                background: `url(${longway})`,
-                backgroundSize: "cover",
-              }}
+              className="h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between "
+              // style={{
+              //   background: `url(${longway})`,
+              //   backgroundSize: "cover",
+              // }}
             >
-              <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
+              <img
+                className="w-full h-full z-[-1] absolute top-0 left-0"
+                src={longway}
+                alt="Hero"
+              />
+              <div className=" w-[178px] h-[240px] mt-[96px] ml-[73px] tab:ml-[86px] lap:ml-[183px] mb-[159px]">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
@@ -143,13 +153,23 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           )}
           {currentPage === 0 && (
             <div
-              className="h-[495px] w-full max-w-[1440px] flex  justify-between"
-              style={{
-                background: `url(${vagabonds})`,
-                backgroundSize: "cover",
-              }}
+              className="h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between "
+              // style={{
+              //   background: `url(${vagabonds})`,
+              //   // backgroundSize: "contain",
+              //   width: "100%",
+              //   height: "100%",
+              //   // objectFit: "contain",
+              // }}
+
+              // w-[860px] tab:w-[1024px] lap:w-[1366px] desk:w-[1440px]
             >
-              <div className=" w-[178px] h-[240px] mt-[96px] ml-[183px] mb-[159px]">
+              <img
+                className="w-full h-full z-[-1] absolute top-0 left-0"
+                src={vagabonds}
+                alt="Hero"
+              />
+              <div className=" w-[178px] h-[240px] mt-[96px] ml-[73px] tab:ml-[86px] lap:ml-[183px] mb-[159px]">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>

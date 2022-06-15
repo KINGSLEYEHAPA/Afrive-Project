@@ -71,10 +71,47 @@ transform: scale(1);
   
   
   }
+/* 
+  @media  screen and (max-width:1366px ) {
+    .slider-container{
+      width: 1366px;
+      height: 495px;
+      margin: 0 auto;
+    }
+
+
+
+    }
+
+    @media  screen and (max-width:1024px ) {
+      .slider-container{
+        width: 1024px;
+        height: 495px;
+        margin: 0 auto;
+      }
+  
+  
+  
+      }
+       */
+    /* @media  screen and (max-width:860px ) {
+      .slider-container{
+        width: 860px;
+        height: 339px;
+        margin: 0 auto;
+      }
+  
+  
+  
+      } */
+
+
+
+
+    
+  
   
   .slide {
-
-  background:#E74932;
   position: absolute;
   top:0;
   left: 0;
