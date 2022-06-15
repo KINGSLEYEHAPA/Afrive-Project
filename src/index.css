@@ -92,27 +92,29 @@ transform: scale(1);
   
   
   
-      }
-       */
-    /* @media  screen and (max-width:860px ) {
-      .slider-container{
-        width: 860px;
-        height: 339px;
-        margin: 0 auto;
-      }
-  
-  
-  
       } */
+       
+     
+ 
 
 
 
-
+      @media  screen and (max-width:1024px ) {
+        .slider-container{
+          width: 100%;
+          height: 339px;
+          margin: 0 auto;
+        }
     
+    
+    
+        } 
   
   
   .slide {
   position: absolute;
+  width:100%;
+  height: 100%;
   top:0;
   left: 0;
   bottom: 0;

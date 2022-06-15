@@ -106,7 +106,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 src={lootingMachine}
                 alt="Hero"
               />
-              <div className=" w-[178px] h-[240px] mt-[96px] ml-[73px] tab:ml-[86px] lap:ml-[183px] mb-[159px]">
+              <div className=" w-[178px] h-[240px] ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mb-[61.50px] mt-[61.50px]   ">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
@@ -116,7 +116,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
                   by Tom Burtis
                 </p>
-                <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button className=" text-neutral-white text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>
@@ -135,7 +135,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 src={longway}
                 alt="Hero"
               />
-              <div className=" w-[178px] h-[240px] mt-[96px] ml-[73px] tab:ml-[86px] lap:ml-[183px] mb-[159px]">
+              <div className=" w-[178px] h-[240px] ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mb-[61.50px] mt-[61.50px]   ">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
@@ -145,7 +145,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
                   by Nelson Mandela
                 </p>
-                <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button className=" text-neutral-white text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>
@@ -169,7 +169,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 src={vagabonds}
                 alt="Hero"
               />
-              <div className=" w-[178px] h-[240px] mt-[96px] ml-[73px] tab:ml-[86px] lap:ml-[183px] mb-[159px]">
+              <div className=" w-[178px] h-[240px] ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mb-[61.50px] mt-[61.50px]   ">
                 <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
@@ -179,7 +179,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
                   by Eloghosa Osunde
                 </p>
-                <button className=" text-neutral-white text-buttonT font-medium mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button className=" text-neutral-white text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>
