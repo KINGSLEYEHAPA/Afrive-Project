@@ -13,7 +13,10 @@ import AnimatePages from "./AnimatePages";
 const Homepage = () => {
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px] mx-auto mt-[88px]  " id="home">
+      <div
+        className="w-screen max-w-[1440px] mx-auto mt-[68px] mtab:mt-[88px]  "
+        id="home"
+      >
         <HeroSection />
         <RecommendedBooks />
         <BookSection bookSectionName="Popular Books" />

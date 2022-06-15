@@ -94,92 +94,70 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
           custom={direction}
         >
           {currentPage === 2 && (
-            <div
-              className="h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between "
-              // style={{
-              //   background: `url(${lootingMachine})`,
-              //   backgroundSize: "cover",
-              // }}
-            >
+            <div className=" h-[238.86px] mtab:h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between ">
               <img
                 className="w-full h-full z-[-1] absolute top-0 left-0"
                 src={lootingMachine}
                 alt="Hero"
               />
-              <div className=" w-[178px] h-[240px] ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mb-[61.50px] mt-[61.50px]   ">
-                <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
+
+              <div className=" w-[178px] h-[240px] ml-[22px] mtab:ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mtab:mb-[61.50px] mtab:mt-[61.50px] mb-[58.86px] mt-[49px]   ">
+                <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
+                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
                   The Looting Machine
                 </h2>
-                <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
+                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
                   by Tom Burtis
                 </p>
-                <button className=" text-neutral-white text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>
             </div>
           )}
           {currentPage === 1 && (
-            <div
-              className="h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between "
-              // style={{
-              //   background: `url(${longway})`,
-              //   backgroundSize: "cover",
-              // }}
-            >
+            <div className=" h-[238.86px] mtab:h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between ">
               <img
                 className="w-full h-full z-[-1] absolute top-0 left-0"
                 src={longway}
                 alt="Hero"
               />
-              <div className=" w-[178px] h-[240px] ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mb-[61.50px] mt-[61.50px]   ">
-                <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
+              <div className=" w-[178px] h-[240px] ml-[22px] mtab:ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mtab:mb-[61.50px] mtab:mt-[61.50px] mb-[58.86px] mt-[49px]   ">
+                <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
+                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
                   Long Way to Freedom
                 </h2>
-                <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
+                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
                   by Nelson Mandela
                 </p>
-                <button className=" text-neutral-white text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>
             </div>
           )}
           {currentPage === 0 && (
-            <div
-              className="h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between "
-              // style={{
-              //   background: `url(${vagabonds})`,
-              //   // backgroundSize: "contain",
-              //   width: "100%",
-              //   height: "100%",
-              //   // objectFit: "contain",
-              // }}
-
-              // w-[860px] tab:w-[1024px] lap:w-[1366px] desk:w-[1440px]
-            >
+            <div className=" h-[238.86px] mtab:h-[339px] tab:h-[495px] w-screen max-w-[1440px] flex  justify-between ">
               <img
                 className="w-full h-full z-[-1] absolute top-0 left-0"
                 src={vagabonds}
                 alt="Hero"
               />
-              <div className=" w-[178px] h-[240px] ml-[73px] tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mb-[61.50px] mt-[61.50px]   ">
-                <h3 className="text-h3 text-neutral-white/80 font-reg mt-0">
+              <div className=" w-[178px] h-[240px] ml-[22px] mtab:ml-[73px]  tab:ml-[86px] lap:ml-[183px] lap:mb-[159px] lap:mt-[96px] tab:mb-[139.50px] tab:mt-[139.50px] mtab:mb-[61.50px] mtab:mt-[61.50px] mb-[58.86px] mt-[49px]   ">
+                <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className="text-h2 font-medium mt-[16px] mb-[8px] text-neutral-white whitespace-nowrap">
+                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
                   Vagabonds
                 </h2>
-                <p className="bodyN whitespace-nowrap font-reg text-neutral-white">
+                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
                   by Eloghosa Osunde
                 </p>
-                <button className=" text-neutral-white text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40 w-[178px] h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
                   Buy Now
                 </button>
               </div>

@@ -1,5 +1,6 @@
 import logo from "../assets/logo.png";
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
+import { AiOutlineMenu } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import CategoriesDropdown from "./CategoriesDropdown";
@@ -33,26 +34,25 @@ const Header = ({
   console.log(path);
 
   return (
-    <header className="w-screen max-w-[1440px] h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20  ">
-      {/* 
-mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] */}
+    <header className="w-screen max-w-[1440px] h-[68px] mtab:h-[88px] bg-neutral-white mx-auto shadow-[0px 4px 4px rgba(0, 0, 0, 0.05)] fixed z-20 top-0 flex justify-between border-b border-neutral-20  ">
       {showQuiz && (
         <OptionsModal>
           <Quiz setShowQuiz={setShowQuiz} />
         </OptionsModal>
       )}
 
-      <div className=" w-[546px] pl-[99.69px] pr-[10]">
+      <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mtab:pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
           <Link to="/">
             {" "}
             <img
-              className="w-[30.36] h-[40.27] cursor-pointer"
+              className=" w-[26.22px] h-[34.19px] mtab:w-[30.36] mtab:h-[40.27] cursor-pointer"
               src={logo}
               alt="Afrive Logo"
             />
           </Link>
-          <div className="flex h-full w-[358px]  gap-[56px] relative">
+
+          <div className=" hidden mtab:flex h-full w-[358px]  gap-[56px] relative">
             <Link to="/">
               <p className="text-bodyL text-neutral-80 w-[49px] h-[24px] reg cursor-pointer py-[32px]">
                 Home
@@ -89,24 +89,20 @@ mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] */
               {showEbookMenu && <EbookDropdown />}
             </AnimatePresence>
           </div>
-          <div className=" absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
+          <div className=" hidden mtab:block absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
       </div>
-      <div className=" mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
-        <AnimateSharedLayout>
-          {showSearch && (
-            <Search setShowSearch={setShowSearch} showSearch={showSearch} />
-          )}
-        </AnimateSharedLayout>
+      <div className=" mr-[27px] mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
+        <AnimatePresence>
+          <AnimateSharedLayout>
+            {showSearch && (
+              <Search setShowSearch={setShowSearch} showSearch={showSearch} />
+            )}
+          </AnimateSharedLayout>
+        </AnimatePresence>
 
-        <div className="absolute top-7 right-12 w-[14px] h-[14px] rounded-full bg-primary-50">
-          <span
-            className={
-              shoppingBag.length >= 10
-                ? " cursor-pointer relative bottom-[5.8px] left-[2.2px] medium text-neutral-white text-[10px] leading-4"
-                : " cursor-pointer relative bottom-[5.8px] left-[4.5px] medium text-neutral-white text-[10px] leading-4"
-            }
-          >
+        <div className=" absolute  top-4 right-12 mtab:top-7 mtab:right-12 w-[14px] h-[14px] rounded-full bg-primary-50 flex justify-center items-center">
+          <span className=" cursor-pointer medium text-neutral-white text-[10px] leading-4">
             {shoppingBag.length}
           </span>
         </div>
@@ -121,19 +117,19 @@ mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] */
           animate={{ opacity: 1, transition: { duration: 0.5 } }}
           exit={{ opacity: 0 }}
           layoutId="outline"
-          className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]"
+          className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]"
         >
           {!showSearch && <FiSearch />}
         </motion.p>
 
         <Link to="/liked-books">
           {path === "/liked-books" ? (
-            <p className="text-[20px]  text-primary-70 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+            <p className="text-[20px]  text-primary-70 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]">
               {" "}
               <MdFavorite />
             </p>
           ) : (
-            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer pt-[35px] pb-[35px]">
+            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]">
               {" "}
               <MdOutlineFavoriteBorder />
             </p>
@@ -142,11 +138,11 @@ mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] */
 
         <Link to="/shopping-bag">
           {path === "/shopping-bag" ? (
-            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
+            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px] ">
               <RiShoppingBag3Fill />
             </p>
           ) : (
-            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[35px] ">
+            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px] ">
               <FiShoppingBag />
             </p>
           )}
@@ -159,10 +155,13 @@ mob:w-[375px] mtab:w-[860px]  tab:w-[1024px]  lap:w-[1366px]  desk:w-[1440px] */
             setShowEbookMenu(false);
             setShowCategories(false);
           }}
-          className="text-[20px] h-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer mt-[35px] mb-[35px]"
+          className=" hidden mtab:block  text-[20px] h-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer mt-[35px] mb-[35px]"
         >
           <FaRegUser />
         </p>
+        <span className="my-[25px] mtab:hidden text-neutral-70 text-[20px]">
+          <AiOutlineMenu />
+        </span>
         <AnimatePresence>
           {showProfileInfo && (
             <ProfileInfoDropdown

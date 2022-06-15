@@ -76,7 +76,11 @@ const Search = ({ showSearch, setShowSearch }) => {
       }}
       exit={{
         opacity: 0,
-        width: 20,
+        width:
+          (searchWidth.width >= 1440 && [300, 100, 20]) ||
+          (searchWidth.width >= 1366 &&
+            searchWidth.width < 1440 && [300, 100, 20]) ||
+          (searchWidth.width >= 860 && searchWidth.width < 1366 && 276.23),
         height: 20,
         transition: { duration: 1.2 },
       }}
