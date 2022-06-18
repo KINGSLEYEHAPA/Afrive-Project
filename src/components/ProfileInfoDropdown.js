@@ -1,8 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout, reset } from "../features/user/userSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // const { user } = useSelector((state) => state.user);
+  const user = null;
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
+
   return (
     <motion.div
       key="box"
@@ -13,17 +26,16 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
     >
       <div className=" h-[43.86px] tab:h-[57px] lap:h-[72px] w-full p-[16.50px] tab:p-[20px] lap:p-[24px] flex justify-between">
         <h3 className=" text-sub tab:text-bodyS lap:text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">
-          Hi Faith
+          Hi {user ? user : "Guest"}
         </h3>
-        {false && (
-          <Link to="/">
-            {" "}
-            <p className=" text-[9px] leading-[12px] tab:text-sub   lap:text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
-              Sign Out
-            </p>
-          </Link>
-        )}
-        {true && (
+        {user ? (
+          <p
+            onClick={onLogout}
+            className=" text-[9px] leading-[12px] tab:text-sub   lap:text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer"
+          >
+            Sign Out
+          </p>
+        ) : (
           <Link to="/sign-in">
             <p className="text-[9px] leading-[12px] tab:text-sub   lap:text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
               Sign In

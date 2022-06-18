@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import FormInput from "./FormInput";
 import bgId from "../assets/mesh1.jpg";
+import SmallLoader from "./SmallLoader";
 
 const SignIn = () => {
   const [loginValues, setLoginValues] = useState({
@@ -87,7 +88,13 @@ const SignIn = () => {
                   <p className="text-bodyS text-neutral-70">Forgot Password?</p>
                 </Link>
               </div>
-              <div className="w-full mt-[42.92px] space-y-[16px]">
+              <div className="w-full mt-[42.92px] space-y-[16px] relative">
+                <div className="absolute top-[-91px] left-[360px] z-20">
+                  <SmallLoader loaderColor={"secondary"} />
+                </div>
+                <div className="absolute top-[-180px] left-[307px] z-10">
+                  <SmallLoader loaderColor={"primary"} />
+                </div>
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"

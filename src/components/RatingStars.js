@@ -55,12 +55,12 @@ const RatingStars = ({ book }) => {
   const SecondRandomNumber = Math.random() * 1000 + uuid();
 
   return (
-    <div className="w-[108px] h-[18px] flex gap-[14px]">
+    <div className="w-[108px] h-[18px] flex gap-[6px] tab:gap-[10px] desk:gap-[14px]">
       {stars.slice(0, averageRating).map((star, index) => {
         return (
           <span
             key={randomNumber + "a" + index}
-            className="h-full text-accent-rating text-[15px] "
+            className="h-full text-accent-rating text-[10px] mtab:text-[15px] "
           >
             <BsStarFill />
           </span>
@@ -71,7 +71,7 @@ const RatingStars = ({ book }) => {
         return (
           <span
             key={SecondRandomNumber + "b" + index}
-            className="h-full text-accent-rating text-[15px] "
+            className="h-full text-accent-rating text-[10px] mtab:text-[15px] "
           >
             <BsStar />
           </span>

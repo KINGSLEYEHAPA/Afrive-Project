@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { UserStarRating } from "./RatingStars";
+import { Link } from "react-router-dom";
 import pen from "../assets/pen.svg";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -92,6 +93,8 @@ const CustomerBookReview = ({ book }) => {
   const [rating, setRating] = useState(null);
   const dispatch = useDispatch();
 
+  const user = "prince";
+
   const bookForComment = {
     ...book,
     bookRating: {
@@ -149,7 +152,9 @@ const CustomerBookReview = ({ book }) => {
             </div>
             <div className="w-full h-full">
               <div
-                onClick={() => setRateABook(true)}
+                onClick={() =>
+                  user !== null ? setRateABook(true) : setWriteAReview(3)
+                }
                 className={
                   rating === null
                     ? "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
@@ -180,7 +185,9 @@ const CustomerBookReview = ({ book }) => {
               </AnimateSharedLayout>
 
               <div
-                onClick={() => setWriteAReview(1)}
+                onClick={() =>
+                  user !== null ? setWriteAReview(1) : setWriteAReview(3)
+                }
                 className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
               >
                 <img className="" src={pen} alt="Pen" />
@@ -206,6 +213,35 @@ const CustomerBookReview = ({ book }) => {
             <div className="w-[407px] h-[122px] flex flex-col items-center gap-[38px] mt-[38px] ">
               <h4 className="text-h4 font-reg text-primary-50 whitespace-nowrap">
                 Your Review has been successfully submitted!{" "}
+              </h4>
+              <button
+                onClick={() => setWriteAReview(0)}
+                className="h-[52px] w-[196px] text-primary-50 rounded-[4px] border border-primary-40 "
+              >
+                Back to Reviews
+              </button>
+            </div>
+          </motion.div>
+        )}
+
+        {writeAReview === 3 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.2 } }}
+            exit={{ opacity: 0, transition: { duration: 1.2 } }}
+            className="w-full h-full  flex justify-center items-center "
+          >
+            <div className="w-[407px] h-[122px] flex flex-col items-center gap-[38px] mt-[38px] ">
+              <h4 className="text-h4 font-reg text-primary-50 whitespace-nowrap">
+                Please{" "}
+                <Link className="underline" to="/sign-in">
+                  signin
+                </Link>{" "}
+                or{" "}
+                <Link className="underline" to="/sign-up">
+                  signup
+                </Link>{" "}
+                to rate and comment on a book.
               </h4>
               <button
                 onClick={() => setWriteAReview(0)}

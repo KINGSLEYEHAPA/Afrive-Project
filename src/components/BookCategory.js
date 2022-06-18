@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 import BookQuote from "./BookQuote";
 import BookSectionWithoutHeaders from "./BookSectionWithoutHeaders";
@@ -9,8 +9,13 @@ import { FiArrowUpLeft } from "react-icons/fi";
 import { Link as ALink } from "react-scroll";
 import { useSelector } from "react-redux";
 import AnimatePages from "./AnimatePages";
+import BookPagination from "./BookPagination";
+import Loading from "./Loading";
 
 const BookCategory = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [booksPerPage] = useState(4);
+  const loading = false;
   let params = useParams();
   const navigate = useNavigate();
   const availableBooks = useSelector((state) => state.books.booksInStock);
@@ -20,7 +25,18 @@ const BookCategory = () => {
     return item.category.includes(params.catName);
   });
 
-  return (
+  // Get current books
+  const indexOfLastBook = currentPage * booksPerPage;
+  const indexOfFirstBook = indexOfLastBook - booksPerPage;
+  const currentBooks = bookCategory.slice(indexOfFirstBook, indexOfLastBook);
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  return loading ? (
+    <div className="flex justify-center items-center w-full">
+      <Loading />
+    </div>
+  ) : (
     <AnimatePages>
       <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[88px]">
         <div
@@ -42,7 +58,16 @@ const BookCategory = () => {
             {params.catName}
           </span>
         </div>
-        <BookSectionWithoutHeaders booksToShow={bookCategory} />
+        <BookSectionWithoutHeaders booksToShow={currentBooks} />
+
+        <BookPagination
+          booksPerPage={booksPerPage}
+          totalBooks={bookCategory.length}
+          paginate={paginate}
+          catName={params.catName}
+          currentPage={currentPage}
+        />
+
         <div className="w-full mt-[72.51px] flex justify-end items-center pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
             <span className="text-[25px]">

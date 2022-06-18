@@ -50,6 +50,8 @@ module.exports = {
     screens: {
       mob: "375px",
       // => @media (min-width: 640px) { ... }
+      mobx: "540px",
+      // => @media (min-width: 640px) { ... }
 
       mtab: "860px",
       // => @media (min-width: 640px) { ... }

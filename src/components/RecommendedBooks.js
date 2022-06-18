@@ -41,22 +41,25 @@ const RecommendedBooks = () => {
   return (
     <div className="w-screen max-w-[1440px] mx-auto">
       {" "}
-      <div className="h-[552px] w-screen max-w-[74.45%] ml-[12.77%] mr-[12.76%] p-0 ">
-        <div className="w-full h-[32px]  flex justify-between items-center">
-          <h3 className="text-h3 font-reg text-neutral-80">
+      <div className=" h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px]  lap:h-[532.52px]       desk:h-[552px] w-screen max-w-[74.45%]   mx-auto mtab:mx-[72px]     tab:mx-[86.49px]       lap:ml-[12.77%] lap:mr-[12.76%] p-0 ">
+        <div className="w-full   flex justify-between items-center">
+          <h3 className=" text-bodyN  mtab:text-h3 font-medium text-neutral-80 whitespace-nowrap">
             For you: Recommended based on your likes
           </h3>
-          <p className="mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
+          <p className=" hidden mtab:block    mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
             see more
           </p>
         </div>
-        <div className="w-full h-[492px] mt-[32px] grid grid-cols-3 px-0  gap-[81.59px]  ">
-          {availableBooks?.slice(0, 3).map((book) => {
+        <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 mtab:grid-cols-3 px-0 gap-[19px] mtab:gap-[73px] tab:gap-[86.43px] lap:gap-[76px] desk:gap-[81.59px]  ">
+          {availableBooks?.slice(2, 5).map((book) => {
             return (
-              <div key={book.id} className="w-[303px] h-full cursor-pointer">
-                <div className="w-full h-[415.81px]  relative group  ">
-                  <div className="absolute w-full h-[69px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
-                    <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[18px]">
+              <div
+                key={book.id}
+                className="   w-[155px] mtab:w-[190px] tab:w-[226.06px]   lap:w-[276px]  desk:w-[303px] h-full cursor-pointer"
+              >
+                <div className="w-full  h-[212.11px] mtab:h-[260px] tab:h-[309.52px]     lap:h-[379px]   desk:h-[415.81px]  relative group  ">
+                  <div className="absolute w-full h-[56px] mtab:h-[69px] lap:h-[62px] desk:h-[69px]  opacity-0 flex  justify-end lap:justify-between items-end mx-auto group-hover:opacity-100  ">
+                    <div className=" hidden lap:flex lap:w-[47px] lap:h-[47px]  w-[51px] h-[51px]     desk:w-[51px] desk:h-[51px] rounded-full bg-neutral-70/80 cursor-pointer justify-center items-center ml-[14px] desk:ml-[18px]">
                       <AnimatePresence exitBeforeEnter>
                         {favoriteBooks.filter(
                           (item) => item.title === book.title
@@ -74,7 +77,7 @@ const RecommendedBooks = () => {
                               transition: { duration: 1 },
                             }}
                             onClick={() => removeBookAsFavorite(book)}
-                            className="text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
+                            className=" text-[20px] desk:text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
                           >
                             <MdFavorite />
                           </motion.span>
@@ -92,20 +95,20 @@ const RecommendedBooks = () => {
                               transition: { duration: 1 },
                             }}
                             onClick={() => addBookAsFavorite(book)}
-                            className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                            className="text-[20px] desk:text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
                           >
                             <MdOutlineFavoriteBorder />
                           </motion.span>
                         )}
                       </AnimatePresence>
                     </div>
-                    <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[18px]">
+                    <div className="lap:w-[47px] lap:h-[47px]  mtab:w-[51px] mtab:h-[51px] w-[42.4px] h-[41px]    desk:w-[51px] desk:h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[7px] mtab:mr-[10px] tab:mr-[14px] desk:mr-[18px]">
                       {booksInShoppingBag.filter(
                         (item) => item.title === book.title
                       ).length > 0 ? (
                         <span
                           onClick={() => removeItemFromBag(book)}
-                          className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                          className=" text-[20px] desk:text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
                         >
                           {" "}
                           <RiShoppingBag3Fill />
@@ -113,7 +116,7 @@ const RecommendedBooks = () => {
                       ) : (
                         <span
                           onClick={() => addItemToBag(book)}
-                          className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                          className=" text-[20px] desk:text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
                         >
                           {" "}
                           <FiShoppingBag />
@@ -121,24 +124,29 @@ const RecommendedBooks = () => {
                       )}
                     </div>
                   </div>
-                  <div className="h-[56px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
+                  <div className=" hidden lap:flex h-[56px]   lap:h-[50px] desk:h-[56px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0  justify-center items-center group-hover:opacity-100">
                     <RatingStars book={book} />
                   </div>
 
                   <img
-                    className="w-full h-[415.81px]  mb-[16.19px]"
+                    className="w-full h-[212.11px] mtab:h-[260px] tab:h-[309.52px]  lap:h-[379px] desk:h-[415.81px] mb-[11px] lap:mb-[16.19px]"
                     src={book?.img}
                     alt="Book"
                   />
                 </div>
                 <Link to={`/book/${book?.title}`}>
-                  <h3 className="text-h3 medium text-neutral-70 mt-[20px] truncate">
+                  <h3 className=" text-[14.436px] leading-[23px] mtab:text-[17.69px] mtab:leading-[28px] tab:text-[21.127px] tab:leading-[34px] lap:text-h4  desk:text-h3 medium text-neutral-70 mt-[20px] truncate">
                     {book?.title}
                   </h3>
                 </Link>
-                <p className="leading-8 text-[18px] text-primary-40">
-                  N{book?.price}
-                </p>
+                <div className=" flex gap-[20px] mtab:gap-[22px] tab:gap-[30px] items-center">
+                  <p className=" text-[14.436px] leading-[23px] mtab:text-[17.69px] mtab:leading-[28px]tab:text-[21.127px] tab:leading-[34px] desk:leading-8 lap:leading-6 lap:text-[18px] text-primary-40">
+                    N{book?.price}
+                  </p>
+                  <span className="inline-block lap:hidden  mt-[5px] mtab:mt-0">
+                    <RatingStars book={book} />
+                  </span>
+                </div>
               </div>
             );
           })}
