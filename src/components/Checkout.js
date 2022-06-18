@@ -74,7 +74,7 @@ const Checkout = () => {
                 legoyedepo@gmail.com
               </p>
             </div>
-            <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
+            {/* <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " /> */}
             {/* <div className="h-[29.78px] w-full  flex items-center gap-[56px] mt-[56px]">
               <p className="whitespace-nowrap text-h4 font-medium text-neutral-70">
                 Coupon:
@@ -102,7 +102,7 @@ const Checkout = () => {
               <p className="text-bodyL text-neutral-30">Change</p>
             </div>
             <hr className="w-[100%] h-0 border border-primary-10 mt-[32px] mx-auto   " /> */}
-
+            {/* 
             <div className="h-[96px] w-full  flex justify-between items-start gap-[56px] mt-[56.41px]">
               <p className="whitespace-nowrap mt-[34px] text-h4 font-medium text-neutral-70">
                 Payment:
@@ -128,7 +128,7 @@ const Checkout = () => {
             <div className="flex w-full h-[24px] justify-end mt-[69.18px]">
               {" "}
               <p className="text-bodyL text-neutral-30">Change</p>
-            </div>
+            </div> */}
           </div>
 
           <hr className="w-0 h-[753.86px] border border-primary-10 absolute rotate-180 left-[50%]    " />
@@ -151,7 +151,7 @@ const Checkout = () => {
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
               <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
-                Place Order
+                Continue to Payment
               </button>
             </div>
             <div className="w-full h-[18px] flex justify-center items-center gap-[15px] mt-[41.25px]">

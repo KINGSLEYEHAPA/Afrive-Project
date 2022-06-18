@@ -4,15 +4,15 @@ const Payment = () => {
   return (
     <div className="w-[505px] py-[16px] px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]">
       <div className="w-full h-[32px] flex justify-center items-center mt-[9.92px]">
-        <h4 className="text-h4 font-reg text-neutral-30 ">Payment</h4>
+        <h4 className="text-bodyN font-reg text-neutral-30 ">Payment</h4>
       </div>
       <div className="h-[120px] w-full overflow-hidden overflow-y-auto scrollbar-hide">
         <div className="my-[10px] ">
-          <div className="min-h-[96px] w-full  flex justify-between items-start gap-[56px]   ">
-            <p className="whitespace-nowrap mt-[10px] text-bodyS font-medium text-neutral-70">
+          <div className="min-h-[120px] w-full  flex justify-between   ">
+            <p className="whitespace-nowrap mt-[10px] text-bodyS font-medium text-neutral-30">
               Order Info:
             </p>
-            <div className="relative right-[52px]">
+            <div className="">
               <p className="text-bodyS font-reg text-neutral-60">
                 <span>1</span> x Things Fall Apart
               </p>
@@ -46,9 +46,10 @@ const Payment = () => {
       </div>
       <div className="flex justify-between items-center my-[5px]">
         <span className="text-neutral-30">Total Amount to Pay</span>
-        <span className="text-primary-50">N25,000</span>
+        <span className="text-primary-50 font-medium">N25,000</span>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-between items-center mt-[10px]">
+        <p className="text-neutral-30">Payment Method:</p>
         <div
           className="w-[120px] h-[70px] bg-[linear-gradient(186.31deg,#F67A6A_16.82%,#F89386_85.91%)] 
                    flex flex-col justify-between p-[6px]  rounded-[4px]"
@@ -77,12 +78,13 @@ const Payment = () => {
         {" "}
         <p className="text-bodyS text-neutral-30 cursor-pointer">Change</p>
       </div>
-      <button className="w-full h-[65px] mt-[10px] rounded-[4px] bg-primary-50 text-neutral-white text-h4 font-medium">
+      <button className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium">
         Pay with Paystack
       </button>
-      <button className="w-full h-[65px] mt-[10px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-h4 font-medium">
+      <button className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyL font-medium">
         Cancel
       </button>
+      {false && <div></div>}
     </div>
   );
 };

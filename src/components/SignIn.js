@@ -6,6 +6,7 @@ import bgId from "../assets/mesh1.jpg";
 import SmallLoader from "./SmallLoader";
 
 const SignIn = () => {
+  const loading = true;
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
@@ -89,20 +90,24 @@ const SignIn = () => {
                 </Link>
               </div>
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                <div className="absolute top-[-91px] left-[360px] z-20">
-                  <SmallLoader loaderColor={"secondary"} />
-                </div>
-                <div className="absolute top-[-180px] left-[307px] z-10">
-                  <SmallLoader loaderColor={"primary"} />
-                </div>
+                {loading && (
+                  <div className="absolute top-[-91px] left-[276px] z-10">
+                    <SmallLoader loaderColor={"secondary"} />
+                  </div>
+                )}
+                {loading && (
+                  <div className="absolute top-[-180px] left-[276px] z-10">
+                    <SmallLoader loaderColor={"primary"} />
+                  </div>
+                )}
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
                 >
-                  Sign In
+                  {!loading && "Sign In"}
                 </button>
                 <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
-                  Continue with Google
+                  {!loading && "Continue with Google"}
                 </button>
               </div>
               <p className="text-center mt-[156.09px] text-bodyN text-neutral-black">

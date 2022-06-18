@@ -8,7 +8,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const { user } = useSelector((state) => state.user);
-  const user = null;
+  const user = "Kingsley";
 
   const onLogout = () => {
     dispatch(logout());
