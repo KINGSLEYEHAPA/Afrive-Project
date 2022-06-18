@@ -5,13 +5,16 @@ import { HiOutlineInformationCircle } from "react-icons/hi";
 import OptionsModal from "./OptionsModal";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
+import Payment from "./Payment";
 
 const Checkout = () => {
   const navigate = useNavigate();
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[162px] relative mb-0 pt-[32px] ">
-        {/* <OptionsModal /> */}
+        <OptionsModal>
+          <Payment />
+        </OptionsModal>
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
