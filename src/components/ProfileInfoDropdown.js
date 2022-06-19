@@ -22,7 +22,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
-      className=" absolute top-[100px] right-[-35px]    mtab:w-[187px] mtab:h-[236px]    tab:w-[250.03px] tab:h-[314.97px]   lap:w-[308px] lap:h-[388px] bg-neutral-white border border-[rgba(0,0,0,0.1)] shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] p-0 "
+      className=" absolute top-[100px] right-[-25px]    mtab:w-[187px] mtab:h-[236px]    tab:w-[250.03px] tab:h-[314.97px]   lap:w-[308px] lap:h-[388px] bg-neutral-white border border-[rgba(0,0,0,0.1)] shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] p-0 "
     >
       <div className=" h-[43.86px] tab:h-[57px] lap:h-[72px] w-full p-[16.50px] tab:p-[20px] lap:p-[24px] flex justify-between">
         <h3 className=" text-sub tab:text-bodyS lap:text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">
@@ -54,7 +54,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         {" "}
         <div className="flex justify-start items-center gap-[8px]">
           <h4 className="text-neutral-80 text-sub lap:text-bodyN font-reg ">
-            Take Out Quiz
+            Take Our Quiz
           </h4>{" "}
           <div className=" w-[4.87px] h-[4.87px] tab:w-[6.49px] tab:h-[6.49px]      lap:w-[8px] lap:h-[8px]  bg-primary-50 rounded full"></div>
         </div>

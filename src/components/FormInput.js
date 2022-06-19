@@ -1,12 +1,12 @@
 import { HiOutlineInformationCircle } from "react-icons/hi";
 
 const FormInput = (props) => {
-  const { label, onChange, errorMessage, formtyp, ...inputProps } = props;
+  const { label, onChange, errorMessage, fTyp, ...inputProps } = props;
   return (
     <div className="w-full h-[86px] mt-[48px]">
       <label
         className={
-          formtyp === "billing"
+          fTyp === "billing"
             ? "text-bodyN text-neutral-70"
             : "text-bodyS text-neutral-70"
         }
@@ -22,7 +22,7 @@ const FormInput = (props) => {
       <div className="error">
         <div className=" mt-[10px] flex justify-start items-center gap-[8.51px] text-bodyS text-primary-50 ">
           <span className="text-[18px] ">
-            {formtyp !== "billing" && <HiOutlineInformationCircle />}
+            {fTyp !== "billing" && <HiOutlineInformationCircle />}
           </span>
           <span className="">{errorMessage}</span>
         </div>

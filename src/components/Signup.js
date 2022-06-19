@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
@@ -6,15 +6,28 @@ import bgId from "../assets/mesh1.jpg";
 import SmallFormInput from "./SmallFormInput";
 import FormInput from "./FormInput";
 import SmallLoader from "./SmallLoader";
+import { register } from "../features/user/userSlice";
+
+import { useDispatch, useSelector } from "react-redux";
+import { googleLogin } from "../features/user/userSlice";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { user, isError, errorMessage, isLoading } = useSelector(
+    (state) => state.user
+  );
+
+  useEffect(() => {
+    dispatch(googleLogin);
+  }, []);
+
   const [loginValues, setLoginValues] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
+    firstname: "",
+    lastname: "",
+    username: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    password_confirmation: "",
   });
   const onChange = (e) => {
     setLoginValues({ ...loginValues, [e.target.name]: e.target.value });
@@ -23,7 +36,7 @@ const SignUp = () => {
   const inputs = [
     {
       id: 1,
-      name: "firstName",
+      name: "firstname",
       type: "text",
       placeholder: "",
       errorMessage: "It should be atleast one character",
@@ -33,7 +46,7 @@ const SignUp = () => {
     },
     {
       id: 2,
-      name: "lastName",
+      name: "lastname",
       type: "text",
       placeholder: "",
       errorMessage: "It should be atleast one character",
@@ -43,7 +56,7 @@ const SignUp = () => {
     },
     {
       id: 3,
-      name: "userName",
+      name: "username",
       type: "text",
       placeholder: "",
       errorMessage: "it should be atleast one letter and one number",
@@ -74,7 +87,7 @@ const SignUp = () => {
     },
     {
       id: 6,
-      name: "confirmPassword",
+      name: "password_confirmation",
       type: "password",
       placeholder: "",
       errorMessage: "Passwords don't match",
@@ -85,15 +98,19 @@ const SignUp = () => {
   ];
 
   console.log(loginValues);
+  console.log(user);
+
   const handleSignUp = (e) => {
     e.preventDefault();
+
+    dispatch(register(loginValues));
     setLoginValues({
-      firstName: "",
-      lastName: "",
-      userName: "",
+      firstname: "",
+      lastname: "",
+      username: "",
       email: "",
       password: "",
-      confirmPassword: "",
+      password_confirmation: "",
     });
   };
 
@@ -133,25 +150,28 @@ const SignUp = () => {
                   {...input}
                   value={loginValues[input.name]}
                   onChange={onChange}
-                  formType=""
+                  fTyp="not"
                 />
               ))}
 
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                <div className="absolute top-[-91px] left-[360px] z-20">
-                  <SmallLoader loaderColor={"secondary"} />
+                <div className="absolute top-[-91px] left-[276px] z-20">
+                  {isLoading && <SmallLoader loaderColor={"secondary"} />}
                 </div>
-                <div className="absolute top-[-180px] left-[307px] z-10">
-                  <SmallLoader loaderColor={"primary"} />
+                <div className="absolute top-[-180px] left-[276px] z-10">
+                  {isLoading && <SmallLoader loaderColor={"primary"} />}
+                </div>
+                <div className="absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center">
+                  {user.message}
                 </div>
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
                 >
-                  Sign Up
+                  {!isLoading && "Sign Up"}
                 </button>
                 <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
-                  Continue with Google
+                  {!isLoading && "Continue with Google"}
                 </button>
               </div>
               <p className="text-center mt-[66px] text-bodyN text-neutral-black">

@@ -9,6 +9,7 @@ const initialState = {
   isError: false,
   errorMessage: false,
   isSuccess: false,
+  google: null,
 };
 
 export const register = createAsyncThunk(
@@ -32,6 +33,19 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
   try {
     return await authService.login(user);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+export const googleLogin = createAsyncThunk("user/google", async (thunkAPI) => {
+  try {
+    return await authService.handleLoginWithGoogle();
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -90,6 +104,9 @@ const userSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(googleLogin.fulfilled, (state, action) => {
+        state.google = action.payload.data;
       });
   },
 });

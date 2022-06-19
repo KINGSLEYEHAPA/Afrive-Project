@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "api/users/";
+const API_URL = "https://afrive-book-store.herokuapp.com/api/v1/auth/register";
 
 //Register User
 const register = async (userData) => {
@@ -29,10 +29,19 @@ const logout = async () => {
   localStorage.removeItem("user");
 };
 
+// Google Auth
+const handleLoginWithGoogle = async () => {
+  const res = await axios.get(
+    "https://afrive-book-store.herokuapp.com/api/v1/auth/google-login-url"
+  );
+  return res.data;
+};
+
 const authService = {
   register,
   logout,
   login,
+  handleLoginWithGoogle,
 };
 
 export default authService;

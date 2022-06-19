@@ -92,7 +92,7 @@ const Header = ({
           <div className=" hidden mtab:block absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
       </div>
-      <div className=" mr-[27px] mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
+      <div className="  mr-[27px] mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
         <AnimatePresence>
           <AnimateSharedLayout>
             {showSearch && (
@@ -102,7 +102,7 @@ const Header = ({
         </AnimatePresence>
 
         <div className=" absolute  top-4 right-12 mtab:top-7 mtab:right-12 w-[14px] h-[14px] rounded-full bg-primary-50 flex justify-center items-center">
-          <span className=" cursor-pointer medium text-neutral-white text-[10px] leading-4">
+          <span className=" cursor-pointer medium text-neutral-white text-[9px] leading-4">
             {shoppingBag.length}
           </span>
         </div>
@@ -117,19 +117,19 @@ const Header = ({
           animate={{ opacity: 1, transition: { duration: 0.5 } }}
           exit={{ opacity: 0 }}
           layoutId="outline"
-          className="   text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]"
+          className=" text-[27px]   mtab:text-[20px] min-w-[20px] text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]"
         >
           {!showSearch && <FiSearch />}
         </motion.p>
 
         <Link to="/liked-books">
           {path === "/liked-books" ? (
-            <p className="text-[20px]  text-primary-70 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]">
+            <p className="text-[27px]   mtab:text-[20px]  text-primary-70 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]">
               {" "}
               <MdFavorite />
             </p>
           ) : (
-            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]">
+            <p className="text-[27px]   mtab:text-[20px]   text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px]">
               {" "}
               <MdOutlineFavoriteBorder />
             </p>
@@ -138,11 +138,11 @@ const Header = ({
 
         <Link to="/shopping-bag">
           {path === "/shopping-bag" ? (
-            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px] ">
+            <p className="text-[27px]   mtab:text-[20px]   text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px] ">
               <RiShoppingBag3Fill />
             </p>
           ) : (
-            <p className="text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px] ">
+            <p className="text-[27px]   mtab:text-[20px]  text-neutral-80 border-[1.5px solid #202020] cursor-pointer py-[25px] mtab:py-[35px] ">
               <FiShoppingBag />
             </p>
           )}
@@ -159,7 +159,7 @@ const Header = ({
         >
           <FaRegUser />
         </p>
-        <span className="my-[25px] mtab:hidden text-neutral-70 text-[20px]">
+        <span className="my-[25px] mtab:hidden text-neutral-70 text-[27px]">
           <AiOutlineMenu />
         </span>
         <AnimatePresence>

@@ -85,7 +85,7 @@ const Search = ({ showSearch, setShowSearch }) => {
         transition: { duration: 1.2 },
       }}
       layoutId="outline"
-      className="absolute z-10 top-[28px] right-[170px] tab:w-[276px]  lap:w-[443px] desk:w-[467px] h-[36px] border  border-neutral-30 rounded-[120px] box-border bg-neutral-white border-[0.5px solid #C3C3C3] rounded-[120px]"
+      className="absolute z-20 top-[28px] right-[170px] tab:w-[276px]  lap:w-[443px] desk:w-[467px] h-[36px] border  border-neutral-30 rounded-[120px] box-border bg-neutral-white border-[0.5px solid #C3C3C3] rounded-[120px]"
     >
       <div className="relative h-full w-full">
         <AnimatePresence>

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import FormInput from "./FormInput";
@@ -6,7 +6,7 @@ import bgId from "../assets/mesh1.jpg";
 import SmallLoader from "./SmallLoader";
 
 const SignIn = () => {
-  const loading = true;
+  const loading = false;
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
