@@ -7,6 +7,9 @@ import Signup from "./Signup";
 
 const UserLogin = () => {
   const [userState, setUserState] = useState(true);
+  const [showServerMessage, setShowServerMessage] = useState(false);
+  useEffect(() => {}, []);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(reset());
@@ -17,7 +20,11 @@ const UserLogin = () => {
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] h-[1024px] flex">
         {userState ? (
-          <SignIn setUserState={setUserState} />
+          <SignIn
+            setUserState={setUserState}
+            showServerMessage={showServerMessage}
+            setShowServerMessage={setShowServerMessage}
+          />
         ) : (
           <Signup setUserState={setUserState} />
         )}
