@@ -41,7 +41,7 @@ const RecommendedBooks = () => {
   return (
     <div className="w-screen max-w-[1440px] mx-auto">
       {" "}
-      <div className=" h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px]  lap:h-[532.52px]       desk:h-[552px] w-screen max-w-[74.45%]   mx-auto mtab:mx-[72px]     tab:mx-[86.49px]       lap:ml-[12.77%] lap:mr-[12.76%] p-0 ">
+      <div className=" h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px]  lap:h-[532.52px]       desk:h-[552px] w-screen max-w-[74.45%]   mx-[23px] mtab:mx-[72px]     tab:mx-[86.49px]       lap:ml-[12.77%] lap:mr-[12.76%] mtab:p-0 ">
         <div className="w-full   flex justify-between items-center">
           <h3 className=" text-bodyN  mtab:text-h3 font-medium text-neutral-80 whitespace-nowrap">
             For you: Recommended based on your likes

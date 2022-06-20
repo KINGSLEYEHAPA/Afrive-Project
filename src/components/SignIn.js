@@ -1,12 +1,34 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import FormInput from "./FormInput";
 import bgId from "../assets/mesh1.jpg";
 import SmallLoader from "./SmallLoader";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { login, reset } from "../features/user/userSlice";
 
-const SignIn = () => {
-  const loading = false;
+const SignIn = ({ setUserState }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {
+    user,
+    isLoading,
+    isLoadingGoogle,
+    google,
+    isError,
+    errorMessage,
+    isSuccess,
+  } = useSelector((state) => state.user);
+  console.log(user);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/");
+    }
+  }, [isSuccess]);
+
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
@@ -38,6 +60,7 @@ const SignIn = () => {
   console.log(loginValues);
   const handleSignIn = (e) => {
     e.preventDefault();
+    dispatch(login(loginValues));
 
     setLoginValues({
       email: "",
@@ -50,7 +73,7 @@ const SignIn = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] h-[1024px] flex">
+      <div className="w-screen  mx-auto  h-[1024px] flex">
         <div
           className="w-[553px] h-[1024px]  flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
@@ -66,7 +89,7 @@ const SignIn = () => {
         </div>
         <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[164.50px] pb-[20.41px]">
           <div className="h-[839px] w-[551px] ">
-            <h2 className="text-h2 font-medium text-primary-50 ">Sign In</h2>
+            <h2 className="font-medium text-h2 text-primary-50 ">Sign In</h2>
             <form onSubmit={handleSignIn}>
               {inputs.map((input) => (
                 <FormInput
@@ -90,31 +113,51 @@ const SignIn = () => {
                 </Link>
               </div>
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                {loading && (
-                  <div className="absolute top-[-91px] left-[276px] z-10">
-                    <SmallLoader loaderColor={"secondary"} />
-                  </div>
+                <div className="absolute top-[-91px] left-[276px] z-20">
+                  {isLoadingGoogle && <SmallLoader loaderColor={"secondary"} />}
+                </div>
+                <div className="absolute top-[-180px] left-[276px] z-10">
+                  {isLoading && <SmallLoader loaderColor={"primary"} />}
+                </div>
+                {isError && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{
+                      opacity: 1,
+                      x: [-30, 30, -30, 30 - 30, 30, 0],
+                      transition: { duration: 0.5 },
+                    }}
+                    className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center"
+                  >
+                    {errorMessage}
+                  </motion.div>
                 )}
-                {loading && (
-                  <div className="absolute top-[-180px] left-[276px] z-10">
-                    <SmallLoader loaderColor={"primary"} />
-                  </div>
-                )}
+                <Outlet />
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
                 >
-                  {!loading && "Sign In"}
+                  {!isLoading && "Sign In"}
                 </button>
-                <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
-                  {!loading && "Continue with Google"}
-                </button>
+                <div className=" flex justify-center items-center w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg ">
+                  {!isLoadingGoogle && (
+                    <a className="" target="popup" href={google}>
+                      Continue with Google
+                    </a>
+                  )}
+                </div>
+                {/* <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
+                  {!isLoadingGoogle && "Continue with Google"}
+                </button> */}
               </div>
               <p className="text-center mt-[156.09px] text-bodyN text-neutral-black">
                 Don't have an Account?
-                <Link to="/sign-up">
-                  <span className="text-primary-50">Sign Up</span>
-                </Link>
+                <span
+                  onClick={() => setUserState(false)}
+                  className="cursor-pointer text-primary-50"
+                >
+                  Sign Up
+                </span>
               </p>
               <p className="text-center mt-[85px] text-primary-50">
                 Are you an Author? Submit your work to us.

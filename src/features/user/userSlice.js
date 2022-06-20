@@ -5,6 +5,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  isLoadingGoogle: false,
   isLoading: false,
   isError: false,
   errorMessage: false,
@@ -42,19 +43,43 @@ export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
     return thunkAPI.rejectWithValue(message);
   }
 });
+// Google Url fetch
+export const googleLogin = createAsyncThunk(
+  "user/googleLogin",
+  async (thunkAPI) => {
+    try {
+      return await authService.handleLoginWithGoogle();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
 
-export const googleLogin = createAsyncThunk("user/google", async (thunkAPI) => {
-  try {
-    return await authService.handleLoginWithGoogle();
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-
-    return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
+
+// Google Login Verification
+export const verifyGoogleLogin = createAsyncThunk(
+  "user/verifyGoogleLogin",
+  async (url, thunkAPI) => {
+    try {
+      return await authService.verifyGoogleLogin(url);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const logout = createAsyncThunk("user/logout", async () => {
   await authService.logout();
@@ -107,6 +132,20 @@ const userSlice = createSlice({
       })
       .addCase(googleLogin.fulfilled, (state, action) => {
         state.google = action.payload.data;
+      })
+      .addCase(verifyGoogleLogin.pending, (state) => {
+        state.isLoadingGoogle = true;
+      })
+      .addCase(verifyGoogleLogin.fulfilled, (state, action) => {
+        state.isLoadingGoogle = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(verifyGoogleLogin.rejected, (state, action) => {
+        state.isLoadingGoogle = false;
+        state.isError = true;
+        state.errorMessage = action.payload;
+        state.user = null;
       });
   },
 });

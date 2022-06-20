@@ -18,6 +18,8 @@ import { AnimatePresence } from "framer-motion";
 import PageNotFound from "./PageNotFound";
 import MyOrders from "./MyOrders";
 import Coupon from "./Coupon";
+import ServerMessages from "./ServerMessages";
+import UserLogin from "./UserLogin";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
@@ -35,8 +37,19 @@ const ApplicationsRoute = () => {
             <Route path="/buynow-checkout" element={<BuyNowCheckout />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/billing-address" element={<ChangeBillingAddress />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/api/v1/auth" element={<UserLogin />}>
+              <Route
+                path="/api/v1/auth/google:authPath"
+                element={<ServerMessages />}
+              />
+            </Route>
+
+            <Route path="/sign-in" element={<SignIn />}>
+              <Route
+                path="sign-in/server-messages"
+                element={<ServerMessages />}
+              />
+            </Route>
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/orders" element={<MyOrders />} />

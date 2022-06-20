@@ -7,8 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const { user } = useSelector((state) => state.user);
-  const user = "Kingsley";
+  const { user } = useSelector((state) => state.user);
 
   const onLogout = () => {
     dispatch(logout());
@@ -26,7 +25,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
     >
       <div className=" h-[43.86px] tab:h-[57px] lap:h-[72px] w-full p-[16.50px] tab:p-[20px] lap:p-[24px] flex justify-between">
         <h3 className=" text-sub tab:text-bodyS lap:text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">
-          Hi {user ? user : "Guest"}
+          Hi {user ? user.data.firstname : "Guest"}
         </h3>
         {user ? (
           <p
@@ -36,7 +35,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
             Sign Out
           </p>
         ) : (
-          <Link to="/sign-in">
+          <Link to="/api/v1/auth">
             <p className="text-[9px] leading-[12px] tab:text-sub   lap:text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
               Sign In
             </p>
