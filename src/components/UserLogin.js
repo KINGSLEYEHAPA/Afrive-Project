@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { googleLogin, reset } from "../features/user/userSlice";
 import AnimatePages from "./AnimatePages";
 import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import Signup from "./Signup";
 
 const UserLogin = () => {
   const [userState, setUserState] = useState(true);
@@ -19,7 +19,7 @@ const UserLogin = () => {
         {userState ? (
           <SignIn setUserState={setUserState} />
         ) : (
-          <SignUp setUserState={setUserState} />
+          <Signup setUserState={setUserState} />
         )}
       </div>
     </AnimatePages>
