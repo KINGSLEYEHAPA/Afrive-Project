@@ -11,6 +11,7 @@ const initialState = {
   errorMessage: false,
   isSuccess: false,
   google: null,
+  isGoogleError: false,
 };
 
 export const register = createAsyncThunk(
@@ -94,6 +95,8 @@ const userSlice = createSlice({
       state.isError = false;
       state.errorMessage = "";
       state.isSuccess = false;
+      state.isLoadingGoogle = false;
+      state.isGoogleError = false;
     },
   },
   extraReducers: (builder) => {
@@ -143,7 +146,7 @@ const userSlice = createSlice({
       })
       .addCase(verifyGoogleLogin.rejected, (state, action) => {
         state.isLoadingGoogle = false;
-        state.isError = true;
+        state.isGoogleError = true;
         state.errorMessage = action.payload;
         state.user = null;
       });

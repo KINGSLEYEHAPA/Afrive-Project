@@ -16,8 +16,15 @@ import { useNavigate } from "react-router-dom";
 const SignUp = ({ setUserState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isLoading, isLoadingGoogle, google, isError, errorMessage } =
-    useSelector((state) => state.user);
+  const {
+    user,
+    isLoading,
+    isLoadingGoogle,
+    google,
+    isError,
+    errorMessage,
+    isGoogleError,
+  } = useSelector((state) => state.user);
 
   const [loginValues, setLoginValues] = useState({
     firstname: "",
@@ -159,7 +166,7 @@ const SignUp = ({ setUserState }) => {
                 <div className="absolute top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
-                {isError && (
+                {(isError || isGoogleError) && (
                   <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{

@@ -19,6 +19,7 @@ const SignIn = ({ setUserState }) => {
     isError,
     errorMessage,
     isSuccess,
+    isGoogleError,
   } = useSelector((state) => state.user);
   console.log(user);
 
@@ -119,7 +120,7 @@ const SignIn = ({ setUserState }) => {
                 <div className="absolute top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
-                {isError && (
+                {(isError || isGoogleError) && (
                   <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{

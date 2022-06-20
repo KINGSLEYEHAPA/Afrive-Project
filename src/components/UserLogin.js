@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { googleLogin } from "../features/user/userSlice";
+import { googleLogin, reset } from "../features/user/userSlice";
 import AnimatePages from "./AnimatePages";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -9,6 +9,7 @@ const UserLogin = () => {
   const [userState, setUserState] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(reset());
     dispatch(googleLogin());
   }, []);
 

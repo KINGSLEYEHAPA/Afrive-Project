@@ -4,7 +4,7 @@ import { PaystackButton } from "react-paystack";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const publicKey = "pk_test_04fcf212c4274211c60c4e0680a841dda21aa8d0";
+  const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
   const [paymentFlow, setPaymentFlow] = useState(0);
   const [error, setError] = useState("");
   const amount = 450000; // Remember, set in kobo!
@@ -74,7 +74,7 @@ const Payment = () => {
           </div>
           <div className="flex justify-between items-center my-[5px]">
             <span className="text-neutral-30">Total Amount to Pay</span>
-            <span className="text-primary-50 font-medium">N25,000</span>
+            <span className="font-medium text-primary-50">N25,000</span>
           </div>
           <div className="flex justify-between items-center mt-[10px]">
             <p className="text-neutral-30">Payment Method:</p>
@@ -107,7 +107,7 @@ const Payment = () => {
           </div>
           <div className="flex w-full h-[24px] justify-end mt-[10px] px-[10px]">
             {" "}
-            <p className="text-bodyS text-neutral-30 cursor-pointer">Change</p>
+            <p className="cursor-pointer text-bodyS text-neutral-30">Change</p>
           </div>
           {/* <button className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium">
         Pay with Paystack

@@ -13,6 +13,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
     dispatch(logout());
     dispatch(reset());
     navigate("/");
+    setShowProfileInfo(false);
   };
 
   return (
@@ -36,7 +37,10 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
           </p>
         ) : (
           <Link to="/api/v1/auth">
-            <p className="text-[9px] leading-[12px] tab:text-sub   lap:text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer">
+            <p
+              onClick={() => setShowProfileInfo(false)}
+              className="text-[9px] leading-[12px] tab:text-sub   lap:text-bodyS text-primary-40 font-reg w-[56px] whitespace-nowrap hover:text-primary-60 cursor-pointer"
+            >
               Sign In
             </p>
           </Link>
