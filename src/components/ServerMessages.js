@@ -29,11 +29,12 @@ const ServerMessages = () => {
     }
   }, [url]);
   useEffect(() => {
-    setShowServerMessage(user.message);
+    if (user?.message) setShowServerMessage(user?.message);
+
     setTimeout(() => {
       setShowServerMessage(null);
-    }, 4000);
-  }, [user.message]);
+    }, 2000);
+  }, [user?.message]);
 
   return (
     showServerMessage !== null && (

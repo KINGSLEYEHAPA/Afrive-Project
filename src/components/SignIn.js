@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { login, reset } from "../features/user/userSlice";
 
-const SignIn = ({ setUserState, setShowServerMessage, showServerMessage }) => {
+const SignIn = ({ setUserState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -26,7 +26,9 @@ const SignIn = ({ setUserState, setShowServerMessage, showServerMessage }) => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(reset());
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     }
   }, [isSuccess]);
 
@@ -133,7 +135,7 @@ const SignIn = ({ setUserState, setShowServerMessage, showServerMessage }) => {
                     {errorMessage}
                   </motion.div>
                 )}
-                <Outlet showServerMessage={showServerMessage} />
+                <Outlet />
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
