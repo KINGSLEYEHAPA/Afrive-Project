@@ -9,9 +9,6 @@ import LikedBooks from "./LikedBooks";
 import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
 import ChangeBillingAddress from "./ChangeBillingAddress";
-import SignUp from "./SignUp";
-import ScrollToTop from "./ScrollToTop";
-import SignIn from "./SignIn";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import { AnimatePresence } from "framer-motion";
@@ -44,12 +41,6 @@ const ApplicationsRoute = () => {
               />
             </Route>
 
-            <Route path="/sign-in" element={<SignIn />}>
-              <Route
-                path="sign-in/server-messages"
-                element={<ServerMessages />}
-              />
-            </Route>
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/orders" element={<MyOrders />} />
