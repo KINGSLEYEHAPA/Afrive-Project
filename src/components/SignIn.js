@@ -31,6 +31,11 @@ const SignIn = ({ setUserState }) => {
       }, 3000);
     }
   }, [isSuccess]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(reset());
+  //   }, 4000);
+  // }, [isError,isGoogleError]);
 
   const [loginValues, setLoginValues] = useState({
     email: "",

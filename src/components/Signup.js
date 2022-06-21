@@ -6,14 +6,14 @@ import bgId from "../assets/mesh1.jpg";
 import SmallFormInput from "./SmallFormInput";
 import FormInput from "./FormInput";
 import SmallLoader from "./SmallLoader";
-import { register } from "../features/user/userSlice";
+import { register, reset } from "../features/user/userSlice";
 import { motion } from "framer-motion";
 
 import { useDispatch, useSelector } from "react-redux";
 import { googleLogin } from "../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ setUserState }) => {
+const Signup = ({ setUserState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -215,4 +215,4 @@ const SignUp = ({ setUserState }) => {
   );
 };
 
-export default SignUp;
+export default Signup;
