@@ -39,18 +39,18 @@ const RecommendedBooks = () => {
   };
 
   return (
-    <div className="w-screen max-w-[1440px] mx-auto">
+    <div className="w-screen   px-[6.13%] mobx:px-[10%]  max-w-[1440px]    desk:h-[552px]   ">
       {" "}
-      <div className=" h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px]  lap:h-[532.52px]       desk:h-[552px] w-screen max-w-[74.45%]   mx-[23px] mtab:mx-[72px]     tab:mx-[86.49px]       lap:ml-[12.77%] lap:mr-[12.76%] mtab:p-0 ">
-        <div className="w-full   flex justify-between items-center">
-          <h3 className=" text-bodyN  mtab:text-h3 font-medium text-neutral-80 whitespace-nowrap">
+      <div className=" h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px] lap:h-[532.52px]       ">
+        <div className="flex items-center justify-between w-full ">
+          <h3 className="font-medium text-bodyN tab:text-h3 text-neutral-80 whitespace-nowrap">
             For you: Recommended based on your likes
           </h3>
-          <p className=" hidden mtab:block    mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
+          <p className="hidden cursor-pointer mtab:block text-neutral-30 text-bodyL hover:text-neutral-80">
             see more
           </p>
         </div>
-        <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 mtab:grid-cols-3 px-0 gap-[19px] mtab:gap-[73px] tab:gap-[86.43px] lap:gap-[76px] desk:gap-[81.59px]  ">
+        <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 mtab:grid-cols-3 px-0 gap-[19px] mobx:gap-[32px] mtab:gap-[73px] tab:gap-[86.43px] lap:gap-[76px] desk:gap-[81.59px]  ">
           {availableBooks?.slice(2, 5).map((book) => {
             return (
               <div
