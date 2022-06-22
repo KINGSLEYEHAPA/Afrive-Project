@@ -41,6 +41,7 @@ const ResetPassword = () => {
 
   const location = useLocation();
   console.log(location.search);
+  console.log(code, passwordResetEmail);
 
   const inputs = [
     {
