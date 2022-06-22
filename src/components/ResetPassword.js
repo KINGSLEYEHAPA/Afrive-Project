@@ -42,6 +42,7 @@ const ResetPassword = () => {
   const location = useLocation();
   console.log(location.search);
   console.log(code, passwordResetEmail);
+  console.log(resetValues);
 
   const inputs = [
     {
@@ -62,7 +63,7 @@ const ResetPassword = () => {
       placeholder: "",
       errorMessage: "Passwords don't match",
       label: "Confirm Password",
-      pattern: resetValues.newPassword,
+      pattern: resetValues.password_confirmation,
       required: true,
     },
   ];
