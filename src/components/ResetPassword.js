@@ -1,23 +1,47 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import AnimatePages from "./AnimatePages";
 import bgId from "../assets/mesh1.jpg";
 import FormInput from "./FormInput";
+import { useDispatch, useSelector } from "react-redux";
+import SmallLoader from "./SmallLoader";
+import { motion } from "framer-motion";
+import ServerMessages from "./ServerMessages";
+import { reset, resetPassword } from "../features/user/userSlice";
 
 const ResetPassword = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [resetValues, setResetValues] = useState({
-    newPassword: "",
-    confirmPassword: "",
+    password: "",
+    password_confirmation: "",
   });
   const onChange = (e) => {
     setResetValues({ ...resetValues, [e.target.name]: e.target.value });
   };
 
+  const code = searchParams.get("code");
+  const email = searchParams.get("email");
+
+  const { user, isLoading, isError, errorMessage, isSuccess, isGoogleError } =
+    useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+  console.log(location.search);
+  console.log(email, code);
+
   const inputs = [
     {
       id: 1,
-      name: "newPassword",
+      name: "password",
       type: "password",
       placeholder: "",
       errorMessage:
@@ -28,7 +52,7 @@ const ResetPassword = () => {
     },
     {
       id: 2,
-      name: "confirmPassword",
+      name: "paasword_confirmation",
       type: "password",
       placeholder: "",
       errorMessage: "Passwords don't match",
@@ -42,13 +66,19 @@ const ResetPassword = () => {
 
   const handlePaswwordReset = (e) => {
     e.preventDefault();
+    setResetValues({ ...resetValues, email: email, token: code });
+
+    dispatch(resetPassword(resetValues));
 
     setResetValues({
-      newPassword: "",
-      confirmPassword: "",
+      password: "",
+      password_confirmation: "",
     });
 
-    navigate("/sign-in");
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/api/v1/auth");
+    }
   };
 
   return (
@@ -81,7 +111,24 @@ const ResetPassword = () => {
                   onChange={onChange}
                 />
               ))}
-              <div className="w-full mt-[42.92px]">
+              <div className="w-full mt-[42.92px] relative">
+                <div className="absolute top-[-181px] left-[276px] z-10">
+                  {isLoading && <SmallLoader loaderColor={"primary"} />}
+                </div>
+                {isError && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{
+                      opacity: 1,
+                      x: [-30, 30, -30, 30 - 30, 30, 0],
+                      transition: { duration: 0.5 },
+                    }}
+                    className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate px-[10px]"
+                  >
+                    {errorMessage}
+                  </motion.div>
+                )}
+
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"

@@ -53,7 +53,7 @@ const ServerMessages = () => {
 
     setTimeout(() => {
       setShowServerMessage(null);
-    }, 3000);
+    }, 1000);
   }, [user?.message]);
 
   return (

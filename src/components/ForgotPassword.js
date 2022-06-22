@@ -1,24 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import bgId from "../assets/mesh1.jpg";
+import SmallLoader from "./SmallLoader";
+import { useSelector, useDispatch } from "react-redux";
+import { forgotPassword, reset } from "../features/user/userSlice";
+import { motion } from "framer-motion";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const { user, isLoading, isError, errorMessage, isSuccess } = useSelector(
+    (state) => state.user
+  );
+  const dispatch = useDispatch();
 
-  const [user, setUser] = useState();
   const [recoverLink, setRecoverLink] = useState(false);
   console.log(user);
   const recoverPassword = (e) => {
     e.preventDefault();
-    setUser({
-      email: email,
-    });
+
+    dispatch(forgotPassword({ email: email }));
 
     setEmail("");
-    setRecoverLink(true);
   };
-
+  useEffect(() => {
+    if (isSuccess) {
+      setRecoverLink(true);
+      dispatch(reset());
+    }
+  }, [isSuccess]);
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] h-[1024px] flex">
@@ -56,15 +66,31 @@ const ForgotPassword = () => {
                   />
                 </div>
 
-                <div className="w-full mt-[40px]">
+                <div className="w-full mt-[40px] relative">
+                  {isError && (
+                    <motion.div
+                      initial={{ opacity: 0, x: 0 }}
+                      animate={{
+                        opacity: 1,
+                        x: [-30, 30, -30, 30 - 30, 30, 0],
+                        transition: { duration: 0.5 },
+                      }}
+                      className=" rounded-[4px] absolute top-[-37px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate px-[10px]"
+                    >
+                      {errorMessage}
+                    </motion.div>
+                  )}
+                  <div className="absolute top-[-180px] left-[276px] z-20">
+                    {isLoading && <SmallLoader loaderColor={"primary"} />}
+                  </div>
                   <button
                     type="submit"
-                    className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
+                    className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg mt-[10px]"
                   >
-                    Send Recovery Link
+                    {!isLoading && "  Send Recovery Link"}
                   </button>
                 </div>
-                <Link to="/sign-in">
+                <Link to="/api/v1/auth">
                   <p className="text-center mt-[74.09px] text-bodyN text-primary-50">
                     Back to Sign In
                   </p>
@@ -80,12 +106,12 @@ const ForgotPassword = () => {
               </h2>
               <div className="w-full mt-[39px]">
                 <button
-                  onClick={() => recoverPassword}
+                  onClick={() => setRecoverLink(false)}
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
                 >
-                  Resend Recovery Link
+                  {!isLoading && "  Resend Recovery Link"}
                 </button>
-                <Link to="/sign-in" onClick={() => setRecoverLink(false)}>
+                <Link to="/api/v1/auth" onClick={() => setRecoverLink(false)}>
                   <p className="text-center mt-[74.09px] text-bodyN text-primary-50">
                     Back to Sign In
                   </p>
