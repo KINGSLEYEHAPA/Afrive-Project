@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Link,
   Outlet,
@@ -18,23 +18,23 @@ import { reset, resetPassword } from "../features/user/userSlice";
 
 const ResetPassword = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const code = searchParams.get("code");
+  const email = searchParams.get("email");
+
+  email?.replace("%40", "@");
 
   const [resetValues, setResetValues] = useState({
     password: "",
     password_confirmation: "",
+    email: email,
+    token: code,
   });
   const onChange = (e) => {
     setResetValues({ ...resetValues, [e.target.name]: e.target.value });
   };
 
-  const code = searchParams.get("code");
-  const email = searchParams.get("email");
-
-  email.replace("%40", "@");
-
-  const { user, isLoading, isError, errorMessage, isSuccess } = useSelector(
-    (state) => state.user
-  );
+  const { user, isLoading, isError, errorMessage, isSuccess, resetMessage } =
+    useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -78,12 +78,14 @@ const ResetPassword = () => {
       password: "",
       password_confirmation: "",
     });
+  };
 
+  useEffect(() => {
     if (isSuccess) {
       dispatch(reset());
       navigate("/api/v1/auth");
     }
-  };
+  }, [isSuccess]);
 
   return (
     <AnimatePages>
@@ -132,12 +134,25 @@ const ResetPassword = () => {
                     {errorMessage}
                   </motion.div>
                 )}
+                {isSuccess && !isError && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{
+                      opacity: 1,
+                      x: [-30, 30, -30, 30 - 30, 30, 0],
+                      transition: { duration: 0.5 },
+                    }}
+                    className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate px-[10px]"
+                  >
+                    {resetMessage}
+                  </motion.div>
+                )}
 
                 <button
                   type="submit"
                   className="w-full h-[56px] bg-primary-50 text-neutral-white rounded-[4px] text-bodyN font-reg"
                 >
-                  Reset Password
+                  {!isLoading && " Reset Password"}
                 </button>
               </div>
             </form>
