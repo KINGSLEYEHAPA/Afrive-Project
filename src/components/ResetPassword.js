@@ -28,15 +28,19 @@ const ResetPassword = () => {
   };
 
   const code = searchParams.get("code");
-  const email = searchParams.get("email");
 
-  const { user, isLoading, isError, errorMessage, isSuccess, isGoogleError } =
-    useSelector((state) => state.user);
+  const {
+    user,
+    isLoading,
+    isError,
+    errorMessage,
+    isSuccess,
+    passwordResetEmail,
+  } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const location = useLocation();
   console.log(location.search);
-  console.log(email, code);
 
   const inputs = [
     {
@@ -52,7 +56,7 @@ const ResetPassword = () => {
     },
     {
       id: 2,
-      name: "paasword_confirmation",
+      name: "password_confirmation",
       type: "password",
       placeholder: "",
       errorMessage: "Passwords don't match",
@@ -66,7 +70,7 @@ const ResetPassword = () => {
 
   const handlePaswwordReset = (e) => {
     e.preventDefault();
-    setResetValues({ ...resetValues, email: email, token: code });
+    setResetValues({ ...resetValues, email: passwordResetEmail, token: code });
 
     dispatch(resetPassword(resetValues));
 

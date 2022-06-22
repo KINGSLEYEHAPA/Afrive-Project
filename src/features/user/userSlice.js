@@ -14,6 +14,7 @@ const initialState = {
   isGoogleError: false,
   verified: null,
   resetMessage: null,
+  passwordResetEmail: null,
 };
 
 export const register = createAsyncThunk(
@@ -196,6 +197,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.resetMessage = action.payload.message;
+        state.passwordResetEmail = action.payload.data.email;
       })
       .addCase(forgotPassword.rejected, (state, action) => {
         state.isLoading = false;
