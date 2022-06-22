@@ -25,6 +25,14 @@ const login = async (userData) => {
   return response.data;
 };
 
+const verifyRegister = async (url) => {
+  const response = await axios.get(
+    "https://afrive-book-store.herokuapp.com" + url
+  );
+
+  return response.data;
+};
+
 //Logout User
 
 const logout = async () => {
@@ -51,6 +59,7 @@ const authService = {
   login,
   handleLoginWithGoogle,
   verifyGoogleLogin,
+  verifyRegister,
 };
 
 export default authService;

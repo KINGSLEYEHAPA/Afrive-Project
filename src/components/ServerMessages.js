@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { verifyGoogleLogin, reset } from "../features/user/userSlice";
+import {
+  verifyGoogleLogin,
+  reset,
+  verifyRegister,
+} from "../features/user/userSlice";
 
 const ServerMessages = () => {
   const dispatch = useDispatch();
@@ -14,12 +18,14 @@ const ServerMessages = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  console.log(location.search);
+  console.log(location.pathname);
 
   useEffect(() => {
-    setUrl(location.search);
-    if (url !== null) {
-      dispatch(verifyGoogleLogin(url));
+    if (location.search.includes("google")) {
+      setUrl(location.search);
+      if (url !== null) {
+        dispatch(verifyGoogleLogin(url));
+      }
     }
 
     if (isSuccess) {
@@ -29,11 +35,25 @@ const ServerMessages = () => {
     }
   }, [url]);
   useEffect(() => {
+    if (location.pathname.includes("verify")) {
+      setUrl(location.pathname);
+      if (url !== null) {
+        dispatch(verifyRegister(url));
+      }
+    }
+
+    if (isSuccess) {
+      dispatch(reset());
+      setUrl(null);
+      navigate("/api/v1/auth");
+    }
+  }, [url]);
+  useEffect(() => {
     if (user?.message) setShowServerMessage(user?.message);
 
     setTimeout(() => {
       setShowServerMessage(null);
-    }, 2000);
+    }, 3000);
   }, [user?.message]);
 
   return (

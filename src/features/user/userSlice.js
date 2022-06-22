@@ -12,6 +12,7 @@ const initialState = {
   isSuccess: false,
   google: null,
   isGoogleError: false,
+  verified: null,
 };
 
 export const register = createAsyncThunk(
@@ -81,6 +82,24 @@ export const verifyGoogleLogin = createAsyncThunk(
     }
   }
 );
+// Registration Verification
+export const verifyRegister = createAsyncThunk(
+  "user/verifyRegister",
+  async (url, thunkAPI) => {
+    try {
+      return await authService.verifyRegister(url);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const logout = createAsyncThunk("user/logout", async () => {
   await authService.logout();
@@ -116,6 +135,20 @@ const userSlice = createSlice({
         state.user = null;
       })
 
+      .addCase(verifyRegister.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(verifyRegister.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.verified = action.payload;
+      })
+      .addCase(verifyRegister.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload;
+      })
+
       .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
@@ -136,6 +169,7 @@ const userSlice = createSlice({
       .addCase(googleLogin.fulfilled, (state, action) => {
         state.google = action.payload.data;
       })
+
       .addCase(verifyGoogleLogin.pending, (state) => {
         state.isLoadingGoogle = true;
       })

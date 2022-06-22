@@ -174,7 +174,7 @@ const Signup = ({ setUserState }) => {
                       x: [-30, 30, -30, 30 - 30, 30, 0],
                       transition: { duration: 0.5 },
                     }}
-                    className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center"
+                    className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate"
                   >
                     {errorMessage}
                   </motion.div>

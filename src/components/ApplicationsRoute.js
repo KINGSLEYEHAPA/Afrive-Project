@@ -38,6 +38,10 @@ const ApplicationsRoute = () => {
               <Route
                 path="/api/v1/auth/google:authPath"
                 element={<ServerMessages />}
+              />{" "}
+              <Route
+                path="/api/v1/auth/verify/:emailId/:codeId"
+                element={<ServerMessages />}
               />
             </Route>
 
