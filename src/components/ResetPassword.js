@@ -28,20 +28,18 @@ const ResetPassword = () => {
   };
 
   const code = searchParams.get("code");
+  const email = searchParams.get("email");
 
-  const {
-    user,
-    isLoading,
-    isError,
-    errorMessage,
-    isSuccess,
-    passwordResetEmail,
-  } = useSelector((state) => state.user);
+  email.replace("%40", "@");
+
+  const { user, isLoading, isError, errorMessage, isSuccess } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
 
   const location = useLocation();
   console.log(location.search);
-  console.log(code, passwordResetEmail);
+  console.log(code, email);
   console.log(resetValues);
 
   const inputs = [
@@ -72,7 +70,7 @@ const ResetPassword = () => {
 
   const handlePaswwordReset = (e) => {
     e.preventDefault();
-    setResetValues({ ...resetValues, email: passwordResetEmail, token: code });
+    setResetValues({ ...resetValues, email: email, token: code });
 
     dispatch(resetPassword(resetValues));
 
