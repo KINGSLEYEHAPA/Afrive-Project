@@ -28,7 +28,7 @@ const SignIn = ({ setUserState }) => {
       dispatch(reset());
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 1000);
     }
   }, [isSuccess]);
   // useEffect(() => {

@@ -49,7 +49,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
       <hr className="w-[100%]  h-0 border-1 border-neutral-20" />
       <div
         onClick={() => {
-          setShowQuiz(true);
+          user ? setShowQuiz(true) : navigate("/api/v1/auth");
           setShowProfileInfo(false);
         }}
         className="lap:h-[76px] h-[46.29px] tab:h-[61.7px] w-full flex pt-[12px] justify-center flex-col items-start px-[24px] cursor-pointer hover:bg-primary-10 pb-[8px]"
