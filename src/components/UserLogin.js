@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { googleLogin, reset } from "../features/user/userSlice";
 import AnimatePages from "./AnimatePages";
 import SignIn from "./SignIn";
@@ -8,8 +9,13 @@ import Signup from "./Signup";
 const UserLogin = () => {
   const [userState, setUserState] = useState(true);
 
+  const location = useLocation();
+
   const dispatch = useDispatch();
   useEffect(() => {
+    if (location.pathname === "/api/v1/auth/signup") {
+      setUserState(false);
+    }
     dispatch(reset());
     dispatch(googleLogin());
   }, []);

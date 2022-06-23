@@ -28,6 +28,7 @@ const Header = ({
 }) => {
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
   const [showQuiz, setShowQuiz] = useState(false);
+  const { user } = useSelector((state) => state.user);
 
   const location = useLocation();
   const path = location.pathname;
@@ -71,7 +72,7 @@ const Header = ({
             </p>
             <p
               onClick={() => {
-                setShowEbookMenu(!showEbookMenu);
+                user && setShowEbookMenu(!showEbookMenu);
                 setShowCategories(false);
                 setShowProfileInfo(false);
                 setShowSearch(false);

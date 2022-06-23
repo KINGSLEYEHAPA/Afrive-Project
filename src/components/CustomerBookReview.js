@@ -8,7 +8,7 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
 import { commentOnABook } from "../features/books/bookSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const ViewReview = ({ title, comment, userRating, index }) => {
   return (
@@ -93,7 +93,7 @@ const CustomerBookReview = ({ book }) => {
   const [rating, setRating] = useState(null);
   const dispatch = useDispatch();
 
-  const user = "prince";
+  const { user } = useSelector((state) => state.user);
 
   const bookForComment = {
     ...book,
@@ -132,7 +132,7 @@ const CustomerBookReview = ({ book }) => {
                 <h3 className="text-h3 font-reg text-neutral-80">
                   Customers Reviews
                 </h3>
-                <p className=" text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
+                <p className="cursor-pointer text-neutral-30 text-bodyL hover:text-neutral-80">
                   see more
                 </p>
               </div>
@@ -208,7 +208,7 @@ const CustomerBookReview = ({ book }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1.2 } }}
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
-            className="w-full h-full  flex justify-center items-center "
+            className="flex items-center justify-center w-full h-full "
           >
             <div className="w-[407px] h-[122px] flex flex-col items-center gap-[38px] mt-[38px] ">
               <h4 className="text-h4 font-reg text-primary-50 whitespace-nowrap">
@@ -229,16 +229,16 @@ const CustomerBookReview = ({ book }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1.2 } }}
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
-            className="w-full h-full  flex justify-center items-center "
+            className="flex items-center justify-center w-full h-full "
           >
             <div className="w-[407px] h-[122px] flex flex-col items-center gap-[38px] mt-[38px] ">
               <h4 className="text-h4 font-reg text-primary-50 whitespace-nowrap">
                 Please{" "}
-                <Link className="underline" to="/sign-in">
+                <Link className="underline" to="/api/v1/auth">
                   signin
                 </Link>{" "}
                 or{" "}
-                <Link className="underline" to="/sign-up">
+                <Link className="underline" to="/api/v1/auth/signup">
                   signup
                 </Link>{" "}
                 to rate and comment on a book.

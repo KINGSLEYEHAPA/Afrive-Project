@@ -89,6 +89,7 @@ const ApplicationsRoute = () => {
                 element={<ServerMessages />}
               />
             </Route>
+            <Route path="/api/v1/auth/signup" element={<UserLogin />} />
 
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
