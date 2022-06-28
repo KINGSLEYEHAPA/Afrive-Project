@@ -8,7 +8,7 @@ const initialState = {
   isLoadingGoogle: false,
   isLoading: false,
   isError: false,
-  errorMessage: false,
+  errorMessage: null,
   isSuccess: false,
   google: null,
   isGoogleError: false,

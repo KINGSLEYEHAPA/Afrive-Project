@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import booksService from "./booksService";
 
 const initialState = {
   booksInStock: [
@@ -325,7 +326,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: "no", format: ["PDF", "Mobi"] },
       bookRating: {
         averageRating: 2,
         ratings: [
@@ -448,7 +449,31 @@ const initialState = {
   recommendedBooks: [],
   shoppingBag: [],
   shoppingBagBuyNow: null,
+  booksFromServer: null,
+  isLoading: false,
+  isError: false,
+  error: null,
+  isSuccess: false,
 };
+
+export const getAllBooks = createAsyncThunk(
+  "user/getAllBooks",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.getAllBooks(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const bookSlice = createSlice({
   name: "books",
@@ -503,6 +528,24 @@ export const bookSlice = createSlice({
     clearBuyBookNow: (state, action) => {
       state.shoppingBagBuyNow = null;
     },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAllBooks.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(getAllBooks.fulfilled, (state, action) => {
+        state.booksFromServer = action.payload;
+        state.isSuccess = true;
+        state.isLoading = false;
+      })
+      .addCase(getAllBooks.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      });
   },
 });
 

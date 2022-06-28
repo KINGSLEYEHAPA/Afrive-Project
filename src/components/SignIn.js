@@ -137,7 +137,7 @@ const SignIn = ({ setUserState }) => {
                     }}
                     className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate px-[10px]"
                   >
-                    {errorMessage}
+                    {user ? user.message : errorMessage}
                   </motion.div>
                 )}
                 <Outlet />

@@ -49,17 +49,18 @@ const ServerMessages = () => {
     }
   }, [url]);
   useEffect(() => {
-    if (user?.message) setShowServerMessage(user?.message);
+    if (user?.message || errorMessage)
+      setShowServerMessage(user?.message || errorMessage);
 
     setTimeout(() => {
       setShowServerMessage(null);
-    }, 1000);
+    }, 2000);
   }, [user?.message]);
 
   return (
     showServerMessage !== null && (
       <div className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center">
-        {user?.message}
+        {user ? user.message : errorMessage}
       </div>
     )
   );

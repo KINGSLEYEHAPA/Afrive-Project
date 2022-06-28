@@ -11,10 +11,11 @@ import EbookDropdown from "./EbookDropdown";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import OptionsModal from "./OptionsModal";
 import Quiz from "./Quiz";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllBooks } from "../features/books/bookSlice";
 
 const Header = ({
   showCategories,
@@ -26,9 +27,14 @@ const Header = ({
   showProfileInfo,
   setShowProfileInfo,
 }) => {
+  const dispatch = useDispatch();
+
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
   const [showQuiz, setShowQuiz] = useState(false);
   const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    user && dispatch(getAllBooks());
+  }, []);
 
   const location = useLocation();
   const path = location.pathname;
