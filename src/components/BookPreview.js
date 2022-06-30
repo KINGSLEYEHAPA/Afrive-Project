@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 
 import { FiShoppingBag, FiArrowUpLeft } from "react-icons/fi";
@@ -25,8 +25,7 @@ import AnimatePages from "./AnimatePages";
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
   const [eBookPreview, setEBookPreview] = useState(false);
-  const [eBookFormat, setEBookFormat] = useState(false);
-  const [bookFormat, setBookFormat] = useState("");
+  const [showFormat, setShowFormat] = useState(false);
   const availableBooks = useSelector((state) => state.books.booksInStock);
   console.log(availableBooks);
 
@@ -49,36 +48,50 @@ const BookPreview = () => {
     dispatch(removeFavoriteBook(book));
   };
 
+  const buyEBook = (book, format) => {
+    setShowFormat(false);
+
+    const ebook = {
+      ...book,
+      eBook: {
+        status: true,
+        format: [format],
+      },
+    };
+
+    dispatch(buyBookNow(ebook));
+    navigate("/buynow");
+
+    //   setBookInShoppingBag(book);
+    //   navigate("/shopping-bag");
+    //   dispatch(addToBag(book));
+  };
   const buyBook = (book) => {
-    if (eBookPreview) {
-      setEBookFormat(true);
-      const ebook = {
-        ...book,
-        eBook: { ...book.eBook, status: "yes", format: bookFormat },
-      };
-      dispatch(buyBookNow(ebook));
-      navigate("/buynow");
-    } else {
-      setBookInShoppingBag(book);
-      navigate("/shopping-bag");
-      dispatch(addToBag(book));
-    }
+    const ebook = {
+      ...book,
+      eBook: {
+        status: false,
+        format: [],
+      },
+    };
+    dispatch(buyBookNow(ebook));
+    navigate("/buynow");
   };
 
-  const buyBookOnformat = (book) => {
-    if (eBookPreview && bookFormat) {
-      dispatch(buyBookNow(book));
-    }
-  };
+  // const buyBookOnformat = (book) => {
+  //   if (eBookPreview) {
+  //     dispatch(buyBookNow(book));
+  //   }
+  // };
 
   const addItemToBag = (book) => {
     if (eBookPreview) {
-      const ebook = {
-        ...book,
-        eBook: { ...book.eBook, status: "yes", format: bookFormat },
-      };
+      // const ebook = {
+      //   ...book,
+      //   eBook: { ...book.eBook, status: "yes", format: bookFormat },
+      // };
 
-      dispatch(addToBag(ebook));
+      dispatch(addToBag(book));
     } else {
       dispatch(addToBag(book));
     }
@@ -169,7 +182,7 @@ const BookPreview = () => {
                     <motion.div
                       onClick={() => {
                         setEBookPreview(false);
-                        setEBookFormat(false);
+                        setShowFormat(false);
                       }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1, transition: { duration: 1 } }}
@@ -214,7 +227,7 @@ const BookPreview = () => {
                 <span className="text-bodyS neutral-40">In stock</span>
               </span>
               <AnimatePresence>
-                {!eBookPreview && (
+                {!eBookPreview && selectedBook.eBook.status && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { duration: 1.5 } }}
@@ -232,22 +245,40 @@ const BookPreview = () => {
               </AnimatePresence>
             </div>
             <div className="w-full h-[52px] flex gap-[25px] justify-start items-center relative">
-              <AnimateSharedLayout>
-                {eBookFormat && eBookPreview && (
-                  <motion.div
-                    initial={{ height: 0 }}
-                    animate={{
-                      height: [52, 104, 156],
-                      transition: { duration: 1.5 },
-                    }}
-                    exit={{
-                      height: 0,
-                      transition: { duration: 1 },
-                    }}
-                    layoutId="outline"
-                    className="w-[318px] h-[156px] absolute space-y-[1px] top-0 left-0"
-                  >
-                    <motion.button
+              <AnimatePresence>
+                <AnimateSharedLayout>
+                  {showFormat && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{
+                        height: [52, 104, 156],
+                        transition: { duration: 1.5 },
+                      }}
+                      exit={{
+                        height: [104, 52, 0],
+                        transition: { duration: 1.5 },
+                      }}
+                      layoutId="outline"
+                      className="w-[318px] h-[156px] absolute space-y-[1px] top-0 left-0"
+                    >
+                      {selectedBook.eBook.format.map((item) => {
+                        return (
+                          <motion.button
+                            initial={{ height: 52 }}
+                            animate={{
+                              height: 52,
+                              transition: { duration: 0 },
+                            }}
+                            layoutId="outline"
+                            key={item}
+                            onClick={() => buyEBook(selectedBook, item)}
+                            className="w-[318px] h-[52px] rounded-[4px]  p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
+                          >
+                            {item}
+                          </motion.button>
+                        );
+                      })}
+                      {/* <motion.button
                       initial={{ height: 52 }}
                       animate={{
                         height: 52,
@@ -282,13 +313,16 @@ const BookPreview = () => {
                       className="w-[318px] h-[52px] rounded-[4px]  p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
                     >
                       Mobi
-                    </motion.button>
-                  </motion.div>
-                )}
-              </AnimateSharedLayout>
+                    </motion.button> */}
+                    </motion.div>
+                  )}
+                </AnimateSharedLayout>
+              </AnimatePresence>
 
               <button
-                onClick={() => buyBook(selectedBook)}
+                onClick={() => {
+                  eBookPreview ? setShowFormat(true) : buyBook(selectedBook);
+                }}
                 className="w-[318px] h-[52px] rounded-[4px]  p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
               >
                 {eBookPreview ? "Buy e-book Now" : "Buy Now"}
@@ -296,7 +330,6 @@ const BookPreview = () => {
               <button
                 onClick={() => {
                   addItemToBag(selectedBook);
-                  buyBook(selectedBook);
                 }}
                 className="w-[155px] h-[52px] rounded-[4px] text-primary-50 p-[10px] bg-neutral-white text-buttonT2  border-2 border-primary-50"
               >

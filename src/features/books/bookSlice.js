@@ -15,7 +15,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI", "EPUB"] },
       bookRating: {
         averageRating: 4.2,
         ratings: [
@@ -60,7 +60,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: false, format: [] },
       bookRating: {
         averageRating: 4.2,
         ratings: [
@@ -105,7 +105,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI"] },
       bookRating: {
         averageRating: 3.2,
         ratings: [
@@ -149,7 +149,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Fantasy", "Drama"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI", "EPUB"] },
       bookRating: {
         averageRating: 3.2,
         ratings: [
@@ -194,7 +194,7 @@ const initialState = {
 
       category: ["Poetry", "Adventure"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI"] },
       bookRating: {
         averageRating: 2.6,
         ratings: [
@@ -235,7 +235,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI", "EPUB"] },
 
       bookRating: {
         averageRating: 2,
@@ -281,7 +281,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama", "Children"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["MOBI", "EPUB"] },
       bookRating: {
         averageRating: 2,
         ratings: [
@@ -326,7 +326,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama"],
 
-      eBook: { status: "no", format: ["PDF", "Mobi"] },
+      eBook: { status: false, format: [] },
       bookRating: {
         averageRating: 2,
         ratings: [
@@ -371,7 +371,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama", "Autobiography"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI", "EPUB"] },
       bookRating: {
         averageRating: 3,
         ratings: [
@@ -411,7 +411,7 @@ const initialState = {
 
       category: ["Action", "Adventure", "Drama", "Fantasy"],
 
-      eBook: { status: "no", format: "" },
+      eBook: { status: true, format: ["PDF", "MOBI", "EPUB"] },
       bookRating: {
         averageRating: 5,
         ratings: [
@@ -458,7 +458,7 @@ const initialState = {
 
 export const getAllBooks = createAsyncThunk(
   "user/getAllBooks",
-  async (id, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().user.user.data.token;
       return await booksService.getAllBooks(token);

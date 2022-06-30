@@ -186,8 +186,18 @@ const BuyNowShoppingBag = () => {
                             N{selectedBook?.price}
                           </span>
                         </p>
+
+                        {selectedBook?.eBook?.status && (
+                          <div className="flex items-center justify-center w-[70px]  h-[29.78px] rounded-[12px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                            {" "}
+                            <p className=" text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                              {" "}
+                              {selectedBook?.eBook?.format[0]}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                      {selectedBook?.eBook?.status === "yes" && (
+                      {!selectedBook?.eBook?.status && (
                         <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
                           <span
                             onClick={() => incrementQuantity()}
@@ -209,9 +219,11 @@ const BuyNowShoppingBag = () => {
                     </div>
                   </motion.div>
 
-                  <div className="w-full h-[24px] text-bodyL text-neutral-black mt-[21.58px]">
-                    E-books will be downloaded to ‘Your e-books’.
-                  </div>
+                  {selectedBook?.eBook?.status && (
+                    <div className="w-full h-[24px] text-bodyL text-neutral-black mt-[21.58px]">
+                      E-books will be downloaded to ‘Your e-books’.
+                    </div>
+                  )}
                 </div>
               )}
               );

@@ -39,10 +39,10 @@ const RecommendedBooks = () => {
   };
 
   return (
-    <div className="w-screen   px-[6.13%] mobx:px-[10%]  max-w-[1440px]    desk:h-[552px]   ">
+    <div className="w-screen   px-[6.13%] mobx:px-[10%] mtab:px-0   max-w-[1440px] mx-auto   desk:h-[552px]   ">
       {" "}
-      <div className=" h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px] lap:h-[532.52px]       ">
-        <div className="flex items-center justify-between w-full ">
+      <div className="  h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px] lap:h-[532.52px] mx-[23px] mobx:mx-[72px] mtab:mx-[72px]  tab:mx-[86.44px] lap:mx-[193px]  desk:mx-[182px]     ">
+        <div className="flex items-center justify-between w-full   ">
           <h3 className="font-medium text-bodyN tab:text-h3 text-neutral-80 whitespace-nowrap">
             For you: Recommended based on your likes
           </h3>
@@ -50,8 +50,8 @@ const RecommendedBooks = () => {
             see more
           </p>
         </div>
-        <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 mtab:grid-cols-3 px-0 gap-[19px] mobx:gap-[32px] mtab:gap-[73px] tab:gap-[86.43px] lap:gap-[76px] desk:gap-[81.59px]  ">
-          {availableBooks?.slice(2, 5).map((book) => {
+        <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 justify-start px-0 tab:flex mobx:space-x-[32px] mtab:space-x-[14px] tab:space-x-[86.43px] lap:space-x-[76px] desk:space-x-[81.59px]  ">
+          {availableBooks?.slice(4, 7).map((book) => {
             return (
               <div
                 key={book.id}
