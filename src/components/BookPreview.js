@@ -25,6 +25,7 @@ import AnimatePages from "./AnimatePages";
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
   const [eBookPreview, setEBookPreview] = useState(false);
+  const [format, setFormat] = useState(false);
   const [showFormat, setShowFormat] = useState(false);
   const availableBooks = useSelector((state) => state.books.booksInStock);
   console.log(availableBooks);
@@ -48,14 +49,14 @@ const BookPreview = () => {
     dispatch(removeFavoriteBook(book));
   };
 
-  const buyEBook = (book, format) => {
+  const buyEBook = (book, item) => {
     setShowFormat(false);
 
     const ebook = {
       ...book,
       eBook: {
         status: true,
-        format: [format],
+        format: [item],
       },
     };
 
@@ -67,15 +68,20 @@ const BookPreview = () => {
     //   dispatch(addToBag(book));
   };
   const buyBook = (book) => {
-    const ebook = {
+    const bookUpdate = {
       ...book,
       eBook: {
         status: false,
         format: [],
       },
     };
-    dispatch(buyBookNow(ebook));
+    dispatch(buyBookNow(bookUpdate));
     navigate("/buynow");
+  };
+
+  const automateFormat = () => {
+    setShowFormat(true);
+    setFormat(true);
   };
 
   // const buyBookOnformat = (book) => {
@@ -84,16 +90,26 @@ const BookPreview = () => {
   //   }
   // };
 
-  const addItemToBag = (book) => {
-    if (eBookPreview) {
-      // const ebook = {
-      //   ...book,
-      //   eBook: { ...book.eBook, status: "yes", format: bookFormat },
-      // };
+  const addItemToBag = (book, item) => {
+    if (eBookPreview && format) {
+      const ebook = {
+        ...book,
+        eBook: { ...book.eBook, status: true, format: [item] },
+      };
 
-      dispatch(addToBag(book));
+      dispatch(addToBag(ebook));
+      setFormat(false);
+      setShowFormat(false);
     } else {
-      dispatch(addToBag(book));
+      const bookUpdate = {
+        ...book,
+        eBook: {
+          status: false,
+          format: [],
+        },
+      };
+
+      dispatch(addToBag(bookUpdate));
     }
   };
   return (
@@ -271,7 +287,14 @@ const BookPreview = () => {
                             }}
                             layoutId="outline"
                             key={item}
-                            onClick={() => buyEBook(selectedBook, item)}
+                            onClick={() => {
+                              eBookPreview &&
+                                !format &&
+                                buyEBook(selectedBook, item);
+                              eBookPreview &&
+                                format &&
+                                addItemToBag(selectedBook, item);
+                            }}
                             className="w-[318px] h-[52px] rounded-[4px]  p-[10px] text-neutral-white text-buttonT2  bg-primary-50 border-2 border-primary-50"
                           >
                             {item}
@@ -329,7 +352,7 @@ const BookPreview = () => {
               </button>
               <button
                 onClick={() => {
-                  addItemToBag(selectedBook);
+                  eBookPreview ? automateFormat() : addItemToBag(selectedBook);
                 }}
                 className="w-[155px] h-[52px] rounded-[4px] text-primary-50 p-[10px] bg-neutral-white text-buttonT2  border-2 border-primary-50"
               >

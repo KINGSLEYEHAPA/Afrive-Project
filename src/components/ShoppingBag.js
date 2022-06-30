@@ -227,27 +227,38 @@ const ShoppingBag = () => {
                                 N{book.totalAmount}
                               </span>
                             </p>
+                            {book?.eBook?.status && (
+                              <div className="flex items-center justify-center w-[70px]  h-[29.78px] rounded-[12px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                                {" "}
+                                <p className=" text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                                  {" "}
+                                  {book?.eBook?.format[0]}
+                                </p>
+                              </div>
+                            )}
                           </div>
-                          <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
-                            <span
-                              onClick={() => incrementQuantity(index)}
-                              className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
-                            >
-                              +
-                            </span>
-                            <span className="text-bodyL text-primary-50 font-reg">
-                              {book.quantity}
-                            </span>
-                            <span
-                              onClick={() => decrementQuantity(index)}
-                              className=" cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
-                            >
-                              -
-                            </span>
-                          </div>
+                          {!book?.eBook?.status && (
+                            <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
+                              <span
+                                onClick={() => incrementQuantity(index)}
+                                className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                              >
+                                +
+                              </span>
+                              <span className="text-bodyL text-primary-50 font-reg">
+                                {book.quantity}
+                              </span>
+                              <span
+                                onClick={() => decrementQuantity(index)}
+                                className=" cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                              >
+                                -
+                              </span>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
-                      {book.eBook.status === "yes" && (
+                      {book?.eBook?.status && (
                         <div className="w-full h-[24px] text-bodyL text-neutral-black mt-[21.58px]">
                           E-books will be downloaded to ‘Your e-books’.
                         </div>
