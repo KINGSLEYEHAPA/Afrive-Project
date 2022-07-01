@@ -33,7 +33,7 @@ const Header = ({
   const [showQuiz, setShowQuiz] = useState(false);
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
-    user && dispatch(getAllBooks());
+    dispatch(getAllBooks());
   }, []);
 
   const location = useLocation();
