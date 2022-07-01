@@ -8,14 +8,17 @@ import BookQuote from "./BookQuote";
 import Payment from "./Payment";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import AddLocation from "./AddLocation";
 
 const Checkout = () => {
   const navigate = useNavigate();
   const [deliveryFee, setDeliveryFee] = useState(3000);
   const [discountCoupon, setDiscountCoupon] = useState(1000);
   const [showPayment, setShowPayment] = useState(false);
+  const [changeLocation, setChangeLocation] = useState(false);
 
   const checkout = useSelector((state) => state.books.checkout);
+  const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
   const userAddress = useSelector((state) => state.user.userInfo);
   const userEmail = useSelector((state) => state.user.user);
 
@@ -24,7 +27,7 @@ const Checkout = () => {
     setShowPayment(true);
   };
 
-  checkout.map((item) => {
+  checkout?.map((item) => {
     totalAmount += item.totalAmount;
     return null;
   });
@@ -42,6 +45,12 @@ const Checkout = () => {
             />
           </OptionsModal>
         )}
+        {changeLocation && (
+          <OptionsModal>
+            <AddLocation setChangeLocation={setChangeLocation} />
+          </OptionsModal>
+        )}
+
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
@@ -63,7 +72,7 @@ const Checkout = () => {
                 Order Info:
               </p>
               <div className="relative right-[52px]">
-                {checkout.map((book) => {
+                {checkout?.map((book) => {
                   return (
                     <p
                       key={book.id}
@@ -98,15 +107,26 @@ const Checkout = () => {
               <p className="whitespace-nowrap mt-[10px] text-h4 font-medium text-neutral-70">
                 Delivered To:
               </p>
-              <p className="text-h4 font-reg text-neutral-60">
-                {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
-                {userAddress?.houseAddress}
-              </p>
+              {(
+                <p className="text-h4 font-reg text-neutral-60">
+                  {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
+                  <span>{deliveryLocation?.address}</span>{" "}
+                  <span>{deliveryLocation?.city}</span>{" "}
+                  <span>{deliveryLocation?.state}</span>{" "}
+                </p>
+              ) || (
+                <p className="text-h4 font-reg text-neutral-60">
+                  {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
+                  <span>{userAddress?.houseAddress}</span>{" "}
+                  <span>{userAddress?.city}</span>{" "}
+                  <span>{userAddress?.state}</span>{" "}
+                </p>
+              )}
             </div>
             <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
               {" "}
               <p
-                onClick={() => navigate("/billing-address")}
+                onClick={() => setChangeLocation(true)}
                 className="text-bodyL text-neutral-30 cursor-pointer"
               >
                 Change

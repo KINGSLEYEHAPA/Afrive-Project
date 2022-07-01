@@ -16,6 +16,7 @@ const initialState = {
   resetMessage: null,
   passwordResetEmail: null,
   userInfo: null,
+  deliveryAddress: null,
 };
 
 export const register = createAsyncThunk(
@@ -163,6 +164,10 @@ const userSlice = createSlice({
     addUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
+    addDeliveryLocation: (state, action) => {
+      state.deliveryAddress = action.payload;
+    },
+
     // updatePayment: (state, action) => {
     //   state.userInfo.payment = action.payload.payment;
     // },
@@ -263,6 +268,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { reset, updatePayment, addUserInfo } = userSlice.actions;
+export const { reset, updatePayment, addUserInfo, addDeliveryLocation } =
+  userSlice.actions;
 
 export default userSlice.reducer;
