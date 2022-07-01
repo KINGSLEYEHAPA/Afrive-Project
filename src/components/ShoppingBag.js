@@ -339,7 +339,7 @@ const ShoppingBag = () => {
               )}
             </div>
             <button
-              onClick={() => checkout}
+              onClick={checkout}
               className="  w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
             >
               Proceed to Checkout

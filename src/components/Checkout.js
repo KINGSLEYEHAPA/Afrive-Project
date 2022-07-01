@@ -6,9 +6,26 @@ import OptionsModal from "./OptionsModal";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 import Payment from "./Payment";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const [deliveryFee, setDeliveryFee] = useState(3000);
+  const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [showPayment, setShowPayment] = useState(false);
+
+  const checkout = useSelector((state) => state.books.checkout);
+  const userAddress = useSelector((state) => state.user.userInfo);
+  const userEmail = useSelector((state) => state.user.user);
+
+  let totalAmount = 0;
+
+  checkout.map((item) => {
+    totalAmount += item.totalAmount;
+    return null;
+  });
+  console.log(totalAmount);
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[162px] relative mb-0 pt-[32px] ">
@@ -32,11 +49,25 @@ const Checkout = () => {
         <div className="w-full h-[753.86px] flex items-start justify-start gap-0 relative mt-[72px]">
           <div className="w-1/2 h-full pl-[188.50px] pr-[74.50px]  ">
             <div className="min-h-[96px] w-full  flex justify-between items-center gap-[56px] mb-[112px]">
-              <p className="whitespace-nowrap mt-[10px] text-h4 font-medium text-neutral-70">
+              <p className="whitespace-nowrap  text-h4 font-medium text-neutral-70">
                 Order Info:
               </p>
               <div className="relative right-[52px]">
-                <p className="text-h4 font-reg text-neutral-60">
+                {checkout.map((book) => {
+                  return (
+                    <p
+                      key={book.id}
+                      className="text-h4 font-reg text-neutral-60"
+                    >
+                      <span>
+                        {checkout?.[0]?.eBook?.status ? null : book?.quantity}
+                      </span>{" "}
+                      {!checkout?.[0]?.eBook?.status && <span>x</span>}{" "}
+                      {book?.title}
+                    </p>
+                  );
+                })}
+                {/* <p className="text-h4 font-reg text-neutral-60">
                   <span>1</span> x Things Fall Apart
                 </p>
                 <p className="text-h4 font-reg text-neutral-60">
@@ -50,7 +81,7 @@ const Checkout = () => {
                 </p>
                 <p className="text-h4 font-reg text-neutral-60">
                   <span>3</span> x Things Fall Apart
-                </p>
+                </p> */}
               </div>
             </div>
             <div className="h-[96px] w-full  flex justify-between items-start gap-[56px]">
@@ -58,12 +89,18 @@ const Checkout = () => {
                 Delivered To:
               </p>
               <p className="text-h4 font-reg text-neutral-60">
-                1901 Thornridge Cir. Shiloh, Hawaii 81063
+                {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
+                {userAddress?.houseAddress}
               </p>
             </div>
             <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
               {" "}
-              <p className="text-bodyL text-neutral-30">Change</p>
+              <p
+                onClick={() => navigate("/billing-address")}
+                className="text-bodyL text-neutral-30 cursor-pointer"
+              >
+                Change
+              </p>
             </div>
             <hr className="w-[100%] h-0 border border-primary-10 mt-[31px] mx-auto   " />
             <div className="h-[96px] w-full  flex justify-between items-center gap-[56px] my-[56px]">
@@ -71,7 +108,7 @@ const Checkout = () => {
                 Email:
               </p>
               <p className="text-h4 font-reg text-neutral-60">
-                legoyedepo@gmail.com
+                {userEmail?.data?.email}
               </p>
             </div>
             {/* 
@@ -137,19 +174,30 @@ const Checkout = () => {
           <div className="w-1/2 h-[353px] pl-[31.67px] pr-[185.33px]">
             <div className="w-full h-[24px] flex justify-between ">
               <p className="text-bodyL text-neutral-80">Subtotal:</p>
-              <p className="text-bodyL text-neutral-70">N6,000</p>
+              <p className="text-bodyL text-neutral-70">
+                N{totalAmount.toLocaleString("en-US")}
+              </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[24px] ">
               <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
-              <p className="text-bodyL text-neutral-70">-N1,000</p>
+              <p className="text-bodyL text-neutral-70">
+                -N{discountCoupon.toLocaleString("en-US")}
+              </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[24px] ">
               <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
-              <p className="text-bodyL text-neutral-70">N3,000</p>
+              <p className="text-bodyL text-neutral-70">
+                N{deliveryFee.toLocaleString("en-US")}
+              </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
-              <p className="text-bodyL text-neutral-70">N8,000</p>
+              <p className="text-bodyL text-neutral-70">
+                N
+                {(totalAmount + deliveryFee - discountCoupon).toLocaleString(
+                  "en-US"
+                ) || 0}
+              </p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
               <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
