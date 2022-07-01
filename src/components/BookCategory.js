@@ -18,11 +18,11 @@ const BookCategory = () => {
   const loading = false;
   let params = useParams();
   const navigate = useNavigate();
-  const availableBooks = useSelector((state) => state.books.booksInStock);
+  const availableBooks = useSelector((state) => state.books.booksFromServer);
   const { isLoading } = useSelector((state) => state.books);
   console.log(availableBooks);
 
-  const bookCategory = availableBooks?.filter((item) => {
+  const bookCategory = availableBooks?.data.filter((item) => {
     return item.category.includes(params.catName);
   });
 
