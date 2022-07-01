@@ -7,12 +7,15 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import OptionsModal from "./OptionsModal";
 import Payment from "./Payment";
+import AddLocation from "./AddLocation";
 
 const BuyNowCheckout = () => {
   const navigate = useNavigate();
   const [deliveryFee, setDeliveryFee] = useState(3000);
   const [discountCoupon, setDiscountCoupon] = useState(1000);
   const [showPayment, setShowPayment] = useState(false);
+  const [changeLocation, setChangeLocation] = useState(false);
+  const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
 
   const userAddress = useSelector((state) => state.user.userInfo);
   const userEmail = useSelector((state) => state.user.user);
@@ -39,6 +42,12 @@ const BuyNowCheckout = () => {
             />
           </OptionsModal>
         )}
+        {changeLocation && (
+          <OptionsModal>
+            <AddLocation setChangeLocation={setChangeLocation} />
+          </OptionsModal>
+        )}
+
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
@@ -94,15 +103,29 @@ const BuyNowCheckout = () => {
                   E-books are automatically added to ‘Your e-books’ on checkout.
                 </p>
               ) : (
-                <p className="text-h4 font-reg text-neutral-60">
-                  {userAddress?.houseAddress}
-                </p>
+                <div className="">
+                  {deliveryLocation ? (
+                    <p className="text-h4 font-reg text-neutral-60">
+                      {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
+                      <span>{deliveryLocation?.address}</span>{" "}
+                      <span>{deliveryLocation?.city}</span>{" "}
+                      <span>{deliveryLocation?.state}</span>{" "}
+                    </p>
+                  ) : (
+                    <p className="text-h4 font-reg text-neutral-60">
+                      {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
+                      <span>{userAddress?.houseAddress}</span>{" "}
+                      <span>{userAddress?.city}</span>{" "}
+                      <span>{userAddress?.state}</span>{" "}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
             <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
               {" "}
               <p
-                onClick={() => navigate("/billing-address")}
+                onClick={() => setChangeLocation(true)}
                 className="text-bodyL text-neutral-30 cursor-pointer"
               >
                 Change
