@@ -107,14 +107,14 @@ const Checkout = () => {
               <p className="whitespace-nowrap mt-[10px] text-h4 font-medium text-neutral-70">
                 Delivered To:
               </p>
-              {(
+              {deliveryLocation ? (
                 <p className="text-h4 font-reg text-neutral-60">
                   {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
                   <span>{deliveryLocation?.address}</span>{" "}
                   <span>{deliveryLocation?.city}</span>{" "}
                   <span>{deliveryLocation?.state}</span>{" "}
                 </p>
-              ) || (
+              ) : (
                 <p className="text-h4 font-reg text-neutral-60">
                   {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
                   <span>{userAddress?.houseAddress}</span>{" "}
