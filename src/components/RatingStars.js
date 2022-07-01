@@ -43,11 +43,11 @@ const RatingStars = ({ book }) => {
 
   let average = 0;
 
-  book.bookRating.ratings.map((rate) => {
+  book?.bookRating?.ratings?.map((rate) => {
     average += rate.starRating;
     return null;
   });
-  const averageRating = Math.floor(average / book.bookRating.ratings.length);
+  const averageRating = Math.floor(average / book?.bookRating?.ratings?.length);
 
   const ratingDiff = 5 - averageRating;
 

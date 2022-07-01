@@ -98,9 +98,9 @@ const CustomerBookReview = ({ book }) => {
   const bookForComment = {
     ...book,
     bookRating: {
-      ...book.bookRating,
+      ...book?.bookRating,
       ratings: [
-        ...book.bookRating.ratings,
+        ...book?.bookRating?.ratings,
         {
           name: "Kingsley John Boro Just Testing",
           comment: userReview,

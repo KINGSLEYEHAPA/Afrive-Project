@@ -9,6 +9,8 @@ import {
   removeFromBag,
   addAFavoriteBook,
   removeFavoriteBook,
+  addToCheckOut,
+  clearShoppingBag,
 } from "../features/books/bookSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -18,6 +20,7 @@ import BookQuote from "./BookQuote";
 const ShoppingBag = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const [discountCoupon, setDiscountCoupon] = useState(1000);
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
   console.log(shoppingBag);
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
@@ -110,6 +113,12 @@ const ShoppingBag = () => {
   const handleCoupon = () => {
     setVoucher("");
     setCouponVoucher(false);
+  };
+
+  const checkout = () => {
+    dispatch(addToCheckOut(shoppingBagBooks));
+    dispatch(clearShoppingBag());
+    navigate("/checkout");
   };
 
   return (
@@ -210,13 +219,24 @@ const ShoppingBag = () => {
                             </span>
                           </div>
                           <div className="w-[257px] mt-[84.21px] space-y-[12px]">
-                            {book.eBook.status === "yes" && (
-                              <div className="flex items-center justify-center w-[84px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
-                                <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
-                                  Ebook
-                                </p>
-                              </div>
-                            )}
+                            <div className="flex gap-[10px] mb-[10px]">
+                              {book?.eBook?.status && (
+                                <div className="flex items-center justify-center w-[84px] h-[29.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                                  <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                                    Ebook
+                                  </p>
+                                </div>
+                              )}
+                              {book?.eBook?.status && (
+                                <div className="flex items-center justify-center w-[70px]  h-[29.78px] rounded-[12px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                                  {" "}
+                                  <p className=" text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                                    {" "}
+                                    {book?.eBook?.format[0]}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
                             <Link to={`/book/${book.title}`}>
                               <h3 className="text-h4 font-reg text-neutral-80">
                                 {book?.title}
@@ -228,15 +248,6 @@ const ShoppingBag = () => {
                                 N{book.totalAmount.toLocaleString("en-US")}
                               </span>
                             </p>
-                            {book?.eBook?.status && (
-                              <div className="flex items-center justify-center w-[70px]  h-[29.78px] rounded-[12px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
-                                {" "}
-                                <p className=" text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
-                                  {" "}
-                                  {book?.eBook?.format[0]}
-                                </p>
-                              </div>
-                            )}
                           </div>
                           {!book?.eBook?.status && (
                             <div className="w-[111px] h-[30px]  mt-[53.86px] flex justify-between items-center gap-[13px]">
@@ -281,12 +292,14 @@ const ShoppingBag = () => {
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[26px] ">
               <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
-              <p className="text-bodyL text-neutral-70">-N1000</p>
+              <p className="text-bodyL text-neutral-70">
+                -N{discountCoupon.toLocaleString("en-US")}
+              </p>
             </div>
-            <div className="w-full h-[24px] flex justify-between mt-[26px] ">
+            {/* <div className="w-full h-[24px] flex justify-between mt-[26px] ">
               <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
               <p className="text-bodyL text-neutral-70">N3000</p>
-            </div>
+            </div> */}
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">
@@ -325,7 +338,10 @@ const ShoppingBag = () => {
                 </div>
               )}
             </div>
-            <button className="  w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
+            <button
+              onClick={() => checkout}
+              className="  w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
+            >
               Proceed to Checkout
             </button>
           </div>

@@ -450,7 +450,7 @@ const initialState = {
   shoppingBag: [],
   shoppingBagBuyNow: null,
   buyNowCheckout: [],
-  checkout: [],
+  checkout: null,
   booksFromServer: null,
   isLoading: false,
   isError: false,
@@ -502,6 +502,23 @@ export const bookSlice = createSlice({
     addToBuyNowCheckOut: (state, action) => {
       state.buyNowCheckout = [action.payload];
     },
+
+    addToCheckOut: (state, action) => {
+      state.checkout = action.payload;
+    },
+    clearCheckOut: (state) => {
+      state.checkout = null;
+    },
+    clearBuyNowCheckOut: (state) => {
+      state.buyNowCheckout = [];
+    },
+    clearBuyNShoppingBag: (state) => {
+      state.shoppingBagBuyNow = [];
+    },
+    clearShoppingBag: (state) => {
+      state.shoppingBag = [];
+    },
+
     addToBag: (state, action) => {
       const bookExist = state.shoppingBag?.filter((item) => {
         return state.shoppingBag.length !== 0 && item?.id === action.payload.id;
@@ -564,5 +581,10 @@ export const {
   buyBookNow,
   clearBuyBookNow,
   addToBuyNowCheckOut,
+  addToCheckOut,
+  clearBuyNowCheckOut,
+  clearCheckOut,
+  clearBuyNShoppingBag,
+  clearShoppingBag,
 } = bookSlice.actions;
 export default bookSlice.reducer;
