@@ -243,7 +243,7 @@ const BookPreview = () => {
                 <span className="text-bodyS neutral-40">In stock</span>
               </span>
               <AnimatePresence>
-                {!eBookPreview && selectedBook.eBook.status && (
+                {!eBookPreview && selectedBook?.eBook?.status && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { duration: 1.5 } }}
