@@ -27,13 +27,13 @@ const BookPreview = () => {
   const [eBookPreview, setEBookPreview] = useState(false);
   const [format, setFormat] = useState(false);
   const [showFormat, setShowFormat] = useState(false);
-  const availableBooks = useSelector((state) => state.books.booksInStock);
+  const availableBooks = useSelector((state) => state.books.booksFromServer);
   console.log(availableBooks);
 
   let params = useParams();
   let navigate = useNavigate();
 
-  const selectedBook = availableBooks.find((item) => {
+  const selectedBook = availableBooks?.data.find((item) => {
     return item.title === params.bookId;
   });
 
