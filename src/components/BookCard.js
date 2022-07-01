@@ -106,7 +106,9 @@ const BookCard = ({
           {book.title}
         </h3>
       </Link>
-      <p className="leading-8 text-[18px] text-primary-40">N{book.price}</p>
+      <p className="leading-8 text-[18px] text-primary-40">
+        N{book.price.toLocaleString("en-US")}
+      </p>
     </motion.div>
   );
 };

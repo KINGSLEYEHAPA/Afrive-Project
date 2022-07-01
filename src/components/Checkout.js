@@ -12,9 +12,9 @@ const Checkout = () => {
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[162px] relative mb-0 pt-[32px] ">
-        <OptionsModal>
+        {/* <OptionsModal>
           <Payment />
-        </OptionsModal>
+        </OptionsModal> */}
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
@@ -74,6 +74,8 @@ const Checkout = () => {
                 legoyedepo@gmail.com
               </p>
             </div>
+            {/* 
+            toLocaleString('en-US') */}
             {/* <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " /> */}
             {/* <div className="h-[29.78px] w-full  flex items-center gap-[56px] mt-[56px]">
               <p className="whitespace-nowrap text-h4 font-medium text-neutral-70">

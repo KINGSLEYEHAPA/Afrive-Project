@@ -236,7 +236,7 @@ const BookPreview = () => {
             </div>
             <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
               <p className="text-primary-50 text-h3 font-medium">
-                N{selectedBook?.price}
+                N{selectedBook?.price.toLocaleString("en-US")}
               </p>
               <span className="text-bodyN text-neutral-60">
                 Status: &nbsp;

@@ -25,7 +25,13 @@ const BuyNowCheckout = () => {
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[521px] pt-[32px] relative">
         {showPayment && (
           <OptionsModal>
-            <Payment />
+            <Payment
+              order={buyNowBooks}
+              totalAmountToPay={
+                buyNowBooks?.[0]?.totalAmount + deliveryFee - discountCoupon
+              }
+              setShowPayment={setShowPayment}
+            />
           </OptionsModal>
         )}
         <div
@@ -130,23 +136,30 @@ const BuyNowCheckout = () => {
             <div className="w-full h-[24px] flex justify-between ">
               <p className="text-bodyL text-neutral-80">Subtotal:</p>
               <p className="text-bodyL text-neutral-70">
-                N{buyNowBooks?.[0]?.totalAmount}
+                N{buyNowBooks?.[0]?.totalAmount.toLocaleString("en-US")}
               </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[24px] ">
               <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
-              <p className="text-bodyL text-neutral-70">-N{discountCoupon}</p>
+              <p className="text-bodyL text-neutral-70">
+                -N{discountCoupon.toLocaleString("en-US")}
+              </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[24px] ">
               <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
-              <p className="text-bodyL text-neutral-70">{deliveryFee}</p>
+              <p className="text-bodyL text-neutral-70">
+                {deliveryFee.toLocaleString("en-US")}
+              </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">
                 N
-                {buyNowBooks?.[0]?.totalAmount + deliveryFee - discountCoupon ||
-                  0}
+                {(
+                  buyNowBooks?.[0]?.totalAmount +
+                  deliveryFee -
+                  discountCoupon
+                ).toLocaleString("en-US") || 0}
               </p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">

@@ -51,7 +51,7 @@ const RecommendedBooks = () => {
           </p>
         </div>
         <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 justify-start px-0 tab:flex mobx:space-x-[32px] mtab:space-x-[14px] tab:space-x-[86.43px] lap:space-x-[76px] desk:space-x-[81.59px]  ">
-          {availableBooks?.slice(4, 7).map((book) => {
+          {availableBooks?.slice(6, 9).map((book) => {
             return (
               <div
                 key={book.id}
@@ -141,7 +141,7 @@ const RecommendedBooks = () => {
                 </Link>
                 <div className=" flex gap-[20px] mtab:gap-[22px] tab:gap-[30px] items-center">
                   <p className=" text-[14.436px] leading-[23px] mtab:text-[17.69px] mtab:leading-[28px]tab:text-[21.127px] tab:leading-[34px] desk:leading-8 lap:leading-6 lap:text-[18px] text-primary-40">
-                    N{book?.price}
+                    N{book?.price.toLocaleString("en-US")}
                   </p>
                   <span className="inline-block lap:hidden  mt-[5px] mtab:mt-0">
                     <RatingStars book={book} />

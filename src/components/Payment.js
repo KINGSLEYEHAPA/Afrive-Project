@@ -3,7 +3,7 @@ import masterCardLogo from "../assets/mastercard2.webp";
 import { PaystackButton } from "react-paystack";
 import { useNavigate } from "react-router-dom";
 
-const Payment = () => {
+const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
   const [paymentFlow, setPaymentFlow] = useState(0);
   const [error, setError] = useState("");
@@ -37,14 +37,22 @@ const Payment = () => {
           <div className="h-[120px] w-full overflow-hidden overflow-y-auto scrollbar-hide">
             <div className="my-[10px] ">
               <div className="min-h-[120px] w-full  flex justify-between   ">
-                <p className="whitespace-nowrap mt-[10px] text-bodyS font-medium text-neutral-30">
+                <p className="whitespace-nowrap text-bodyS font-medium text-neutral-30">
                   Order Info:
                 </p>
                 <div className="">
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>1</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
+                  {order.map((item, index) => {
+                    return (
+                      <p
+                        key={index}
+                        className="text-bodyS font-reg text-neutral-60"
+                      >
+                        <span>{item.quantity}</span> x {item.title}
+                      </p>
+                    );
+                  })}
+
+                  {/* <p className="text-bodyS font-reg text-neutral-60">
                     <span>3</span> x Things Fall Apart
                   </p>
                   <p className="text-bodyS font-reg text-neutral-60">
@@ -67,14 +75,16 @@ const Payment = () => {
                   </p>
                   <p className="text-bodyS font-reg text-neutral-60">
                     <span>3</span> x Things Fall Apart
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
           </div>
           <div className="flex justify-between items-center my-[5px]">
             <span className="text-neutral-30">Total Amount to Pay</span>
-            <span className="font-medium text-primary-50">N25,000</span>
+            <span className="font-medium text-primary-50">
+              N{totalAmountToPay.toLocaleString("en-US")}
+            </span>
           </div>
           <div className="flex justify-between items-center mt-[10px]">
             <p className="text-neutral-30">Payment Method:</p>
@@ -116,7 +126,10 @@ const Payment = () => {
             className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             {...componentProps}
           />
-          <button className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyL font-medium">
+          <button
+            onClick={() => setShowPayment(false)}
+            className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyL font-medium"
+          >
             Cancel
           </button>
         </div>
