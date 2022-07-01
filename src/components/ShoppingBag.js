@@ -19,6 +19,7 @@ const ShoppingBag = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
+  console.log(shoppingBag);
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const addBookAsFavorite = (book) => {
     dispatch(addAFavoriteBook(book));

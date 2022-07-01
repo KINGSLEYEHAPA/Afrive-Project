@@ -258,7 +258,7 @@ const BuyNowShoppingBag = () => {
                 N
                 {(selectedBook?.totalAmount - discountCoupon)?.toLocaleString(
                   "en-US"
-                )}
+                ) || 0}
               </p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">

@@ -55,7 +55,7 @@ const ServerMessages = () => {
     setTimeout(() => {
       setShowServerMessage(null);
     }, 2000);
-  }, [user?.message]);
+  }, [user, isError, isSuccess]);
 
   return (
     showServerMessage !== null && (

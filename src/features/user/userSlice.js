@@ -15,6 +15,7 @@ const initialState = {
   verified: null,
   resetMessage: null,
   passwordResetEmail: null,
+  userInfo: null,
 };
 
 export const register = createAsyncThunk(
@@ -159,6 +160,12 @@ const userSlice = createSlice({
       state.isGoogleError = false;
       state.verified = null;
     },
+    addUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    // updatePayment: (state, action) => {
+    //   state.userInfo.payment = action.payload.payment;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -256,6 +263,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { reset } = userSlice.actions;
+export const { reset, updatePayment, addUserInfo } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -24,6 +24,7 @@ const Signup = ({ setUserState }) => {
     isError,
     errorMessage,
     isGoogleError,
+    isSuccess,
   } = useSelector((state) => state.user);
 
   const [loginValues, setLoginValues] = useState({
@@ -118,6 +119,11 @@ const Signup = ({ setUserState }) => {
       password_confirmation: "",
     });
   };
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(reset());
+    }, 3000);
+  }, [isError, isGoogleError, isSuccess]);
 
   return (
     <AnimatePages>
@@ -166,7 +172,7 @@ const Signup = ({ setUserState }) => {
                 <div className="absolute top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
-                {(isError || isGoogleError) && (
+                {(isError || isGoogleError || user) && (
                   <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{

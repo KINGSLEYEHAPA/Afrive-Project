@@ -25,17 +25,17 @@ const SignIn = ({ setUserState }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(reset());
       setTimeout(() => {
+        dispatch(reset());
         navigate("/");
-      }, 1000);
+      }, 3000);
     }
   }, [isSuccess]);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     dispatch(reset());
-  //   }, 4000);
-  // }, [isError,isGoogleError]);
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(reset());
+    }, 3000);
+  }, [isError, isGoogleError, isSuccess]);
 
   const [loginValues, setLoginValues] = useState({
     email: "",
@@ -127,7 +127,7 @@ const SignIn = ({ setUserState }) => {
                 <div className="absolute top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
-                {(isError || isGoogleError) && (
+                {(isError || isGoogleError || user) && (
                   <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{
@@ -135,7 +135,7 @@ const SignIn = ({ setUserState }) => {
                       x: [-30, 30, -30, 30 - 30, 30, 0],
                       transition: { duration: 0.5 },
                     }}
-                    className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate px-[10px]"
+                    className="  rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center truncate px-[10px]"
                   >
                     {user ? user.message : errorMessage}
                   </motion.div>

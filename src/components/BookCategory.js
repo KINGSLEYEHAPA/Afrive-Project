@@ -19,20 +19,21 @@ const BookCategory = () => {
   let params = useParams();
   const navigate = useNavigate();
   const availableBooks = useSelector((state) => state.books.booksInStock);
+  const { isLoading } = useSelector((state) => state.books);
   console.log(availableBooks);
 
-  const bookCategory = availableBooks.filter((item) => {
+  const bookCategory = availableBooks?.filter((item) => {
     return item.category.includes(params.catName);
   });
 
   // Get current books
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
-  const currentBooks = bookCategory.slice(indexOfFirstBook, indexOfLastBook);
+  const currentBooks = bookCategory?.slice(indexOfFirstBook, indexOfLastBook);
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  return loading ? (
+  return isLoading ? (
     <div className="flex justify-center items-center w-full">
       <Loading />
     </div>
@@ -62,7 +63,7 @@ const BookCategory = () => {
 
         <BookPagination
           booksPerPage={booksPerPage}
-          totalBooks={bookCategory.length}
+          totalBooks={bookCategory?.length}
           paginate={paginate}
           catName={params.catName}
           currentPage={currentPage}
