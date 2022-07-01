@@ -134,7 +134,7 @@ const BookPreview = () => {
                   <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[20px]">
                     <AnimatePresence exitBeforeEnter>
                       {favoriteBooks.filter(
-                        (item) => item.title === selectedBook.title
+                        (item) => item.title === selectedBook?.title
                       ).length > 0 ? (
                         <motion.span
                           initial={{ scale: 0, opacity: 0 }}
@@ -232,7 +232,7 @@ const BookPreview = () => {
             </div>
             <div className=" w-full flex justify-start items-center h-[24px] gap-[40px]">
               <RatingStars book={selectedBook} />
-              <p>({selectedBook.bookRating?.ratings?.length})</p>
+              <p>({selectedBook?.bookRating?.ratings?.length})</p>
             </div>
             <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
               <p className="text-primary-50 text-h3 font-medium">

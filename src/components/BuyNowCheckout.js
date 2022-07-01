@@ -28,7 +28,9 @@ const BuyNowCheckout = () => {
             <Payment
               order={buyNowBooks}
               totalAmountToPay={
-                buyNowBooks?.[0]?.totalAmount + deliveryFee - discountCoupon
+                buyNowBooks?.[0]?.totalAmount +
+                (!buyNowBooks?.[0]?.eBook?.status && deliveryFee) -
+                discountCoupon
               }
               setShowPayment={setShowPayment}
             />
