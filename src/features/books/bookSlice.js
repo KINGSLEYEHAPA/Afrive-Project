@@ -449,6 +449,8 @@ const initialState = {
   recommendedBooks: [],
   shoppingBag: [],
   shoppingBagBuyNow: null,
+  buyNowCheckout: [],
+  checkout: [],
   booksFromServer: null,
   isLoading: false,
   isError: false,
@@ -495,6 +497,10 @@ export const bookSlice = createSlice({
       });
 
       state.likedBooks = otherbooks;
+    },
+
+    addToBuyNowCheckOut: (state, action) => {
+      state.buyNowCheckout.push(action.payload);
     },
     addToBag: (state, action) => {
       const bookExist = state.shoppingBag?.filter((item) => {
@@ -557,5 +563,6 @@ export const {
   commentOnABook,
   buyBookNow,
   clearBuyBookNow,
+  addToBuyNowCheckOut,
 } = bookSlice.actions;
 export default bookSlice.reducer;

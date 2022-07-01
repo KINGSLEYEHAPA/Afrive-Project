@@ -3,12 +3,31 @@ import { MdChevronLeft } from "react-icons/md";
 import masterCardLogo from "../assets/mastercard2.webp";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import OptionsModal from "./OptionsModal";
+import Payment from "./Payment";
 
 const BuyNowCheckout = () => {
   const navigate = useNavigate();
+  const [deliveryFee, setDeliveryFee] = useState(3000);
+  const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [showPayment, setShowPayment] = useState(false);
+
+  const buyNowBooks = useSelector((state) => state.books.buyNowCheckout);
+  console.log(buyNowBooks);
+
+  const placeOrder = () => {
+    setShowPayment(true);
+  };
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[521px] pt-[32px]">
+      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[521px] pt-[32px] relative">
+        {showPayment && (
+          <OptionsModal>
+            <Payment />
+          </OptionsModal>
+        )}
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
@@ -26,29 +45,42 @@ const BuyNowCheckout = () => {
         <div className="w-full min-h-[753.86px] flex items-start justify-start gap-0 relative mt-[72px]">
           <div className="w-1/2 h-full pl-[188.50px] pr-[74.50px]  ">
             <div className="min-h-[96px] w-full  flex justify-between items-center gap-[56px] mb-[112px]">
-              <p className="whitespace-nowrap mt-[10px] text-h4 font-medium text-neutral-70">
+              <p className="whitespace-nowrap  text-h4 font-medium text-neutral-70">
                 Order Info:
               </p>
               <div className="relative right-[52px]">
-                <p className="text-h4 font-reg text-neutral-60">
-                  <span>1</span> x Things Fall Apart
-                </p>
-                <p className="text-h4 font-reg text-neutral-60">
+                {buyNowBooks.map((book) => {
+                  return (
+                    <p
+                      key={book.id}
+                      className="text-h4 font-reg text-neutral-60"
+                    >
+                      <span>{book.quantity}</span> x {book?.title}
+                    </p>
+                  );
+                })}
+                {/* <p className="text-h4 font-reg text-neutral-60">
                   <span>3</span> x Things Fall Apart
                 </p>
 
                 <p className="text-h4 font-reg text-neutral-60">
                   <span>3</span> x Things Fall Apart
-                </p>
+                </p> */}
               </div>
             </div>
             <div className="h-[96px] w-full  flex justify-between items-start gap-[56px]">
               <p className="whitespace-nowrap mt-[34px] text-h4 font-medium text-neutral-70">
                 Delivered To:
               </p>
-              <p className="text-h4 font-reg text-neutral-60">
-                E-books are automatically added to ‘Your e-books’ on checkout.
-              </p>
+              {buyNowBooks?.[0]?.eBook?.status ? (
+                <p className="text-h4 font-reg text-neutral-60">
+                  E-books are automatically added to ‘Your e-books’ on checkout.
+                </p>
+              ) : (
+                <p className="text-h4 font-reg text-neutral-60">
+                  10 Michael Udoh Street,Elesekan Bus-stop Ibeju-Lekki
+                </p>
+              )}
             </div>
             {/* <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
             <div className="h-[29.78px] w-full  flex items-center gap-[56px] mt-[56px]">
@@ -97,22 +129,31 @@ const BuyNowCheckout = () => {
           <div className="w-1/2 h-[353px] pl-[31.67px] pr-[185.33px]">
             <div className="w-full h-[24px] flex justify-between ">
               <p className="text-bodyL text-neutral-80">Subtotal:</p>
-              <p className="text-bodyL text-neutral-70">N6,000</p>
+              <p className="text-bodyL text-neutral-70">
+                N{buyNowBooks?.[0]?.totalAmount}
+              </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[24px] ">
               <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
-              <p className="text-bodyL text-neutral-70">-N1,000</p>
+              <p className="text-bodyL text-neutral-70">-N{discountCoupon}</p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[24px] ">
               <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
-              <p className="text-bodyL text-neutral-70">N3,000</p>
+              <p className="text-bodyL text-neutral-70">{deliveryFee}</p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
-              <p className="text-bodyL text-neutral-70">N8,000</p>
+              <p className="text-bodyL text-neutral-70">
+                N
+                {buyNowBooks?.[0]?.totalAmount + deliveryFee - discountCoupon ||
+                  0}
+              </p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
-              <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
+              <button
+                onClick={() => placeOrder()}
+                className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
+              >
                 Place Order
               </button>
             </div>

@@ -10,6 +10,7 @@ import {
   addAFavoriteBook,
   removeFavoriteBook,
   clearBuyBookNow,
+  addToBuyNowCheckOut,
 } from "../features/books/bookSlice";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -18,6 +19,7 @@ import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 
 const BuyNowShoppingBag = () => {
+  const [discountCoupon, setDiscountCoupon] = useState(1000);
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const shoppingBagBuyNow = useSelector(
@@ -72,6 +74,11 @@ const BuyNowShoppingBag = () => {
   const handleCoupon = () => {
     setVoucher("");
     setCouponVoucher(false);
+  };
+
+  const buyNowCheckOut = () => {
+    dispatch(addToBuyNowCheckOut(selectedBook));
+    navigate("/buynow-checkout");
   };
 
   return (
@@ -183,7 +190,7 @@ const BuyNowShoppingBag = () => {
                         <p className="text-bodyL whitespace-nowrap text-neutral-30">
                           Total:&nbsp;{" "}
                           <span className="text-primary-50">
-                            N{selectedBook?.price}
+                            N{selectedBook?.totalAmount}
                           </span>
                         </p>
 
@@ -235,17 +242,17 @@ const BuyNowShoppingBag = () => {
             <div className="w-full h-[24px] flex justify-between ">
               <p className="text-bodyL text-neutral-80">Subtotal</p>
               <p className="text-bodyL text-neutral-70">
-                N{selectedBook?.price || 0}
+                N{selectedBook?.totalAmount || 0}
               </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[26px] ">
               <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
-              <p className="text-bodyL text-neutral-70">-N1000</p>
+              <p className="text-bodyL text-neutral-70">-N{discountCoupon}</p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">
-                N{selectedBook?.totalAmount}
+                N{selectedBook?.totalAmount - discountCoupon}
               </p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
@@ -280,7 +287,10 @@ const BuyNowShoppingBag = () => {
                 </div>
               )}
             </div>
-            <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
+            <button
+              onClick={() => buyNowCheckOut()}
+              className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
+            >
               Proceed to Checkout
             </button>
           </div>
