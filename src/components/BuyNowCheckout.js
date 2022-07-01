@@ -14,6 +14,9 @@ const BuyNowCheckout = () => {
   const [discountCoupon, setDiscountCoupon] = useState(1000);
   const [showPayment, setShowPayment] = useState(false);
 
+  const userAddress = useSelector((state) => state.user.userInfo);
+  const userEmail = useSelector((state) => state.user.user);
+
   const buyNowBooks = useSelector((state) => state.books.buyNowCheckout);
   console.log(buyNowBooks);
 
@@ -92,9 +95,18 @@ const BuyNowCheckout = () => {
                 </p>
               ) : (
                 <p className="text-h4 font-reg text-neutral-60">
-                  10 Michael Udoh Street,Elesekan Bus-stop Ibeju-Lekki
+                  {userAddress?.houseAddress}
                 </p>
               )}
+            </div>
+            <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
+              {" "}
+              <p
+                onClick={() => navigate("/billing-address")}
+                className="text-bodyL text-neutral-30 cursor-pointer"
+              >
+                Change
+              </p>
             </div>
             {/* <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
             <div className="h-[29.78px] w-full  flex items-center gap-[56px] mt-[56px]">
@@ -111,7 +123,7 @@ const BuyNowCheckout = () => {
               </div>
             </div> */}
             <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
-            <div className="h-[96px] w-full  flex justify-between items-start gap-[56px] mt-[56.41px]">
+            {/* <div className="h-[96px] w-full  flex justify-between items-start gap-[56px] mt-[56.41px]">
               <p className="whitespace-nowrap mt-[34px] text-h4 font-medium text-neutral-70">
                 Payment:
               </p>
@@ -136,6 +148,15 @@ const BuyNowCheckout = () => {
             <div className="flex w-full h-[24px] justify-end mt-[69.18px]">
               {" "}
               <p className="text-bodyL text-neutral-30">Change</p>
+              
+            </div> */}
+            <div className="h-[96px] w-full  flex justify-between items-center gap-[56px] my-[56px]">
+              <p className="whitespace-nowrap  text-h4 font-medium text-neutral-70">
+                Email:
+              </p>
+              <p className="text-h4 font-reg text-neutral-60">
+                {userEmail?.data?.email}
+              </p>
             </div>
           </div>
 
@@ -177,7 +198,7 @@ const BuyNowCheckout = () => {
                 onClick={() => placeOrder()}
                 className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
               >
-                Place Order
+                Continue to Payment
               </button>
             </div>
           </div>

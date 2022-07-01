@@ -20,18 +20,28 @@ const Checkout = () => {
   const userEmail = useSelector((state) => state.user.user);
 
   let totalAmount = 0;
+  const placeOrder = () => {
+    setShowPayment(true);
+  };
 
   checkout.map((item) => {
     totalAmount += item.totalAmount;
     return null;
   });
   console.log(totalAmount);
+
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[162px] relative mb-0 pt-[32px] ">
-        {/* <OptionsModal>
-          <Payment />
-        </OptionsModal> */}
+        {showPayment && (
+          <OptionsModal>
+            <Payment
+              order={checkout}
+              totalAmountToPay={totalAmount + deliveryFee - discountCoupon}
+              setShowPayment={setShowPayment}
+            />
+          </OptionsModal>
+        )}
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
@@ -200,7 +210,10 @@ const Checkout = () => {
               </p>
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
-              <button className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]">
+              <button
+                onClick={placeOrder}
+                className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
+              >
                 Continue to Payment
               </button>
             </div>
