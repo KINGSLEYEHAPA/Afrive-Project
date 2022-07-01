@@ -17,7 +17,7 @@ import RatingStars from "./RatingStars";
 const RecommendedBooks = () => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
-  const availableBooks = useSelector((state) => state.books.booksInStock);
+  const availableBooks = useSelector((state) => state.books.booksFromServer);
   console.log(availableBooks);
   console.log(booksInShoppingBag);
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const RecommendedBooks = () => {
           </p>
         </div>
         <div className="w-full  h-[271.97px]  mtab:h-[333.04px] tab:h-[396.77px] lap:h-[453.32px] desk:h-[492px] mt-[72px] grid  grid-cols-2 mobx:grid-cols-3 justify-start px-0 tab:flex mobx:space-x-[32px] mtab:space-x-[14px] tab:space-x-[86.43px] lap:space-x-[76px] desk:space-x-[81.59px]  ">
-          {availableBooks?.slice(6, 9).map((book) => {
+          {availableBooks?.data?.slice(1, 4).map((book) => {
             return (
               <div
                 key={book.id}

@@ -226,13 +226,14 @@ const BookPreview = () => {
             </div>
             <div className="h-[64px] w-full mb-[18.18px]">
               <p className="text-[16px] leading-8 font-reg text-neutral-70 w-full">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
-                sem at elit hac placerat mauris ut.
+                {selectedBook?.description}
               </p>
             </div>
             <div className=" w-full flex justify-start items-center h-[24px] gap-[40px]">
               <RatingStars book={selectedBook} />
-              <p>({selectedBook?.bookRating?.ratings?.length})</p>
+              {selectedBook?.bookRating?.ratings?.length !== 0 && (
+                <p>({selectedBook?.bookRating?.ratings?.length})</p>
+              )}
             </div>
             <div className="mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
               <p className="text-primary-50 text-h3 font-medium">
@@ -240,7 +241,9 @@ const BookPreview = () => {
               </p>
               <span className="text-bodyN text-neutral-60">
                 Status: &nbsp;
-                <span className="text-bodyS neutral-40">In stock</span>
+                <span className="text-bodyS neutral-40">
+                  {selectedBook?.status}
+                </span>
               </span>
               <AnimatePresence>
                 {!eBookPreview && selectedBook?.eBook?.status && (

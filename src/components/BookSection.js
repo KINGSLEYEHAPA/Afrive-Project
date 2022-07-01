@@ -11,7 +11,7 @@ import BookCard from "./BookCard";
 const BookSection = ({ bookSectionName, emoji }) => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
-  const availableBooks = useSelector((state) => state.books.booksInStock);
+  const availableBooks = useSelector((state) => state.books.booksFromServer);
   console.log(availableBooks);
   console.log(booksInShoppingBag);
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
           </p>
         </div>
         <div className="w-full min-h-[397.54px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
-          {availableBooks?.slice(4, 8).map((book) => {
+          {availableBooks?.data.slice(3, 7).map((book) => {
             return (
               <BookCard
                 key={book.id}

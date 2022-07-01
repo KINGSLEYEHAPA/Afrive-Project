@@ -44,12 +44,13 @@ const RatingStars = ({ book }) => {
   let average = 0;
 
   book?.bookRating?.ratings?.map((rate) => {
-    average += rate.starRating;
+    average += rate.startRating;
     return null;
   });
   const averageRating = Math.floor(average / book?.bookRating?.ratings?.length);
 
   const ratingDiff = 5 - averageRating;
+  console.log(averageRating);
 
   const randomNumber = Math.random() * 1000000 + uuid();
   const SecondRandomNumber = Math.random() * 1000 + uuid();
