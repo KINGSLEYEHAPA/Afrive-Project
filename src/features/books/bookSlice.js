@@ -462,8 +462,8 @@ export const getAllBooks = createAsyncThunk(
   "user/getAllBooks",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().user.user.data.token;
-      return await booksService.getAllBooks(token);
+      // const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.getAllBooks();
     } catch (error) {
       const message =
         (error.response &&
