@@ -190,7 +190,8 @@ const BuyNowShoppingBag = () => {
                         <p className="text-bodyL whitespace-nowrap text-neutral-30">
                           Total:&nbsp;{" "}
                           <span className="text-primary-50">
-                            N{selectedBook?.totalAmount.toLocaleString("en-US")}
+                            N
+                            {selectedBook?.totalAmount?.toLocaleString("en-US")}
                           </span>
                         </p>
 
@@ -242,20 +243,20 @@ const BuyNowShoppingBag = () => {
             <div className="w-full h-[24px] flex justify-between ">
               <p className="text-bodyL text-neutral-80">Subtotal</p>
               <p className="text-bodyL text-neutral-70">
-                N{selectedBook?.totalAmount.toLocaleString("en-US") || 0}
+                N{selectedBook?.totalAmount?.toLocaleString("en-US") || 0}
               </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[26px] ">
               <p className="text-bodyL text-neutral-80">Coupon Discount:</p>
               <p className="text-bodyL text-neutral-70">
-                -N{discountCoupon.toLocaleString("en-US")}
+                -N{discountCoupon?.toLocaleString("en-US")}
               </p>
             </div>
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">
                 N
-                {(selectedBook?.totalAmount - discountCoupon).toLocaleString(
+                {(selectedBook?.totalAmount - discountCoupon)?.toLocaleString(
                   "en-US"
                 )}
               </p>

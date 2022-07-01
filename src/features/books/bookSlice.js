@@ -500,7 +500,7 @@ export const bookSlice = createSlice({
     },
 
     addToBuyNowCheckOut: (state, action) => {
-      state.buyNowCheckout.push(action.payload);
+      state.buyNowCheckout = [action.payload];
     },
     addToBag: (state, action) => {
       const bookExist = state.shoppingBag?.filter((item) => {

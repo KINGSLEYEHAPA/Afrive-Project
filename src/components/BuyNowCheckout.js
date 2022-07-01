@@ -61,7 +61,13 @@ const BuyNowCheckout = () => {
                       key={book.id}
                       className="text-h4 font-reg text-neutral-60"
                     >
-                      <span>{book.quantity}</span> x {book?.title}
+                      <span>
+                        {buyNowBooks?.[0]?.eBook?.status
+                          ? null
+                          : book?.quantity}
+                      </span>{" "}
+                      {!buyNowBooks?.[0]?.eBook?.status && <span>x</span>}{" "}
+                      {book?.title}
                     </p>
                   );
                 })}
@@ -145,19 +151,21 @@ const BuyNowCheckout = () => {
                 -N{discountCoupon.toLocaleString("en-US")}
               </p>
             </div>
-            <div className="w-full h-[24px] flex justify-between mt-[24px] ">
-              <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
-              <p className="text-bodyL text-neutral-70">
-                {deliveryFee.toLocaleString("en-US")}
-              </p>
-            </div>
+            {!buyNowBooks?.[0]?.eBook?.status && (
+              <div className="w-full h-[24px] flex justify-between mt-[24px] ">
+                <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
+                <p className="text-bodyL text-neutral-70">
+                  {deliveryFee.toLocaleString("en-US")}
+                </p>
+              </div>
+            )}
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="text-bodyL text-neutral-80">Total to Pay:</p>
               <p className="text-bodyL text-neutral-70">
                 N
                 {(
                   buyNowBooks?.[0]?.totalAmount +
-                  deliveryFee -
+                  (!buyNowBooks?.[0]?.eBook?.status ? deliveryFee : 0) -
                   discountCoupon
                 ).toLocaleString("en-US") || 0}
               </p>
