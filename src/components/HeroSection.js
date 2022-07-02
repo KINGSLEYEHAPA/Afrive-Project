@@ -40,7 +40,7 @@ const Indicator = ({ isSelected, onClick }) => {
   );
 };
 
-const pages = [0, 1, 2];
+const pages = [0, 1, 2, 3, 4];
 
 const HeroSection = () => {
   /* We keep track of the pagination direction as well as
