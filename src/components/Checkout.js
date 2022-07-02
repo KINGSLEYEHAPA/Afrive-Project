@@ -6,9 +6,10 @@ import OptionsModal from "./OptionsModal";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 import Payment from "./Payment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AddLocation from "./AddLocation";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Checkout = () => {
   const [discountCoupon, setDiscountCoupon] = useState(1000);
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);
+  const [chooseDeliveryAddress, setChooseDeliveryAddress] = useState(false);
 
   const checkout = useSelector((state) => state.books.checkout);
   const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
@@ -23,8 +25,19 @@ const Checkout = () => {
   const userEmail = useSelector((state) => state.user.user);
 
   let totalAmount = 0;
+
+  useEffect(() => {
+    setTimeout(() => {
+      setChooseDeliveryAddress(false);
+    }, 3000);
+  }, [chooseDeliveryAddress]);
+
   const placeOrder = () => {
-    setShowPayment(true);
+    if (deliveryLocation !== null || userAddress !== null) {
+      setShowPayment(true);
+    } else {
+      setChooseDeliveryAddress(true);
+    }
   };
 
   checkout?.map((item) => {
@@ -36,6 +49,22 @@ const Checkout = () => {
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[162px] relative mb-0 pt-[32px] ">
+        <AnimatePresence>
+          {chooseDeliveryAddress && (
+            <motion.div
+              initial={{ opacity: 0, x: 1000 }}
+              animate={{
+                opacity: 1,
+                x: [-50, 50, -50, 50, 0],
+                transition: { duration: 1, type: "spring", stiffness: 100 },
+              }}
+              exit={{ opacity: 0, x: 1000, transition: { duration: 1 } }}
+              className=" text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-50 w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
+            >
+              Please select a delivery address
+            </motion.div>
+          )}
+        </AnimatePresence>
         {showPayment && (
           <OptionsModal>
             <Payment
