@@ -4,15 +4,17 @@ import masterCardLogo from "../assets/mastercard2.webp";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OptionsModal from "./OptionsModal";
 import Payment from "./Payment";
 import AddLocation from "./AddLocation";
+import { AnimatePresence, motion } from "framer-motion";
 
 const BuyNowCheckout = () => {
   const navigate = useNavigate();
   const [deliveryFee, setDeliveryFee] = useState(3000);
   const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [chooseDeliveryAddress, setChooseDeliveryAddress] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);
   const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
@@ -23,12 +25,39 @@ const BuyNowCheckout = () => {
   const buyNowBooks = useSelector((state) => state.books.buyNowCheckout);
   console.log(buyNowBooks);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setChooseDeliveryAddress(false);
+    }, 3000);
+  }, [chooseDeliveryAddress]);
+
   const placeOrder = () => {
-    setShowPayment(true);
+    if (deliveryLocation !== null || userAddress !== null) {
+      setShowPayment(true);
+    } else {
+      setChooseDeliveryAddress(true);
+    }
   };
+
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pb-[521px] pt-[32px] relative">
+        <AnimatePresence>
+          {chooseDeliveryAddress && (
+            <motion.div
+              initial={{ opacity: 0, x: 1000 }}
+              animate={{
+                opacity: 1,
+                x: [-50, 50, -50, 50, 0],
+                transition: { duration: 1, type: "spring", stiffness: 100 },
+              }}
+              exit={{ opacity: 0, x: 1000, transition: { duration: 1 } }}
+              className=" text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-50 w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
+            >
+              Please select a delivery address
+            </motion.div>
+          )}
+        </AnimatePresence>
         {showPayment && (
           <OptionsModal>
             <Payment

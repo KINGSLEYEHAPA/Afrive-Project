@@ -79,7 +79,7 @@ const BuyNowShoppingBag = () => {
 
   const buyNowCheckOut = () => {
     dispatch(addToBuyNowCheckOut(selectedBook));
-    dispatch(clearBuyNShoppingBag());
+    // dispatch(clearBuyNShoppingBag());
     navigate("/buynow-checkout");
   };
 

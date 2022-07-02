@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { availableBooksDummy } from "../dummyData";
 import { FiSearch } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 const Search = ({ showSearch, setShowSearch }) => {
   const [showSearchOption, setShowSearchOption] = useState(false);
@@ -10,6 +10,7 @@ const Search = ({ showSearch, setShowSearch }) => {
   const [searchOptionText, setSearchOptionText] = useState("Search by");
   const [searchInput, setSearchInput] = useState("");
   const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
+  const availableBooks = useSelector((state) => state.books.booksFromServer);
 
   useEffect(() => {
     function handleResize() {
@@ -27,7 +28,7 @@ const Search = ({ showSearch, setShowSearch }) => {
     setShowSearchOption(false);
     const searchedWord = e.target.value;
     setSearchInput(searchedWord);
-    const newFilter = availableBooksDummy.filter((value) => {
+    const newFilter = availableBooks?.data.filter((value) => {
       return (
         value.title.toLowerCase().includes(searchedWord.toLowerCase()) ||
         (searchOptionText === "Categories" &&
@@ -143,9 +144,9 @@ const Search = ({ showSearch, setShowSearch }) => {
                       {/* <hr className="h-0 border-1 border-neutral-20 w-[100%]" /> */}
                       <div
                         onClick={() => searchedBook(book)}
-                        className="w-full h-[44px] desk:h-[58px] hover:bg-neutral-20 flex gap-[4px] justify-start items-center px-[18px] text-sub lap:text-bodyS text-neutral-80 font-reg cursor-pointer"
+                        className="w-full h-[44px] desk:h-[58px] hover:bg-neutral-20 flex gap-[7px] justify-start items-center px-[18px] text-sub lap:text-bodyS text-neutral-80 font-reg cursor-pointer"
                       >
-                        <span>
+                        <span className="text-[15px] mb-[5px]">
                           <FiSearch />
                         </span>
                         <p

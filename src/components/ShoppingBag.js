@@ -117,7 +117,7 @@ const ShoppingBag = () => {
 
   const checkout = () => {
     dispatch(addToCheckOut(shoppingBagBooks));
-    dispatch(clearShoppingBag());
+    // dispatch(clearShoppingBag());
     navigate("/checkout");
   };
 

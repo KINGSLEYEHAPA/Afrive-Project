@@ -20,15 +20,6 @@ const getAllBookCategories = async () => {
   return response.data;
 };
 
-const addToCart = async (token, id) => {
-  console.log(token);
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-  const response = await axios.post(`${API_URL}cart/${id}`, config);
-
-  return response.data;
-};
 const removeFromCart = async (token, id) => {
   console.log(token);
   const config = {
@@ -39,22 +30,11 @@ const removeFromCart = async (token, id) => {
   return response.data;
 };
 
-const getCart = async (token) => {
-  console.log(token);
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-  const response = await axios.get(API_URL + "cart", config);
-
-  return response.data;
-};
-
 const booksService = {
   getAllBooks,
   getAllBookCategories,
-  addToCart,
+
   removeFromCart,
-  getCart,
 };
 
 export default booksService;
