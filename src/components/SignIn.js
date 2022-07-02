@@ -25,16 +25,13 @@ const SignIn = ({ setUserState }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      setTimeout(() => {
-        dispatch(reset());
-        navigate("/");
-      }, 3000);
+      navigate("/");
     }
   }, [isSuccess]);
   useEffect(() => {
     setTimeout(() => {
       dispatch(reset());
-    }, 3000);
+    }, 4000);
   }, [isError, isGoogleError, isSuccess]);
 
   const [loginValues, setLoginValues] = useState({

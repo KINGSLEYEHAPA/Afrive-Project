@@ -119,6 +119,12 @@ const Signup = ({ setUserState }) => {
       password_confirmation: "",
     });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/api/v1/auth");
+    }
+  }, [isSuccess]);
   useEffect(() => {
     setTimeout(() => {
       dispatch(reset());
