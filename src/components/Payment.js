@@ -12,7 +12,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const [email, setEmail] = useState("kessity09@gmail.com");
   const [name, setName] = useState("Kingsley Ehapa");
   const [phone, setPhone] = useState("080");
-  const { user } = useSelector((state) => state.user.user);
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const componentProps = {
     email,
