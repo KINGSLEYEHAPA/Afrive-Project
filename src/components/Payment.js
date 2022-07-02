@@ -2,6 +2,7 @@ import { useState } from "react";
 import masterCardLogo from "../assets/mastercard2.webp";
 import { PaystackButton } from "react-paystack";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
@@ -11,6 +12,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const [email, setEmail] = useState("kessity09@gmail.com");
   const [name, setName] = useState("Kingsley Ehapa");
   const [phone, setPhone] = useState("080");
+  const { user } = useSelector((state) => state.user.user);
   const navigate = useNavigate();
   const componentProps = {
     email,
@@ -96,7 +98,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
               <div>
                 <p className="text-[10px] text-neutral-white">
                   {" "}
-                  Kingsley Ehapa
+                  {user?.data?.firstname} {user?.data?.lastname}
                 </p>
               </div>
               <div className="flex items-end justify-between">
