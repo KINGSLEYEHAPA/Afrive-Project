@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto p-0 relative">
       <AnimatePresence>
-        {(isError || isGoogleError || user?.message) && (
+        {(isError || isGoogleError || isSuccess) && (
           <motion.div
             initial={{ opacity: 0, x: -1000 }}
             animate={{

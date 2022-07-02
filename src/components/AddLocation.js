@@ -19,6 +19,7 @@ const AddLocation = ({ setChangeLocation }) => {
           state: userState,
         })
       );
+      setChangeLocation(false);
 
       setHouseAddress("");
       setCity("");
