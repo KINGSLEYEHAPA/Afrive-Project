@@ -22,6 +22,7 @@ function App() {
     isSuccess,
     isGoogleError,
     resetMessage,
+    isverified,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -50,6 +51,7 @@ function App() {
               "Please try again later."}
             {errorMessage.length < 100 && errorMessage}
             {resetMessage}
+            {isverified?.data}
           </motion.div>
         )}
       </AnimatePresence>
