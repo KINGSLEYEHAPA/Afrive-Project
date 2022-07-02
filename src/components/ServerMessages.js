@@ -12,7 +12,7 @@ const ServerMessages = () => {
   const [showServerMessage, setShowServerMessage] = useState(null);
 
   const [url, setUrl] = useState(null);
-  const { user, isError, errorMessage, isSuccess } = useSelector(
+  const { user, isError, errorMessage, isSuccess, isverified } = useSelector(
     (state) => state.user
   );
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const ServerMessages = () => {
       }
     }
 
-    if (isSuccess) {
+    if (isSuccess && isverified.data) {
       setUrl(null);
       navigate("/api/v1/auth");
     }
