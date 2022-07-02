@@ -82,7 +82,6 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(reset());
       navigate("/api/v1/auth");
     }
   }, [isSuccess]);
