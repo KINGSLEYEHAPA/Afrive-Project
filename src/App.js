@@ -21,6 +21,7 @@ function App() {
     errorMessage,
     isSuccess,
     isGoogleError,
+    resetMessage,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -35,16 +36,20 @@ function App() {
       <AnimatePresence>
         {(isError || isGoogleError || isSuccess) && (
           <motion.div
-            initial={{ opacity: 0, x: -1000 }}
+            initial={{ opacity: 0, x: 1000 }}
             animate={{
               opacity: 1,
-              x: [-50, 50, -50, 50 - 50, 50, 0],
+              x: [-50, 50, -50, 50, 0],
               transition: { duration: 1, type: "spring", stiffness: 100 },
             }}
-            exit={{ opacity: 0, x: -1000, transition: { duration: 1 } }}
-            className=" text-h4 rounded-[4px] absolute top-[10px] right-[25px] text-neutral-white bg-primary-50 w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
+            exit={{ opacity: 0, x: 1000, transition: { duration: 1 } }}
+            className=" text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-40 w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
           >
-            {user ? user.message : errorMessage}{" "}
+            {user?.message}
+            {(errorMessage === "Network Error" || errorMessage.length > 100) &&
+              "Please try again later."}
+            {errorMessage.length < 100 && errorMessage}
+            {resetMessage}
           </motion.div>
         )}
       </AnimatePresence>
