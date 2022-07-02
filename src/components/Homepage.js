@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BookQuote from "./BookQuote";
 import BookSection from "./BookSection";
 import Footer from "./Footer";
@@ -13,10 +13,11 @@ import { useSelector } from "react-redux";
 
 const Homepage = () => {
   const { user } = useSelector((state) => state.user);
+
   return (
     <AnimatePages>
       <div
-        className="w-screen max-w-[1440px] mx-auto mt-[68px] mtab:mt-[88px]  "
+        className="w-screen max-w-[1440px] mx-auto mt-[68px] mtab:mt-[88px] relative "
         id="home"
       >
         <HeroSection />

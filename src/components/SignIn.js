@@ -127,7 +127,7 @@ const SignIn = ({ setUserState }) => {
                 <div className="absolute top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
-                {(isError || isGoogleError || user) && (
+                {/* {(isError || isGoogleError || user) && (
                   <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{
@@ -139,7 +139,7 @@ const SignIn = ({ setUserState }) => {
                   >
                     {user ? user.message : errorMessage}
                   </motion.div>
-                )}
+                )} */}
                 <Outlet />
                 <button
                   type="submit"

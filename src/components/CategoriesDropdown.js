@@ -33,7 +33,7 @@ const CategoriesDropdown = ({ setShowCategories }) => {
       <div className="p-0 grid grid-cols-3 gap-[32px]">
         {categories?.map((category) => {
           return (
-            <Link to={`/category/${category?.name}`} key={category.book_id}>
+            <Link to={`/category/${category?.name}`} key={category.id}>
               {" "}
               <p
                 className="text-neutral-80 text-bodyL font-reg cursor-pointer hover:text-primary-50"

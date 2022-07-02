@@ -60,7 +60,7 @@ const ServerMessages = () => {
   return (
     showServerMessage !== null && (
       <div className=" rounded-[4px] absolute top-[-50px] text-neutral-white bg-primary-50 w-full h-[40px] flex justify-center items-center">
-        {user ? user.message : errorMessage}
+        {/* {user ? user.message : errorMessage} */}
       </div>
     )
   );
