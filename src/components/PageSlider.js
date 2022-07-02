@@ -8,6 +8,9 @@ import Unseen from "../assets/banner-the-unseen.png";
 import lootingMachine from "../assets/book-focus-looting.png";
 import vagabonds from "../assets/book-focus-vagabonds.png";
 import bookShowcase from "../assets/booky.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { buyBookNow } from "../features/books/bookSlice";
 
 // Variants in framer-motion define visual states
 // that a rendered motion component can be in at
@@ -33,11 +36,29 @@ const variants = {
 const pages = [0, 1, 2, 3, 4];
 
 const PageSlider = ({ currentPage, setPage, direction }) => {
+  const availableBooks = useSelector((state) => state.books.booksFromServer);
   useEffect(() => {
     setInterval(() => {
       currentPage++;
     }, 1000);
   }, []);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const randomNumber = Math.floor(Math.random() * availableBooks?.data?.length);
+  console.log(randomNumber, availableBooks?.data?.[randomNumber]);
+  const buyBook = (book) => {
+    const bookUpdate = {
+      ...book,
+      eBook: {
+        status: false,
+        format: [],
+      },
+    };
+    dispatch(buyBookNow(bookUpdate));
+    navigate("/buynow");
+  };
 
   /* Add and remove pages from the array to checkout
 	how the gestures and pagination animations are
@@ -108,12 +129,15 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                   Book Focus
                 </h3>
                 <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  The Looting Machine
+                  {availableBooks?.data?.[randomNumber].title}
                 </h2>
                 <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  by Tom Burtis
+                  {availableBooks?.data?.[randomNumber].author}
                 </p>
-                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button
+                  onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
+                  className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                >
                   Buy Now
                 </button>
               </div>
@@ -132,12 +156,15 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                   Book Focus
                 </h3>
                 <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  The Looting Machine
+                  {availableBooks?.data?.[randomNumber].title}
                 </h2>
                 <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  by Tom Burtis
+                  {availableBooks?.data?.[randomNumber].author}
                 </p>
-                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button
+                  onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
+                  className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                >
                   Buy Now
                 </button>
               </div>
@@ -156,12 +183,15 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                   Book Focus
                 </h3>
                 <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  The Looting Machine
+                  {availableBooks?.data?.[randomNumber].title}
                 </h2>
                 <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  by Tom Burtis
+                  {availableBooks?.data?.[randomNumber].author}
                 </p>
-                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button
+                  onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
+                  className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                >
                   Buy Now
                 </button>
               </div>
@@ -179,12 +209,15 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                   Book Focus
                 </h3>
                 <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  Long Way to Freedom
+                  {availableBooks?.data?.[randomNumber].title}
                 </h2>
                 <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  by Nelson Mandela
+                  {availableBooks?.data?.[randomNumber].author}
                 </p>
-                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button
+                  onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
+                  className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                >
                   Buy Now
                 </button>
               </div>
@@ -202,12 +235,15 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                   Book Focus
                 </h3>
                 <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  Vagabonds
+                  {availableBooks?.data?.[randomNumber].title}
                 </h2>
                 <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  by Eloghosa Osunde
+                  {availableBooks?.data?.[randomNumber].author}
                 </p>
-                <button className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer">
+                <button
+                  onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
+                  className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                >
                   Buy Now
                 </button>
               </div>

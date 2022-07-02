@@ -39,7 +39,7 @@ const RecommendedBooks = () => {
   };
 
   return (
-    <div className="w-screen   px-[6.13%] mobx:px-[10%] mtab:px-0   max-w-[1440px] mx-auto   desk:h-[552px]   ">
+    <div className="w-screen   px-[6.13%] mobx:px-[10%] mtab:px-0   max-w-[1440px] mx-auto   desk:h-[552px]    ">
       {" "}
       <div className="  h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px] lap:h-[532.52px] mx-[23px] mobx:mx-[72px] mtab:mx-[72px]  tab:mx-[86.44px] lap:mx-[193px]  desk:mx-[182px]     ">
         <div className="flex items-center justify-between w-full   ">

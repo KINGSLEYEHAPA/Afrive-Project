@@ -16,6 +16,7 @@ import {
   removeFavoriteBook,
   addToBag,
   buyBookNow,
+  addToCart,
 } from "../features/books/bookSlice";
 import CustomerBookReview from "./CustomerBookReview";
 import BookSection from "./BookSection";
@@ -98,6 +99,7 @@ const BookPreview = () => {
       };
 
       dispatch(addToBag(ebook));
+      // dispatch(addToCart(ebook.id));
       setFormat(false);
       setShowFormat(false);
     } else {
@@ -110,6 +112,7 @@ const BookPreview = () => {
       };
 
       dispatch(addToBag(bookUpdate));
+      // dispatch(addToCart(bookUpdate.id));
     }
   };
   return (

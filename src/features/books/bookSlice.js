@@ -460,7 +460,7 @@ const initialState = {
 };
 
 export const getAllBooks = createAsyncThunk(
-  "user/getAllBooks",
+  "books/getAllBooks",
   async (_, thunkAPI) => {
     try {
       // const token = thunkAPI.getState().user.user.data.token;
@@ -478,7 +478,7 @@ export const getAllBooks = createAsyncThunk(
   }
 );
 export const getAllBookCategories = createAsyncThunk(
-  "user/getAllBookCategories",
+  "books/getAllBookCategories",
   async (_, thunkAPI) => {
     try {
       // const token = thunkAPI.getState().user.user.data.token;
@@ -495,6 +495,61 @@ export const getAllBookCategories = createAsyncThunk(
     }
   }
 );
+// export const addToCart = createAsyncThunk(
+//   "books/addToCart",
+//   async (id, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().user.user.data.token;
+//       return await booksService.addToCart(token, id);
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
+
+// export const removeFromCart = createAsyncThunk(
+//   "books/removeFromCart",
+//   async (id, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().user.user.data.token;
+//       return await booksService.removeFromCart(token, id);
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
+// export const getCart = createAsyncThunk(
+//   "books/getCart",
+//   async (_, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().user.user.data.token;
+//       return await booksService.getCart(token);
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
 
 export const bookSlice = createSlice({
   name: "books",
@@ -602,6 +657,27 @@ export const bookSlice = createSlice({
         state.isError = true;
         state.error = action.payload;
       });
+    // .addCase(getCart.pending, (state) => {
+    //   state.isLoading = true;
+    // })
+
+    // .addCase(getCart.fulfilled, (state, action) => {
+    //   state.cartFromServer = action.payload;
+    //   state.isSuccess = true;
+    //   state.isLoading = false;
+    // })
+    // .addCase(getCart.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isError = true;
+    //   state.error = action.payload;
+    // })
+    // .addCase(addToCart.fulfilled, (state, action) => {
+    //   state.addAndRemoveFromCartMessages = action.payload;
+    // })
+
+    // .addCase(removeFromCart.fulfilled, (state, action) => {
+    //   state.addAndRemoveFromCartMessages = action.payload;
+    // });
   },
 });
 
