@@ -34,6 +34,8 @@ const BuyNowCheckout = () => {
   const placeOrder = () => {
     if (deliveryLocation !== null || userAddress !== null) {
       setShowPayment(true);
+    } else if (buyNowBooks?.[0]?.eBook?.status) {
+      setShowPayment(true);
     } else {
       setChooseDeliveryAddress(true);
     }
