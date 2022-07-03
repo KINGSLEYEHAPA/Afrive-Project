@@ -615,14 +615,14 @@ export const bookSlice = createSlice({
       state.shoppingBag = otherbooks;
     },
 
-    commentOnABook: (state, action) => {
-      const otherbooks = state.booksInStock.filter((item) => {
-        return item.id !== action.payload?.id;
-      });
-      state.booksInStock = otherbooks;
-      state.booksInStock.push(action.payload);
-      return state;
-    },
+    // commentOnABook: (state, action) => {
+    //   const otherbooks = state.booksInStock.filter((item) => {
+    //     return item.id !== action.payload?.id;
+    //   });
+    //   state.booksInStock = otherbooks;
+    //   state.booksInStock.push(action.payload);
+    //   return state;
+    // },
     buyBookNow: (state, action) => {
       state.shoppingBagBuyNow = action.payload;
     },
