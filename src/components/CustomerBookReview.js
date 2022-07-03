@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
-import { commentOnABook } from "../features/books/bookSlice";
+import { commentOnABook, sendComment } from "../features/books/bookSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ViewReview = ({ title, comment, userRating, index }) => {
@@ -95,18 +95,25 @@ const CustomerBookReview = ({ book }) => {
 
   const { user } = useSelector((state) => state.user);
 
-  const bookForComment = {
-    ...book,
-    bookRating: {
-      ...book?.bookRating,
-      ratings: [
-        ...book?.bookRating?.ratings,
-        {
-          name: "Kingsley John Boro Just Testing",
-          comment: userReview,
-          starRating: rating,
-        },
-      ],
+  // const bookForComment = {
+  //   ...book,
+  //   bookRating: {
+  //     ...book?.bookRating,
+  //     ratings: [
+  //       ...book?.bookRating?.ratings,
+  //       {
+  //         name: "Kingsley John Boro Just Testing",
+  //         comment: userReview,
+  //         starRating: rating,
+  //       },
+  //     ],
+  //   },
+  // };
+  const comment = {
+    id: book.id,
+    commentData: {
+      comment: userReview,
+      startRating: rating,
     },
   };
 
@@ -116,7 +123,8 @@ const CustomerBookReview = ({ book }) => {
 
   const handleReview = () => {
     if (rating !== null && userReview !== "") {
-      dispatch(commentOnABook(bookForComment));
+      // dispatch(commentOnABook(bookForComment));
+      dispatch(sendComment(comment));
       setRating(null);
       setUserReview("");
     }

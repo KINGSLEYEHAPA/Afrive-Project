@@ -495,24 +495,28 @@ export const getAllBookCategories = createAsyncThunk(
     }
   }
 );
-// export const addToCart = createAsyncThunk(
-//   "books/addToCart",
-//   async (id, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().user.user.data.token;
-//       return await booksService.addToCart(token, id);
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString();
+export const sendComment = createAsyncThunk(
+  "books/sendComment",
+  async (comment, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.sendComment(
+        token,
+        comment.commentData,
+        comment.id
+      );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
 
-//       return thunkAPI.rejectWithValue(message);
-//     }
-//   }
-// );
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // export const removeFromCart = createAsyncThunk(
 //   "books/removeFromCart",

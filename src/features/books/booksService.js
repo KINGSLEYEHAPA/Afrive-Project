@@ -20,12 +20,16 @@ const getAllBookCategories = async () => {
   return response.data;
 };
 
-const removeFromCart = async (token, id) => {
+const sendComment = async (token, commentData, id) => {
   console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  const response = await axios.delete(`${API_URL}cart/${id}`, config);
+  const response = await axios.post(
+    `${API_URL}review/${id}`,
+    commentData,
+    config
+  );
 
   return response.data;
 };
@@ -33,8 +37,7 @@ const removeFromCart = async (token, id) => {
 const booksService = {
   getAllBooks,
   getAllBookCategories,
-
-  removeFromCart,
+  sendComment,
 };
 
 export default booksService;
