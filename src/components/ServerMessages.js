@@ -31,7 +31,11 @@ const ServerMessages = () => {
     if (isSuccess) {
       dispatch(reset());
       setUrl(null);
-      navigate("/");
+      if (location.state?.from) {
+        navigate(location.state.from);
+      } else {
+        navigate("/");
+      }
     }
   }, [url]);
   useEffect(() => {
