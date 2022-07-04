@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import FormInput from "./FormInput";
 import bgId from "../assets/mesh1.jpg";
@@ -11,6 +11,7 @@ import { login, reset } from "../features/user/userSlice";
 const SignIn = ({ setUserState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     user,
     isLoading,
@@ -25,7 +26,11 @@ const SignIn = ({ setUserState }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/");
+      if (location.state?.from) {
+        navigate(location.state.from);
+      } else {
+        navigate("/");
+      }
     }
   }, [isSuccess]);
   useEffect(() => {

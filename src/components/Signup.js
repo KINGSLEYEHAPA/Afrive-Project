@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import bgId from "../assets/mesh1.jpg";
 import SmallFormInput from "./SmallFormInput";
@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 const Signup = ({ setUserState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     user,
     isLoading,
@@ -122,7 +123,11 @@ const Signup = ({ setUserState }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/api/v1/auth");
+      if (location.state?.from) {
+        navigate(location.state.from);
+      } else {
+        navigate("/api/v1/auth");
+      }
     }
   }, [isSuccess]);
   useEffect(() => {
