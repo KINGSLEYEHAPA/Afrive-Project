@@ -696,6 +696,15 @@ export const bookSlice = createSlice({
       })
       .addCase(sendOrder.fulfilled, (state, action) => {
         state.orderMessage = action.payload;
+      })
+      .addCase(sendOrder.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(sendOrder.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
       });
 
     // .addCase(getCart.fulfilled, (state, action) => {

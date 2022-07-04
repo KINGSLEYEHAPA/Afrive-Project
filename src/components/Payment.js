@@ -4,11 +4,13 @@ import { PaystackButton } from "react-paystack";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
+import { BsBagCheckFill } from "react-icons/bs";
 import uuid from "uuid-random";
 import { sendOrder } from "../features/books/bookSlice";
 
 const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
+  const [transactionRef, setTransactionRef] = useState("");
   const [paymentFlow, setPaymentFlow] = useState(0);
   const [error, setError] = useState("");
   const amount = 450000; // Remember, set in kobo!
@@ -19,7 +21,9 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const navigate = useNavigate();
   const randomNumber = Math.random() * 1000000 + uuid();
   const dispatch = useDispatch();
-  const { ordermessage, isSuccess } = useSelector((state) => state.books);
+  const { ordermessage, isSuccess, isLoading } = useSelector(
+    (state) => state.books
+  );
   const componentProps = {
     email,
     amount,
@@ -58,9 +62,11 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     totalOrderAmount: totalAmountToPay,
     status: "Processing for Delivery",
     EstimatedDeliveryDate: deliverydate,
+    currency: "NGN",
   };
   console.log(finalOrder);
   const processOrder = () => {
+    setTransactionRef(randomNumber);
     dispatch(sendOrder(finalOrder));
     if (isSuccess) {
       setPaymentFlow(1);
@@ -79,8 +85,23 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1.2 } }}
         exit={{ opacity: 0, transition: { duration: 1.2 } }}
-        className="w-[505px] py-[16px] px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
+        className=" relative w-[505px] py-[16px] px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
       >
+        {isLoading && (
+          <div className="absolute top-[-150px] left-[210px]">
+            <div className="relative flex items-center justify-center w-20 h-20 bg-primary-50 rounded-full mt-[350px]">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute w-20 h-20 bg-neutral-white border-t-[0.80rem] border-[0.80rem] border-primary-10 rounded-full border-box border-t-primary-50"
+              ></motion.div>
+            </div>
+          </div>
+        )}
         {paymentFlow === 0 && (
           <div>
             <div className="w-full h-[32px] flex justify-center items-center mt-[9.92px]">
@@ -194,13 +215,19 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
           </div>
         )}
         {paymentFlow === 1 && (
-          <div>
-            <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[40px]">
-              <p className="text-bodyN">
-                Your payment is successful and your transaction ref is
-                ZDJ214545452514
+          <div className="">
+            <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[60px]">
+              <h3 className="text-primary-50 text-h3">Afrive Books WebStore</h3>
+              <span className="text-[60px] text-primary-50">
+                <BsBagCheckFill />
+              </span>
+              <p className="text-bodyN text-neutral-40 leading-7">
+                Your order has been processed and your transaction reference is{" "}
+                <span className="text-primary-60">{transactionRef}</span>
               </p>
-              <p>Your book order is been processed</p>
+              <p className="text-primary-60 text-bodyL">
+                Thank you for your purchase!
+              </p>
             </div>
             <button
               onClick={() => navigate("/")}
