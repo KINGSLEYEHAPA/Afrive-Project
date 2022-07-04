@@ -82,7 +82,11 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/api/v1/auth");
+      if (location.state?.from) {
+        navigate(location.state.from);
+      } else {
+        navigate("/api/v1/auth");
+      }
     }
   }, [isSuccess]);
 

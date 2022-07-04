@@ -160,6 +160,7 @@ const userSlice = createSlice({
       state.isLoadingGoogle = false;
       state.isGoogleError = false;
       state.verified = null;
+      state.resetMessage = null;
     },
     addUserInfo: (state, action) => {
       state.userInfo = action.payload;
