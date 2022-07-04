@@ -35,6 +35,10 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     // onError: (transaction) => setError(transaction.error),
   };
 
+  const today = new Date();
+  const deliverydate = new Date();
+  deliverydate.setDate(today.getDate() + 2);
+
   const bookAndQuantity = [];
 
   order?.map((item) => {
@@ -51,6 +55,9 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     orderId: randomNumber,
     books: bookAndQuantity,
     Date: new Date(),
+    totalOrderAmount: totalAmountToPay,
+    status: "Processing for Delivery",
+    EstimatedDeliveryDate: deliverydate,
   };
   console.log(finalOrder);
   const processOrder = () => {
@@ -168,7 +175,10 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
                 Change
               </p>
             </div>
-            <button className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium">
+            <button
+              onClick={() => processOrder()}
+              className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+            >
               Pay
             </button>
             {/* <PaystackButton
