@@ -55,13 +55,16 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
 
   const processOrder = () => {
     dispatch(sendOrder(finalOrder));
-  };
-
-  useEffect(() => {
     if (isSuccess) {
       setPaymentFlow(1);
     }
-  }, [ordermessage]);
+  };
+
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     setPaymentFlow(1);
+  //   }
+  // }, [ordermessage]);
 
   return (
     <AnimatePresence>
