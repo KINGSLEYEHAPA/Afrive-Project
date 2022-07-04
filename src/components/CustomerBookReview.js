@@ -113,7 +113,7 @@ const CustomerBookReview = ({ book }) => {
     id: book.id,
     commentData: {
       comment: userReview,
-      startRating: rating,
+      rate: rating,
     },
   };
 
