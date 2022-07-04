@@ -458,6 +458,7 @@ const initialState = {
   isSuccess: false,
   bookCategories: null,
   commentMessage: null,
+  orderMessage: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -506,6 +507,25 @@ export const sendComment = createAsyncThunk(
         comment.commentData,
         comment.id
       );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const sendOrder = createAsyncThunk(
+  "books/sendOrder",
+  async (order, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.sendOrder(token, order);
     } catch (error) {
       const message =
         (error.response &&
@@ -673,6 +693,9 @@ export const bookSlice = createSlice({
       })
       .addCase(sendComment.fulfilled, (state, action) => {
         state.commentMessage = action.payload;
+      })
+      .addCase(sendOrder.fulfilled, (state, action) => {
+        state.orderMessage = action.payload;
       });
 
     // .addCase(getCart.fulfilled, (state, action) => {

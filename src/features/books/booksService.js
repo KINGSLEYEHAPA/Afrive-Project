@@ -33,11 +33,21 @@ const sendComment = async (token, commentData, id) => {
 
   return response.data;
 };
+const sendOrder = async (token, userOrder) => {
+  console.log(token);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.post(`${API_URL}order/`, userOrder, config);
+
+  return response.data;
+};
 
 const booksService = {
   getAllBooks,
   getAllBookCategories,
   sendComment,
+  sendOrder,
 };
 
 export default booksService;
