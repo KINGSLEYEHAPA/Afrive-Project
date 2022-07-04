@@ -151,7 +151,7 @@ const CustomerBookReview = ({ book }) => {
                       key={rating.name}
                       title={rating.name}
                       comment={rating.comment}
-                      userRating={rating.starRating}
+                      userRating={rating.startRating}
                       index={index}
                     />
                   );
