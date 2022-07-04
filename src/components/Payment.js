@@ -121,13 +121,13 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
             {" "}
             <p className="cursor-pointer text-bodyS text-neutral-30">Change</p>
           </div>
-          {/* <button className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium">
-        Pay with Paystack
-      </button> */}
-          <PaystackButton
+          <button className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium">
+            Pay
+          </button>
+          {/* <PaystackButton
             className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             {...componentProps}
-          />
+          /> */}
           <button
             onClick={() => setShowPayment(false)}
             className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyL font-medium"
