@@ -52,7 +52,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     books: bookAndQuantity,
     Date: new Date(),
   };
-
+  console.log(finalOrder);
   const processOrder = () => {
     dispatch(sendOrder(finalOrder));
     if (isSuccess) {
