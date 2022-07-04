@@ -19,6 +19,7 @@ import ServerMessages from "./ServerMessages";
 import UserLogin from "./UserLogin";
 import { useSelector } from "react-redux";
 import Protected from "./Protected";
+import AllBooks from "./AllBooks";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const ApplicationsRoute = () => {
           <Route path="/" element={<App />}>
             <Route index element={<Homepage />} />
             <Route path="/category/:catName" element={<BookCategory />} />
+            <Route path="/all-books/:trendName" element={<AllBooks />} />
             <Route
               path="/liked-books"
               element={

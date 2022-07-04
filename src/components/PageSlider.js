@@ -9,7 +9,7 @@ import lootingMachine from "../assets/book-focus-looting.png";
 import vagabonds from "../assets/book-focus-vagabonds.png";
 import bookShowcase from "../assets/booky.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { buyBookNow } from "../features/books/bookSlice";
 
 // Variants in framer-motion define visual states
@@ -128,12 +128,16 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  {availableBooks?.data?.[randomNumber].title}
-                </h2>
-                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  {availableBooks?.data?.[randomNumber].author}
-                </p>
+                <Link
+                  to={`/book/${availableBooks?.data?.[randomNumber].title}`}
+                >
+                  <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
+                    {availableBooks?.data?.[randomNumber].title}
+                  </h2>
+                  <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
+                    {availableBooks?.data?.[randomNumber].author}
+                  </p>
+                </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
                   className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
@@ -155,12 +159,17 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  {availableBooks?.data?.[randomNumber].title}
-                </h2>
-                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  {availableBooks?.data?.[randomNumber].author}
-                </p>
+
+                <Link
+                  to={`/book/${availableBooks?.data?.[randomNumber].title}`}
+                >
+                  <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
+                    {availableBooks?.data?.[randomNumber].title}
+                  </h2>
+                  <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
+                    {availableBooks?.data?.[randomNumber].author}
+                  </p>
+                </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
                   className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
@@ -182,12 +191,16 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  {availableBooks?.data?.[randomNumber].title}
-                </h2>
-                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  {availableBooks?.data?.[randomNumber].author}
-                </p>
+                <Link
+                  to={`/book/${availableBooks?.data?.[randomNumber].title}`}
+                >
+                  <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
+                    {availableBooks?.data?.[randomNumber].title}
+                  </h2>
+                  <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
+                    {availableBooks?.data?.[randomNumber].author}
+                  </p>
+                </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
                   className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
@@ -208,12 +221,16 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  {availableBooks?.data?.[randomNumber].title}
-                </h2>
-                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  {availableBooks?.data?.[randomNumber].author}
-                </p>
+                <Link
+                  to={`/book/${availableBooks?.data?.[randomNumber].title}`}
+                >
+                  <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
+                    {availableBooks?.data?.[randomNumber].title}
+                  </h2>
+                  <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
+                    {availableBooks?.data?.[randomNumber].author}
+                  </p>
+                </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
                   className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
@@ -234,12 +251,16 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 <h3 className=" text-bodyS mtab:text-h3 text-neutral-white/80 font-reg mt-0">
                   Book Focus
                 </h3>
-                <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
-                  {availableBooks?.data?.[randomNumber].title}
-                </h2>
-                <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
-                  {availableBooks?.data?.[randomNumber].author}
-                </p>
+                <Link
+                  to={`/book/${availableBooks?.data?.[randomNumber].title}`}
+                >
+                  <h2 className=" text-bodyL mtab:text-h2 font-medium my-[6px]    mtab:mt-[16px] mtab:mb-[8px] text-neutral-white whitespace-nowrap">
+                    {availableBooks?.data?.[randomNumber].title}
+                  </h2>
+                  <p className=" text-sub  mtab:text-bodyN whitespace-nowrap font-reg text-neutral-white">
+                    {availableBooks?.data?.[randomNumber].author}
+                  </p>
+                </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
                   className=" text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"

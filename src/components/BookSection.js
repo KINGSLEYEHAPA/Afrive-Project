@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   addAFavoriteBook,
   removeFavoriteBook,
@@ -44,9 +45,11 @@ const BookSection = ({ bookSectionName, emoji }) => {
               <img className="w-[20px] h-[20px]" src={emoji} alt="" />
             )}
           </div>
-          <p className="mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
-            see more
-          </p>
+          <Link to={`/all-books/${bookSectionName}`}>
+            <p className="mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
+              see more
+            </p>
+          </Link>
         </div>
         <div className="w-full min-h-[397.54px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
           {availableBooks?.data.slice(3, 7).map((book) => {

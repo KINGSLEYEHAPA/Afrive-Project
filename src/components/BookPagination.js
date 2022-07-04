@@ -7,6 +7,7 @@ const BookPagination = ({
   paginate,
   catName,
   currentPage,
+  paginationtype,
 }) => {
   const totalPages = Math.ceil(totalBooks / booksPerPage);
   const pageNumbers = [];
@@ -32,7 +33,11 @@ const BookPagination = ({
             }
           >
             <NavLink
-              to={`/category/${catName}`}
+              to={
+                paginationtype === "all"
+                  ? `/all-books/${catName}`
+                  : `/category/${catName}`
+              }
               onClick={() => paginate(number)}
             >
               {number}

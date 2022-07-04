@@ -457,6 +457,7 @@ const initialState = {
   error: null,
   isSuccess: false,
   bookCategories: null,
+  commentMessage: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -660,10 +661,10 @@ export const bookSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;
+      })
+      .addCase(sendComment.fulfilled, (state, action) => {
+        state.commentMessage = action.payload;
       });
-    // .addCase(getCart.pending, (state) => {
-    //   state.isLoading = true;
-    // })
 
     // .addCase(getCart.fulfilled, (state, action) => {
     //   state.cartFromServer = action.payload;

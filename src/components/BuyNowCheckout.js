@@ -153,15 +153,17 @@ const BuyNowCheckout = () => {
                 </div>
               )}
             </div>
-            <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
-              {" "}
-              <p
-                onClick={() => setChangeLocation(true)}
-                className="text-bodyL text-neutral-30 cursor-pointer"
-              >
-                Change
-              </p>
-            </div>
+            {!buyNowBooks?.[0]?.eBook?.status && (
+              <div className="flex w-full h-[24px] justify-end mt-[39.41px]">
+                {" "}
+                <p
+                  onClick={() => setChangeLocation(true)}
+                  className="text-bodyL text-neutral-30 cursor-pointer"
+                >
+                  Change
+                </p>
+              </div>
+            )}
             {/* <hr className="w-[100%] h-0 border border-primary-10 mt-[62.41px] mx-auto   " />
             <div className="h-[29.78px] w-full  flex items-center gap-[56px] mt-[56px]">
               <p className="whitespace-nowrap text-h4 font-medium text-neutral-70">
