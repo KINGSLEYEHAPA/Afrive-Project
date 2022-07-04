@@ -26,11 +26,7 @@ const SignIn = ({ setUserState }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      if (location.state?.from) {
-        navigate(location.state.from);
-      } else {
-        navigate("/");
-      }
+      navigate("/");
     }
   }, [isSuccess]);
   useEffect(() => {

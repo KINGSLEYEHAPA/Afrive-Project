@@ -23,7 +23,7 @@ import AllBooks from "./AllBooks";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
-  const { user } = useSelector((state) => state.user);
+
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto">
       <AnimatePresence exitBeforeEnter>
@@ -35,7 +35,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/liked-books"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <LikedBooks />
                 </Protected>
               }
@@ -44,7 +44,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/shopping-bag"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <ShoppingBag />
                 </Protected>
               }
@@ -52,7 +52,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/buynow"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <BuyNowShoppingBag />
                 </Protected>
               }
@@ -60,7 +60,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/buynow-checkout"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <BuyNowCheckout />
                 </Protected>
               }
@@ -68,7 +68,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/checkout"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <Checkout />
                 </Protected>
               }
@@ -76,7 +76,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/billing-address"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <ChangeBillingAddress />
                 </Protected>
               }
@@ -98,7 +98,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/orders"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <MyOrders />
                 </Protected>
               }
@@ -106,7 +106,7 @@ const ApplicationsRoute = () => {
             <Route
               path="/coupon"
               element={
-                <Protected isLoggedIn={user}>
+                <Protected>
                   <Coupon />
                 </Protected>
               }

@@ -30,7 +30,7 @@ function App() {
     setTimeout(() => {
       dispatch(reset());
     }, 3000);
-  }, [isError, isGoogleError, isSuccess, user]);
+  }, [isError, isGoogleError, isSuccess, user, resetMessage, isverified]);
 
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto p-0 relative">
