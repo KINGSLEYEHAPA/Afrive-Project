@@ -597,6 +597,15 @@ export const bookSlice = createSlice({
     clearShoppingBag: (state) => {
       state.shoppingBag = [];
     },
+    clearUserPreference: (state) => {
+      state.shoppingBag = [];
+      state.likedBooks = [];
+      state.recommendedBooks = [];
+      state.shoppingBag = [];
+      state.shoppingBagBuyNow = null;
+      state.buyNowCheckout = [];
+      state.checkout = null;
+    },
 
     addToBag: (state, action) => {
       const bookExist = state.shoppingBag?.filter((item) => {
@@ -700,5 +709,6 @@ export const {
   clearCheckOut,
   clearBuyNShoppingBag,
   clearShoppingBag,
+  clearUserPreference,
 } = bookSlice.actions;
 export default bookSlice.reducer;

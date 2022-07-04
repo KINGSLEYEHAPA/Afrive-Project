@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { clearUserPreference } from "../features/books/bookSlice";
 
 const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
 
   const onLogout = () => {
     dispatch(logout());
+    dispatch(clearUserPreference());
     dispatch(reset());
     navigate("/");
     setShowProfileInfo(false);
