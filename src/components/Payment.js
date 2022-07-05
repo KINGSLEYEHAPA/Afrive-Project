@@ -6,7 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsBagCheckFill } from "react-icons/bs";
 import uuid from "uuid-random";
-import { bookReset, sendOrder } from "../features/books/bookSlice";
+import {
+  bookReset,
+  clearBuyNShoppingBag,
+  clearShoppingBag,
+  sendOrder,
+} from "../features/books/bookSlice";
 import { reset } from "../features/user/userSlice";
 
 const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
@@ -73,6 +78,8 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     if (orderSuccess) {
       setTimeout(() => {
         setPaymentFlow(1);
+        dispatch(clearBuyNShoppingBag());
+        dispatch(clearShoppingBag());
       }, 3000);
     }
   };
