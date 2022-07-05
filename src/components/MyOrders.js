@@ -7,7 +7,7 @@ import BookQuote from "./BookQuote";
 const MyOrders = () => {
   const navigate = useNavigate();
   let options = {
-    weekday: "long",
+    weekday: "short",
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -76,10 +76,9 @@ const MyOrders = () => {
                   </p>
 
                   <p className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg">
-                    {order?.estimated_delivery_date.toLocaleDateString(
-                      "en-US",
-                      options
-                    )}
+                    {new Date(
+                      order?.estimated_delivery_date
+                    ).toLocaleDateString("en-US", options)}
                   </p>
                 </div>
               </div>
