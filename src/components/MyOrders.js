@@ -54,12 +54,6 @@ const MyOrders = () => {
                           </p>
                         );
                       })}
-                      {/* <p className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg">
-                        1 x Things Fall Apart
-                      </p>
-                      <p className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg">
-                        2 x Under the Small Rock
-                      </p> */}
                     </div>
                   </div>
                 </div>
@@ -68,6 +62,13 @@ const MyOrders = () => {
 
                   <p className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg">
                     {order?.status}
+                  </p>
+                </div>
+                <div className=" h-full flex   justify-start items-center border-r-2 gap-[32px] border-r-primary-20 px-[46px]">
+                  <p className="text-bodyL text-neutral-black">Total Amount:</p>
+
+                  <p className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg">
+                    N{order?.total_order_amount.toLocaleString("en-US")}
                   </p>
                 </div>
                 <div className=" h-full flex   justify-start items-center gap-[32px]  pl-[46px]">
