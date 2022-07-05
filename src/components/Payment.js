@@ -57,7 +57,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   });
 
   const finalOrder = {
-    trx_ref: randomNumber,
+    txn_ref: randomNumber,
     book: bookAndQuantity,
     date: new Date(),
     total_order_amount: totalAmountToPay,
