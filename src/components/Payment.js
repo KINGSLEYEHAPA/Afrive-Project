@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsBagCheckFill } from "react-icons/bs";
 import uuid from "uuid-random";
-import { sendOrder } from "../features/books/bookSlice";
+import { bookReset, sendOrder } from "../features/books/bookSlice";
+import { reset } from "../features/user/userSlice";
 
 const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
@@ -56,28 +57,30 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   });
 
   const finalOrder = {
-    orderId: randomNumber,
-    books: bookAndQuantity,
-    Date: new Date(),
-    totalOrderAmount: totalAmountToPay,
+    trx_ref: randomNumber,
+    book: bookAndQuantity,
+    date: new Date(),
+    total_order_amount: totalAmountToPay,
     status: "Processing for Delivery",
-    EstimatedDeliveryDate: deliverydate,
+    estimated_delivery_date: deliverydate,
     currency: "NGN",
   };
   console.log(finalOrder);
   const processOrder = () => {
     setTransactionRef(randomNumber);
+    dispatch(bookReset());
     dispatch(sendOrder(finalOrder));
+
     if (isSuccess) {
-      setPaymentFlow(1);
+      setTimeout(() => {
+        setPaymentFlow(1);
+      }, 3000);
     }
   };
 
   // useEffect(() => {
-  //   if (isSuccess) {
-  //     setPaymentFlow(1);
-  //   }
-  // }, [ordermessage]);
+
+  // }, [ordermessage, isSuccess]);
 
   return (
     <AnimatePresence>
