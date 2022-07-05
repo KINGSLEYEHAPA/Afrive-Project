@@ -460,6 +460,7 @@ const initialState = {
   commentMessage: null,
   orderMessage: null,
   orderSuccess: false,
+  customerOrders: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -527,6 +528,24 @@ export const sendOrder = createAsyncThunk(
     try {
       const token = thunkAPI.getState().user.user.data.token;
       return await booksService.sendOrder(token, order);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+export const getOrder = createAsyncThunk(
+  "books/getOrder",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.getOrder(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -716,6 +735,22 @@ export const bookSlice = createSlice({
       })
 
       .addCase(sendOrder.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      })
+      .addCase(getOrder.fulfilled, (state, action) => {
+        state.customerOrders = action.payload;
+        state.orderSuccess = true;
+        state.isLoading = false;
+        state.error = null;
+        state.isError = false;
+      })
+      .addCase(getOrder.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(getOrder.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;

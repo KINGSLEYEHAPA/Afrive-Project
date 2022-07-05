@@ -43,11 +43,22 @@ const sendOrder = async (token, userOrder) => {
   return response.data;
 };
 
+const getOrder = async (token) => {
+  console.log(token);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.get(`${API_URL}order/`, config);
+
+  return response.data;
+};
+
 const booksService = {
   getAllBooks,
   getAllBookCategories,
   sendComment,
   sendOrder,
+  getOrder,
 };
 
 export default booksService;

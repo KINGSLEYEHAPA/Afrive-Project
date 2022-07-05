@@ -70,17 +70,15 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     setTransactionRef(randomNumber);
     dispatch(bookReset());
     dispatch(sendOrder(finalOrder));
+  };
 
+  useEffect(() => {
     if (orderSuccess) {
       setTimeout(() => {
         setPaymentFlow(1);
-      }, 3000);
+      }, 1000);
     }
-  };
-
-  // useEffect(() => {
-
-  // }, [ordermessage, isSuccess]);
+  }, [orderSuccess]);
 
   return (
     <AnimatePresence>
