@@ -459,6 +459,7 @@ const initialState = {
   bookCategories: null,
   commentMessage: null,
   orderMessage: null,
+  orderSuccess: false,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -623,6 +624,7 @@ export const bookSlice = createSlice({
       state.isSuccess = false;
       state.error = null;
       state.orderMessage = null;
+      state.orderSuccess = false;
     },
 
     clearUserPreference: (state) => {
@@ -704,6 +706,10 @@ export const bookSlice = createSlice({
       })
       .addCase(sendOrder.fulfilled, (state, action) => {
         state.orderMessage = action.payload;
+        state.orderSuccess = true;
+        state.isLoading = false;
+        state.error = null;
+        state.isError = false;
       })
       .addCase(sendOrder.pending, (state) => {
         state.isLoading = true;

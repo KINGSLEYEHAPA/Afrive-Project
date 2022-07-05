@@ -22,7 +22,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
   const navigate = useNavigate();
   const randomNumber = Math.random() * 1000000 + uuid();
   const dispatch = useDispatch();
-  const { ordermessage, isSuccess, isLoading } = useSelector(
+  const { ordermessage, orderSuccess, isLoading } = useSelector(
     (state) => state.books
   );
   const componentProps = {
@@ -71,7 +71,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     dispatch(bookReset());
     dispatch(sendOrder(finalOrder));
 
-    if (isSuccess) {
+    if (orderSuccess) {
       setTimeout(() => {
         setPaymentFlow(1);
       }, 3000);
