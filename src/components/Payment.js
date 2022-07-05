@@ -73,7 +73,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     if (orderSuccess) {
       setTimeout(() => {
         setPaymentFlow(1);
-      }, 1000);
+      }, 3000);
     }
   };
 

@@ -1,10 +1,14 @@
 import { MdChevronLeft } from "react-icons/md";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 
 const MyOrders = () => {
   const navigate = useNavigate();
+
+  const customerOrders = useSelector((state) => state.books.customerOrders);
+  console.log(customerOrders);
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pt-[32px] ">

@@ -15,7 +15,11 @@ import { useSelector, useDispatch } from "react-redux";
 import OptionsModal from "./OptionsModal";
 import Quiz from "./Quiz";
 import { useEffect, useState } from "react";
-import { getAllBookCategories, getAllBooks } from "../features/books/bookSlice";
+import {
+  getAllBookCategories,
+  getAllBooks,
+  getOrder,
+} from "../features/books/bookSlice";
 
 const Header = ({
   showCategories,
@@ -35,6 +39,7 @@ const Header = ({
   useEffect(() => {
     dispatch(getAllBooks());
     dispatch(getAllBookCategories());
+    dispatch(getOrder());
   }, []);
 
   const location = useLocation();
