@@ -21,7 +21,7 @@ const Homepage = () => {
         id="home"
       >
         <HeroSection />
-        {user && <RecommendedBooks />}
+        {/* {user && <RecommendedBooks />} */}
         <BookSection bookSectionName="Popular Books" />
         <BookSection bookSectionName="BestSellers" />
         <BookSection bookSectionName="New Arrivals" />

@@ -8,7 +8,7 @@ import ProfileInfoDropdown from "./ProfileInfoDropdown";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import EbookDropdown from "./EbookDropdown";
-import Search from "./Search";
+import Search, { MobileSearch } from "./Search";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -32,6 +32,16 @@ const Header = ({
   setShowProfileInfo,
 }) => {
   const dispatch = useDispatch();
+  const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
+
+  useEffect(() => {
+    function handleResize() {
+      // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+      setSearchWidth({ width: window.innerWidth });
+    }
+
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
   const [showQuiz, setShowQuiz] = useState(false);
@@ -53,6 +63,11 @@ const Header = ({
           <Quiz setShowQuiz={setShowQuiz} />
         </OptionsModal>
       )}
+      <div>
+        {showSearch && searchWidth.width <= 1024 && (
+          <MobileSearch setShowSearch={setShowSearch} showSearch={showSearch} />
+        )}
+      </div>
 
       <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mtab:pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
@@ -105,10 +120,11 @@ const Header = ({
           <div className=" hidden mtab:block absolute top-[41.50px] left-[443.31px] w-[7px] h-[7px] bg-primary-50  rounded-full"></div>
         </div>
       </div>
+
       <div className="  mr-[27px] mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
         <AnimatePresence>
           <AnimateSharedLayout>
-            {showSearch && (
+            {showSearch && searchWidth.width > 1024 && (
               <Search setShowSearch={setShowSearch} showSearch={showSearch} />
             )}
           </AnimateSharedLayout>
