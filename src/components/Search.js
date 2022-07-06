@@ -54,9 +54,18 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
     setShowSearch(false);
     navigate(`/book/${book.title}`);
   };
+  const closeSearch = (e) => {
+    e.preventDefault();
+    if (e.target === e.currentTarget) {
+      setShowSearch(false);
+    }
+  };
 
   return (
-    <div className="z-20 fixed top-0 bottom-0 w-screen max-w-[1440px]  mx-auto  bg-neutral-white/70 backdrop-blur-sm h-full flex items-center justify-center ">
+    <div
+      onClick={(e) => closeSearch(e)}
+      className="z-20 fixed top-0 bottom-0 w-screen max-w-[1440px]  mx-auto  bg-neutral-white/70 backdrop-blur-sm h-full flex items-center justify-center "
+    >
       <AnimatePresence>
         {searchResults?.length !== 0 && (
           <motion.div
