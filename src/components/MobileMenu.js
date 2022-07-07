@@ -17,7 +17,10 @@ const MobileMenu = ({ setOpenMobile }) => {
 
         <div className="w-full h-[464px]  p-[14px] gap-[32px] flex flex-col items-center justify-center">
           <Link to="/mobile-category">
-            <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            <p
+              onClick={() => setOpenMobile(false)}
+              className="text-bodyN text-neutral-70 hover:text-primary-50"
+            >
               Categories
             </p>
           </Link>
