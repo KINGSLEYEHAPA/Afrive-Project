@@ -70,7 +70,7 @@ const Header = ({
         <MobileSearch setShowSearch={setShowSearch} showSearch={showSearch} />
       )}
 
-      {openMobile && <MobileMenu />}
+      {openMobile && <MobileMenu setOpenMobile={setOpenMobile} />}
 
       <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mtab:pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
