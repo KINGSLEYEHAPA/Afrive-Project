@@ -148,7 +148,7 @@ const CustomerBookReview = ({ book }) => {
                 {book?.bookRating?.ratings?.map((rating, index) => {
                   return (
                     <ViewReview
-                      key={rating.name}
+                      key={index}
                       title={rating.name}
                       comment={rating.comment}
                       userRating={rating.startRating}

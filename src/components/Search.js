@@ -105,7 +105,7 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="absolute mobx:px-[20px]mobx:bg-neutral-white flex gap-[15px] justify-center items-center top-[20px] w-[328px] rounded-[23px] mtab:w-[276.23px] h-[36px] mtab:rounded-[120px] border border-neutral-30 shadow-[0px 4px 22px rgba(0, 0, 0, 0.15);]">
+      <div className="absolute mobx:px-[20px] mobx:bg-neutral-white flex gap-[15px] justify-center items-center top-[20px] w-[328px] rounded-[23px] mtab:w-[276.23px] h-[36px] mtab:rounded-[120px] border border-neutral-30 shadow-[0px 4px 22px rgba(0, 0, 0, 0.15);]">
         {searchWidth.width > 540 && (
           <span
             onClick={() => {
@@ -123,11 +123,11 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
           value={searchInput}
           onChange={(e) => filteredBooks(e)}
           placeholder={
-            searchWidth.width > 375
+            searchWidth.width > 540
               ? "What would you like to read today?"
               : "Search"
           }
-          className="   text-neutral-30 placeholder:text-sub  px-[20px] mobx:px-[15px]  bg-neutral-40/30 placeholder:text-neutral-30 border-[0.5px solid #C3C3C3] rounded-[23px] mobx:rounded-[120px] w-full h-full  mobx:bg-neutral-white outline-none text-bodyN"
+          className="   text-neutral-30 placeholder:text-bodyN mobx:placeholder:text-sub  px-[20px] mobx:px-[15px]  bg-neutral-40/30 placeholder:text-neutral-30 border-[0.5px solid #C3C3C3] rounded-[23px] mobx:rounded-[120px] w-full h-full  mobx:bg-neutral-white outline-none text-bodyN"
         />
 
         {showSearchOption && (

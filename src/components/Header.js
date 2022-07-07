@@ -20,6 +20,7 @@ import {
   getAllBooks,
   getOrder,
 } from "../features/books/bookSlice";
+import MobileMenu from "./MobileMenu";
 
 const Header = ({
   showCategories,
@@ -31,6 +32,7 @@ const Header = ({
   showProfileInfo,
   setShowProfileInfo,
 }) => {
+  const [openMobile, setOpenMobile] = useState(false);
   const dispatch = useDispatch();
   const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
 
@@ -67,6 +69,8 @@ const Header = ({
       {showSearch && searchWidth.width <= 1024 && (
         <MobileSearch setShowSearch={setShowSearch} showSearch={showSearch} />
       )}
+
+      {openMobile && <MobileMenu />}
 
       <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mtab:pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
@@ -187,7 +191,10 @@ const Header = ({
         >
           <FaRegUser />
         </p>
-        <span className="my-[25px] mtab:hidden text-neutral-70 text-[27px]">
+        <span
+          onClick={() => setOpenMobile(!openMobile)}
+          className="my-[25px] mtab:hidden text-neutral-70 text-[27px]"
+        >
           <AiOutlineMenu />
         </span>
         <AnimatePresence>
