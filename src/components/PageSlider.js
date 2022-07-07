@@ -140,7 +140,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
-                  className=" absolute z-20 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                  className=" absolute z-10 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
                 >
                   Buy Now
                 </button>
@@ -172,7 +172,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
-                  className=" absolute z-20 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                  className=" absolute z-10 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
                 >
                   Buy Now
                 </button>
@@ -203,7 +203,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
-                  className=" absolute z-20 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                  className=" absolute z-10 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
                 >
                   Buy Now
                 </button>
@@ -233,7 +233,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
-                  className=" absolute z-20 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                  className=" absolute z-10 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
                 >
                   Buy Now
                 </button>
@@ -263,7 +263,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
                 </Link>
                 <button
                   onClick={() => buyBook(availableBooks?.data?.[randomNumber])}
-                  className=" absolute z-20 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
+                  className=" absolute z-10 text-neutral-white   text-[12px] leading-[18px] mtab:text-buttonT font-medium mt-[48px]  desk:mt-[72px] bg-primary-40  w-[120px] h-[37px]   mtab:w-[178px] mtab:h-[48px] shadow-[0px 4px 26px rgba(0, 0, 0, 0.25)] rounded-[4px] cursor-pointer"
                 >
                   Buy Now
                 </button>
