@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import Protected from "./Protected";
 import AllBooks from "./AllBooks";
 import CategoriesMobile from "./CategoriesMobile";
+import MobileEbook from "./MobileEbook";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const ApplicationsRoute = () => {
           <Route path="/" element={<App />}>
             <Route index element={<Homepage />} />
             <Route path="/mobile-category" element={<CategoriesMobile />} />
+            <Route path="/ebook-mobile" element={<MobileEbook />} />
             <Route path="/category/:catName" element={<BookCategory />} />
             <Route path="/all-books/:trendName" element={<AllBooks />} />
             <Route
