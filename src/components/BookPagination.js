@@ -17,20 +17,13 @@ const BookPagination = ({
   }
   return (
     <nav className="w-full flex gap-[24px] justify-center items-center mt-[86.51px]">
-      <ALink
-        to="category-title"
-        spy={true}
-        smooth={true}
-        offset={-120}
-        duration={1000}
+      <span
+        onClick={() => currentPage > 1 && paginate(currentPage - 1)}
+        className="text-neutral-black mx-[39px] text-[25px] cursor-pointer"
       >
-        <span
-          onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-          className="text-neutral-black mx-[39px] text-[25px] cursor-pointer"
-        >
-          <MdChevronLeft />
-        </span>
-      </ALink>
+        <MdChevronLeft />
+      </span>
+
       <ul className="flex justify-center relative right-[8px] items-center gap-[24px]">
         {pageNumbers.map((number) => (
           <li
@@ -41,24 +34,16 @@ const BookPagination = ({
                 : "text-bodyL text-primary-40 "
             }
           >
-            <ALink
-              to="category-title"
-              spy={true}
-              smooth={true}
-              offset={-120}
-              duration={1000}
+            <NavLink
+              to={
+                paginationtype === "all"
+                  ? `/all-books/${catName}`
+                  : `/category/${catName}`
+              }
+              onClick={() => paginate(number)}
             >
-              <NavLink
-                to={
-                  paginationtype === "all"
-                    ? `/all-books/${catName}`
-                    : `/category/${catName}`
-                }
-                onClick={() => paginate(number)}
-              >
-                {number}
-              </NavLink>
-            </ALink>
+              {number}
+            </NavLink>
           </li>
         ))}
       </ul>
