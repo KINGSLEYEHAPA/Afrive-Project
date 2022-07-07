@@ -15,17 +15,31 @@ const MobileMenu = ({ setOpenMobile }) => {
         </div>
 
         <div className="w-full h-[464px]  p-[14px] gap-[32px] flex flex-col items-center justify-center">
-          <p className="text-bodyN text-neutral-70">Categories</p>
-          <p className="text-bodyN text-neutral-70">Your e-books</p>
-          <p className="text-bodyN text-neutral-70">Your Orders</p>
+          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            Categories
+          </p>
+          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            Your e-books
+          </p>
+          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            Your Orders
+          </p>
           <div className="flex items-center justify-center gap-[6px]">
-            <p className="text-bodyN text-neutral-70">Take our Quiz</p>
+            <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+              Take our Quiz
+            </p>
             <span className=" w-[4.87px] h-[4.87px]  bg-primary-50 rounded-full"></span>
           </div>
-          <p className="text-bodyN text-neutral-70">Billing/Payment</p>
-          <p className="text-bodyN text-neutral-70">Coupons & Vouchers</p>
-          <p className="text-bodyN text-neutral-70">Support</p>
-          <p className="mt-[24px] text-bodyN text-neutral-70 font-medium">
+          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            Billing/Payment
+          </p>
+          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            Coupons & Vouchers
+          </p>
+          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+            Support
+          </p>
+          <p className="mt-[24px] text-bodyN text-neutral-70 hover:text-primary-50 font-medium">
             Signout
           </p>
         </div>
