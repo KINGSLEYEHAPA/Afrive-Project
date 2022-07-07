@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const MobileMenu = ({ setOpenMobile }) => {
   return (
@@ -15,9 +16,11 @@ const MobileMenu = ({ setOpenMobile }) => {
         </div>
 
         <div className="w-full h-[464px]  p-[14px] gap-[32px] flex flex-col items-center justify-center">
-          <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-            Categories
-          </p>
+          <Link to="/mobile-category">
+            <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+              Categories
+            </p>
+          </Link>
           <p className="text-bodyN text-neutral-70 hover:text-primary-50">
             Your e-books
           </p>
