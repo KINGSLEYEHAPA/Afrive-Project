@@ -35,21 +35,21 @@ const Payment = ({
   const navigate = useNavigate();
   const randomNumber = Math.random() * 1000000 + uuid();
   const dispatch = useDispatch();
-  const [confirmOrder, setConfirmOrder] = useState("");
+  const [confirmOrder, setConfirmOrder] = useState(null);
   const { ordermessage, orderSuccess, isLoading, paymentLink } = useSelector(
     (state) => state.books
   );
 
-  useEffect(() => {
-    dispatch(getOrder());
-  }, []);
-
-  const orderConfirm = lastorder?.data?.find((item) => {
+  const orderConfirm = lastorder?.data?.filter((item) => {
     return (
       item.total_order_amount === totalAmountToPay &&
       item?.book?.length === order?.length
     );
   });
+  useEffect(() => {
+    dispatch(getOrder());
+    setConfirmOrder(orderConfirm);
+  }, []);
 
   console.log(
     paymentLink,
@@ -60,8 +60,7 @@ const Payment = ({
   );
 
   useEffect(() => {
-    setConfirmOrder(orderConfirm);
-    if (confirmOrder !== "") {
+    if (confirmOrder !== null) {
       dispatch(
         pay({
           orderId: lastorder?.[0]?.order_id,
@@ -72,7 +71,7 @@ const Payment = ({
         })
       );
     }
-  }, [orderConfirm]);
+  }, [confirmOrder]);
 
   // const componentProps = {
   //   email,
