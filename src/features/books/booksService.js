@@ -59,7 +59,7 @@ const pay = async (token, payData) => {
   };
   const response = await axios.post(
     `${API_URL}paystack/${payData.orderId}/pay/`,
-    payData,
+    payData.payData,
     config
   );
 
