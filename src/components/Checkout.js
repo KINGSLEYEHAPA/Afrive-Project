@@ -28,7 +28,7 @@ const Checkout = () => {
   );
 
   const checkout = useSelector((state) => state.books.checkout);
-  const lastorder = useSelector((state) => state.books.customerOrders);
+
   const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
   const userAddress = useSelector((state) => state.user.userInfo);
   const userEmail = useSelector((state) => state.user.user);

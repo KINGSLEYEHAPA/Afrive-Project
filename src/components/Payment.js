@@ -40,7 +40,10 @@ const Payment = ({
   );
 
   const orderConfirm = lastorder?.data?.find((item) => {
-    return item.txn_ref === referenceNumber;
+    return (
+      item.total_order_amount === totalAmountToPay &&
+      item.book.length === order.book.length
+    );
   });
 
   console.log(paymentLink, orderConfirm, lastorder.data[0], referenceNumber);
