@@ -42,7 +42,7 @@ const Payment = ({
 
   const orderConfirm = lastorder?.data?.filter((item) => {
     return (
-      item.total_order_amount === totalAmountToPay &&
+      Number(item.total_order_amount) === totalAmountToPay &&
       item?.book?.length === order?.length
     );
   });
@@ -60,7 +60,7 @@ const Payment = ({
   );
 
   useEffect(() => {
-    if (confirmOrder !== null) {
+    if (confirmOrder !== null || confirmOrder !== []) {
       dispatch(
         pay({
           orderId: lastorder?.[0]?.order_id,
