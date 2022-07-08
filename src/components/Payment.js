@@ -40,11 +40,12 @@ const Payment = ({
     (state) => state.books
   );
 
-  // useEffect(() => {}, []);
-
   useEffect(() => {
     dispatch(getOrder());
     setConfirmOrder(orderConfirm);
+  }, []);
+
+  useEffect(() => {
     if (confirmOrder !== null || confirmOrder !== []) {
       console.log(lastorder?.data?.[0]?.order_id);
       dispatch(
