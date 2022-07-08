@@ -461,6 +461,8 @@ const initialState = {
   orderMessage: null,
   orderSuccess: false,
   customerOrders: null,
+  paymentLink: null,
+  paymentVerified: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -528,6 +530,41 @@ export const sendOrder = createAsyncThunk(
     try {
       const token = thunkAPI.getState().user.user.data.token;
       return await booksService.sendOrder(token, order);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Payment
+export const pay = createAsyncThunk("books/pay", async (payData, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().user.user.data.token;
+    return await booksService.pay(token, payData);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+// verifyPayment
+
+export const verifyPay = createAsyncThunk(
+  "books/verifyPay",
+  async (orderId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.verifyPay(token, orderId);
     } catch (error) {
       const message =
         (error.response &&
@@ -751,6 +788,37 @@ export const bookSlice = createSlice({
       })
 
       .addCase(getOrder.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      })
+      .addCase(pay.fulfilled, (state, action) => {
+        state.paymentLink = action.payload;
+        state.isLoading = false;
+        state.error = null;
+        state.isError = false;
+      })
+      .addCase(pay.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(pay.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      })
+
+      .addCase(verifyPay.fulfilled, (state, action) => {
+        state.paymentVerified = action.payload;
+        state.isLoading = false;
+        state.error = null;
+        state.isError = false;
+      })
+      .addCase(verifyPay.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(verifyPay.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;

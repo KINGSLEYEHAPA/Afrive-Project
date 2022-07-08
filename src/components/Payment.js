@@ -10,6 +10,7 @@ import {
   bookReset,
   clearBuyNShoppingBag,
   clearShoppingBag,
+  pay,
   sendOrder,
 } from "../features/books/bookSlice";
 import { reset } from "../features/user/userSlice";
@@ -20,6 +21,7 @@ const Payment = ({
   setShowPayment,
   referenceNumber,
 }) => {
+  const lastorder = useSelector((state) => state.books.customerOrders);
   const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
   const [transactionRef, setTransactionRef] = useState("");
   const [paymentFlow, setPaymentFlow] = useState(0);
@@ -32,23 +34,44 @@ const Payment = ({
   const navigate = useNavigate();
   const randomNumber = Math.random() * 1000000 + uuid();
   const dispatch = useDispatch();
-  const { ordermessage, orderSuccess, isLoading } = useSelector(
+  const { ordermessage, orderSuccess, isLoading, paymentLink } = useSelector(
     (state) => state.books
   );
-  const componentProps = {
-    email,
-    amount,
-    channels: ["card"],
-    metadata: {
-      name,
-      phone,
-    },
-    publicKey,
-    text: "Pay with PayStack",
-    onSuccess: (transaction) => setPaymentFlow(1),
-    onClose: () => setPaymentFlow(0),
-    // onError: (transaction) => setError(transaction.error),
-  };
+
+  const orderConfirm = lastorder?.[0].some((item) => {
+    return item.txn_ref === referenceNumber;
+  });
+
+  console.log(paymentLink);
+
+  useEffect(() => {
+    if (orderConfirm) {
+      dispatch(
+        pay({
+          orderId: lastorder?.[0]?.order_id,
+          payData: {
+            email: user?.data?.email,
+            amount: lastorder?.[0]?.total_order_amount,
+          },
+        })
+      );
+    }
+  }, [orderConfirm]);
+
+  // const componentProps = {
+  //   email,
+  //   amount,
+  //   channels: ["card"],
+  //   metadata: {
+  //     name,
+  //     phone,
+  //   },
+  //   publicKey,
+  //   text: "Pay with PayStack",
+  //   onSuccess: (transaction) => setPaymentFlow(1),
+  //   onClose: () => setPaymentFlow(0),
+  //   // onError: (transaction) => setError(transaction.error),
+  // };
 
   // const today = new Date();
   // const deliverydate = new Date();

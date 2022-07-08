@@ -52,6 +52,31 @@ const getOrder = async (token) => {
 
   return response.data;
 };
+const pay = async (token, payData) => {
+  console.log(token);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.post(
+    `${API_URL}paystack/${payData.orderId}/pay/`,
+    payData,
+    config
+  );
+
+  return response.data;
+};
+const verifyPay = async (token, orderId) => {
+  console.log(token);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.get(
+    `${API_URL}paystack/${orderId}/pay/`,
+    config
+  );
+
+  return response.data;
+};
 
 const booksService = {
   getAllBooks,
@@ -59,6 +84,8 @@ const booksService = {
   sendComment,
   sendOrder,
   getOrder,
+  pay,
+  verifyPay,
 };
 
 export default booksService;
