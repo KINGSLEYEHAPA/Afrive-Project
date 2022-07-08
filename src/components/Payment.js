@@ -46,7 +46,7 @@ const Payment = ({
     );
   });
 
-  console.log(paymentLink, orderConfirm, lastorder.data[0], referenceNumber);
+  console.log(paymentLink, orderConfirm, totalAmountToPay, order.book.length);
 
   useEffect(() => {
     setConfirmOrder(orderConfirm);
