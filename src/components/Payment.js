@@ -61,6 +61,7 @@ const Payment = ({
 
   useEffect(() => {
     if (confirmOrder !== null || confirmOrder !== []) {
+      console.log(lastorder?.[0]?.order_id);
       dispatch(
         pay({
           orderId: lastorder?.[0]?.order_id,
