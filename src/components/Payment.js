@@ -42,11 +42,11 @@ const Payment = ({
   const orderConfirm = lastorder?.data?.find((item) => {
     return (
       item.total_order_amount === totalAmountToPay &&
-      item.book.length === order.book.length
+      item?.book?.length === order?.book?.length
     );
   });
 
-  console.log(paymentLink, orderConfirm, totalAmountToPay, order.book.length);
+  console.log(paymentLink, orderConfirm, totalAmountToPay, order?.book?.length);
 
   useEffect(() => {
     setConfirmOrder(orderConfirm);
