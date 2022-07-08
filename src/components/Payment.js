@@ -40,26 +40,11 @@ const Payment = ({
     (state) => state.books
   );
 
-  const orderConfirm = lastorder?.data?.filter((item) => {
-    return (
-      Number(item.total_order_amount) === totalAmountToPay &&
-      item?.book?.length === order?.length
-    );
-  });
+  // useEffect(() => {}, []);
+
   useEffect(() => {
     dispatch(getOrder());
     setConfirmOrder(orderConfirm);
-  }, []);
-
-  console.log(
-    paymentLink,
-    orderConfirm,
-    lastorder.data,
-    totalAmountToPay,
-    order?.length
-  );
-
-  useEffect(() => {
     if (confirmOrder !== null || confirmOrder !== []) {
       console.log(lastorder?.data?.[0]?.order_id);
       dispatch(
@@ -73,6 +58,20 @@ const Payment = ({
       );
     }
   }, [confirmOrder]);
+  const orderConfirm = lastorder?.data?.filter((item) => {
+    return (
+      Number(item.total_order_amount) === totalAmountToPay &&
+      item?.book?.length === order?.length
+    );
+  });
+
+  console.log(
+    paymentLink,
+    orderConfirm,
+    lastorder.data,
+    totalAmountToPay,
+    order?.length
+  );
 
   // const componentProps = {
   //   email,
