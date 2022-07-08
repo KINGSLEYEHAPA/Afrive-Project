@@ -46,7 +46,13 @@ const Payment = ({
     );
   });
 
-  console.log(paymentLink, orderConfirm, totalAmountToPay, order?.length);
+  console.log(
+    paymentLink,
+    orderConfirm,
+    lastorder.data,
+    totalAmountToPay,
+    order?.length
+  );
 
   useEffect(() => {
     setConfirmOrder(orderConfirm);
