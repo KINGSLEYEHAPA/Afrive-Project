@@ -3,12 +3,15 @@ import { MdChevronLeft } from "react-icons/md";
 import masterCardLogo from "../assets/mastercard2.webp";
 import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import OptionsModal from "./OptionsModal";
 import Payment from "./Payment";
 import AddLocation from "./AddLocation";
 import { AnimatePresence, motion } from "framer-motion";
+import SmallLoader from "./SmallLoader";
+import uuid from "uuid-random";
+import { bookReset, sendOrder } from "../features/books/bookSlice";
 
 const BuyNowCheckout = () => {
   const navigate = useNavigate();
@@ -18,28 +21,74 @@ const BuyNowCheckout = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);
   const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
+  const { isLoading } = useSelector((state) => state.books);
+  const [orderDispatched, setOrderDispatched] = useState(false);
+  const randomNumber = Math.random() * 1000000 + uuid();
 
   const userAddress = useSelector((state) => state.user.userInfo);
   const userEmail = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const buyNowBooks = useSelector((state) => state.books.buyNowCheckout);
   console.log(buyNowBooks);
 
   useEffect(() => {
+    if (!isLoading && orderDispatched) {
+      setShowPayment(true);
+
+      setTimeout(() => {
+        setOrderDispatched(false);
+      }, 3000);
+    }
     setTimeout(() => {
       setChooseDeliveryAddress(false);
     }, 3000);
-  }, [chooseDeliveryAddress]);
+  }, [chooseDeliveryAddress, isLoading, orderDispatched]);
 
-  const placeOrder = () => {
+  const today = new Date();
+  const deliverydate = new Date();
+  deliverydate.setDate(today.getDate() + 2);
+
+  const bookAndQuantity = [];
+
+  bookAndQuantity.push({
+    bookName: buyNowBooks?.[0]?.title,
+    quantity: buyNowBooks?.[0]?.quantity,
+    totalAmount: buyNowBooks?.[0]?.totalAmount,
+    format: buyNowBooks?.[0]?.eBook.status
+      ? buyNowBooks?.[0]?.eBook.format[0]
+      : "Hard Copy",
+  });
+
+  const finalOrder = {
+    txn_ref: randomNumber,
+    book: bookAndQuantity,
+    date: new Date(),
+    total_order_amount: buyNowBooks?.[0]?.totalAmount - discountCoupon,
+    status: "Pending",
+    estimated_delivery_date: deliverydate,
+    currency: "NGN",
+  };
+  console.log(finalOrder);
+  const processOrder = () => {
     if (deliveryLocation !== null || userAddress !== null) {
-      setShowPayment(true);
-    } else if (buyNowBooks?.[0]?.eBook?.status) {
-      setShowPayment(true);
+      dispatch(bookReset());
+      dispatch(sendOrder(finalOrder));
+      setOrderDispatched(true);
     } else {
       setChooseDeliveryAddress(true);
     }
   };
+
+  // const placeOrder = () => {
+  //   if (deliveryLocation !== null || userAddress !== null) {
+  //     setShowPayment(true);
+  //   } else if (buyNowBooks?.[0]?.eBook?.status) {
+  //     setShowPayment(true);
+  //   } else {
+  //     setChooseDeliveryAddress(true);
+  //   }
+  // };
 
   return (
     <AnimatePages>
@@ -249,12 +298,19 @@ const BuyNowCheckout = () => {
                 ).toLocaleString("en-US") || 0}
               </p>
             </div>
-            <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
+            <div className="w-full h-[46px] flex justify-center items-center relative mt-[64px]">
+              {isLoading && (
+                <div className="absolute top-[-170px] left-[230px] z-20">
+                  <SmallLoader loaderColor={"primary"} />
+                </div>
+              )}
               <button
-                onClick={() => placeOrder()}
+                onClick={() => {
+                  processOrder();
+                }}
                 className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
               >
-                Continue to Payment
+                {!isLoading && "Continue to Payment"}
               </button>
             </div>
           </div>

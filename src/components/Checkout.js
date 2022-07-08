@@ -84,7 +84,7 @@ const Checkout = () => {
     book: bookAndQuantity,
     date: new Date(),
     total_order_amount: totalAmount + deliveryFee - discountCoupon,
-    status: "Processing for Delivery",
+    status: "Pending",
     estimated_delivery_date: deliverydate,
     currency: "NGN",
   };
@@ -314,7 +314,7 @@ const Checkout = () => {
             </div>
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px] relative">
               {isLoading && (
-                <div className="absolute top-[-170px] left-[250px] z-20">
+                <div className="absolute top-[-170px] left-[230px] z-20">
                   <SmallLoader loaderColor={"primary"} />
                 </div>
               )}
