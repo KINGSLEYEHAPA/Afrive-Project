@@ -274,7 +274,8 @@ const Payment = ({
               style={{
                 backgroundColor: disablePayButton ? "#FFA599" : "#f45c45",
               }}
-              className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+              // className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+              className=" px-25 py-8 mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             >
               Pay
             </a>
