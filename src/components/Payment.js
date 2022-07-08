@@ -38,11 +38,11 @@ const Payment = ({
     (state) => state.books
   );
 
-  const orderConfirm = lastorder?.[0]?.some((item) => {
+  const orderConfirm = lastorder?.data?.[0]?.some((item) => {
     return item.txn_ref === referenceNumber;
   });
 
-  console.log(paymentLink, orderConfirm, lastorder);
+  console.log(paymentLink, orderConfirm, lastorder.data[0]);
 
   useEffect(() => {
     if (orderConfirm) {
@@ -51,7 +51,7 @@ const Payment = ({
           orderId: lastorder?.[0]?.order_id,
           payData: {
             email: user?.data?.email,
-            amount: lastorder?.[0]?.total_order_amount,
+            amount: lastorder?.data?.[0]?.total_order_amount,
           },
         })
       );
