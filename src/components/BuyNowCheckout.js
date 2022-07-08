@@ -64,7 +64,10 @@ const BuyNowCheckout = () => {
     txn_ref: randomNumber,
     book: bookAndQuantity,
     date: new Date(),
-    total_order_amount: buyNowBooks?.[0]?.totalAmount - discountCoupon,
+    total_order_amount:
+      buyNowBooks?.[0]?.totalAmount -
+      discountCoupon +
+      (buyNowBooks?.[0]?.eBook.status ? 0 : deliveryFee),
     status: "Pending",
     estimated_delivery_date: deliverydate,
     currency: "NGN",
