@@ -35,7 +35,11 @@ const Checkout = () => {
   let totalAmount = 0;
 
   useEffect(() => {
-    if (isLoading) setShowPayment(true);
+    if (!isLoading) {
+      setTimeout(() => {
+        setShowPayment(true);
+      });
+    }
     setTimeout(() => {
       setChooseDeliveryAddress(false);
     }, 3000);
