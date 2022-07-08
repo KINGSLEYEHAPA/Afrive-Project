@@ -42,16 +42,16 @@ const Payment = ({
     useSelector((state) => state.books);
 
   useEffect(() => {
-    dispatch(getOrder());
     setConfirmOrder(orderConfirm);
   }, []);
 
   useEffect(() => {
+    dispatch(getOrder());
     if (confirmOrder !== null || confirmOrder !== []) {
       console.log(lastorder?.data?.[0]?.order_id);
       dispatch(
         pay({
-          orderId: lastorder?.data?.[0]?.order_id + 1,
+          orderId: lastorder?.data?.[0]?.order_id,
           payData: {
             email: user?.data?.email,
             amount: totalAmountToPay,
