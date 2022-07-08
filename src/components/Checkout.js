@@ -40,15 +40,13 @@ const Checkout = () => {
     }, 3000);
   }, [chooseDeliveryAddress]);
 
-  const placeOrder = () => {
-    if (deliveryLocation !== null || userAddress !== null) {
-      setTimeout(() => {
-        if (isLoading) setShowPayment(true);
-      }, 3000);
-    } else {
-      setChooseDeliveryAddress(true);
-    }
-  };
+  // const placeOrder = () => {
+  //   if (deliveryLocation !== null || userAddress !== null) {
+  //     setTimeout(() => {
+  //       if (isLoading)
+  //     }, 3000);
+  //   }
+  // };
 
   checkout?.map((item) => {
     totalAmount += item.totalAmount;
@@ -86,6 +84,10 @@ const Checkout = () => {
     if (deliveryLocation !== null || userAddress !== null) {
       dispatch(bookReset());
       dispatch(sendOrder(finalOrder));
+
+      if (isLoading) setShowPayment(true);
+    } else {
+      setChooseDeliveryAddress(true);
     }
   };
 
@@ -114,6 +116,7 @@ const Checkout = () => {
               order={checkout}
               totalAmountToPay={totalAmount + deliveryFee - discountCoupon}
               setShowPayment={setShowPayment}
+              referenceNumber={randomNumber}
             />
           </OptionsModal>
         )}
@@ -309,7 +312,6 @@ const Checkout = () => {
               )}
               <button
                 onClick={() => {
-                  placeOrder();
                   processOrder();
                 }}
                 className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
