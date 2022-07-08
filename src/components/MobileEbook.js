@@ -202,7 +202,7 @@ const MobileEbook = () => {
         </div>
       )}
       {ebookAvailable === 1 && (
-        <div className="mt-[20px] h-6/7  w-full  flex justify-center items-center ">
+        <div className="mt-[190px]  w-full  flex justify-center items-center ">
           <div className="w-full flex justify-center items-center flex-col px-[45px] gap-[16px]">
             <h3 className="w-full text-bodyL font-medium text-neutral-70 text-center">
               Hi there, you haven’t downloaded any e-books yet.{" "}

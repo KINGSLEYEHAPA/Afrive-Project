@@ -7,9 +7,12 @@ import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 import Payment from "./Payment";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AddLocation from "./AddLocation";
 import { AnimatePresence, motion } from "framer-motion";
+import uuid from "uuid-random";
+import { bookReset, sendOrder } from "../features/books/bookSlice";
+import SmallLoader from "./SmallLoader";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -18,11 +21,16 @@ const Checkout = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);
   const [chooseDeliveryAddress, setChooseDeliveryAddress] = useState(false);
+  const randomNumber = Math.random() * 1000000 + uuid();
+  const { ordermessage, orderSuccess, isLoading } = useSelector(
+    (state) => state.books
+  );
 
   const checkout = useSelector((state) => state.books.checkout);
   const deliveryLocation = useSelector((state) => state.user.deliveryAddress);
   const userAddress = useSelector((state) => state.user.userInfo);
   const userEmail = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   let totalAmount = 0;
 
@@ -34,7 +42,9 @@ const Checkout = () => {
 
   const placeOrder = () => {
     if (deliveryLocation !== null || userAddress !== null) {
-      setShowPayment(true);
+      setTimeout(() => {
+        if (isLoading) setShowPayment(true);
+      }, 3000);
     } else {
       setChooseDeliveryAddress(true);
     }
@@ -45,6 +55,39 @@ const Checkout = () => {
     return null;
   });
   console.log(totalAmount);
+
+  const today = new Date();
+  const deliverydate = new Date();
+  deliverydate.setDate(today.getDate() + 2);
+
+  const bookAndQuantity = [];
+
+  checkout?.map((item) => {
+    bookAndQuantity.push({
+      bookName: item.title,
+      quantity: item.quantity,
+      totalAmount: item.totalAmount,
+      format: item.eBook.status ? item.eBook.format[0] : "Hard Copy",
+    });
+    return null;
+  });
+
+  const finalOrder = {
+    txn_ref: randomNumber,
+    book: bookAndQuantity,
+    date: new Date(),
+    total_order_amount: totalAmount + deliveryFee - discountCoupon,
+    status: "Processing for Delivery",
+    estimated_delivery_date: deliverydate,
+    currency: "NGN",
+  };
+  console.log(finalOrder);
+  const processOrder = () => {
+    if (deliveryLocation !== null || userAddress !== null) {
+      dispatch(bookReset());
+      dispatch(sendOrder(finalOrder));
+    }
+  };
 
   return (
     <AnimatePages>
@@ -258,12 +301,20 @@ const Checkout = () => {
                 ) || 0}
               </p>
             </div>
-            <div className="w-full h-[46px] flex justify-center items-center  mt-[64px]">
+            <div className="w-full h-[46px] flex justify-center items-center  mt-[64px] relative">
+              {isLoading && (
+                <div className="absolute top-[-170px] left-[250px] z-20">
+                  <SmallLoader loaderColor={"primary"} />
+                </div>
+              )}
               <button
-                onClick={placeOrder}
+                onClick={() => {
+                  placeOrder();
+                  processOrder();
+                }}
                 className="w-full h-[65px] bg-primary-50 text-buttonL text-neutral-white font-medium rounded-[4px]  mt-[32px]"
               >
-                Continue to Payment
+                {!isLoading && "Continue to Payment"}
               </button>
             </div>
             <div className="w-full h-[18px] flex justify-center items-center gap-[15px] mt-[41.25px]">

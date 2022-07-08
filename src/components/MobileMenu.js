@@ -25,7 +25,7 @@ const MobileMenu = ({ setOpenMobile }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 1.25 } }}
           exit={{ opacity: 0, transition: 1.25 }}
-          className=" p-[22px] w-screen  h-[528px] mx-[23px]  mobx:mx-[80px] rounded-[16px] bg-neutral-white border border-[rgba(144, 144, 144, 0.05);] "
+          className=" p-[22px] w-screen  h-[528px] mx-[23px]  mobx:mx-[80px] rounded-[16px] bg-neutral-white border border-[#e5e5e5] "
         >
           <div className="flex justify-end items-center w-full h-[20px]">
             <span

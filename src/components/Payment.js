@@ -14,7 +14,12 @@ import {
 } from "../features/books/bookSlice";
 import { reset } from "../features/user/userSlice";
 
-const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
+const Payment = ({
+  order,
+  totalAmountToPay,
+  setShowPayment,
+  referenceNumber,
+}) => {
   const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
   const [transactionRef, setTransactionRef] = useState("");
   const [paymentFlow, setPaymentFlow] = useState(0);
@@ -45,44 +50,44 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
     // onError: (transaction) => setError(transaction.error),
   };
 
-  const today = new Date();
-  const deliverydate = new Date();
-  deliverydate.setDate(today.getDate() + 2);
+  // const today = new Date();
+  // const deliverydate = new Date();
+  // deliverydate.setDate(today.getDate() + 2);
 
-  const bookAndQuantity = [];
+  // const bookAndQuantity = [];
 
-  order?.map((item) => {
-    bookAndQuantity.push({
-      bookName: item.title,
-      quantity: item.quantity,
-      totalAmount: item.totalAmount,
-      format: item.eBook.status ? item.eBook.format[0] : "Hard Copy",
-    });
-    return null;
-  });
+  // order?.map((item) => {
+  //   bookAndQuantity.push({
+  //     bookName: item.title,
+  //     quantity: item.quantity,
+  //     totalAmount: item.totalAmount,
+  //     format: item.eBook.status ? item.eBook.format[0] : "Hard Copy",
+  //   });
+  //   return null;
+  // });
 
-  const finalOrder = {
-    txn_ref: randomNumber,
-    book: bookAndQuantity,
-    date: new Date(),
-    total_order_amount: totalAmountToPay,
-    status: "Processing for Delivery",
-    estimated_delivery_date: deliverydate,
-    currency: "NGN",
-  };
-  console.log(finalOrder);
-  const processOrder = () => {
-    setTransactionRef(randomNumber);
-    dispatch(bookReset());
-    dispatch(sendOrder(finalOrder));
-    if (orderSuccess) {
-      setTimeout(() => {
-        setPaymentFlow(1);
-        dispatch(clearBuyNShoppingBag());
-        dispatch(clearShoppingBag());
-      }, 3000);
-    }
-  };
+  // const finalOrder = {
+  //   txn_ref: randomNumber,
+  //   book: bookAndQuantity,
+  //   date: new Date(),
+  //   total_order_amount: totalAmountToPay,
+  //   status: "Processing for Delivery",
+  //   estimated_delivery_date: deliverydate,
+  //   currency: "NGN",
+  // };
+  // console.log(finalOrder);
+  // const processOrder = () => {
+  //   setTransactionRef(randomNumber);
+  //   dispatch(bookReset());
+  //   dispatch(sendOrder(finalOrder));
+  //   if (orderSuccess) {
+  //     setTimeout(() => {
+  //       setPaymentFlow(1);
+  //       dispatch(clearBuyNShoppingBag());
+  //       dispatch(clearShoppingBag());
+  //     }, 3000);
+  //   }
+  // };
 
   // useEffect(() => {
   //   if (orderSuccess) {
@@ -210,7 +215,7 @@ const Payment = ({ order, totalAmountToPay, setShowPayment }) => {
               </p>
             </div>
             <button
-              onClick={() => processOrder()}
+              // onClick={() => processOrder()}
               className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             >
               Pay
