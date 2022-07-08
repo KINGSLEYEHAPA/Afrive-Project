@@ -10,6 +10,7 @@ import {
   bookReset,
   clearBuyNShoppingBag,
   clearShoppingBag,
+  getOrder,
   pay,
   sendOrder,
 } from "../features/books/bookSlice";
@@ -38,6 +39,10 @@ const Payment = ({
   const { ordermessage, orderSuccess, isLoading, paymentLink } = useSelector(
     (state) => state.books
   );
+
+  useEffect(() => {
+    dispatch(getOrder());
+  }, []);
 
   const orderConfirm = lastorder?.data?.find((item) => {
     return (
