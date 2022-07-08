@@ -26,6 +26,7 @@ const Payment = ({
   const lastorder = useSelector((state) => state.books.customerOrders);
   // const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
   const [transactionRef, setTransactionRef] = useState("");
+  const [disablePayButton, setDisablePayButton] = useState(true);
   const [paymentFlow, setPaymentFlow] = useState(0);
   // const [error, setError] = useState("");
   // const amount = 450000; // Remember, set in kobo!
@@ -37,9 +38,8 @@ const Payment = ({
 
   const dispatch = useDispatch();
   const [confirmOrder, setConfirmOrder] = useState(null);
-  const { ordermessage, orderSuccess, isLoading, paymentLink } = useSelector(
-    (state) => state.books
-  );
+  const { ordermessage, orderSuccess, isLoading, paymentLink, isPayError } =
+    useSelector((state) => state.books);
 
   useEffect(() => {
     dispatch(getOrder());
@@ -141,6 +141,14 @@ const Payment = ({
   //     }, 1000);
   //   }
   // }, [orderSuccess]);
+
+  useEffect(() => {
+    if ((!isLoading || !isPayError) && paymentLink !== null) {
+      setDisablePayButton(false);
+    } else {
+      setDisablePayButton(true);
+    }
+  }, [isPayError, isLoading, paymentLink]);
 
   return (
     <AnimatePresence>
@@ -261,6 +269,7 @@ const Payment = ({
             </div>
             <button
               // onClick={() => processOrder()}
+              disabled={disablePayButton}
               className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             >
               Pay
