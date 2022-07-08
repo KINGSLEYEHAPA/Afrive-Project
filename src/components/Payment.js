@@ -39,7 +39,7 @@ const Payment = ({
     (state) => state.books
   );
 
-  const orderConfirm = lastorder?.data?.[0]?.find((item) => {
+  const orderConfirm = lastorder?.data?.find((item) => {
     return item.txn_ref === referenceNumber;
   });
 
