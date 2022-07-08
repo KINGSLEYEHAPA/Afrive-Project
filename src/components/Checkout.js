@@ -21,6 +21,7 @@ const Checkout = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);
   const [chooseDeliveryAddress, setChooseDeliveryAddress] = useState(false);
+  const [orderDispatched, setOrderDispatched] = useState(false);
   const randomNumber = Math.random() * 1000000 + uuid();
   const { ordermessage, orderSuccess, isLoading } = useSelector(
     (state) => state.books
@@ -35,15 +36,16 @@ const Checkout = () => {
   let totalAmount = 0;
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && orderDispatched) {
+      setShowPayment(true);
       setTimeout(() => {
-        setShowPayment(true);
-      });
+        setOrderDispatched(false);
+      }, 3000);
     }
     setTimeout(() => {
       setChooseDeliveryAddress(false);
     }, 3000);
-  }, [chooseDeliveryAddress, isLoading]);
+  }, [chooseDeliveryAddress, isLoading, orderDispatched]);
 
   // const placeOrder = () => {
   //   if (deliveryLocation !== null || userAddress !== null) {
@@ -89,6 +91,7 @@ const Checkout = () => {
     if (deliveryLocation !== null || userAddress !== null) {
       dispatch(bookReset());
       dispatch(sendOrder(finalOrder));
+      setOrderDispatched(true);
     } else {
       setChooseDeliveryAddress(true);
     }
