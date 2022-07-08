@@ -42,7 +42,7 @@ const Payment = ({
     return item.txn_ref === referenceNumber;
   });
 
-  console.log(paymentLink);
+  console.log(paymentLink, orderConfirm, lastorder);
 
   useEffect(() => {
     if (orderConfirm) {
