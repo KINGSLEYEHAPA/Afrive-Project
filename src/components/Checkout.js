@@ -35,10 +35,11 @@ const Checkout = () => {
   let totalAmount = 0;
 
   useEffect(() => {
+    if (isLoading) setShowPayment(true);
     setTimeout(() => {
       setChooseDeliveryAddress(false);
     }, 3000);
-  }, [chooseDeliveryAddress]);
+  }, [chooseDeliveryAddress, isLoading]);
 
   // const placeOrder = () => {
   //   if (deliveryLocation !== null || userAddress !== null) {
@@ -84,8 +85,6 @@ const Checkout = () => {
     if (deliveryLocation !== null || userAddress !== null) {
       dispatch(bookReset());
       dispatch(sendOrder(finalOrder));
-
-      if (isLoading) setShowPayment(true);
     } else {
       setChooseDeliveryAddress(true);
     }
