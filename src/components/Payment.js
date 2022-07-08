@@ -267,8 +267,9 @@ const Payment = ({
                 Change
               </p>
             </div>
-            <button
+            <a
               // onClick={() => processOrder()}
+              href={paymentLink?.data?.authorization_url}
               disabled={disablePayButton}
               style={{
                 backgroundColor: disablePayButton ? "#FFA599" : "#f45c45",
@@ -276,7 +277,7 @@ const Payment = ({
               className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             >
               Pay
-            </button>
+            </a>
             {/* <PaystackButton
             className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             {...componentProps}
