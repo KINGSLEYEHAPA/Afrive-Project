@@ -34,18 +34,20 @@ const Payment = ({
   const navigate = useNavigate();
   const randomNumber = Math.random() * 1000000 + uuid();
   const dispatch = useDispatch();
+  const [confirmOrder, setConfirmOrder] = useState("");
   const { ordermessage, orderSuccess, isLoading, paymentLink } = useSelector(
     (state) => state.books
   );
 
-  const orderConfirm = lastorder?.data?.[0]?.some((item) => {
+  const orderConfirm = lastorder?.data?.[0]?.find((item) => {
     return item.txn_ref === referenceNumber;
   });
 
   console.log(paymentLink, orderConfirm, lastorder.data[0], referenceNumber);
 
   useEffect(() => {
-    if (orderConfirm) {
+    setConfirmOrder(orderConfirm);
+    if (confirmOrder !== "") {
       dispatch(
         pay({
           orderId: lastorder?.[0]?.order_id,
