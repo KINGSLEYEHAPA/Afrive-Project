@@ -49,10 +49,10 @@ const Payment = ({
       console.log(lastorder?.data?.[0]?.order_id);
       dispatch(
         pay({
-          orderId: lastorder?.data?.[0]?.order_id,
+          orderId: lastorder?.data?.[0]?.order_id + 1,
           payData: {
             email: user?.data?.email,
-            amount: lastorder?.data?.[0]?.total_order_amount,
+            amount: totalAmountToPay,
           },
         })
       );
