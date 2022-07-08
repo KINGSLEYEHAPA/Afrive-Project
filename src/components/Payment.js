@@ -10,6 +10,7 @@ import {
   bookReset,
   clearBuyNShoppingBag,
   clearShoppingBag,
+  deleteOrder,
   getOrder,
   pay,
   sendOrder,
@@ -23,17 +24,17 @@ const Payment = ({
   referenceNumber,
 }) => {
   const lastorder = useSelector((state) => state.books.customerOrders);
-  const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
+  // const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
   const [transactionRef, setTransactionRef] = useState("");
   const [paymentFlow, setPaymentFlow] = useState(0);
-  const [error, setError] = useState("");
-  const amount = 450000; // Remember, set in kobo!
-  const [email, setEmail] = useState("kessity09@gmail.com");
-  const [name, setName] = useState("Kingsley Ehapa");
-  const [phone, setPhone] = useState("080");
+  // const [error, setError] = useState("");
+  // const amount = 450000; // Remember, set in kobo!
+  // const [email, setEmail] = useState("kessity09@gmail.com");
+  // const [name, setName] = useState("Kingsley Ehapa");
+  // const [phone, setPhone] = useState("080");
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const randomNumber = Math.random() * 1000000 + uuid();
+
   const dispatch = useDispatch();
   const [confirmOrder, setConfirmOrder] = useState(null);
   const { ordermessage, orderSuccess, isLoading, paymentLink } = useSelector(
@@ -73,6 +74,11 @@ const Payment = ({
     totalAmountToPay,
     order?.length
   );
+
+  const cancelOrder = () => {
+    dispatch(deleteOrder(lastorder?.data?.[0]?.order_id));
+    setShowPayment(false);
+  };
 
   // const componentProps = {
   //   email,
@@ -264,7 +270,7 @@ const Payment = ({
             {...componentProps}
           /> */}
             <button
-              onClick={() => setShowPayment(false)}
+              onClick={cancelOrder}
               className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyL font-medium"
             >
               Cancel

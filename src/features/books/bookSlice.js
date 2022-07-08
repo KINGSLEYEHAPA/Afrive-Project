@@ -463,6 +463,7 @@ const initialState = {
   customerOrders: null,
   paymentLink: null,
   paymentVerified: null,
+  orderDeleteMessage: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -583,6 +584,24 @@ export const getOrder = createAsyncThunk(
     try {
       const token = thunkAPI.getState().user.user.data.token;
       return await booksService.getOrder(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+export const deleteOrder = createAsyncThunk(
+  "books/deleteOrder",
+  async (orderId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.deleteOrder(token, orderId);
     } catch (error) {
       const message =
         (error.response &&
@@ -782,6 +801,9 @@ export const bookSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.isError = false;
+      })
+      .addCase(deleteOrder.fulfilled, (state, action) => {
+        state.orderDeleteMessage = action.payload;
       })
       .addCase(getOrder.pending, (state) => {
         state.isLoading = true;

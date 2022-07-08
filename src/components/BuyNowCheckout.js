@@ -122,6 +122,7 @@ const BuyNowCheckout = () => {
                 discountCoupon
               }
               setShowPayment={setShowPayment}
+              referenceNumber={randomNumber}
             />
           </OptionsModal>
         )}

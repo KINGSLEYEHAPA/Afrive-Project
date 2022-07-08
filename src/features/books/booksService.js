@@ -52,6 +52,15 @@ const getOrder = async (token) => {
 
   return response.data;
 };
+const deleteOrder = async (token, orderId) => {
+  console.log(token);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.delete(`${API_URL}order/${orderId}`, config);
+
+  return response.data;
+};
 const pay = async (token, payData) => {
   console.log(token);
   const config = {
@@ -86,6 +95,7 @@ const booksService = {
   getOrder,
   pay,
   verifyPay,
+  deleteOrder,
 };
 
 export default booksService;
