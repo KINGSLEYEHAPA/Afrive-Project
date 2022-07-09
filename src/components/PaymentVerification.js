@@ -15,9 +15,8 @@ const PaymentVerification = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const { isPaymentLoading, isPaymentSuccessfull, isError } = useSelector(
-    (state) => state.books
-  );
+  const { isPaymentLoading, isPaymentSuccessfull, isError, paymentVerified } =
+    useSelector((state) => state.books);
 
   const [searchParams] = useSearchParams();
   const verifyReference = searchParams.get("reference");
@@ -58,9 +57,15 @@ const PaymentVerification = () => {
             <span className="text-[60px] text-primary-50">
               <BsBagCheckFill />
             </span>
+            <h2 className="text-h4 font-medium text-primary-50">
+              Payment Verified
+            </h2>
             <p className="text-bodyN text-neutral-40 leading-7">
               Your order has been processed and your transaction reference is{" "}
-              <span className="text-primary-60">00000000</span>
+              <span className="text-primary-60">
+                {" "}
+                {paymentVerified?.data?.txn_ref}
+              </span>
             </p>
             <p className="text-primary-60 text-bodyL">
               Thank you for your purchase!
