@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MdChevronLeft } from "react-icons/md";
 import masterCardLogo from "../assets/mastercard2.webp";
 import { HiOutlineInformationCircle } from "react-icons/hi";
@@ -26,6 +26,7 @@ const Checkout = () => {
   const { ordermessage, orderSuccess, isLoading } = useSelector(
     (state) => state.books
   );
+  const location = useLocation();
 
   const checkout = useSelector((state) => state.books.checkout);
 
@@ -56,6 +57,8 @@ const Checkout = () => {
   //     }, 3000);
   //   }
   // };
+
+  console.log(location);
 
   checkout?.map((item) => {
     totalAmount += item.totalAmount;
@@ -117,6 +120,12 @@ const Checkout = () => {
             </motion.div>
           )}
         </AnimatePresence>
+        {location.pathname === "/checkout/verifypay" && (
+          <OptionsModal>
+            {" "}
+            <Outlet />
+          </OptionsModal>
+        )}
         {showPayment && (
           <OptionsModal>
             <Payment

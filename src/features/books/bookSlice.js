@@ -461,13 +461,11 @@ const initialState = {
   orderMessage: null,
   orderSuccess: false,
   customerOrders: null,
-  paymentLink: null,
   paymentVerified: null,
+  isPaymentSuccessFull: false,
   orderDeleteMessage: null,
   isOrderError: false,
   orderError: null,
-  isPayError: false,
-  payError: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -548,28 +546,28 @@ export const sendOrder = createAsyncThunk(
   }
 );
 
-// Payment
-export const pay = createAsyncThunk("books/pay", async (payData, thunkAPI) => {
-  try {
-    const token = thunkAPI.getState().user.user.data.token;
-    return await booksService.pay(token, payData);
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
+// // Payment
+// export const pay = createAsyncThunk("books/pay", async (payData, thunkAPI) => {
+//   try {
+//     const token = thunkAPI.getState().user.user.data.token;
+//     return await booksService.pay(token, payData);
+//   } catch (error) {
+//     const message =
+//       (error.response && error.response.data && error.response.data.message) ||
+//       error.message ||
+//       error.toString();
 
-    return thunkAPI.rejectWithValue(message);
-  }
-});
+//     return thunkAPI.rejectWithValue(message);
+//   }
+// });
 // verifyPayment
 
 export const verifyPay = createAsyncThunk(
   "books/verifyPay",
-  async (orderId, thunkAPI) => {
+  async (reference, thunkAPI) => {
     try {
       const token = thunkAPI.getState().user.user.data.token;
-      return await booksService.verifyPay(token, orderId);
+      return await booksService.verifyPay(token, reference);
     } catch (error) {
       const message =
         (error.response &&
@@ -714,6 +712,8 @@ export const bookSlice = createSlice({
       state.shoppingBagBuyNow = null;
       state.buyNowCheckout = [];
       state.checkout = null;
+      state.isPaymentSuccessFull = false;
+      state.orderSuccess = false;
     },
 
     addToBag: (state, action) => {
@@ -840,6 +840,7 @@ export const bookSlice = createSlice({
       .addCase(verifyPay.fulfilled, (state, action) => {
         state.paymentVerified = action.payload;
         state.isLoading = false;
+        state.isPaymentSuccessFull = true;
         state.error = null;
         state.isError = false;
       })
@@ -851,6 +852,7 @@ export const bookSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;
+        state.isPaymentSuccessFull = false;
       });
 
     // .addCase(getCart.fulfilled, (state, action) => {

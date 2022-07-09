@@ -61,26 +61,26 @@ const deleteOrder = async (token, orderId) => {
 
   return response.data;
 };
-const pay = async (token, payData) => {
-  console.log(token);
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-  const response = await axios.post(
-    `${API_URL}paystack/${payData.orderId}/pay/`,
-    payData.payData,
-    config
-  );
+// const pay = async (token, payData) => {
+//   console.log(token);
+//   const config = {
+//     headers: { Authorization: `Bearer ${token}` },
+//   };
+//   const response = await axios.post(
+//     `${API_URL}paystack/${payData.orderId}/pay/`,
+//     payData.payData,
+//     config
+//   );
 
-  return response.data;
-};
-const verifyPay = async (token, orderId) => {
+//   return response.data;
+// };
+const verifyPay = async (token, reference) => {
   console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
   const response = await axios.get(
-    `${API_URL}paystack/${orderId}/pay/`,
+    `${API_URL}order/${reference}/verify`,
     config
   );
 
@@ -93,7 +93,7 @@ const booksService = {
   sendComment,
   sendOrder,
   getOrder,
-  pay,
+
   verifyPay,
   deleteOrder,
 };

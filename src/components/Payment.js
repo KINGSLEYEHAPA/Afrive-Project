@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import masterCardLogo from "../assets/mastercard2.webp";
 import { PaystackButton } from "react-paystack";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsBagCheckFill } from "react-icons/bs";
@@ -39,45 +39,44 @@ const Payment = ({
   const dispatch = useDispatch();
   const [confirmOrder, setConfirmOrder] = useState(null);
   const {
-    ordermessage,
-    orderSuccess,
+    orderMessage,
+
     isLoading,
-    paymentLink,
     isOrderError,
     customerOrders,
   } = useSelector((state) => state.books);
 
   useEffect(() => {
-    setConfirmOrder(orderConfirm);
+    dispatch(getOrder());
   }, []);
 
-  useEffect(() => {
-    dispatch(getOrder());
-    if (confirmOrder !== null || confirmOrder !== []) {
-      console.log(lastorder?.data?.[0]?.order_id);
-      // dispatch(
-      //   pay({
-      //     orderId: lastorder?.data?.[0]?.order_id,
-      //     payData: {
-      //       email: user?.data?.email,
-      //       amount: totalAmountToPay,
-      //     },
-      //   })
-      // );
-    }
-  }, [confirmOrder]);
-  const orderConfirm = lastorder?.data?.filter((item) => {
-    return (
-      Number(item.total_order_amount) === totalAmountToPay &&
-      item?.book?.length === order?.length
-    );
-  });
+  // useEffect(() => {
+  //
+  //   if (confirmOrder !== null || confirmOrder !== []) {
+  //     console.log(lastorder?.data?.[0]?.order_id);
+  //     dispatch(
+  //       pay({
+  //         orderId: lastorder?.data?.[0]?.order_id,
+  //         payData: {
+  //           email: user?.data?.email,
+  //           amount: totalAmountToPay,
+  //         },
+  //       })
+  //     );
+  //   }
+  // }, [confirmOrder]);
+  // const orderConfirm = lastorder?.data?.filter((item) => {
+  //   return (
+  //     Number(item.total_order_amount) === totalAmountToPay &&
+  //     item?.book?.length === order?.length
+  //   );
+  // });
 
   console.log(
-    paymentLink,
+    orderMessage?.data,
     lastorder?.data?.[0],
     totalAmountToPay,
-    lastorder.data
+    lastorder?.data
   );
 
   const cancelOrder = () => {
@@ -148,12 +147,15 @@ const Payment = ({
   // }, [orderSuccess]);
 
   useEffect(() => {
-    if ((!isLoading || !isOrderError) && paymentLink !== null) {
+    if (
+      (!isLoading || !isOrderError) &&
+      orderMessage?.data?.order_id === customerOrders?.data?.[0]?.order_id
+    ) {
       setDisablePayButton(false);
     } else {
       setDisablePayButton(true);
     }
-  }, [isOrderError, isLoading, paymentLink]);
+  }, [isOrderError, isLoading, orderMessage, customerOrders]);
 
   return (
     <AnimatePresence>
@@ -274,13 +276,16 @@ const Payment = ({
             </div>
             <a
               // onClick={() => processOrder()}
-              href={customerOrders?.data?.[0]?.checkout_url}
-              disabled={disablePayButton}
+              href={orderMessage?.data?.checkout_url}
               style={{
                 backgroundColor: disablePayButton ? "#FFA599" : "#f45c45",
               }}
               // className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
-              className="w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+              className={
+                disablePayButton
+                  ? "w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium pointer-events-none"
+                  : "w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+              }
             >
               Pay with PayStack
             </a>
@@ -296,6 +301,7 @@ const Payment = ({
             </button>
           </div>
         )}
+
         {paymentFlow === 1 && (
           <div className="">
             <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[60px]">

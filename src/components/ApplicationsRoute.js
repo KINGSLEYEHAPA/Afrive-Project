@@ -22,6 +22,7 @@ import Protected from "./Protected";
 import AllBooks from "./AllBooks";
 import CategoriesMobile from "./CategoriesMobile";
 import MobileEbook from "./MobileEbook";
+import PaymentVerification from "./PaymentVerification";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
@@ -76,7 +77,12 @@ const ApplicationsRoute = () => {
                   <Checkout />
                 </Protected>
               }
-            />
+            >
+              <Route
+                path="/checkout/verifypay"
+                element={<PaymentVerification />}
+              />{" "}
+            </Route>
             <Route
               path="/billing-address"
               element={
