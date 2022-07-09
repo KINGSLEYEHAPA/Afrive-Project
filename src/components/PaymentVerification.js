@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsBagCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import {
   clearPaymentState,
   clearUserPreference,
@@ -11,7 +11,7 @@ import Loading from "./Loading";
 
 const PaymentVerification = () => {
   const [payState, setPayState] = useState(0);
-  const navigate = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -52,7 +52,7 @@ const PaymentVerification = () => {
       )}
       {payState === 1 && (
         <div className="bg-neutral-white p-[22px]">
-          <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[28px]">
+          <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
             <h3 className="text-primary-50 text-h3">Afrive Books WebStore</h3>
             <span className="text-[60px] text-primary-50">
               <BsBagCheckFill />
