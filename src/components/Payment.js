@@ -38,8 +38,14 @@ const Payment = ({
 
   const dispatch = useDispatch();
   const [confirmOrder, setConfirmOrder] = useState(null);
-  const { ordermessage, orderSuccess, isLoading, paymentLink, isPayError } =
-    useSelector((state) => state.books);
+  const {
+    ordermessage,
+    orderSuccess,
+    isLoading,
+    paymentLink,
+    isOrderError,
+    customerOrders,
+  } = useSelector((state) => state.books);
 
   useEffect(() => {
     setConfirmOrder(orderConfirm);
@@ -49,15 +55,15 @@ const Payment = ({
     dispatch(getOrder());
     if (confirmOrder !== null || confirmOrder !== []) {
       console.log(lastorder?.data?.[0]?.order_id);
-      dispatch(
-        pay({
-          orderId: lastorder?.data?.[0]?.order_id,
-          payData: {
-            email: user?.data?.email,
-            amount: totalAmountToPay,
-          },
-        })
-      );
+      // dispatch(
+      //   pay({
+      //     orderId: lastorder?.data?.[0]?.order_id,
+      //     payData: {
+      //       email: user?.data?.email,
+      //       amount: totalAmountToPay,
+      //     },
+      //   })
+      // );
     }
   }, [confirmOrder]);
   const orderConfirm = lastorder?.data?.filter((item) => {
@@ -142,12 +148,12 @@ const Payment = ({
   // }, [orderSuccess]);
 
   useEffect(() => {
-    if ((!isLoading || !isPayError) && paymentLink !== null) {
+    if ((!isLoading || !isOrderError) && paymentLink !== null) {
       setDisablePayButton(false);
     } else {
       setDisablePayButton(true);
     }
-  }, [isPayError, isLoading, paymentLink]);
+  }, [isOrderError, isLoading, paymentLink]);
 
   return (
     <AnimatePresence>
@@ -268,7 +274,7 @@ const Payment = ({
             </div>
             <a
               // onClick={() => processOrder()}
-              href={paymentLink?.data?.authorization_url}
+              href={customerOrders?.data?.[0]?.checkout_url}
               disabled={disablePayButton}
               style={{
                 backgroundColor: disablePayButton ? "#FFA599" : "#f45c45",

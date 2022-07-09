@@ -80,7 +80,6 @@ const Checkout = () => {
   });
 
   const finalOrder = {
-    txn_ref: randomNumber,
     book: bookAndQuantity,
     date: new Date(),
     total_order_amount: totalAmount + deliveryFee - discountCoupon,

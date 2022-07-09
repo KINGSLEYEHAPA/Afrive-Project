@@ -464,6 +464,8 @@ const initialState = {
   paymentLink: null,
   paymentVerified: null,
   orderDeleteMessage: null,
+  isOrderError: false,
+  orderError: null,
   isPayError: false,
   payError: null,
 };
@@ -790,19 +792,22 @@ export const bookSlice = createSlice({
       })
       .addCase(sendOrder.pending, (state) => {
         state.isLoading = true;
+        state.isOrderError = false;
+        state.orderError = null;
       })
 
       .addCase(sendOrder.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
-        state.error = action.payload;
+        state.isOrderError = true;
+        state.orderError = action.payload;
+        state.orderSuccess = false;
       })
       .addCase(getOrder.fulfilled, (state, action) => {
         state.customerOrders = action.payload;
         state.orderSuccess = true;
         state.isLoading = false;
-        state.error = null;
-        state.isError = false;
+        state.orderError = null;
+        state.isOrderError = false;
       })
       .addCase(deleteOrder.fulfilled, (state, action) => {
         state.orderDeleteMessage = action.payload;
@@ -816,21 +821,21 @@ export const bookSlice = createSlice({
         state.isError = true;
         state.error = action.payload;
       })
-      .addCase(pay.fulfilled, (state, action) => {
-        state.paymentLink = action.payload;
-        state.isLoading = false;
-        state.payError = null;
-        state.isPayError = false;
-      })
-      .addCase(pay.pending, (state) => {
-        state.isLoading = true;
-      })
+      // .addCase(pay.fulfilled, (state, action) => {
+      //   state.paymentLink = action.payload;
+      //   state.isLoading = false;
+      //   state.payError = null;
+      //   state.isPayError = false;
+      // })
+      // .addCase(pay.pending, (state) => {
+      //   state.isLoading = true;
+      // })
 
-      .addCase(pay.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isPayError = true;
-        state.payError = action.payload;
-      })
+      // .addCase(pay.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isPayError = true;
+      //   state.payError = action.payload;
+      // })
 
       .addCase(verifyPay.fulfilled, (state, action) => {
         state.paymentVerified = action.payload;
