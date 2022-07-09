@@ -52,7 +52,7 @@ const PaymentVerification = () => {
       )}
       {payState === 1 && (
         <div className="bg-neutral-white p-[22px]">
-          <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[60px]">
+          <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[28px]">
             <h3 className="text-primary-50 text-h3">Afrive Books WebStore</h3>
             <span className="text-[60px] text-primary-50">
               <BsBagCheckFill />
