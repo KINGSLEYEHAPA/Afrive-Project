@@ -19,12 +19,14 @@ const PaymentVerification = () => {
   const verifyReference = searchParams.get("reference");
   useEffect(() => {
     dispatch(verifyPay(verifyReference));
+  }, []);
 
+  useEffect(() => {
     if (!isLoading && isPaymentSuccessful) {
       setPayState(1);
       dispatch(clearUserPreference());
     }
-  }, []);
+  }, [isPaymentSuccessful, isLoading, dispatch]);
 
   console.log(location.search);
   return (
