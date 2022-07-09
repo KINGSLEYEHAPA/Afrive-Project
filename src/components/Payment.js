@@ -67,7 +67,12 @@ const Payment = ({
     );
   });
 
-  console.log(paymentLink, lastorder?.data?.[0], totalAmountToPay);
+  console.log(
+    paymentLink,
+    lastorder?.data?.[0],
+    totalAmountToPay,
+    lastorder.data
+  );
 
   const cancelOrder = () => {
     dispatch(deleteOrder(lastorder?.data?.[0]?.order_id));
