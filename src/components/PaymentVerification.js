@@ -22,11 +22,11 @@ const PaymentVerification = () => {
   }, []);
 
   useEffect(() => {
-    if (!isLoading && isPaymentSuccessful) {
+    if (!isLoading && isPaymentSuccessful && !isError) {
       setPayState(1);
       dispatch(clearUserPreference());
     }
-  }, [isPaymentSuccessful, isLoading, dispatch]);
+  }, [isPaymentSuccessful, isLoading, dispatch, isError]);
 
   console.log(location.search);
   return (
