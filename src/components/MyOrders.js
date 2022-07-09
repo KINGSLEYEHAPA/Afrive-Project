@@ -61,7 +61,7 @@ const MyOrders = () => {
                   <p className="text-bodyL text-neutral-black">Status:</p>
 
                   <p className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg">
-                    {order?.completed ? "Pending" : "Processed for delivery"}
+                    {order?.completed ? "Processed for delivery" : "Pending"}
                   </p>
                 </div>
                 <div className=" h-full flex   justify-start items-center border-r-2 gap-[32px] border-r-primary-20 px-[26px]">
