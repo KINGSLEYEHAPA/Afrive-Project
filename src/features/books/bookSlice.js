@@ -462,7 +462,7 @@ const initialState = {
   orderSuccess: false,
   customerOrders: null,
   paymentVerified: null,
-  isPaymentSuccessFull: false,
+  isPaymentSuccessfull: false,
   orderDeleteMessage: null,
   isOrderError: false,
   orderError: null,
@@ -750,7 +750,7 @@ export const bookSlice = createSlice({
       state.shoppingBagBuyNow = null;
     },
     clearPaymentState: (state, action) => {
-      state.isPaymentSuccessFull = false;
+      state.isPaymentSuccessfull = false;
       state.isPaymentLoading = false;
     },
   },
@@ -830,7 +830,7 @@ export const bookSlice = createSlice({
       .addCase(verifyPay.fulfilled, (state, action) => {
         state.paymentVerified = action.payload;
         state.isPaymentLoading = false;
-        state.isPaymentSuccessFull = true;
+        state.isPaymentSuccessfull = true;
         state.error = null;
         state.isError = false;
       })
@@ -842,7 +842,7 @@ export const bookSlice = createSlice({
         state.isPaymentLoading = false;
         state.isError = true;
         state.error = action.payload;
-        state.isPaymentSuccessFull = false;
+        state.isPaymentSuccessfull = false;
       });
 
     // .addCase(getCart.fulfilled, (state, action) => {

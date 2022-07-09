@@ -15,7 +15,7 @@ const PaymentVerification = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const { isPaymentLoading, isPaymentSuccessful, isError } = useSelector(
+  const { isPaymentLoading, isPaymentSuccessfull, isError } = useSelector(
     (state) => state.books
   );
 
@@ -27,13 +27,13 @@ const PaymentVerification = () => {
   }, []);
 
   useEffect(() => {
-    if (!isPaymentLoading && isPaymentSuccessful && !isError) {
+    if (!isPaymentLoading && isPaymentSuccessfull && !isError) {
       setTimeout(() => {
         setPayState(1);
         dispatch(clearUserPreference());
       }, 3000);
     }
-  }, [isPaymentSuccessful, isPaymentLoading, dispatch, isError]);
+  }, [isPaymentSuccessfull, isPaymentLoading, dispatch, isError]);
 
   console.log(location.search);
   return (
