@@ -67,13 +67,7 @@ const Payment = ({
     );
   });
 
-  console.log(
-    paymentLink,
-    orderConfirm,
-    lastorder.data,
-    totalAmountToPay,
-    order?.length
-  );
+  console.log(paymentLink, lastorder?.data?.[0], totalAmountToPay);
 
   const cancelOrder = () => {
     dispatch(deleteOrder(lastorder?.data?.[0]?.order_id));
@@ -275,9 +269,9 @@ const Payment = ({
                 backgroundColor: disablePayButton ? "#FFA599" : "#f45c45",
               }}
               // className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
-              className=" px-25 py-8 mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+              className="w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
             >
-              Pay
+              Pay with PayStack
             </a>
             {/* <PaystackButton
             className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"

@@ -17,7 +17,7 @@ const MyOrders = () => {
   console.log(customerOrders);
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pt-[32px] ">
+      <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[88px] pt-[32px] ">
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[32px] flex justify-start items-center pl-[105px]  gap-0  "
