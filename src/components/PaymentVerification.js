@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { BsBagCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { clearUserPreference, verifyPay } from "../features/books/bookSlice";
+import {
+  clearPaymentState,
+  clearUserPreference,
+  verifyPay,
+} from "../features/books/bookSlice";
 import Loading from "./Loading";
 
 const PaymentVerification = () => {
@@ -18,6 +22,7 @@ const PaymentVerification = () => {
   const [searchParams] = useSearchParams();
   const verifyReference = searchParams.get("reference");
   useEffect(() => {
+    dispatch(clearPaymentState());
     dispatch(verifyPay(verifyReference));
   }, []);
 

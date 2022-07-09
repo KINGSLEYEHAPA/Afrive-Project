@@ -749,6 +749,10 @@ export const bookSlice = createSlice({
     clearBuyBookNow: (state, action) => {
       state.shoppingBagBuyNow = null;
     },
+    clearPaymentState: (state, action) => {
+      state.isPaymentSuccessFull = false;
+      state.isPaymentLoading = false;
+    },
   },
 
   extraReducers: (builder) => {
@@ -877,5 +881,6 @@ export const {
   clearShoppingBag,
   clearUserPreference,
   bookReset,
+  clearPaymentState,
 } = bookSlice.actions;
 export default bookSlice.reducer;
