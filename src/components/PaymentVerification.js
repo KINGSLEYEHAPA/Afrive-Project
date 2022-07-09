@@ -23,8 +23,10 @@ const PaymentVerification = () => {
 
   useEffect(() => {
     if (!isPaymentLoading && isPaymentSuccessful && !isError) {
-      setPayState(1);
-      dispatch(clearUserPreference());
+      setTimeout(() => {
+        setPayState(1);
+        dispatch(clearUserPreference());
+      }, 3000);
     }
   }, [isPaymentSuccessful, isPaymentLoading, dispatch, isError]);
 
