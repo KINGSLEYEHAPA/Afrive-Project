@@ -38,7 +38,7 @@ const PaymentVerification = () => {
   console.log(location.search);
   return (
     <div className="w-[505px]  h-[510px] bg-neutral-white">
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         {payState === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
