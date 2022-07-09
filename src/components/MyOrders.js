@@ -50,7 +50,7 @@ const MyOrders = () => {
                             key={item}
                             className="text-neutral-60 text-[14px] leading-[21px] whitespace-nowrap font-reg"
                           >
-                            {item?.quantity} {item?.bookName}
+                            {item?.quantity} x {item?.bookName}
                           </p>
                         );
                       })}
