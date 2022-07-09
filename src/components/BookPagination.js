@@ -47,20 +47,13 @@ const BookPagination = ({
           </li>
         ))}
       </ul>
-      <ALink
-        to="category-title"
-        spy={true}
-        smooth={true}
-        offset={-120}
-        duration={1000}
+
+      <span
+        onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
+        className="text-neutral-black mx-[39px] text-[25px] cursor-pointer"
       >
-        <span
-          onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-          className="text-neutral-black mx-[39px] text-[25px] cursor-pointer"
-        >
-          <MdChevronRight />
-        </span>
-      </ALink>
+        <MdChevronRight />
+      </span>
     </nav>
   );
 };
