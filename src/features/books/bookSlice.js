@@ -466,6 +466,7 @@ const initialState = {
   orderDeleteMessage: null,
   isOrderError: false,
   orderError: null,
+  isPaymentLoading: false,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -821,35 +822,20 @@ export const bookSlice = createSlice({
         state.isError = true;
         state.error = action.payload;
       })
-      // .addCase(pay.fulfilled, (state, action) => {
-      //   state.paymentLink = action.payload;
-      //   state.isLoading = false;
-      //   state.payError = null;
-      //   state.isPayError = false;
-      // })
-      // .addCase(pay.pending, (state) => {
-      //   state.isLoading = true;
-      // })
-
-      // .addCase(pay.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.isPayError = true;
-      //   state.payError = action.payload;
-      // })
 
       .addCase(verifyPay.fulfilled, (state, action) => {
         state.paymentVerified = action.payload;
-        state.isLoading = false;
+        state.isPaymentLoading = false;
         state.isPaymentSuccessFull = true;
         state.error = null;
         state.isError = false;
       })
       .addCase(verifyPay.pending, (state) => {
-        state.isLoading = true;
+        state.isPaymentLoading = true;
       })
 
       .addCase(verifyPay.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isPaymentLoading = false;
         state.isError = true;
         state.error = action.payload;
         state.isPaymentSuccessFull = false;
