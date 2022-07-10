@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -13,6 +14,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
   const availableBooks = useSelector((state) => state.books.booksFromServer);
+  const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
   console.log(availableBooks);
   console.log(booksInShoppingBag);
   const dispatch = useDispatch();
@@ -32,13 +34,22 @@ const BookSection = ({ bookSectionName, emoji }) => {
     dispatch(removeFromBag(book));
   };
 
+  useEffect(() => {
+    function handleResize() {
+      // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+      setSearchWidth({ width: window.innerWidth });
+    }
+
+    window.addEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="w-screen max-w-[1440px] mx-auto mt-[56px]">
+    <div className="w-screen max-w-[1440px] mx-auto mt-[32.13px] mtab:mt-[40.15px] tab:mt-[55.51px] desk:mt-[56.51px] flex justify-center items-center">
       {" "}
-      <div className="h-[438.49px] w-screen max-w-[74.45%] ml-[12.63%] mr-[12.63%] p-0 ">
-        <div className="w-full h-[32px]  flex justify-between items-center">
-          <div className="flex items-center gap-[7px]">
-            <h3 className="text-h3 font-reg text-neutral-70">
+      <div className="  h-[306.97px] mobx:h-[360px] mtab-h-[389.44px] tab:h-[460.75px] lap:h-[447.39px]  desk:h-[469.54px] w-screen  tab:mx-[86px]      ml-[12.63%] mr-[12.63%]    lap:ml-[12.63%] lap:mr-[12.63%] p-0 flex flex-col   ">
+        <div className=" w-full h-[32px]  flex justify-between  items-center  ">
+          <div className="flex items-center gap-[7px] translate-x-[-11%] mobx:translate-x-[-22%] moby:translate-x-[5%] mobm:translate-x-[-25%] ltab:translate-x-[20%] l2tab:translate-x-[50%] lap:translate-x-[0%]">
+            <h3 className="  text-bodyS mtab:text-bodyL tab:text-h4 desk:text-h3 font-reg text-neutral-70">
               {bookSectionName}
             </h3>
             {bookSectionName === "On Sale" && (
@@ -46,26 +57,36 @@ const BookSection = ({ bookSectionName, emoji }) => {
             )}
           </div>
           <Link to={`/all-books/${bookSectionName}`}>
-            <p className="mr-[9.17px]  text-neutral-30 text-bodyL hover:text-neutral-80 cursor-pointer">
+            <p className=" ltab:translate-x-[-34%] l2tab:translate-x-[-70%] lap:translate-x-[0%]  text-neutral-30 hidden mtab:block  mtab:text-bodyN tab:text-bodyL hover:text-neutral-80 cursor-pointer">
               see more
             </p>
           </Link>
         </div>
-        <div className="w-full min-h-[397.54px] mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
-          {availableBooks?.data.slice(3, 7).map((book) => {
-            return (
-              <BookCard
-                key={book.id}
-                book={book}
-                addBookAsFavorite={addBookAsFavorite}
-                removeBookAsFavorite={removeBookAsFavorite}
-                addItemToBag={addItemToBag}
-                favoriteBooks={favoriteBooks}
-                booksInShoppingBag={booksInShoppingBag}
-                removeItemFromBag={removeItemFromBag}
-              />
-            );
-          })}
+
+        <div className="w-full  h-[272.97px] mtab:h-[333.44px] tab:h-[396.75px]   lap:h-[375.39px]  desk:h-[397.54px] mt-[32px] grid grid-cols-2  mobx:grid-cols-3  lap:grid-cols-4 px-0  gap-[54.37px] justify-items-center        ">
+          {availableBooks?.data
+            .slice(
+              searchWidth.width <= 1366 && searchWidth.width >= 540
+                ? 4
+                : searchWidth.width < 540 && searchWidth.width >= 375
+                ? 5
+                : 3,
+              7
+            )
+            .map((book) => {
+              return (
+                <BookCard
+                  key={book.id}
+                  book={book}
+                  addBookAsFavorite={addBookAsFavorite}
+                  removeBookAsFavorite={removeBookAsFavorite}
+                  addItemToBag={addItemToBag}
+                  favoriteBooks={favoriteBooks}
+                  booksInShoppingBag={booksInShoppingBag}
+                  removeItemFromBag={removeItemFromBag}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

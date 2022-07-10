@@ -26,9 +26,9 @@ const Homepage = () => {
         <BookSection bookSectionName="BestSellers" />
         <BookSection bookSectionName="New Arrivals" />
         <BookSection bookSectionName="On Sale" emoji={fire} />
-        <div className="w-full mt-[72.51px] flex justify-end items-center pr-[117.23px] mb-[-19px]">
+        <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
-            <span className="text-[25px]">
+            <span className=" text-[15px]   lap:text-[25px]">
               <FiArrowUpLeft />
             </span>
             <ALink
@@ -38,7 +38,7 @@ const Homepage = () => {
               offset={-120}
               duration={1000}
             >
-              <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+              <p className=" text-sub mtab:text-bodyS   lap:text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
                 Back to Top
               </p>
             </ALink>

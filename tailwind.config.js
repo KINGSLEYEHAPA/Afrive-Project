@@ -48,15 +48,24 @@ module.exports = {
     },
 
     screens: {
+      mobm: "340px",
+      // => @media (min-width: 640px) { ... }
       mob: "375px",
       // => @media (min-width: 640px) { ... }
       mobx: "540px",
+      // => @media (min-width: 640px) { ... }
+
+      moby: "740px",
       // => @media (min-width: 640px) { ... }
 
       mtab: "860px",
       // => @media (min-width: 640px) { ... }
 
       tab: "1024px",
+      // => @media (min-width: 640px) { ... }
+      ltab: "1100px",
+      // => @media (min-width: 640px) { ... }
+      l2tab: "1225px",
       // => @media (min-width: 640px) { ... }
 
       lap: "1366px",
