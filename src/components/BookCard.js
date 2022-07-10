@@ -25,11 +25,11 @@ const BookCard = ({
         opacity: 0,
         transition: { duration: 1 },
       }}
-      className="w-[228.05px] h-[397.54px]"
+      className="  w-[155px] h-[272.97px] mtab:w-[190px] mtab:h-[333.44px] tab:w-[214px] tab:h-[396.75px]  lap:w-[214px] lap:h-[375.39px]  desk:w-[228.05px] desk:h-[397.54px]"
     >
-      <div className="w-full h-[312.95px]  relative group  ">
-        <div className="absolute w-full h-[65px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
-          <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[14px]">
+      <div className="w-full h-[212.11px]   mtab:h-[260px] tab:h-[293px]   lap:h-[292px]    desk:h-[312.95px]  relative group  ">
+        <div className="absolute w-full h-[50px]  mtab:h-[54px] lap:h-[60px] desk:h-[65px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
+          <div className=" w-[42px] h-[42px]  mtab:w-[51px] mtab:h-[51px] lap:w-[47px] lap:h-[47px] desk:w-[51px] desk:h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[14px]">
             <AnimatePresence exitBeforeEnter>
               {favoriteBooks.filter((item) => item.title === book.title)
                 .length > 0 ? (
@@ -71,7 +71,7 @@ const BookCard = ({
               )}
             </AnimatePresence>
           </div>
-          <div className="w-[51px] h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[14px]">
+          <div className=" w-[42px] h-[42px]  mtab:w-[51px] mtab:h-[51px] lap:w-[47px] lap:h-[47px] desk:w-[51px] desk:h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center mr-[14px]">
             {booksInShoppingBag.filter((item) => item.title === book.title)
               .length > 0 ? (
               <span
@@ -92,11 +92,11 @@ const BookCard = ({
             )}
           </div>
         </div>
-        <div className="h-[40px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
+        <div className="       h-[40px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
           <RatingStars book={book} />
         </div>
         <img
-          className="w-full h-[312.95px]  mb-[18.19px]"
+          className="w-full h-[212.11px]   mtab:h-[260px] tab:h-[293px]   lap:h-[292px]    desk:h-[312.95px]  mb-[18.19px]"
           src={book.img}
           alt="Book"
         />
