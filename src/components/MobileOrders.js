@@ -1,8 +1,16 @@
 import { MdChevronLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/exports";
 
 const MobileOrders = () => {
   const navigate = useNavigate();
+  let options = {
+    weekday: "short",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const customerOrders = useSelector((state) => state.books.customerOrders);
   return (
     <div className="w-screen h-full mt-[68px] py-[17px] mx-auto mtab:hidden">
       {" "}
@@ -20,21 +28,49 @@ const MobileOrders = () => {
       <div className="w-full h-[24px] flex justify-center items-center mt-[12px]">
         <h4 className="text-bodyN font-reg text-neutral-40 ">Your Orders</h4>
       </div>
-      <div className="flex flex-col gap-[12px]">
-        <h2 className="mx-[23px] text-bodyN text-neutral-80">Book Title</h2>
-        <div className="mx-[23px] flex flex-col gap-[8px] ">
-          <p className="text-bodyS  text-neutral-50">
-            Quantity:&nbsp;<span className="text-neutral-80">1</span>
-          </p>
-          <p className="text-bodyS  text-neutral-50">
-            Status:&nbsp;
-            <span className="text-neutral-80">Out for Delivery</span>
-          </p>
-          <p className="text-bodyS  text-neutral-50">
-            Estimated Time of Delivery:&nbsp;
-            <span className="text-neutral-80">17th June, 2022</span>
-          </p>
-          <hr className="w-[100%] mx-auto  h-0 border-1 border-primary-20 mt-[20px] mb-[22px]" />
+      <div className="mt-[18px]  w-screen">
+        <div className="  h-6/7 w-full  overflow-hidden overflow-y-auto scrollbar-hide mb-20px">
+          {customerOrders?.data?.map((order, index) => {
+            return (
+              <div key={order?.txn_ref} className="flex flex-col gap-[12px]">
+                <p className=" mx-[23px] text-h4 text-neutral-80">Order:</p>
+                {order?.book?.map((item) => {
+                  return (
+                    <div key={item} className="mx-[23px]">
+                      <h2 className=" text-bodyN text-neutral-80">
+                        {item?.bookName}
+                      </h2>
+                      <p className="text-bodyS  text-neutral-50">
+                        Quantity:&nbsp;
+                        <span className="text-neutral-80">
+                          {item?.quantity}
+                        </span>
+                      </p>
+                    </div>
+                  );
+                })}
+
+                <div className="mx-[23px] flex flex-col gap-[8px] ">
+                  <p className="text-bodyS  text-neutral-50">
+                    Status:&nbsp;
+                    <span className="text-neutral-80">
+                      {order?.completed ? "Processed for delivery" : "Pending"}
+                    </span>
+                  </p>
+                  <p className="text-bodyS  text-neutral-50">
+                    Estimated Time of Delivery:&nbsp;
+                    <span className="text-neutral-80">
+                      {" "}
+                      {new Date(
+                        order?.estimated_delivery_date
+                      ).toLocaleDateString("en-US", options)}
+                    </span>
+                  </p>
+                  <hr className="w-[100%] mx-auto  h-0 border-1 border-primary-20 mt-[20px] mb-[22px]" />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
