@@ -51,9 +51,14 @@ const MobileMenu = ({ setOpenMobile }) => {
                 Your e-books
               </p>
             </Link>
-            <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-              Your Orders
-            </p>
+            <Link to="/myorders-mobile">
+              <p
+                onClick={() => setOpenMobile(false)}
+                className="text-bodyN text-neutral-70 hover:text-primary-50"
+              >
+                Your Orders
+              </p>
+            </Link>
             <div className="flex items-center justify-center gap-[6px]">
               <p className="text-bodyN text-neutral-70 hover:text-primary-50">
                 Take our Quiz

@@ -6,7 +6,7 @@ import bookSmall from "../assets/booksmall.png";
 const MobileEbook = () => {
   const navigate = useNavigate();
 
-  const [ebookAvailable, setEbookAvailable] = useState(1);
+  const [ebookAvailable, setEbookAvailable] = useState(0);
   return (
     <div className="w-screen h-full mt-[68px] py-[17px] mx-auto mtab:hidden  ">
       <div

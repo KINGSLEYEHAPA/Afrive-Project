@@ -23,6 +23,7 @@ import AllBooks from "./AllBooks";
 import CategoriesMobile from "./CategoriesMobile";
 import MobileEbook from "./MobileEbook";
 import PaymentVerification from "./PaymentVerification";
+import MobileOrders from "./MobileOrders";
 
 const ApplicationsRoute = () => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const ApplicationsRoute = () => {
             <Route index element={<Homepage />} />
             <Route path="/mobile-category" element={<CategoriesMobile />} />
             <Route path="/ebook-mobile" element={<MobileEbook />} />
+            <Route path="/myorders-mobile" element={<MobileOrders />} />
             <Route path="/category/:catName" element={<BookCategory />} />
             <Route path="/all-books/:trendName" element={<AllBooks />} />
             <Route
