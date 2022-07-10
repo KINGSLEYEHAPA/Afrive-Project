@@ -29,7 +29,7 @@ const BookCard = ({
     >
       <div className="w-full h-[212.11px]   mtab:h-[260px] tab:h-[293px]   lap:h-[292px]    desk:h-[312.95px]  relative group  ">
         <div className="absolute w-full h-[50px]  mtab:h-[54px] lap:h-[60px] desk:h-[65px]  opacity-0 flex justify-between items-end mx-auto group-hover:opacity-100  ">
-          <div className=" w-[42px] h-[42px]  mtab:w-[51px] mtab:h-[51px] lap:w-[47px] lap:h-[47px] desk:w-[51px] desk:h-[51px] rounded-full bg-neutral-70/80 cursor-pointer flex justify-center items-center ml-[14px]">
+          <div className=" hidden lap:flex  w-[42px] h-[42px]  mtab:w-[51px] mtab:h-[51px] lap:w-[47px] lap:h-[47px] desk:w-[51px] desk:h-[51px] rounded-full bg-neutral-70/80 cursor-pointer justify-center items-center ml-[14px] desk:ml-[18px]">
             <AnimatePresence exitBeforeEnter>
               {favoriteBooks.filter((item) => item.title === book.title)
                 .length > 0 ? (
@@ -46,7 +46,7 @@ const BookCard = ({
                     transition: { duration: 1 },
                   }}
                   onClick={() => removeBookAsFavorite(book)}
-                  className="text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
+                  className="text-[20px] desk:text-[25px] text-primary-70 border-[1.59277px solid #FFFFFF]"
                 >
                   <MdFavorite />
                 </motion.span>
@@ -64,7 +64,7 @@ const BookCard = ({
                     transition: { duration: 1 },
                   }}
                   onClick={() => addBookAsFavorite(book)}
-                  className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                  className="text-[20px] desk:text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
                 >
                   <MdOutlineFavoriteBorder />
                 </motion.span>
@@ -76,7 +76,7 @@ const BookCard = ({
               .length > 0 ? (
               <span
                 onClick={() => removeItemFromBag(book)}
-                className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                className="text-[20px] desk:text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
               >
                 {" "}
                 <RiShoppingBag3Fill />
@@ -84,7 +84,7 @@ const BookCard = ({
             ) : (
               <span
                 onClick={() => addItemToBag(book)}
-                className="text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
+                className="text-[20px] desk:text-[25px] text-neutral-white border-[1.59277px solid #FFFFFF]"
               >
                 {" "}
                 <FiShoppingBag />
@@ -92,7 +92,7 @@ const BookCard = ({
             )}
           </div>
         </div>
-        <div className="       h-[40px] w-full bg-neutral-80/50 absolute bottom-0  opacity-0 flex justify-center items-center group-hover:opacity-100">
+        <div className=" hidden lap:flex   lap:h-[37.52px] desk:h-[40px]       w-full bg-neutral-80/50 absolute bottom-0  opacity-0 justify-center items-center group-hover:opacity-100">
           <RatingStars book={book} />
         </div>
         <img
@@ -102,13 +102,18 @@ const BookCard = ({
         />
       </div>
       <Link to={`/book/${book?.title}`}>
-        <h3 className="text-h3 medium text-neutral-70 mt-[18px] truncate">
+        <h3 className="text-[14.436px] leading-[23px] mtab:text-[17.69px] mtab:leading-[28px] tab:text-[21.127px] tab:leading-[34px] lap:text-h4  desk:text-h3 medium text-neutral-70 mt-[18px] truncate">
           {book.title}
         </h3>
       </Link>
-      <p className="leading-8 text-[18px] text-primary-40">
-        N{book.price.toLocaleString("en-US")}
-      </p>
+      <div className=" flex gap-[20px] mtab:gap-[22px] tab:gap-[30px] items-center">
+        <p className=" text-[14.436px] leading-[23px] mtab:text-[17.69px] mtab:leading-[28px]tab:text-[21.127px] tab:leading-[34px] desk:leading-8 lap:leading-6 lap:text-[18px] text-primary-40">
+          N{book?.price.toLocaleString("en-US")}
+        </p>
+        <span className="inline-block lap:hidden  mt-[5px] mtab:mt-0">
+          <RatingStars book={book} />
+        </span>
+      </div>
     </motion.div>
   );
 };
