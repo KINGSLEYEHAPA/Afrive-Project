@@ -133,11 +133,13 @@ const Header = ({
           </AnimateSharedLayout>
         </AnimatePresence>
 
-        <div className=" absolute  top-4 right-12 mtab:top-7 mtab:right-12 w-[14px] h-[14px] rounded-full bg-primary-50 flex justify-center items-center">
-          <span className=" cursor-pointer medium text-neutral-white text-[9px] leading-4">
-            {shoppingBag.length}
-          </span>
-        </div>
+        {user && (
+          <div className=" absolute  top-4 right-12 mtab:top-7 mtab:right-12 w-[14px] h-[14px] rounded-full bg-primary-50 flex justify-center items-center">
+            <span className=" cursor-pointer medium text-neutral-white text-[9px] leading-4">
+              {shoppingBag.length}
+            </span>
+          </div>
+        )}
         <motion.p
           onClick={() => {
             setShowSearch(!showSearch);
