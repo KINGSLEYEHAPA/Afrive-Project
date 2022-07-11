@@ -16,30 +16,34 @@ const LikedBooks = () => {
       <div className="w-screen max-w-[1440px] min-h-screen  mx-auto mt-[88px] ">
         <div
           onClick={() => navigate(-1)}
-          className="w-full  h-[96px] flex justify-start items-center pl-[105px] gap-0  "
+          className="w-full h-[24px] mtab:h-[96px] flex justify-start items-center pl-[22px] mtab:pl-[73.48px] tab:pl-[90px] lap:pl-[128px] desk:pl-[105px] gap-0 "
         >
           <span className="text-[25px]">
             <MdChevronLeft />
           </span>
-          <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+          <p className="text-bodyS mtab:text-bodyL  tab:text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
             Back
           </p>
         </div>
-        <div className="mt-0 h-[35px] w-full  flex justify-start items-center pl-[183px] gap-0 p-0 ">
-          <p className="text-h4 font-reg text-neutral-40" id="liked-books">
+        <div className="mt-[12px] mtab:mt-0 h-[35px] w-full  flex  flex-col gap-[4px]   mobx:flex-row   mobx:justify-start mobx:items-center pl-[28px] mtab:pl-[71.68px]   tab:pl-[86.28px] lap:pl-[172.28px] desk:pl-[183px] mtab:gap-0 p-0">
+          <p
+            className="text-bodyN  mtab:text-h4 font-reg text-neutral-40"
+            id="liked-books"
+          >
             Your Liked Books:&nbsp;
           </p>
-          <span className="text-bodyN font-reg text-neutral-30">
+          <span className=" text-bodyS  mtab:text-bodyN font-reg text-neutral-30">
             {" "}
             you can find the books you have liked here
           </span>
         </div>
         <LikedbookSection />
-        <div className="w-full mt-[72.51px] flex justify-end items-center pr-[117.23px] mb-[-19px]">
+        <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
-            <span className="text-[25px]">
+            <span className="text-[15px]   lap:text-[25px]">
               <FiArrowUpLeft />
             </span>
+
             <ALink
               to="liked-books"
               spy={true}
@@ -47,7 +51,7 @@ const LikedBooks = () => {
               offset={-120}
               duration={1000}
             >
-              <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+              <p className="text-sub mtab:text-bodyS   lap:text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
                 Back to Top
               </p>
             </ALink>
