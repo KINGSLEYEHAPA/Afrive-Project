@@ -31,8 +31,8 @@ const BookSectionWithoutHeaders = ({ booksToShow }) => {
   };
 
   return (
-    <div className="w-full max-w-[1440px] mt-[56px] pl-[181px] pr-[183px] min-h-screen">
-      <div className="w-full min-h-full mt-[32px] grid grid-cols-4 px-0  gap-[54.37px]  ">
+    <div className="w-full max-w-[1440px] mt-[20px] mtab:mt-[31.41px] tab:mt-[28px] lap:mt-[40px] desk:mt-[56px] desk:pl-[181px] px-[23px] mobx:px-[50px]    mtab:px-[71px] tab:px-[86px] lap:px-[173px] desk:pr-[183px] min-h-screen">
+      <div className="w-full min-h-full mt-[32px] grid grid-cols-2  mobx:grid-cols-3  lap:grid-cols-4 px-0  gap-[54.37px] justify-items-center  ">
         {booksToShow?.map((book) => {
           return (
             <BookCard
