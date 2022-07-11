@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="w-screen max-w-[1440px] h-[481px] ">
+    <div className="w-screen max-w-[1440px]  h-[452px] desk:h-[481px] ">
       <div className="h-[326px] w-full flex justify-center items-center ">
         <div className="h-[159px] w-[725.56px] flex flex-col items-center justify-start text-center">
           <p className="bodyL font-reg text-neutral-70">Join our community </p>

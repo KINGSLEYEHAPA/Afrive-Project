@@ -68,7 +68,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
             .slice(
               searchWidth.width <= 1366 && searchWidth.width >= 540
                 ? 4
-                : searchWidth.width < 540 && searchWidth.width >= 375
+                : searchWidth.width < 540 && searchWidth.width >= 360
                 ? 5
                 : 3,
               7
