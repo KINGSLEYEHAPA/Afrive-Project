@@ -60,10 +60,12 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
       exit={{ opacity: 0, transition: { duration: 1.2 } }}
       className="w-full h-full"
     >
-      <div className="w-full h-[32px]  flex justify-start items-center">
-        <h3 className="text-h3 font-reg text-neutral-80">Write a Review</h3>
+      <div className="w-full tab:h-[24px] lap:h-[32px]  flex justify-start items-center">
+        <h3 className=" mtab:text-bodyN tab:text-bodyL lap:text-h4  desk:text-h3 font-reg text-neutral-80">
+          Write a Review
+        </h3>
       </div>
-      <div className="w-full h-[188px] mt-[38.29px]">
+      <div className="w-full    h-[188px] mtab:mt-[40px]  tab:mt-[31px]   desk:mt-[38.29px]">
         <textarea
           value={reviewInput}
           onChange={(e) => {
@@ -74,17 +76,17 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
           placeholder="Type your review here"
         />
       </div>
-      <div className="w-full h-[52px] flex justify-end items-center mt-[47.71px]">
+      <div className="w-full h-[52px] flex justify-end items-center mtab:mt-[24px]  lap:mt-[32px]      desk:mt-[47.71px]">
         <div className="w-[402px] h-full p-0 space-x-[10px] ">
           <button
             onClick={() => setWriteAReview(0)}
-            className="h-[52px] w-[196px] text-primary-40 rounded-[4px] border border-primary-40 "
+            className="h-[52px] w-[196px] text-primary-40 rounded-[4px] border border-primary-40   mtab:text-bodyL lap:text-buttonT"
           >
             Cancel
           </button>
           <button
             onClick={() => pushReview()}
-            className="h-[52px] w-[196px] bg-primary-40 rounded-[4px] text-neutral-white"
+            className="h-[52px] w-[196px] bg-primary-40 rounded-[4px] text-neutral-white   mtab:text-bodyL lap:text-buttonT "
           >
             Done
           </button>
@@ -140,7 +142,7 @@ const CustomerBookReview = ({ book }) => {
   };
 
   return (
-    <div className="w-screen max-w-[1440px] mx-auto h-[474px] lap:h-[499px] desk:h-[468px] bg-primary-10  px-[23px]  py-[31.43px]  mtab:px-[72px]   tab:px-[86px]    lap:px-[192px]     desk:px-[182px]   mtab:py-[56px]  desk:pt-[55.43px] desk:pb-[98px] relative    lap:mt-[120.27px] my-[32px]    mtab:mb-[48px]   mtab:mt-[63.96px]   tab:mb-[56px]   tab:mt-[142.27px] lap:mb-[47.37px]      desk:mb-[100px]  desk:mt-[112.30px] ">
+    <div className="w-screen max-w-[1440px] mx-auto h-[474px] lap:h-[499px] desk:h-[468px] bg-primary-10  px-[23px]  py-[31.43px]  mtab:px-[72px]   tab:px-[86px]    lap:px-[192px]     desk:px-[182px]   mtab:pt-[56px] mtab:pb-[72px]  desk:pt-[55.43px] desk:pb-[98px] relative    lap:mt-[120.27px] my-[32px]    mtab:mb-[48px]   mtab:mt-[63.96px]   tab:mb-[56px]   tab:mt-[142.27px] lap:mb-[47.37px]      desk:mb-[100px]  desk:mt-[112.30px] ">
       <AnimatePresence>
         {writeAReview === 0 && (
           <div>
@@ -153,7 +155,7 @@ const CustomerBookReview = ({ book }) => {
                   see more
                 </p>
               </div>
-              <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px] my-[20px] ">
+              <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px] mtab:my-[-10px] tab:my-[20px] ">
                 {book?.bookRating?.ratings?.map((rating, index) => {
                   return (
                     <ViewReview
@@ -167,7 +169,7 @@ const CustomerBookReview = ({ book }) => {
                 })}
               </div>
             </div>
-            //
+
             <div className="w-full h-full">
               <div
                 onClick={() =>
@@ -191,7 +193,7 @@ const CustomerBookReview = ({ book }) => {
                       transition: { duration: 1 },
                     }}
                     exit={{ opacity: 0, width: 59 }}
-                    className=" absolute cursor-pointer w-[177px] h-[59px] bottom-[41px] right-[253px] rounded-full bg-primary-50 flex justify-center items-center pr-[20px] "
+                    className=" absolute cursor-pointer w-[177px] h-[59px] bottom-[41px] mtab:right-[158px]    lap:right-[253px] rounded-full bg-primary-50 flex justify-center items-center pr-[20px] "
                   >
                     <LiveRating
                       rating={rating}
@@ -211,7 +213,6 @@ const CustomerBookReview = ({ book }) => {
                 <img className="" src={pen} alt="Pen" />
               </div>
             </div>
-            //
           </div>
         )}
 
