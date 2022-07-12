@@ -142,7 +142,7 @@ const CustomerBookReview = ({ book }) => {
   };
 
   return (
-    <div className="w-screen max-w-[1440px] mx-auto h-[474px] lap:h-[499px] desk:h-[468px] bg-primary-10  px-[23px]  py-[31.43px]  mtab:px-[72px]   tab:px-[86px]    lap:px-[192px]     desk:px-[182px]   mtab:pt-[56px] mtab:pb-[72px]  desk:pt-[55.43px] desk:pb-[98px] relative    lap:mt-[120.27px] my-[32px]    mtab:mb-[48px]   mtab:mt-[63.96px]   tab:mb-[56px]   tab:mt-[142.27px] lap:mb-[47.37px]      desk:mb-[100px]  desk:mt-[112.30px] ">
+    <div className=" hidden mtab:block    w-screen max-w-[1440px] mx-auto h-[474px] lap:h-[499px] desk:h-[468px] bg-primary-10  px-[23px]  py-[31.43px]  mtab:px-[72px]   tab:px-[86px]    lap:px-[192px]     desk:px-[182px]   mtab:pt-[56px] mtab:pb-[72px]  desk:pt-[55.43px] desk:pb-[98px] relative    lap:mt-[120.27px] my-[32px]    mtab:mb-[48px]   mtab:mt-[63.96px]   tab:mb-[56px]   tab:mt-[142.27px] lap:mb-[47.37px]      desk:mb-[100px]  desk:mt-[112.30px] ">
       <AnimatePresence>
         {writeAReview === 0 && (
           <div>

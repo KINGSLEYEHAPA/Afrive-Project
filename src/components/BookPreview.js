@@ -22,6 +22,7 @@ import CustomerBookReview from "./CustomerBookReview";
 import BookSection from "./BookSection";
 import BookQuote from "./BookQuote";
 import AnimatePages from "./AnimatePages";
+import MobileReviews from "./MobileReviews";
 
 const BookPreview = () => {
   const [bookInShoppingBag, setBookInShoppingBag] = useState([]);
@@ -488,9 +489,11 @@ const BookPreview = () => {
             </span>
           </div>
         </div>
-        <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-30 mt-[15px] mb-[23px]" />
+        <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-30 mt-[15px] " />
 
         <CustomerBookReview book={selectedBook} />
+        <MobileReviews book={selectedBook} />
+        <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-30 mt-[15px] " />
         <BookSection bookSectionName="Similar Books" />
         <BookSection bookSectionName="Best Sellers" />
         <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
