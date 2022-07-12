@@ -422,7 +422,7 @@ const BookPreview = () => {
         )}
         <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-neutral-20 mt-[15px] mb-[15px]" />
 
-        <div className=" flex w-full h-[52px] mtab:hidden gap-[20px] justify-center items-center relative my-[33px]     ">
+        <div className=" flex w-full h-[44px] mtab:hidden gap-[20px] justify-center items-center relative my-[33px]     ">
           <AnimatePresence>
             <AnimateSharedLayout>
               {showFormat && (
@@ -437,7 +437,7 @@ const BookPreview = () => {
                     transition: { duration: 1.5 },
                   }}
                   layoutId="outline"
-                  className="w-[243px] mx-[10%] mobx:mx-[30%]   h-[132px] absolute space-y-[1px] top-0 left-0"
+                  className="w-[243px] mx-[6%] mobx:mx-[30%]   h-[132px] absolute space-y-[1px] top-0 left-0"
                 >
                   {selectedBook.eBook.format.map((item) => {
                     return (

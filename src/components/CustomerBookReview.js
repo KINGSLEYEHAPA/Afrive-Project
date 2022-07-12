@@ -19,14 +19,23 @@ export const ViewReview = ({ title, comment, userRating, index }) => {
         transition: { duration: 0.5, delay: index * 0.5 },
       }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
-      className="w-full h-[100px]  mt-[32px] flex gap-[20px] mb-[61px]"
+      className="w-full mtab:h-[129px]  tab:h-[117px] lap:h-[129px]   desk:h-[100px] mtab:mt-[24px] tab:mt-[40px]  desk:mt-[32px] flex gap-[20px]  mtab:mb-[24px]   tab:mb-[40px]    desk:mb-[61px]"
     >
-      <div className="flex justify-start items-start w-[201px] ">
-        <h3 className="bodyL text-neutral-50 font-reg">{title}</h3>
+      <div className="flex justify-start items-start  mtab:w-[134px] tab:w-[151px]  lap:w-[155px] desk:w-[201px] ">
+        <h3 className=" mtab:text-bodyN   tab:text-bodyL desk:text-h4 text-neutral-50 font-reg">
+          {title}
+        </h3>
       </div>
-      <div className="w-[871px] h-[64px] ">
-        <UserStarRating userRating={userRating} />
-        <p className="mt-[11.63px] text-[rgba(0,0,0,0.90)] text-buttonT2">
+
+      <div className=" mtab:w-[551.1px] tab:w-[649px]  lap:w-[777px] desk:w-[871px] mtab:h-[108px]  tab:h-[96px] lap:h-[108px]  desk:h-[72px] ">
+        <div className="flex items-center gap-[40px]">
+          {" "}
+          <UserStarRating userRating={userRating} />{" "}
+          <span className=" mtab:text-bodyN  lap:bodyL text-neutral-50 font-reg">
+            3 Months ago
+          </span>
+        </div>
+        <p className="mt-[11.63px] text-[rgba(0,0,0,0.90)]       mtab:text-[14px] mtab:leading-[32px]   tab:text-[16px] tab:leading-[28px]      lap:text-buttonT2">
           {comment}
         </p>
       </div>
@@ -131,16 +140,16 @@ const CustomerBookReview = ({ book }) => {
   };
 
   return (
-    <div className="w-screen max-w-[1440px] mx-auto h-[468px] bg-primary-10 mt-[112.30px]  px-[182px] pt-[55.43px] pb-[98px] relative mb-[100px] ">
+    <div className="w-screen max-w-[1440px] mx-auto h-[474px] lap:h-[499px] desk:h-[468px] bg-primary-10  px-[23px]  py-[31.43px]  mtab:px-[72px]   tab:px-[86px]    lap:px-[192px]     desk:px-[182px]   mtab:py-[56px]  desk:pt-[55.43px] desk:pb-[98px] relative    lap:mt-[120.27px] my-[32px]    mtab:mb-[48px]   mtab:mt-[63.96px]   tab:mb-[56px]   tab:mt-[142.27px] lap:mb-[47.37px]      desk:mb-[100px]  desk:mt-[112.30px] ">
       <AnimatePresence>
         {writeAReview === 0 && (
           <div>
             <div className="w-full h-full">
-              <div className="w-full h-[32px]  flex justify-between items-center">
-                <h3 className="text-h3 font-reg text-neutral-80">
+              <div className="w-full  tab:h-[24px]  lap:h-[32px]  flex justify-between items-center">
+                <h3 className="  mtab:text-bodyN     tab:text-bodyL   lap:text-h3 font-reg text-neutral-80">
                   Customers Reviews
                 </h3>
-                <p className="cursor-pointer text-neutral-30 text-bodyL hover:text-neutral-80">
+                <p className="cursor-pointer text-neutral-30  mtab:text-bodyN    tab:text-bodyL hover:text-neutral-80">
                   see more
                 </p>
               </div>
@@ -158,6 +167,7 @@ const CustomerBookReview = ({ book }) => {
                 })}
               </div>
             </div>
+            //
             <div className="w-full h-full">
               <div
                 onClick={() =>
@@ -165,8 +175,8 @@ const CustomerBookReview = ({ book }) => {
                 }
                 className={
                   rating === null
-                    ? "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-neutral-white"
-                    : "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[253px] text-accent-rating"
+                    ? "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] mtab:right-[158px]    lap:right-[253px] text-neutral-white"
+                    : "cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] mtab:right-[158px]  lap:right-[253px] text-accent-rating"
                 }
               >
                 {rating === null ? <BsStar /> : <BsStarFill />}
@@ -196,11 +206,12 @@ const CustomerBookReview = ({ book }) => {
                 onClick={() =>
                   user !== null ? setWriteAReview(1) : setWriteAReview(3)
                 }
-                className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px] right-[182px]"
+                className="cursor-pointer w-[59px] h-[59px] rounded-full bg-primary-50 flex justify-center items-center absolute bottom-[41px]  mtab:right-[86.87px]    lap:right-[182px]"
               >
                 <img className="" src={pen} alt="Pen" />
               </div>
             </div>
+            //
           </div>
         )}
 
