@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "../assets/logo.png";
 
 import { Link, Outlet } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
@@ -133,23 +134,32 @@ const Signup = ({ setUserState }) => {
 
   return (
     <AnimatePages>
-      <div className="w-screen   mx-auto  h-[1074px] flex">
+      <div className="w-screen tab:w-full  max-w-[1440px]  mx-auto  h-[1024px] flex justify-center items-center ">
         <div
-          className="w-[553px] h-[1074px] flex justify-center items-center"
+          className="hidden tab:block  tab:w-[273px] lap:w-[553px] h-[1024px] tab:pt-[99.54px] lap:pt-0 tab:px-[69px] lap:px-0   lap:flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
         >
-          <div className="h-[133px] w-[256px]">
-            <h1 className=" font-[542] leading-[98px] text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
+          <div className="tab:w-[140px] tab:h-[54px]   lap:h-[133px]    lap:w-[256px]">
+            <h1 className=" font-[542]   tab:text-[49.61px] tab:leading-[53px] lap:leading-[98px] lap:text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
               Àfrive
             </h1>
-            <p className="text-bodyL text-neutral-white font-reg mt-[12px]">
+            <p className="hidden lap:block    text-bodyL text-neutral-white font-reg mt-[12px]">
               Redefining African Literature.
             </p>
           </div>
         </div>
-        <div className="w-[887px] h-[1074px] pr-[181px] pl-[165px] pt-[34px]">
+        <div className="tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
           <div className="h-[839px] w-[551px] ">
-            <h2 className="font-medium text-h2 text-primary-50 ">Sign Up</h2>
+            <div className="flex justify-center flex-col items-center tab:block ">
+              <img
+                className=" tab:hidden   w-[30px] h-[40px] mb-[52.01px]"
+                src={logo}
+                alt="Logo"
+              />
+              <h2 className="font-medium  text-h4  tab:text-h3   lap:text-h2 text-primary-50 ">
+                Sign Up
+              </h2>
+            </div>
             <form onSubmit={handleSignUp}>
               <div className="w-full flex gap-[23px] mt-[10px]">
                 {inputs.slice(0, 2).map((input) => (

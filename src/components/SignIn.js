@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import logo from "../assets/logo.png";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
 import FormInput from "./FormInput";
@@ -79,7 +80,7 @@ const SignIn = ({ setUserState }) => {
 
   return (
     <AnimatePages>
-      <div className="w-screen  mx-auto  h-[1024px] flex">
+      <div className="w-screen tab:w-full  max-w-[1440px]  mx-auto  h-[1024px] flex justify-center items-center ">
         <div
           className=" hidden tab:block  tab:w-[273px] lap:w-[553px] h-[1024px] tab:pt-[99.54px] lap:pt-0 tab:px-[69px] lap:px-0   lap:flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
@@ -93,9 +94,18 @@ const SignIn = ({ setUserState }) => {
             </p>
           </div>
         </div>
-        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[164.50px] pb-[20.41px]">
+        <div className="        tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
           <div className="h-[839px] w-[551px] ">
-            <h2 className="font-medium text-h2 text-primary-50 ">Sign In</h2>
+            <div className="flex justify-center flex-col items-center tab:block ">
+              <img
+                className=" tab:hidden   w-[30px] h-[40px] mb-[52.01px]"
+                src={logo}
+                alt="Logo"
+              />
+              <h2 className="font-medium  text-h4  tab:text-h3   lap:text-h2 text-primary-50 ">
+                Sign In
+              </h2>
+            </div>
             <form onSubmit={handleSignIn}>
               {inputs.map((input) => (
                 <FormInput
@@ -156,7 +166,7 @@ const SignIn = ({ setUserState }) => {
                   {!isLoadingGoogle && "Continue with Google"}
                 </button> */}
               </div>
-              <p className="text-center mt-[156.09px] text-bodyN text-neutral-black">
+              <p className="text-center  mt-[206px]    lap:mt-[156.09px] text-bodyN text-neutral-black">
                 Don't have an Account?
                 <span
                   onClick={() => setUserState(false)}
