@@ -15,6 +15,7 @@ import SmallLoader from "./SmallLoader";
 import { motion } from "framer-motion";
 import ServerMessages from "./ServerMessages";
 import { reset, resetPassword } from "../features/user/userSlice";
+import logo from "../assets/logo.png";
 
 const ResetPassword = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -92,23 +93,31 @@ const ResetPassword = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] h-[1024px] flex">
+      <div className="w-screen tab:w-full  max-w-[1440px]  mx-auto mt-[88px] h-[1024px] flex item-center tab:justify-start justify-center">
         <div
-          className="w-[553px] h-[1024px]  flex justify-center items-center"
+          className=" hidden tab:block  tab:w-[273px] lap:w-[553px] h-[1024px] tab:pt-[99.54px] lap:pt-0 tab:px-[69px] lap:px-0   lap:flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
         >
-          <div className="h-[133px] w-[256px]">
-            <h1 className=" font-[542] leading-[98px] text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
+          <div className="  tab:w-[140px] tab:h-[54px]   lap:h-[133px]    lap:w-[256px]">
+            <h1 className=" font-[542]   tab:text-[49.61px] tab:leading-[53px] lap:leading-[98px] lap:text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
               Àfrive
             </h1>
-            <p className="text-bodyL text-neutral-white font-reg mt-[12px]">
+            <p className=" hidden lap:block    text-bodyL text-neutral-white font-reg mt-[12px]">
               Redefining African Literature.
             </p>
           </div>
         </div>
-        <div className="w-[887px] h-[1024px] pr-[181px] pl-[165px] pt-[164.50px] pb-[50.41px]">
+        <div className="tab:w-[745px]     pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px]  lap:pr-[181px] lap:pl-[165px]  tab:pt-[164.50px] pb-[50.41px]">
+          <div className="flex justify-center flex-col items-center tab:block ">
+            <img
+              className=" tab:hidden   w-[30px] h-[40px] "
+              src={logo}
+              alt="Logo"
+            />
+          </div>
+
           <div className="h-[839px] w-[551px] ">
-            <h2 className="text-h3 font-reg text-primary-50 mt-[147px]">
+            <h2 className="   text-h4  lap:text-h3 font-reg text-primary-50 mt-[51.80px] tab:mt-[147px]">
               Enter your New Password
             </h2>
             <form onSubmit={handlePaswwordReset}>
