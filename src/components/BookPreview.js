@@ -118,7 +118,10 @@ const BookPreview = () => {
   };
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] ">
+      <div
+        className="w-screen max-w-[1440px]  mx-auto mt-[88px]  "
+        id="book-preview"
+      >
         <div
           onClick={() => navigate(-1)}
           className="w-full h-[64px] mtab:h-[96px] flex justify-start items-center pl-[22px] mtab:pl-[73.48px] tab:pl-[90px] lap:pl-[128px] desk:pl-[105px] gap-0  "
@@ -503,7 +506,7 @@ const BookPreview = () => {
             </span>
 
             <ALink
-              to="liked-books"
+              to="book-preview"
               spy={true}
               smooth={true}
               offset={-120}
