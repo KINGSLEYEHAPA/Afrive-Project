@@ -94,8 +94,8 @@ const SignIn = ({ setUserState }) => {
             </p>
           </div>
         </div>
-        <div className="tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
-          <div className="h-[839px] w-[551px] ">
+        <div className=" mx-[23px] moby:mx-0  tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
+          <div className="h-[839px]   w-full moby:w-[551px] ">
             <div className="flex justify-center flex-col items-center tab:block ">
               <img
                 className=" tab:hidden   w-[30px] h-[40px] mb-[52.01px]"
