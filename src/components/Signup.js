@@ -182,10 +182,10 @@ const Signup = ({ setUserState }) => {
               ))}
 
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                <div className="absolute top-[-91px] left-[276px] z-20">
+                <div className="absolute top-[-88px] lap:top-[-91px]  left-[276px] z-20">
                   {isLoadingGoogle && <SmallLoader loaderColor={"secondary"} />}
                 </div>
-                <div className="absolute top-[-180px] left-[276px] z-10">
+                <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
                 {/* {(isError || isGoogleError || user) && (

@@ -121,7 +121,7 @@ const ResetPassword = () => {
                 />
               ))}
               <div className="w-full mt-[42.92px] relative">
-                <div className="absolute top-[-181px] left-[276px] z-10">
+                <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
                 {isError && (

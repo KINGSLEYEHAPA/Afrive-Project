@@ -94,7 +94,7 @@ const SignIn = ({ setUserState }) => {
             </p>
           </div>
         </div>
-        <div className="        tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
+        <div className="tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
           <div className="h-[839px] w-[551px] ">
             <div className="flex justify-center flex-col items-center tab:block ">
               <img
@@ -129,10 +129,10 @@ const SignIn = ({ setUserState }) => {
                 </Link>
               </div>
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                <div className="absolute top-[-91px] left-[276px] z-20">
+                <div className="absolute top-[-88px] lap:top-[-91px] left-[276px] z-20">
                   {isLoadingGoogle && <SmallLoader loaderColor={"secondary"} />}
                 </div>
-                <div className="absolute top-[-180px] left-[276px] z-10">
+                <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
                 {/* {(isError || isGoogleError || user) && (
