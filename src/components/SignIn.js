@@ -158,17 +158,16 @@ const SignIn = ({ setUserState }) => {
                   {!isLoading && "Sign In"}
                 </button>
 
-                {/* <div className=" flex justify-center items-center w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg "> */}
                 {!isLoadingGoogle && (
                   <a
-                    className="                w-full h-[56px] flex items-center justify-center cursor-pointer  rounded-[4px] border border-primary-50 text-primary-50 text-bodyN font-reg "
+                    className="w-full h-[56px] flex items-center justify-center cursor-pointer  rounded-[4px] border border-primary-50 text-primary-50 text-bodyN font-reg "
                     target="popup"
                     href={google}
                   >
                     Continue with Google
                   </a>
                 )}
-                {/* </div> */}
+
                 {/* <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
                   {!isLoadingGoogle && "Continue with Google"}
                 </button> */}
