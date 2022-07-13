@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import bookSmall from "../assets/booksmall.png";
 
 const MobileEbook = () => {
   const navigate = useNavigate();
+
+  const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
+
+  useEffect(() => {
+    function handleResize() {
+      // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+      setSearchWidth({ width: window.innerWidth });
+    }
+
+    if (searchWidth.width >= 860) {
+      navigate("/");
+    }
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const [ebookAvailable, setEbookAvailable] = useState(0);
   return (
@@ -22,7 +36,7 @@ const MobileEbook = () => {
       </div>
       {ebookAvailable === 0 && (
         <div className="mt-[20px]  w-screen mx-[23px] ">
-          <div className="  h-6/7 w-full  overflow-hidden overflow-y-auto scrollbar-hide ">
+          <div className="  h-6/7 w-full  overflow-hidden overflow-y-auto scrollbar-hide mobx:flex mobx:flex-col mobx:items-center mobx:justify-center ">
             <div className="cursor-pointer  ">
               <div className="w-full mobx:w-[540px] h-[77.58px] flex items-center gap-[20.35px] justify-start mobx:justify-between">
                 <img
