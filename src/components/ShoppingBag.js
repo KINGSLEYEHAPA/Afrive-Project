@@ -360,7 +360,7 @@ const ShoppingBag = () => {
           </div>
         </div>
       </div>
-      <div className=" mtab:hidden   w-full min-h-screen mt-[68px] py-[17px] px-[23px]">
+      <div className=" mtab:hidden   w-full min-h-screen mt-[68px] py-[17px] px-[23px] mobx:px-[60px]">
         <div
           onClick={() => navigate(-1)}
           className="w-full  h-[96px] flex justify-start items-center gap-0  "
@@ -404,8 +404,8 @@ const ShoppingBag = () => {
                         />
                       </div>
 
-                      <div className="h-full w-[260px] flex items-start justify-between">
-                        <div className="w-[260px] flex flex-col space-y-[15px] items-start justify-between">
+                      <div className="h-full w-[260px] mobx:w-3/5 flex items-start justify-between">
+                        <div className="w-[260px] mobx:w-3/5 flex flex-col space-y-[15px] items-start justify-between">
                           <Link to={`/book/${book.title}`}>
                             <h3 className=" whitespace-nowrap text-bodyN font-reg text-neutral-80">
                               {book?.title}

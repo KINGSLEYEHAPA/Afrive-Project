@@ -51,9 +51,9 @@ const ApplicationsRoute = () => {
             <Route
               path="/shopping-bag"
               element={
-                //<Protected>
-                <ShoppingBag />
-                //</Protected>
+                <Protected>
+                  <ShoppingBag />
+                </Protected>
               }
             />
             <Route
