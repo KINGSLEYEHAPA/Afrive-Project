@@ -167,6 +167,55 @@ const MobileReviews = ({ book }) => {
             </div>
           </motion.div>
         )}
+        {writeAReview === 2 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.2 } }}
+            exit={{ opacity: 0, transition: { duration: 1.2 } }}
+            className="flex items-center justify-center w-full h-full "
+          >
+            <div className="w-full h-full flex flex-col justify-center items-center gap-[23px]  ">
+              <h4 className="text-bodyS font-reg text-primary-50 whitespace-nowrap">
+                Your Review has been successfully submitted!{" "}
+              </h4>
+              <button
+                onClick={() => setWriteAReview(0)}
+                className="h-[38px] w-[155px]  text-bodyS text-primary-50 rounded-[4px] border border-primary-40 "
+              >
+                Back to Reviews
+              </button>
+            </div>
+          </motion.div>
+        )}
+
+        {writeAReview === 3 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.2 } }}
+            exit={{ opacity: 0, transition: { duration: 1.2 } }}
+            className="flex items-center justify-center w-full h-full "
+          >
+            <div className="w-full h-full flex flex-col justify-center items-center gap-[23px]  ">
+              <h4 className="text-bodyS font-reg text-primary-40 whitespace-nowrap">
+                Please{" "}
+                <Link className="underline" to="/api/v1/auth">
+                  signin
+                </Link>{" "}
+                or{" "}
+                <Link className="underline" to="/api/v1/auth/signup">
+                  signup
+                </Link>{" "}
+                to be able to write a review.
+              </h4>
+              <button
+                onClick={() => setWriteAReview(0)}
+                className="h-[38px] w-[155px]  text-bodyS text-primary-50 rounded-[4px] border border-primary-40 "
+              >
+                Back to Reviews
+              </button>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
