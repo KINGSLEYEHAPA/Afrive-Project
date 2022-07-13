@@ -97,7 +97,7 @@ const Signup = ({ setUserState }) => {
       type: "password",
       placeholder: "",
       errorMessage: "Passwords don't match",
-      label: "Your Password",
+      label: "  Confirm Your Password",
       pattern: loginValues.password,
       required: true,
     },

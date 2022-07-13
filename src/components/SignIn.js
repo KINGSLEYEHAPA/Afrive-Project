@@ -81,14 +81,14 @@ const SignIn = ({ setUserState }) => {
     <AnimatePages>
       <div className="w-screen  mx-auto  h-[1024px] flex">
         <div
-          className="w-[553px] h-[1024px]  flex justify-center items-center"
+          className=" hidden tab:block  tab:w-[273px] lap:w-[553px] h-[1024px] tab:pt-[99.54px] lap:pt-0 tab:px-[69px] lap:px-0   lap:flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
         >
-          <div className="h-[133px] w-[256px]">
-            <h1 className=" font-[542] leading-[98px] text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
+          <div className="  tab:w-[140px] tab:h-[54px]   lap:h-[133px]    lap:w-[256px]">
+            <h1 className=" font-[542]   tab:text-[49.61px] tab:leading-[53px] lap:leading-[98px] lap:text-[91.24px] drop-shadow-[0px 2.60697px 10.4279px rgba(0, 0, 0, 0.15)] text-neutral-white">
               Àfrive
             </h1>
-            <p className="text-bodyL text-neutral-white font-reg mt-[12px]">
+            <p className=" hidden lap:block    text-bodyL text-neutral-white font-reg mt-[12px]">
               Redefining African Literature.
             </p>
           </div>
