@@ -123,7 +123,7 @@ const ShoppingBag = () => {
 
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pt-[32px]">
+      <div className=" hidden mtab:block   w-screen max-w-[1440px]  mx-auto mt-[88px] pt-[32px]">
         <div
           onClick={() => navigate(-1)}
           className="w-full h-[24px] mtab:h-[96px] flex justify-start items-center pl-[22px] mtab:pl-[73.48px] tab:pl-[90px] lap:pl-[128px] desk:pl-[105px] gap-0  "
@@ -358,6 +358,187 @@ const ShoppingBag = () => {
               Proceed to Checkout
             </button>
           </div>
+        </div>
+      </div>
+      <div className=" mtab:hidden   w-full min-h-screen mt-[68px] py-[17px] px-[23px]">
+        <div
+          onClick={() => navigate(-1)}
+          className="w-full  h-[96px] flex justify-start items-center gap-0  "
+        >
+          <span className="text-[18px]">
+            <MdChevronLeft />
+          </span>
+          <p className="text-bodyS font-reg text-[#000000] cursor-pointer active:text-primary-50">
+            Back
+          </p>
+        </div>
+        <div className="w-full  h-[24px]    flex justify-center items-center mt-[-9.92px]">
+          <h4 className=" text-bodyN  font-reg text-neutral-30 ">
+            Your Shopping Bag
+          </h4>
+        </div>
+
+        <div className="w-full h-3/5  overflow-hidden mt-[32px] ">
+          <div className=" overflow-y-auto scrollbar-hide w-full h-full ">
+            <AnimatePresence>
+              {shoppingBagBooks.map((book, index) => {
+                return (
+                  <div key={book.id} className="   mb-[48.32px]   ">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: { duration: 1 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 1 },
+                      }}
+                      className="w-full h-full  flex gap-[16px]   "
+                    >
+                      <div className="h-[117.68px]   w-[86px]     relative group">
+                        <img
+                          className="w-full h-full"
+                          src={book?.img}
+                          alt="Book"
+                        />
+                      </div>
+
+                      <div className="h-full w-[260px] flex items-start justify-between">
+                        <div className="w-[260px] flex flex-col space-y-[15px] items-start justify-between">
+                          <Link to={`/book/${book.title}`}>
+                            <h3 className=" whitespace-nowrap text-bodyN font-reg text-neutral-80">
+                              {book?.title}
+                            </h3>
+                          </Link>
+                          <p className="text-bodyN whitespace-nowrap text-neutral-30">
+                            Total:&nbsp;{" "}
+                            <span className="text-primary-50">
+                              N{book.totalAmount.toLocaleString("en-US")}
+                            </span>
+                          </p>
+
+                          <div className="flex gap-[10px] ">
+                            {book?.eBook?.status && (
+                              <div className="flex items-center justify-centerw-[78px] h-[21.78px] rounded-[14px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                                <p className="w-[52px] h-[24px] text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                                  Ebook
+                                </p>
+                              </div>
+                            )}
+                            {book?.eBook?.status && (
+                              <div className="flex items-center justify-center w-[70px]  h-[21.78px] rounded-[12px] border-2 border-primary-50  bg-primary-10 px-[7.28px] ">
+                                {" "}
+                                <p className=" text-primary-50  text-[16px] leading-6 whitespace-nowrap cursor-pointer ">
+                                  {" "}
+                                  {book?.eBook?.format[0]}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                          {!book?.eBook?.status && (
+                            <div className="w-[75px] h-[24px]  flex justify-between items-center  gap-[10px]">
+                              <span
+                                onClick={() => incrementQuantity(index)}
+                                className="cursor-pointer w-[24px] h-[24px] rounded-full bg-primary-40 flex items-center justify-center text-[14px] leading-4 text-neutral-white"
+                              >
+                                +
+                              </span>
+                              <span className="text-[14.63px] leading-5 text-primary-40 font-reg">
+                                {book.quantity}
+                              </span>
+                              <span
+                                onClick={() => decrementQuantity(index)}
+                                className=" cursor-pointer w-[24px] h-[24px] rounded-full bg-primary-40 flex items-center justify-center text-[14px] leading-4 text-neutral-white"
+                              >
+                                -
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="h-[12px] w-full flex justify-end items-center pr-[23px]">
+                          <span
+                            onClick={() => removeBookFromQueue(book)}
+                            className="w-[12px] h-[12px] text-[20px] text-neutral-30 cursor-pointer hover:text-neutral-black"
+                          >
+                            <AiOutlineClose />
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </div>
+        <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-40 mt-[25px] mb-[24px]" />
+
+        <div>
+          <div className="w-full h-[24px] flex justify-between ">
+            <p className="  font-medium   text-bodyN text-neutral-80">
+              Subtotal
+            </p>
+            <p className=" font-medium   text-bodyN text-neutral-70">
+              N{totalCostOfBooks.toLocaleString("en-US")}
+            </p>
+          </div>
+          <div className="w-full h-[24px] flex justify-between mt-[16px] ">
+            <p className=" font-medium text-bodyN text-neutral-80">
+              Coupon Discount:
+            </p>
+            <p className=" font-medium text-bodyN text-neutral-70">
+              -N{discountCoupon.toLocaleString("en-US")}
+            </p>
+          </div>
+
+          <div className="w-full h-[24px] flex justify-between mt-[24px] ">
+            <p className=" font-medium text-bodyN text-neutral-80">
+              Total to Pay:
+            </p>
+            <p className=" font-medium text-bodyN text-neutral-70">
+              N{totalCostOfBooks.toLocaleString("en-US")}
+            </p>
+          </div>
+          <div className="w-full h-[37px] flex justify-center items-center  mt-[40px]">
+            {!couponVoucher && (
+              <div className="w-full h-full flex justify-center items-center mb-[32px] mt-[40px]">
+                <p
+                  onClick={() => setCouponVoucher(true)}
+                  className=" text-bodyN   text-neutral-30 font-reg cursor-pointer"
+                >
+                  Add Coupon or Voucher
+                </p>
+              </div>
+            )}
+            {couponVoucher && (
+              <div className="  w-[257px]   h-full relative rounded-[4px]">
+                <input
+                  className=" outline-none border border-neutral-30 w-full h-full rounded-[4px] mtab:pl-[12px] tab:pl-[16px] pr-[86px] text-neutral-20 text-sub placeholder:text-neutral-20 placeholder:text-sub"
+                  type="text"
+                  name="coupon"
+                  value={voucher}
+                  placeholder="Type in voucher or coupon code"
+                  onChange={(e) => {
+                    setVoucher(e.target.value);
+                  }}
+                />
+                <button
+                  onClick={() => handleCoupon()}
+                  className="h-full absolute w-[58px] top-0 right-0 z-20 bg-neutral-60 text-neutral-white rounded-tr-[4px] rounded-br-[4px]"
+                >
+                  Verify
+                </button>
+              </div>
+            )}
+          </div>
+          <button
+            onClick={checkout}
+            className="  w-full h-[55px]  bg-primary-50 text-bodyN text-neutral-white font-medium rounded-[4px]  mt-[32px]"
+          >
+            Proceed to Checkout
+          </button>
         </div>
       </div>
       <BookQuote />
