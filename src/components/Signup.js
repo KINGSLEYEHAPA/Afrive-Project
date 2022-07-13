@@ -148,7 +148,7 @@ const Signup = ({ setUserState }) => {
             </p>
           </div>
         </div>
-        <div className=" mx-[23px] moby:mx-0     tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
+        <div className=" mx-[23px] moby:mx-0     tab:w-[745px]  pt-[53.30px]    lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px]  pb-[35px] moby:pb-[20.41px]">
           <div className="h-[839px] w-full moby:w-[551px]  ">
             <div className="flex justify-center flex-col items-center tab:block ">
               <img
@@ -182,10 +182,10 @@ const Signup = ({ setUserState }) => {
               ))}
 
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                <div className="absolute top-[-88px] lap:top-[-91px]  left-[276px] z-20">
+                <div className="absolute top-[-88px] lap:top-[-91px]  left-[180px] moby:left-[276px] z-20">
                   {isLoadingGoogle && <SmallLoader loaderColor={"secondary"} />}
                 </div>
-                <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-10">
+                <div className="absolute top-[-177px] lap:top-[-180px] left-[180px] moby:left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
                 {/* {(isError || isGoogleError || user) && (
@@ -209,14 +209,18 @@ const Signup = ({ setUserState }) => {
                 >
                   {!isLoading && "Sign Up"}
                 </button>
-                <div className=" flex justify-center items-center w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
-                  {!isLoadingGoogle && (
-                    <a className="" target="popup" href={google}>
-                      Continue with Google
-                    </a>
-                  )}
-                </div>
+
+                {!isLoadingGoogle && (
+                  <a
+                    className="w-full h-[56px] flex items-center justify-center cursor-pointer  rounded-[4px] border border-primary-50 text-primary-50 text-bodyN font-reg "
+                    target="popup"
+                    href={google}
+                  >
+                    Continue with Google
+                  </a>
+                )}
               </div>
+
               <p className="text-center mt-[66px] text-bodyN text-neutral-black">
                 Already have an Account?{" "}
                 <span
@@ -226,7 +230,7 @@ const Signup = ({ setUserState }) => {
                   Sign in
                 </span>
               </p>
-              <p className="text-center mt-[28px] text-primary-50">
+              <p className="text-center text-sub moby:text-bodyN mt-[65px]  moby:mt-[85px] text-primary-50">
                 Are you an Author? Submit your work to us.
               </p>
             </form>

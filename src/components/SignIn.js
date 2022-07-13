@@ -120,19 +120,21 @@ const SignIn = ({ setUserState }) => {
                 <div className="flex items-center gap-[10px] text-bodyS text-primary-50">
                   <div className="w-[16px] h-[18px] border border-primary-30"></div>
 
-                  <span className="text-[18px] text-bodyS text-neutral-70 font-reg">
+                  <span className="text-[18px] text-sub moby:text-bodyS text-neutral-70 font-reg">
                     Remember Me{" "}
                   </span>
                 </div>
                 <Link to="/forgot-password">
-                  <p className="text-bodyS text-neutral-70">Forgot Password?</p>
+                  <p className="text-sub moby:text-bodyS text-neutral-70">
+                    Forgot Password?
+                  </p>
                 </Link>
               </div>
               <div className="w-full mt-[42.92px] space-y-[16px] relative">
-                <div className="absolute top-[-88px] lap:top-[-91px] left-[276px] z-20">
+                <div className="absolute top-[-88px] lap:top-[-91px] left-[180px] moby:left-[276px] z-20">
                   {isLoadingGoogle && <SmallLoader loaderColor={"secondary"} />}
                 </div>
-                <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-10">
+                <div className="absolute top-[-177px] lap:top-[-180px] left-[180px] moby:left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
                 {/* {(isError || isGoogleError || user) && (
@@ -155,13 +157,18 @@ const SignIn = ({ setUserState }) => {
                 >
                   {!isLoading && "Sign In"}
                 </button>
-                <div className=" flex justify-center items-center w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg ">
-                  {!isLoadingGoogle && (
-                    <a className="" target="popup" href={google}>
-                      Continue with Google
-                    </a>
-                  )}
-                </div>
+
+                {/* <div className=" flex justify-center items-center w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg "> */}
+                {!isLoadingGoogle && (
+                  <a
+                    className="                w-full h-[56px] flex items-center justify-center cursor-pointer  rounded-[4px] border border-primary-50 text-primary-50 text-bodyN font-reg "
+                    target="popup"
+                    href={google}
+                  >
+                    Continue with Google
+                  </a>
+                )}
+                {/* </div> */}
                 {/* <button className="w-full h-[56px] border border-primary-50 text-primary-50 rounded-[4px] text-bodyN font-reg">
                   {!isLoadingGoogle && "Continue with Google"}
                 </button> */}
@@ -175,7 +182,7 @@ const SignIn = ({ setUserState }) => {
                   Sign Up
                 </span>
               </p>
-              <p className="text-center mt-[85px] text-primary-50">
+              <p className="text-center text-sub moby:text-bodyN mt-[65px]  moby:mt-[85px] text-primary-50">
                 Are you an Author? Submit your work to us.
               </p>
             </form>

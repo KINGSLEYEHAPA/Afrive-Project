@@ -47,7 +47,7 @@ const ForgotPassword = () => {
           </div>
         </div>
 
-        <div className="tab:w-[745px]     pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px]  lap:pr-[181px] lap:pl-[165px]  tab:pt-[389.5px] pb-[291.41px]">
+        <div className="  mx-[23px] moby:mx-0    tab:w-[745px]     pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px]  lap:pr-[181px] lap:pl-[165px]  tab:pt-[389.5px] pb-[291.41px]">
           <div className="flex justify-center flex-col items-center tab:block ">
             <img
               className=" tab:hidden   w-[30px] h-[40px] mb-[52.01px]"
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
             />
           </div>
           {!recoverLink && (
-            <div className="h-[839px] w-[551px] ">
+            <div className="h-[839px] w-full moby:w-[551px]">
               <h2 className=" text-h4  lap:text-h3 font-reg text-primary-50 ">
                 Forgotten password? We’ve got you covered.
               </h2>
@@ -89,7 +89,7 @@ const ForgotPassword = () => {
                       {errorMessage}
                     </motion.div>
                   )}
-                  <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-20">
+                  <div className="absolute top-[-177px] lap:top-[-180px] left-[180px] moby:left-[276px] z-20">
                     {isLoading && <SmallLoader loaderColor={"primary"} />}
                   </div>
                   <button

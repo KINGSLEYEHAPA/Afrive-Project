@@ -12,6 +12,8 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
   const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
   const availableBooks = useSelector((state) => state.books.booksFromServer);
 
+  const searchRef = useRef();
+
   useEffect(() => {
     function handleResize() {
       // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
@@ -19,6 +21,7 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
     }
 
     window.addEventListener("resize", handleResize);
+    searchRef.current.focus();
   }, []);
 
   const categoriesOptionRef = useRef();
@@ -121,6 +124,7 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
         <input
           type="text"
           value={searchInput}
+          ref={searchRef}
           onChange={(e) => filteredBooks(e)}
           placeholder={
             searchWidth.width > 540

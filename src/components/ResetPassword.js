@@ -107,7 +107,7 @@ const ResetPassword = () => {
             </p>
           </div>
         </div>
-        <div className="tab:w-[745px]     pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px]  lap:pr-[181px] lap:pl-[165px]  tab:pt-[164.50px] pb-[50.41px]">
+        <div className="   mx-[23px] moby:mx-0 tab:w-[745px]     pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px]  lap:pr-[181px] lap:pl-[165px]  tab:pt-[164.50px] pb-[50.41px]">
           <div className="flex justify-center flex-col items-center tab:block ">
             <img
               className=" tab:hidden   w-[30px] h-[40px] "
@@ -116,7 +116,7 @@ const ResetPassword = () => {
             />
           </div>
 
-          <div className="h-[839px] w-[551px] ">
+          <div className="h-[839px] w-full moby:w-[551px] ">
             <h2 className="   text-h4  lap:text-h3 font-reg text-primary-50 mt-[51.80px] tab:mt-[147px]">
               Enter your New Password
             </h2>
@@ -130,7 +130,7 @@ const ResetPassword = () => {
                 />
               ))}
               <div className="w-full mt-[42.92px] relative">
-                <div className="absolute top-[-177px] lap:top-[-180px] left-[276px] z-10">
+                <div className="absolute top-[-177px] lap:top-[-180px] left-[180px] moby:left-[276px] z-10">
                   {isLoading && <SmallLoader loaderColor={"primary"} />}
                 </div>
                 {isError && (
