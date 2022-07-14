@@ -29,10 +29,10 @@ export const ViewReview = ({ title, comment, userRating, index, date }) => {
       </div>
 
       <div className=" mtab:w-[551.1px] tab:w-[649px]  lap:w-[777px] desk:w-[871px] mtab:h-[108px]  tab:h-[96px] lap:h-[108px]  desk:h-[72px] ">
-        <div className="flex items-center gap-[40px]">
+        <div className="flex justify-between items-center gap-[40px]   ">
           {" "}
           <UserStarRating userRating={userRating} />{" "}
-          <span className=" mtab:text-bodyN  lap:bodyL text-neutral-50 font-reg">
+          <span className=" mtab:text-bodyN  lap:bodyL text-neutral-50 font-reg mr-[45px]">
             {timeago.format(new Date(date))}
           </span>
         </div>
