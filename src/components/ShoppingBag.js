@@ -372,7 +372,7 @@ const ShoppingBag = () => {
             Back
           </p>
         </div>
-        <div className="w-full  h-[24px]    flex justify-center items-center mt-[-9.92px]">
+        <div className="w-full  h-[24px]    flex justify-center items-center mt-[-25px]">
           <h4 className=" text-bodyN  font-reg text-neutral-30 ">
             Your Shopping Bag
           </h4>

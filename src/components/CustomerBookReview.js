@@ -9,8 +9,9 @@ import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
 import { commentOnABook, sendComment } from "../features/books/bookSlice";
 import { useDispatch, useSelector } from "react-redux";
+import * as timeago from "timeago.js";
 
-export const ViewReview = ({ title, comment, userRating, index }) => {
+export const ViewReview = ({ title, comment, userRating, index, date }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -32,7 +33,7 @@ export const ViewReview = ({ title, comment, userRating, index }) => {
           {" "}
           <UserStarRating userRating={userRating} />{" "}
           <span className=" mtab:text-bodyN  lap:bodyL text-neutral-50 font-reg">
-            3 Months ago
+            {timeago.format(new Date(date))}
           </span>
         </div>
         <p className="mt-[11.63px] text-[rgba(0,0,0,0.90)]       mtab:text-[14px] mtab:leading-[32px]   tab:text-[16px] tab:leading-[28px]      lap:text-buttonT2">
@@ -125,6 +126,7 @@ const CustomerBookReview = ({ book }) => {
     commentData: {
       comment: userReview,
       rate: rating,
+      date: new Date(),
     },
   };
 
@@ -162,6 +164,7 @@ const CustomerBookReview = ({ book }) => {
                       key={index}
                       title={rating.name}
                       comment={rating.comment}
+                      date={rating.date}
                       userRating={rating.startRating}
                       index={index}
                     />

@@ -441,7 +441,7 @@ const BookPreview = () => {
                     transition: { duration: 1.5 },
                   }}
                   layoutId="outline"
-                  className="w-[243px] mx-[6%] mobx:mx-[30%]   h-[132px] absolute space-y-[1px] top-0 left-0"
+                  className="w-[243px] mx-[10.50%] mobx:mx-[30%]   h-[132px] absolute space-y-[1px] top-0 left-0"
                 >
                   {selectedBook.eBook.format.map((item) => {
                     return (
