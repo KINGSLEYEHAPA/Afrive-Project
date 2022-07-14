@@ -527,6 +527,28 @@ export const sendComment = createAsyncThunk(
     }
   }
 );
+export const updateComment = createAsyncThunk(
+  "books/updateComment",
+  async (comment, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().user.user.data.token;
+      return await booksService.updateComment(
+        token,
+        comment.commentData,
+        comment.id
+      );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const sendOrder = createAsyncThunk(
   "books/sendOrder",
@@ -786,6 +808,9 @@ export const bookSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(sendComment.fulfilled, (state, action) => {
+        state.commentMessage = action.payload;
+      })
+      .addCase(updateComment.fulfilled, (state, action) => {
         state.commentMessage = action.payload;
       })
       .addCase(sendOrder.fulfilled, (state, action) => {

@@ -7,7 +7,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
-import { commentOnABook, sendComment } from "../features/books/bookSlice";
+import {
+  commentOnABook,
+  sendComment,
+  updateComment,
+} from "../features/books/bookSlice";
 import { useDispatch, useSelector } from "react-redux";
 import * as timeago from "timeago.js";
 
@@ -137,9 +141,19 @@ const CustomerBookReview = ({ book }) => {
   const handleReview = () => {
     if (rating !== null && userReview !== "") {
       // dispatch(commentOnABook(bookForComment));
-      dispatch(sendComment(comment));
-      setRating(null);
-      setUserReview("");
+
+      const customerRatedBook = book?.bookRating?.ratings?.some((item) => {
+        return item.name === user.data.name;
+      });
+      if (customerRatedBook) {
+        dispatch(updateComment(comment));
+        setRating(null);
+        setUserReview("");
+      } else {
+        dispatch(sendComment(comment));
+        setRating(null);
+        setUserReview("");
+      }
     }
   };
 

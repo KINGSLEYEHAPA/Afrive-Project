@@ -33,6 +33,20 @@ const sendComment = async (token, commentData, id) => {
 
   return response.data;
 };
+
+const updateComment = async (token, commentData, id) => {
+  console.log(token);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await axios.put(
+    `${API_URL}review/${id}`,
+    commentData,
+    config
+  );
+
+  return response.data;
+};
 const sendOrder = async (token, userOrder) => {
   console.log(token);
   const config = {
@@ -96,6 +110,7 @@ const booksService = {
 
   verifyPay,
   deleteOrder,
+  updateComment,
 };
 
 export default booksService;
