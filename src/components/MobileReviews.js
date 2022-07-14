@@ -9,6 +9,7 @@ import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
 import { commentOnABook, sendComment } from "../features/books/bookSlice";
 import { useDispatch, useSelector } from "react-redux";
+import * as timeago from "timeago.js";
 
 const MobileReviews = ({ book }) => {
   const [writeAReview, setWriteAReview] = useState(0);
@@ -72,7 +73,7 @@ const MobileReviews = ({ book }) => {
                       </h3>
                       <UserStarRating userRating={rating?.startRating} />{" "}
                       <p className="ml-[25px] text-sub text-neutral-70">
-                        3 Months ago
+                        {timeago.format(new Date(rating?.date))}
                       </p>{" "}
                     </div>
                     <p className="text-[14px] leading-[28px] text-neutral-50 mt-[14px]">
