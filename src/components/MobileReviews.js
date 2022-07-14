@@ -27,6 +27,7 @@ const MobileReviews = ({ book }) => {
     commentData: {
       comment: userReview,
       rate: rating,
+      date: new Date(),
     },
   };
 
