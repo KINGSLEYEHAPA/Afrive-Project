@@ -59,13 +59,10 @@ const Checkout = () => {
   //   }
   // };
 
-  console.log(location);
-
   checkout?.map((item) => {
     totalAmount += item.totalAmount;
     return null;
   });
-  console.log(totalAmount);
 
   const today = new Date();
   const deliverydate = new Date();
@@ -91,9 +88,14 @@ const Checkout = () => {
     estimated_delivery_date: deliverydate,
     currency: "NGN",
   };
-  console.log(finalOrder);
+
   const processOrder = () => {
-    if (deliveryLocation !== null || userAddress !== null) {
+    if (
+      deliveryLocation?.address !== "" ||
+      deliveryLocation?.state !== "" ||
+      deliveryLocation?.city !== "" ||
+      userAddress !== null
+    ) {
       dispatch(bookReset());
       dispatch(sendOrder(finalOrder));
       setOrderDispatched(true);
@@ -186,7 +188,9 @@ const Checkout = () => {
               <p className="whitespace-nowrap mt-[10px] mtab:text-bodyN   lap:text-h4 font-medium text-neutral-70">
                 Delivered To:
               </p>
-              {deliveryLocation ? (
+              {deliveryLocation?.address !== "" ||
+              deliveryLocation?.city !== "" ||
+              deliveryLocation?.state !== "" ? (
                 <p className="mtab:text-[14px]   mtab:leading-6 tab:text-bodyN   lap:text-h4 font-reg text-neutral-60">
                   {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
                   <span>{deliveryLocation?.address}</span>{" "}
@@ -297,7 +301,7 @@ const Checkout = () => {
               initial={{ opacity: 0, x: 500 }}
               animate={{
                 opacity: 1,
-                x: [-50, 50, -50, 50, 0],
+                x: [-50, 50, -50, 50, 15],
                 transition: { duration: 1, type: "spring", stiffness: 100 },
               }}
               exit={{ opacity: 0, x: 500, transition: { duration: 1 } }}
@@ -371,7 +375,9 @@ const Checkout = () => {
             <p className="whitespace-nowrap mt-[10px] text-bodyN    font-medium text-neutral-70">
               Delivered To:
             </p>
-            {deliveryLocation ? (
+            {deliveryLocation?.address !== "" ||
+            deliveryLocation?.city !== "" ||
+            deliveryLocation?.state !== "" ? (
               <p className="text-bodyN  font-reg text-neutral-60">
                 {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
                 <span>{deliveryLocation?.address}</span>{" "}
@@ -449,7 +455,7 @@ const Checkout = () => {
 
           <div className="w-full h-[46px] flex justify-center items-center  mt-[64px] relative">
             {isLoading && (
-              <div className="absolute top-[-170px]    tab:left-w/2   lap:left-[230px] z-20">
+              <div className="absolute top-[-166px]    tab:left-w/2   lap:left-[230px] z-20">
                 <SmallLoader loaderColor={"primary"} />
               </div>
             )}
