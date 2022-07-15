@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { UserStarRating } from "./RatingStars";
 import { Link } from "react-router-dom";
 import pen from "../assets/pen.svg";
@@ -108,6 +108,7 @@ const CustomerBookReview = ({ book }) => {
   const [rateABook, setRateABook] = useState(false);
   const [rating, setRating] = useState(null);
   const dispatch = useDispatch();
+  const [userCommentReviewId, setUserCommentReviewId] = useState(null);
 
   const { user } = useSelector((state) => state.user);
 
@@ -125,28 +126,53 @@ const CustomerBookReview = ({ book }) => {
   //     ],
   //   },
   // };
+
   const comment = {
     id: book.id,
     commentData: {
       comment: userReview,
       rate: rating,
-      date: new Date(),
     },
   };
+
+  const commentUpdate = {
+    id: book.id,
+    commentData: {
+      comment: userReview,
+      rate: rating,
+      review_id: userCommentReviewId,
+    },
+  };
+
+  useEffect(() => {
+    book?.bookRating?.ratings.map((item) => {
+      if (item.name === user?.data?.firstname + " " + user?.data?.lastname) {
+        setUserCommentReviewId(item.review_id);
+      }
+      return null;
+    });
+  }, []);
 
   useEffect(() => {
     handleReview();
   }, [userReview, rating]);
 
+  const customerRatedBook = book?.bookRating?.ratings?.some((item, index) => {
+    return item.name === user?.data?.firstname + " " + user?.data?.lastname;
+  });
+
   const handleReview = () => {
     if (rating !== null && userReview !== "") {
       // dispatch(commentOnABook(bookForComment));
 
-      const customerRatedBook = book?.bookRating?.ratings?.some((item) => {
-        return item.name === user.data.name;
-      });
+      console.log(
+        customerRatedBook,
+        user.data.firstname,
+        commentUpdate,
+        comment
+      );
       if (customerRatedBook) {
-        dispatch(updateComment(comment));
+        dispatch(updateComment(commentUpdate));
         setRating(null);
         setUserReview("");
       } else {
@@ -155,6 +181,12 @@ const CustomerBookReview = ({ book }) => {
         setUserReview("");
       }
     }
+  };
+
+  const commentRef = useRef();
+
+  const scrollToLastComment = () => {
+    commentRef?.current.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
@@ -167,7 +199,10 @@ const CustomerBookReview = ({ book }) => {
                 <h3 className="  mtab:text-bodyN     tab:text-bodyL   lap:text-h3 font-reg text-neutral-80">
                   Customers Reviews
                 </h3>
-                <p className="cursor-pointer text-neutral-30  mtab:text-bodyN    tab:text-bodyL hover:text-neutral-80">
+                <p
+                  onClick={scrollToLastComment}
+                  className="cursor-pointer text-neutral-30  mtab:text-bodyN    tab:text-bodyL hover:text-neutral-80"
+                >
                   see more
                 </p>
               </div>
@@ -184,6 +219,7 @@ const CustomerBookReview = ({ book }) => {
                     />
                   );
                 })}
+                <div ref={commentRef}></div>
               </div>
             </div>
 

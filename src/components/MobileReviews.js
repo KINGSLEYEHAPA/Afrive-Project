@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { UserStarRating } from "./RatingStars";
 import { Link } from "react-router-dom";
 import pen from "../assets/pen.svg";
@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
+import { Link as ALink } from "react-scroll";
 import {
   commentOnABook,
   sendComment,
@@ -22,6 +23,7 @@ const MobileReviews = ({ book }) => {
   const [rateABook, setRateABook] = useState(false);
   const [rating, setRating] = useState(null);
   const dispatch = useDispatch();
+  const [userCommentReviewId, setUserCommentReviewId] = useState(null);
 
   const { user } = useSelector((state) => state.user);
   const [reviewInput, setReviewInput] = useState("");
@@ -31,22 +33,53 @@ const MobileReviews = ({ book }) => {
     commentData: {
       comment: userReview,
       rate: rating,
-      date: new Date(),
     },
+  };
+
+  const commentUpdate = {
+    id: book.id,
+    commentData: {
+      comment: userReview,
+      rate: rating,
+      review_id: userCommentReviewId,
+    },
+  };
+
+  const commentRef = useRef();
+
+  const scrollToLastComment = () => {
+    commentRef?.current.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   useEffect(() => {
     handleReview();
   }, [userReview, rating]);
 
+  useEffect(() => {
+    book?.bookRating?.ratings.map((item) => {
+      if (item.name === user?.data?.firstname + " " + user?.data?.lastname) {
+        setUserCommentReviewId(item.review_id);
+      }
+      return null;
+    });
+  }, []);
+
+  const customerRatedBook = book?.bookRating?.ratings?.some((item, index) => {
+    return item.name === user?.data?.firstname + " " + user?.data?.lastname;
+  });
+
   const handleReview = () => {
     if (rating !== null && userReview !== "") {
       // dispatch(commentOnABook(bookForComment));
-      const customerRatedBook = book?.bookRating?.ratings?.some((item) => {
-        return item.name === user.data.name;
-      });
+
+      console.log(
+        customerRatedBook,
+        user.data.firstname,
+        commentUpdate,
+        comment
+      );
       if (customerRatedBook) {
-        dispatch(updateComment(comment));
+        dispatch(updateComment(commentUpdate));
         setRating(null);
         setUserReview("");
       } else {
@@ -57,7 +90,6 @@ const MobileReviews = ({ book }) => {
     }
   };
 
-  console.log(reviewInput);
   const pushReview = () => {
     setUserReview(reviewInput);
 
@@ -68,16 +100,24 @@ const MobileReviews = ({ book }) => {
     <div className="   block mtab:hidden    h-[474px] mx-[23px] mobx:mx-[40px] my-[32px] relative">
       <AnimatePresence>
         {writeAReview === 0 && (
-          <div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.2 } }}
+            exit={{ opacity: 0, transition: { duration: 1.2 } }}
+          >
             <div className="   flex justify-between items-center">
               <h3 className="text-bodyS font-reg text-neutral-80">
                 Customers Reviews
               </h3>
-              <p className="cursor-pointer text-neutral-30 text-bodyS hover:text-neutral-80">
+
+              <p
+                className="cursor-pointer text-neutral-30 text-bodyS hover:text-neutral-80"
+                onClick={scrollToLastComment}
+              >
                 see more
               </p>
             </div>
-            <div className="mt-[24px]   overflow-hidden overflow-y-auto  scrollbar-hide w-full h-full my-[10px] ">
+            <div className="mt-[24px]   overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[420px] my-[10px] ">
               {book?.bookRating?.ratings?.map((rating, index) => {
                 return (
                   <div key={index} className="my-[24px]">
@@ -96,6 +136,7 @@ const MobileReviews = ({ book }) => {
                   </div>
                 );
               })}
+              <div ref={commentRef}></div>
             </div>
 
             <div className="w-full h-full">
@@ -141,7 +182,7 @@ const MobileReviews = ({ book }) => {
                 <img className="" src={pen} alt="Pen" />
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
         {writeAReview === 1 && (
           <motion.div
