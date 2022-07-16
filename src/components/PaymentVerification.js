@@ -37,7 +37,7 @@ const PaymentVerification = () => {
 
   console.log(location.search);
   return (
-    <div className="w-[505px]  h-[510px] bg-neutral-white">
+    <div className="  w-[340px]     moby:w-[505px]  py-[10px]    moby:py-[16px]  px-[23px]    moby:px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]">
       <AnimatePresence exitBeforeEnter>
         {payState === 0 && (
           <motion.div
@@ -62,7 +62,7 @@ const PaymentVerification = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1.2 } }}
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
-            className="bg-neutral-white p-[22px]"
+            className="  w-full  bg-neutral-white p-[22px]"
           >
             <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
               <h3 className="text-primary-50 text-h3">Afrive Books WebStore</h3>
@@ -85,7 +85,7 @@ const PaymentVerification = () => {
             </div>
             <button
               onClick={() => navigate("/")}
-              className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+              className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyN   moby:text-bodyL font-medium"
             >
               Return to Home
             </button>

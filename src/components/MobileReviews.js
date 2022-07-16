@@ -215,7 +215,7 @@ const MobileReviews = ({ book }) => {
                 </button>
                 <button
                   onClick={() => pushReview()}
-                  className="  text-bodyN   h-[44px] w-[153px] bg-primary-40 rounded-[4px] text-neutral-white"
+                  className="  text-bodyN   h-[44px] w-[153px] bg-primary-50 rounded-[4px] text-neutral-white"
                 >
                   Done
                 </button>

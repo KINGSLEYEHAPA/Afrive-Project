@@ -396,7 +396,7 @@ const ShoppingBag = () => {
                       }}
                       className="w-full h-full  flex gap-[16px]   "
                     >
-                      <div className="h-[117.68px]   w-[86px]     relative group">
+                      <div className="h-[117.68px]   w-[86px]      relative group">
                         <img
                           className="w-full h-full"
                           src={book?.img}

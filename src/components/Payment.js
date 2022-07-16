@@ -24,15 +24,11 @@ const Payment = ({
   referenceNumber,
 }) => {
   const lastorder = useSelector((state) => state.books.customerOrders);
-  // const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
+
   const [transactionRef, setTransactionRef] = useState("");
   const [disablePayButton, setDisablePayButton] = useState(true);
   const [paymentFlow, setPaymentFlow] = useState(0);
-  // const [error, setError] = useState("");
-  // const amount = 450000; // Remember, set in kobo!
-  // const [email, setEmail] = useState("kessity09@gmail.com");
-  // const [name, setName] = useState("Kingsley Ehapa");
-  // const [phone, setPhone] = useState("080");
+
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -50,101 +46,10 @@ const Payment = ({
     dispatch(getOrder());
   }, []);
 
-  // useEffect(() => {
-  //
-  //   if (confirmOrder !== null || confirmOrder !== []) {
-  //     console.log(lastorder?.data?.[0]?.order_id);
-  //     dispatch(
-  //       pay({
-  //         orderId: lastorder?.data?.[0]?.order_id,
-  //         payData: {
-  //           email: user?.data?.email,
-  //           amount: totalAmountToPay,
-  //         },
-  //       })
-  //     );
-  //   }
-  // }, [confirmOrder]);
-  // const orderConfirm = lastorder?.data?.filter((item) => {
-  //   return (
-  //     Number(item.total_order_amount) === totalAmountToPay &&
-  //     item?.book?.length === order?.length
-  //   );
-  // });
-
-  console.log(
-    orderMessage?.data,
-    lastorder?.data?.[0],
-    totalAmountToPay,
-    lastorder?.data
-  );
-
   const cancelOrder = () => {
     dispatch(deleteOrder(lastorder?.data?.[0]?.order_id));
     setShowPayment(false);
   };
-
-  // const componentProps = {
-  //   email,
-  //   amount,
-  //   channels: ["card"],
-  //   metadata: {
-  //     name,
-  //     phone,
-  //   },
-  //   publicKey,
-  //   text: "Pay with PayStack",
-  //   onSuccess: (transaction) => setPaymentFlow(1),
-  //   onClose: () => setPaymentFlow(0),
-  //   // onError: (transaction) => setError(transaction.error),
-  // };
-
-  // const today = new Date();
-  // const deliverydate = new Date();
-  // deliverydate.setDate(today.getDate() + 2);
-
-  // const bookAndQuantity = [];
-
-  // order?.map((item) => {
-  //   bookAndQuantity.push({
-  //     bookName: item.title,
-  //     quantity: item.quantity,
-  //     totalAmount: item.totalAmount,
-  //     format: item.eBook.status ? item.eBook.format[0] : "Hard Copy",
-  //   });
-  //   return null;
-  // });
-
-  // const finalOrder = {
-  //   txn_ref: randomNumber,
-  //   book: bookAndQuantity,
-  //   date: new Date(),
-  //   total_order_amount: totalAmountToPay,
-  //   status: "Processing for Delivery",
-  //   estimated_delivery_date: deliverydate,
-  //   currency: "NGN",
-  // };
-  // console.log(finalOrder);
-  // const processOrder = () => {
-  //   setTransactionRef(randomNumber);
-  //   dispatch(bookReset());
-  //   dispatch(sendOrder(finalOrder));
-  //   if (orderSuccess) {
-  //     setTimeout(() => {
-  //       setPaymentFlow(1);
-  //       dispatch(clearBuyNShoppingBag());
-  //       dispatch(clearShoppingBag());
-  //     }, 3000);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (orderSuccess) {
-  //     setTimeout(() => {
-  //       setPaymentFlow(1);
-  //     }, 1000);
-  //   }
-  // }, [orderSuccess]);
 
   useEffect(() => {
     if (
@@ -163,10 +68,10 @@ const Payment = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1.2 } }}
         exit={{ opacity: 0, transition: { duration: 1.2 } }}
-        className=" relative w-[505px] py-[16px] px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
+        className=" relative  w-[340px]     moby:w-[505px]  py-[10px]    moby:py-[16px]  px-[23px]    moby:px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
       >
         {isLoading && (
-          <div className="absolute top-[-150px] left-[210px]">
+          <div className="absolute     top-[-150px] left-[130px]    moby:top-[-150px] moby:left-[210px]">
             <div className="relative flex items-center justify-center w-20 h-20 bg-primary-50 rounded-full mt-[350px]">
               <motion.div
                 animate={{ rotate: 360 }}
@@ -188,7 +93,7 @@ const Payment = ({
             <div className="h-[120px] w-full overflow-hidden overflow-y-auto scrollbar-hide">
               <div className="my-[10px] ">
                 <div className="min-h-[120px] w-full  flex justify-between   ">
-                  <p className="whitespace-nowrap text-bodyS font-medium text-neutral-30">
+                  <p className="whitespace-nowrap text-[15px]    moby:text-bodyS font-medium text-neutral-30">
                     Order Info:
                   </p>
                   <div className="">
@@ -196,49 +101,28 @@ const Payment = ({
                       return (
                         <p
                           key={index}
-                          className="text-bodyS font-reg text-neutral-60"
+                          className=" text-[15px]    moby:text-bodyS font-reg text-neutral-60"
                         >
                           <span>{item.quantity}</span> x {item.title}
                         </p>
                       );
                     })}
-
-                    {/* <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p>
-                  <p className="text-bodyS font-reg text-neutral-60">
-                    <span>3</span> x Things Fall Apart
-                  </p> */}
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex justify-between items-center my-[5px]">
-              <span className="text-neutral-30">Total Amount to Pay</span>
-              <span className="font-medium text-primary-50">
+              <span className=" text-[15px]   moby:text-bodyS    text-neutral-30">
+                Total Amount to Pay
+              </span>
+              <span className="   text-[15px]    moby:text-bodyS font-medium text-primary-50">
                 N{totalAmountToPay.toLocaleString("en-US")}
               </span>
             </div>
             <div className="flex justify-between items-center mt-[10px]">
-              <p className="text-neutral-30">Payment Method:</p>
+              <p className="  text-[15px]    moby:text-bodyS    text-neutral-30">
+                Payment Method:
+              </p>
               <div
                 className="w-[120px] h-[70px] bg-[linear-gradient(186.31deg,#F67A6A_16.82%,#F89386_85.91%)] 
                    flex flex-col justify-between p-[6px]  rounded-[4px]"
@@ -275,35 +159,30 @@ const Payment = ({
               </p>
             </div>
             <a
-              // onClick={() => processOrder()}
               href={orderMessage?.data?.checkout_url}
               style={{
                 backgroundColor: disablePayButton ? "#FFA599" : "#f45c45",
               }}
-              // className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
               className={
                 disablePayButton
-                  ? "w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium pointer-events-none"
-                  : "w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
+                  ? "w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white  text-bodyN   moby:text-bodyL font-medium pointer-events-none"
+                  : "w-full h-[65px] flex items-center justify-center cursor-pointer mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyN   moby:text-bodyL  font-medium"
               }
             >
               Pay with PayStack
             </a>
-            {/* <PaystackButton
-            className="w-full h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyL font-medium"
-            {...componentProps}
-          /> */}
+
             <button
               onClick={cancelOrder}
-              className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyL font-medium"
+              className="w-full h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyN   moby:text-bodyL  font-medium"
             >
               Cancel
             </button>
           </div>
         )}
 
-        {paymentFlow === 1 && (
-          <div className="">
+        {/* {paymentFlow === 1 && (
+          <div className="w-full">
             <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[60px]">
               <h3 className="text-primary-50 text-h3">Afrive Books WebStore</h3>
               <span className="text-[60px] text-primary-50">
@@ -324,7 +203,7 @@ const Payment = ({
               Return to Home
             </button>
           </div>
-        )}
+        )} */}
       </motion.div>
     </AnimatePresence>
   );

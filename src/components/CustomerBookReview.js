@@ -51,7 +51,6 @@ export const ViewReview = ({ title, comment, userRating, index, date }) => {
 export const WriteReview = ({ setUserReview, setWriteAReview }) => {
   const [reviewInput, setReviewInput] = useState("");
 
-  console.log(reviewInput);
   const pushReview = () => {
     setUserReview(reviewInput);
 

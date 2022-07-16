@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiShoppingBag } from "react-icons/fi";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RatingStars from "./RatingStars";
 
 const BookCard = ({
@@ -14,6 +14,15 @@ const BookCard = ({
   addItemToBag,
   booksInShoppingBag,
 }) => {
+  const navigate = useNavigate();
+
+  const clickABook = (e) => {
+    e.preventDefault();
+    if (e.target === e.currentTarget) {
+      navigate(`/book/${book?.title}`);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -96,7 +105,8 @@ const BookCard = ({
           <RatingStars book={book} />
         </div>
         <img
-          className="w-full h-[212.11px]   mtab:h-[260px] tab:h-[293px]   lap:h-[292px]    desk:h-[312.95px]  mb-[18.19px]"
+          onClick={(e) => clickABook(e)}
+          className="w-full h-[212.11px] cursor-pointer   mtab:h-[260px] tab:h-[293px]   lap:h-[292px]    desk:h-[312.95px]  mb-[18.19px]"
           src={book.img}
           alt="Book"
         />
