@@ -64,7 +64,7 @@ const PaymentVerification = () => {
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
             className="  w-full  bg-neutral-white p-[10px]"
           >
-            <div className=" h-[360px]   moby:h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
+            <div className=" h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
               <h3 className="text-primary-50  text-bodyL moby:text-h3    whitespace-nowrap">
                 Afrive Books WebStore
               </h3>
