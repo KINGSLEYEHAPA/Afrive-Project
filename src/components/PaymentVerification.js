@@ -87,7 +87,7 @@ const PaymentVerification = () => {
             </div>
             <button
               onClick={() => navigate("/")}
-              className="w-full h-[55px]     moby:h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyN   moby:text-bodyL font-medium"
+              className="w-full h-[48px]     moby:h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyN   moby:text-bodyL font-medium"
             >
               Return to Home
             </button>

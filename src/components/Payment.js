@@ -174,7 +174,7 @@ const Payment = ({
 
             <button
               onClick={cancelOrder}
-              className="w-full  h-[55px]   moby:h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyN   moby:text-bodyL  font-medium"
+              className="w-full  h-[48px]   moby:h-[65px] mt-[20px] rounded-[4px] text-primary-50 bg-neutral-white   border-2 border-primary-50 text-bodyN   moby:text-bodyL  font-medium"
             >
               Cancel
             </button>

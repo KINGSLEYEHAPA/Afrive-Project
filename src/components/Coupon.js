@@ -8,7 +8,7 @@ const Coupon = () => {
   const [couponAvailble, setCouponAvailable] = useState(0);
   return (
     <AnimatePages>
-      <div className="w-screen max-w-[1440px] pt-[32px] mx-auto mt-[88px] flex justify-center flex-col items-center  ">
+      <div className="w-screen max-w-[1440px] pt-[32px] mx-auto mt-[88px] flex justify-center flex-col items-center  h-[640px]  mtab:h-[840px]  ">
         <div className="w-full  h-[24px]   tab:h-[32px] flex justify-center items-center mt-[9.92px]">
           <h4 className=" text-bodyL  tab:text-h4 font-reg text-neutral-30 ">
             Coupons and Vouchers
