@@ -62,7 +62,7 @@ const PaymentVerification = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 1.2 } }}
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
-            className="  w-full  bg-neutral-white p-[22px]"
+            className="  w-full  bg-neutral-white p-[10px]"
           >
             <div className=" h-[320px]   moby:h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
               <h3 className="text-primary-50  text-bodyL moby:text-h3    whitespace-nowrap">
