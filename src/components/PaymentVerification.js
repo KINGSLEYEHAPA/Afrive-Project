@@ -47,7 +47,7 @@ const PaymentVerification = () => {
             className="w-full h-full flex items-center justify-center flex-col"
           >
             <h1 className="text-h2 text-primary-50">Afrive Bookstore </h1>
-            <h2 className="text-neutral-40  whitespace-nowrap  text-bodyS   moby:text-bodyL mt-[25px]">
+            <h2 className="text-neutral-40  whitespace-nowrap   text-bodyS   moby:text-bodyL mt-[25px]">
               {" "}
               Payment initialised.....Verifying payment
             </h2>
