@@ -64,7 +64,7 @@ const PaymentVerification = () => {
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
             className="  w-full  bg-neutral-white p-[10px]"
           >
-            <div className=" h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
+            <div className=" h-[360px]   moby:h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
               <h3 className="text-primary-50  text-bodyL moby:text-h3    whitespace-nowrap">
                 Afrive Books WebStore
               </h3>
@@ -87,7 +87,7 @@ const PaymentVerification = () => {
             </div>
             <button
               onClick={() => navigate("/")}
-              className="w-full h-55px    moby:h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyN   moby:text-bodyL font-medium"
+              className="w-full h-[55px]     moby:h-[65px] mt-[20px] rounded-[4px] bg-primary-50 text-neutral-white text-bodyN   moby:text-bodyL font-medium"
             >
               Return to Home
             </button>
