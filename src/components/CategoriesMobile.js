@@ -18,7 +18,7 @@ const CategoriesMobile = () => {
       navigate("/");
     }
     window.addEventListener("resize", handleResize);
-  }, []);
+  }, [searchWidth]);
 
   const categories = useSelector((state) => state.books.bookCategories);
   return (
