@@ -13,12 +13,12 @@ const CategoriesMobile = () => {
       // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
       setSearchWidth({ width: window.innerWidth });
     }
-
+    console.log(searchWidth.width);
     if (searchWidth.width >= 860) {
       navigate("/");
     }
     window.addEventListener("resize", handleResize);
-  }, [searchWidth]);
+  }, []);
 
   const categories = useSelector((state) => state.books.bookCategories);
   return (

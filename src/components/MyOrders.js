@@ -91,7 +91,7 @@ const MyOrders = () => {
             );
           })}
         </div>
-        <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
+        {/* <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
             <span className="text-[15px]   lap:text-[25px]">
               <FiArrowUpLeft />
@@ -109,7 +109,7 @@ const MyOrders = () => {
               </p>
             </ALink>
           </div>
-        </div>
+        </div> */}
       </div>
       <BookQuote />
     </AnimatePages>
