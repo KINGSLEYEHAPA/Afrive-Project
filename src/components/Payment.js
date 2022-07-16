@@ -71,7 +71,7 @@ const Payment = ({
         className=" relative  w-[340px]     moby:w-[505px]  py-[10px]    moby:py-[16px]  px-[23px]    moby:px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
       >
         {isLoading && (
-          <div className="absolute     top-[-150px] left-[130px]    moby:top-[-150px] moby:left-[210px]">
+          <div className="absolute     top-[-150px] left-[140px]    moby:top-[-150px] moby:left-[210px]">
             <div className="relative flex items-center justify-center w-20 h-20 bg-primary-50 rounded-full mt-[350px]">
               <motion.div
                 animate={{ rotate: 360 }}

@@ -47,7 +47,7 @@ const PaymentVerification = () => {
             className="w-full h-full flex items-center justify-center flex-col"
           >
             <h1 className="text-h2 text-primary-50">Afrive Bookstore </h1>
-            <h2 className="text-neutral-40 text-bodyL mt-[25px]">
+            <h2 className="text-neutral-40  whitespace-nowrap  text-bodyS   moby:text-bodyL mt-[25px]">
               {" "}
               Payment initialised.....Verifying payment
             </h2>
@@ -64,22 +64,24 @@ const PaymentVerification = () => {
             exit={{ opacity: 0, transition: { duration: 1.2 } }}
             className="  w-full  bg-neutral-white p-[22px]"
           >
-            <div className="h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
-              <h3 className="text-primary-50 text-h3">Afrive Books WebStore</h3>
+            <div className=" h-[320px]   moby:h-[380px] w-full flex flex-col justify-center items-center gap-[15px]">
+              <h3 className="text-primary-50  text-bodyL moby:text-h3    whitespace-nowrap">
+                Afrive Books WebStore
+              </h3>
               <span className="text-[60px] text-primary-50">
                 <BsBagCheckFill />
               </span>
-              <h2 className="text-h4 font-medium text-primary-50">
+              <h2 className="  text-bodyN  moby:text-h4 font-medium text-primary-50">
                 Payment Verified
               </h2>
-              <p className="text-bodyN text-neutral-40 leading-7">
+              <p className=" text-bodyS  moby:text-bodyN text-neutral-40 leading-7">
                 Your order has been processed and your transaction reference is{" "}
                 <span className="text-primary-60">
                   {" "}
                   {paymentVerified?.data?.txn_ref}
                 </span>
               </p>
-              <p className="text-primary-60 text-bodyL">
+              <p className="text-primary-60 text-bodyN    moby:text-bodyL">
                 Thank you for your purchase!
               </p>
             </div>

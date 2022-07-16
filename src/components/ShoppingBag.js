@@ -405,7 +405,7 @@ const ShoppingBag = () => {
                       </div>
 
                       <div className="h-full w-[260px] mobx:w-3/5 flex items-start justify-between">
-                        <div className="w-[260px] mobx:w-3/5 flex flex-col space-y-[15px] items-start justify-between">
+                        <div className="  ml-[20px] w-[260px] mobx:w-3/5 flex flex-col space-y-[15px] items-start justify-between">
                           <Link to={`/book/${book.title}`}>
                             <h3 className=" whitespace-nowrap text-bodyN font-reg text-neutral-80">
                               {book?.title}
