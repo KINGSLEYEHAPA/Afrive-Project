@@ -1,28 +1,14 @@
 import BookQuote from "./BookQuote";
-import { MdChevronLeft } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+
 import AnimatePages from "./AnimatePages";
 import coupon from "../assets/coupon.jpg";
 import { useState } from "react";
 
 const Coupon = () => {
-  const navigate = useNavigate();
   const [couponAvailble, setCouponAvailable] = useState(0);
   return (
     <AnimatePages>
       <div className="w-screen max-w-[1440px] pt-[32px] mx-auto mt-[88px] flex justify-center flex-col items-center  ">
-        <div
-          onClick={() => navigate(-1)}
-          className="w-full h-[24px] mtab:h-[96px] flex justify-start items-center pl-[22px] mtab:pl-[73.48px] tab:pl-[90px] lap:pl-[128px] desk:pl-[105px] gap-0  "
-        >
-          <span className="text-[25px]">
-            <MdChevronLeft />
-          </span>
-          <p className=" text-bodyS mtab:text-bodyL  tab:text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
-            Back
-          </p>
-        </div>
-
         <div className="w-full  h-[24px]   tab:h-[32px] flex justify-center items-center mt-[9.92px]">
           <h4 className=" text-bodyL  tab:text-h4 font-reg text-neutral-30 ">
             Coupons and Vouchers

@@ -43,6 +43,75 @@ const BookSection = ({ bookSectionName, emoji }) => {
     window.addEventListener("resize", handleResize);
   }, []);
 
+  const sectionReferenceStart =
+    bookSectionName === "Popular Books" &&
+    searchWidth.width <= 1366 &&
+    searchWidth.width >= 540
+      ? 2
+      : bookSectionName === "Popular Books" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 2
+      : bookSectionName === "BestSellers" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 4
+      : bookSectionName === "BestSellers" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 4
+      : bookSectionName === "New Arrivals" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 0
+      : bookSectionName === "New Arrivals" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 0
+      : bookSectionName === "On Sale" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 4
+      : bookSectionName === "On Sale" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 4
+      : 1;
+
+  const sectionReferenceEnd =
+    bookSectionName === "Popular Books" &&
+    searchWidth.width <= 1366 &&
+    searchWidth.width >= 540
+      ? 5
+      : bookSectionName === "Popular Books" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 4
+      : bookSectionName === "BestSellers" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 7
+      : bookSectionName === "BestSellers" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 6
+      : bookSectionName === "New Arrivals" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 3
+      : bookSectionName === "New Arrivals" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 2
+      : bookSectionName === "On Sale" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 7
+      : bookSectionName === "On Sale" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 6
+      : 5;
   return (
     <div className="w-screen max-w-[1440px] mx-auto mt-[32.13px] mtab:mt-[40.15px] tab:mt-[55.51px] desk:mt-[56.51px] flex justify-center items-center">
       {" "}
@@ -65,14 +134,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
 
         <div className="w-full  h-[272.97px] mtab:h-[333.44px] tab:h-[396.75px]   lap:h-[375.39px]  desk:h-[397.54px] mt-[32px] grid grid-cols-2  mobx:grid-cols-3  lap:grid-cols-4 px-0  gap-[54.37px] justify-items-center        ">
           {availableBooks?.data
-            .slice(
-              searchWidth.width <= 1366 && searchWidth.width >= 540
-                ? 4
-                : searchWidth.width < 540 && searchWidth.width >= 360
-                ? 5
-                : 3,
-              7
-            )
+            .slice(sectionReferenceStart, sectionReferenceEnd)
             .map((book) => {
               return (
                 <BookCard
@@ -94,3 +156,12 @@ const BookSection = ({ bookSectionName, emoji }) => {
 };
 
 export default BookSection;
+
+{
+  /* searchWidth.width <= 1366 && searchWidth.width >= 540
+                ? 4
+                : searchWidth.width < 540 && searchWidth.width >= 360
+                ? 5
+                : 3,
+              7 */
+}
