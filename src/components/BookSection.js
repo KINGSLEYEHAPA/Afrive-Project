@@ -76,7 +76,25 @@ const BookSection = ({ bookSectionName, emoji }) => {
         searchWidth.width < 540 &&
         searchWidth.width >= 360
       ? 4
-      : 1;
+      : bookSectionName === "Similar Books" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 2
+      : bookSectionName === "Similar Books" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 2
+      : bookSectionName === "Similar Books"
+      ? 0
+      : bookSectionName === "Popular Books"
+      ? 1
+      : bookSectionName === "BestSellers"
+      ? 2
+      : bookSectionName === "New Arrivals"
+      ? 3
+      : bookSectionName === "On Sale"
+      ? 4
+      : 5;
 
   const sectionReferenceEnd =
     bookSectionName === "Popular Books" &&
@@ -111,7 +129,25 @@ const BookSection = ({ bookSectionName, emoji }) => {
         searchWidth.width < 540 &&
         searchWidth.width >= 360
       ? 6
-      : 5;
+      : bookSectionName === "Similar Books" &&
+        searchWidth.width <= 1366 &&
+        searchWidth.width >= 540
+      ? 5
+      : bookSectionName === "Similar Books" &&
+        searchWidth.width < 540 &&
+        searchWidth.width >= 360
+      ? 4
+      : bookSectionName === "Similar Books"
+      ? 4
+      : bookSectionName === "Popular Books"
+      ? 5
+      : bookSectionName === "BestSellers"
+      ? 6
+      : bookSectionName === "New Arrivals"
+      ? 7
+      : bookSectionName === "On Sale"
+      ? 7
+      : 7;
   return (
     <div className="w-screen max-w-[1440px] mx-auto mt-[32.13px] mtab:mt-[40.15px] tab:mt-[55.51px] desk:mt-[56.51px] flex justify-center items-center">
       {" "}

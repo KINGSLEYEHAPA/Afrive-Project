@@ -68,7 +68,7 @@ const Payment = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1.2 } }}
         exit={{ opacity: 0, transition: { duration: 1.2 } }}
-        className=" relative  w-[340px]     moby:w-[505px]  py-[10px]    moby:py-[16px]  px-[23px]    moby:px-[40px] h-[510px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
+        className=" relative  w-[340px]     moby:w-[505px]  py-[10px]    moby:py-[16px]  px-[23px]    moby:px-[40px] min-h-[420px] bg-neutral-white shadow-[0px 4px 14px rgba(0, 0, 0, 0.15)] rounded-[4px]"
       >
         {isLoading && (
           <div className="absolute     top-[-150px] left-[140px]    moby:top-[-150px] moby:left-[210px]">
@@ -90,9 +90,9 @@ const Payment = ({
             <div className="w-full h-[32px] flex justify-center items-center mt-[9.92px]">
               <h4 className="text-bodyN font-reg text-neutral-30 ">Payment</h4>
             </div>
-            <div className="h-[120px] w-full overflow-hidden overflow-y-auto scrollbar-hide">
+            <div className="min-h-[40px] w-full overflow-hidden overflow-y-auto scrollbar-hide">
               <div className="my-[10px] ">
-                <div className="min-h-[120px] w-full  flex justify-between   ">
+                <div className="min-h-[40px] w-full  flex justify-between   ">
                   <p className="whitespace-nowrap text-[15px]    moby:text-bodyS font-medium text-neutral-30">
                     Order Info:
                   </p>

@@ -76,10 +76,13 @@ const MobileMenu = ({ setOpenMobile }) => {
             <p className="text-bodyN text-neutral-70 hover:text-primary-50">
               Support
             </p>
+            <p className="text-primary-50">
+              Welcome {user ? user?.data?.firstname : "Guest"}
+            </p>
             {user ? (
               <p
                 onClick={onLogout}
-                className="mt-[24px] text-bodyN text-neutral-70 hover:text-primary-50 font-medium"
+                className="mt-[5px] text-bodyN text-neutral-70 hover:text-primary-50 font-medium"
               >
                 Signout
               </p>

@@ -24,7 +24,7 @@ const BookPagination = ({
         <MdChevronLeft />
       </span>
 
-      <ul className="flex justify-center relative right-[8px] items-center gap-[24px]">
+      <ul className="flex justify-center items-center gap-[24px]">
         {pageNumbers.map((number) => (
           <li
             key={number}

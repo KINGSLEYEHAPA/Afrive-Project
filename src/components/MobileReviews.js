@@ -121,14 +121,16 @@ const MobileReviews = ({ book }) => {
               {book?.bookRating?.ratings?.map((rating, index) => {
                 return (
                   <div key={index} className="my-[24px]">
-                    <div className="flex justify-between items-center gap-[12px]">
-                      <h3 className="text-sub text-neutral-70">
+                    <div className="flex  items-center gap-[12px]">
+                      <h3 className="text-sub text-neutral-70 w-[100px]">
                         {rating?.name}
                       </h3>
-                      <UserStarRating userRating={rating?.startRating} />{" "}
-                      <p className="ml-[25px] text-sub text-neutral-70">
-                        {timeago.format(new Date(rating?.date))}
-                      </p>{" "}
+                      <div className="flex items-center justify-between w-2/3">
+                        <UserStarRating userRating={rating?.startRating} />{" "}
+                        <p className="ml-[25px] text-sub text-neutral-70">
+                          {timeago.format(new Date(rating?.date))}
+                        </p>{" "}
+                      </div>
                     </div>
                     <p className="text-[14px] leading-[28px] text-neutral-50 mt-[14px]">
                       {rating?.comment}

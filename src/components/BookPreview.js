@@ -498,7 +498,7 @@ const BookPreview = () => {
         <MobileReviews book={selectedBook} />
         <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-30 mt-[15px] " />
         <BookSection bookSectionName="Similar Books" />
-        <BookSection bookSectionName="Best Sellers" />
+        <BookSection bookSectionName="BestSellers" />
         <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
             <span className="text-[15px]   lap:text-[25px]">

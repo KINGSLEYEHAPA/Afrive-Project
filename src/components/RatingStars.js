@@ -12,7 +12,7 @@ export const UserStarRating = ({ userRating }) => {
   const SecondRandomNumber = Math.random() * 1000 + uuid();
 
   return (
-    <div className="w-[108px] h-[18px] flex gap-[14px]">
+    <div className="w-[108px] h-[18px] flex mobx:translate-x-[120px] mtab:translate-x-[0px]  gap-[5px] mtab:gap-[14px]">
       {stars.slice(0, userRating).map((star, index) => {
         return (
           <span
