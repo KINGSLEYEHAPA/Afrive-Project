@@ -51,28 +51,34 @@ const MobileMenu = ({ setOpenMobile }) => {
                 Your e-books
               </p>
             </Link>
-            <Link to="/myorders-mobile">
-              <p
-                onClick={() => setOpenMobile(false)}
-                className="text-bodyN text-neutral-70 hover:text-primary-50"
-              >
-                Your Orders
-              </p>
-            </Link>
+            {user && (
+              <Link to="/myorders-mobile">
+                <p
+                  onClick={() => setOpenMobile(false)}
+                  className="text-bodyN text-neutral-70 hover:text-primary-50"
+                >
+                  Your Orders
+                </p>
+              </Link>
+            )}
             <div className="flex items-center justify-center gap-[6px]">
               <p className="text-bodyN text-neutral-70 hover:text-primary-50">
                 Take our Quiz
               </p>
               <span className=" w-[4.87px] h-[4.87px]  bg-primary-50 rounded-full"></span>
             </div>
-            <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-              Billing/Payment
-            </p>
-            <Link to="/coupon">
-              <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-                Coupons & Vouchers
-              </p>
-            </Link>
+            {user && (
+              <>
+                <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+                  Billing/Payment
+                </p>
+                <Link to="/coupon">
+                  <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+                    Coupons & Vouchers
+                  </p>
+                </Link>{" "}
+              </>
+            )}
             <p className="text-bodyN text-neutral-70 hover:text-primary-50">
               Support
             </p>
