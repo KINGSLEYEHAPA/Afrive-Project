@@ -63,11 +63,11 @@ const BookSection = ({ bookSectionName, emoji }) => {
       : bookSectionName === "New Arrivals" &&
         searchWidth.width <= 1366 &&
         searchWidth.width >= 540
-      ? 0
+      ? 9
       : bookSectionName === "New Arrivals" &&
         searchWidth.width < 540 &&
         searchWidth.width >= 360
-      ? 0
+      ? 9
       : bookSectionName === "On Sale" &&
         searchWidth.width <= 1366 &&
         searchWidth.width >= 540
@@ -79,22 +79,22 @@ const BookSection = ({ bookSectionName, emoji }) => {
       : bookSectionName === "Similar Books" &&
         searchWidth.width <= 1366 &&
         searchWidth.width >= 540
-      ? 2
+      ? 16
       : bookSectionName === "Similar Books" &&
         searchWidth.width < 540 &&
         searchWidth.width >= 360
-      ? 2
+      ? 16
       : bookSectionName === "Similar Books"
       ? 0
       : bookSectionName === "Popular Books"
-      ? 1
+      ? 5
       : bookSectionName === "BestSellers"
-      ? 2
+      ? 1
       : bookSectionName === "New Arrivals"
       ? 3
       : bookSectionName === "On Sale"
-      ? 4
-      : 5;
+      ? 10
+      : 14;
 
   const sectionReferenceEnd =
     bookSectionName === "Popular Books" &&
@@ -116,11 +116,11 @@ const BookSection = ({ bookSectionName, emoji }) => {
       : bookSectionName === "New Arrivals" &&
         searchWidth.width <= 1366 &&
         searchWidth.width >= 540
-      ? 3
+      ? 12
       : bookSectionName === "New Arrivals" &&
         searchWidth.width < 540 &&
         searchWidth.width >= 360
-      ? 2
+      ? 11
       : bookSectionName === "On Sale" &&
         searchWidth.width <= 1366 &&
         searchWidth.width >= 540
@@ -136,18 +136,18 @@ const BookSection = ({ bookSectionName, emoji }) => {
       : bookSectionName === "Similar Books" &&
         searchWidth.width < 540 &&
         searchWidth.width >= 360
-      ? 4
+      ? 19
       : bookSectionName === "Similar Books"
       ? 4
       : bookSectionName === "Popular Books"
-      ? 5
+      ? 9
       : bookSectionName === "BestSellers"
-      ? 6
+      ? 5
       : bookSectionName === "New Arrivals"
       ? 7
       : bookSectionName === "On Sale"
-      ? 7
-      : 7;
+      ? 14
+      : 18;
   return (
     <div className="w-screen max-w-[1440px] mx-auto mb-[32.13px] mtab:mb-[40.15px] tab:mb-[55.51px] desk:mb-[56.51px] flex justify-center items-center">
       {" "}
