@@ -226,8 +226,8 @@ const Checkout = () => {
             </div>
           </div>
 
-          <hr className="w-0 h-[753.86px] border border-primary-10 absolute rotate-180 left-[50%]    " />
-          <div className="w-1/2 h-[353px]   mtab:pl-[24px]  tab:pl-[29px]    lap:pl-[31.67px]  mtab:pr-[85px] tab:pr-[192px]    lap:pr-[185.33px]">
+          {/* <hr className="w-0 h-[753.86px] border border-primary-10 absolute rotate-180 left-[50%]    " /> */}
+          <div className="w-1/2 h-[353px]   mtab:pl-[24px]  tab:pl-[29px]    lap:pl-[31.67px]  mtab:pr-[85px] tab:pr-[192px]    lap:pr-[185.33px]  border-l border-primary-10 ">
             <div className="w-full h-[24px] flex justify-between ">
               <p className="    mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Subtotal

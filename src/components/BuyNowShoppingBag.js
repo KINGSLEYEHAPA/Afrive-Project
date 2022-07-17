@@ -245,8 +245,8 @@ const BuyNowShoppingBag = () => {
             </AnimatePresence>
           </div>
 
-          <hr className="w-0 h-[753.86px] border border-primary-10 absolute rotate-180 left-[50%]    " />
-          <div className="w-1/2 h-[353px]   mtab:pl-[24px]  tab:pl-[29px]    lap:pl-[31.67px]  mtab:pr-[85px] tab:pr-[192px]    lap:pr-[185.33px]">
+          {/* <hr className="w-0 h-[753.86px] border border-primary-10 absolute rotate-180 left-[50%]    " /> */}
+          <div className="w-1/2 h-[353px]   mtab:pl-[24px]  tab:pl-[29px]    lap:pl-[31.67px]  mtab:pr-[85px] tab:pr-[192px]    lap:pr-[185.33px]    border-l border-primary-10  ">
             <div className="w-full h-[24px] flex justify-between ">
               <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Subtotal
@@ -319,7 +319,7 @@ const BuyNowShoppingBag = () => {
       <div className=" mtab:hidden   w-full min-h-screen mt-[68px] py-[17px] px-[23px] mobx:px-[60px]">
         <div
           onClick={() => navigate(-1)}
-          className="w-full  h-[96px] flex justify-start items-center gap-0  "
+          className="w-full  h-[32px] flex justify-start items-center gap-0  "
         >
           <span className="text-[18px]">
             <MdChevronLeft />
@@ -328,7 +328,7 @@ const BuyNowShoppingBag = () => {
             Back
           </p>
         </div>
-        <div className="w-full  h-[24px]    flex justify-center items-center mt-[-25px]">
+        <div className="w-full  h-[24px]    flex justify-center items-center mt-[-10px]">
           <h4 className=" text-bodyN  font-reg text-neutral-30 ">Buy Now</h4>
         </div>
         <div className="w-full h-3/5  mt-[32px] ">

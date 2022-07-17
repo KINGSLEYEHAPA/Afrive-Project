@@ -72,7 +72,7 @@ const Header = ({
 
       {openMobile && <MobileMenu setOpenMobile={setOpenMobile} />}
 
-      <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mtab:pl-[99.69px] pr-[10]">
+      <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mobx:pl-[20.14px]   mtab:pl-[68.69px] tab:pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
           <Link to="/">
             {" "}
@@ -124,7 +124,7 @@ const Header = ({
         </div>
       </div>
 
-      <div className="  mr-[27px] mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
+      <div className="translate-y-[-3px] mtab:translate-y-[0px]   mr-[27px] mtab:mr-[72.1px]   tab-mr-[86.10px]  lap:mr-[123.17px]  desk:mr-[183.17px] w-[185.83px] h-full flex gap-[38.55px] justify-center relative ">
         <AnimatePresence>
           <AnimateSharedLayout>
             {showSearch && searchWidth.width > 1024 && (

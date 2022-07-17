@@ -21,7 +21,7 @@ const Homepage = () => {
         id="home"
       >
         <HeroSection />
-        <RecommendedBooks />
+        {user && <RecommendedBooks />}
         {/* ? " mtab:mt-[-56px] tab:mt-[-20px]  lap:mt-[20.55px] desk:mt-[56px] " */}
         <div
           className={

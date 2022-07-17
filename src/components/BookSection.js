@@ -170,7 +170,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
           </Link>
         </div>
 
-        <div className="w-full  h-[272.97px] mtab:h-[333.44px] tab:h-[396.75px]   lap:h-[375.39px]  desk:h-[397.54px] mt-[32px] grid grid-cols-2  mobx:grid-cols-3  lap:grid-cols-4 px-0  gap-[54.37px] justify-items-center        ">
+        <div className="w-full  h-[272.97px] mtab:h-[333.44px] tab:h-[396.75px]   lap:h-[375.39px]  desk:h-[397.54px] mt-[32px] grid grid-cols-2  mobx:grid-cols-3  lap:grid-cols-4 px-0  gap-[54.37px] justify-items-center mt-[16px] mtab:mt-[32px] lap:mt-[40px]        ">
           {availableBooks?.data
             .slice(sectionReferenceStart, sectionReferenceEnd)
             .map((book) => {
