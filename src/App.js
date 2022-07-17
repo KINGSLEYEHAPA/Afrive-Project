@@ -23,6 +23,7 @@ function App() {
     isGoogleError,
     resetMessage,
     isverified,
+    logoutMessage,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -30,12 +31,20 @@ function App() {
     setTimeout(() => {
       dispatch(reset());
     }, 3000);
-  }, [isError, isGoogleError, isSuccess, user, resetMessage, isverified]);
+  }, [
+    isError,
+    isGoogleError,
+    isSuccess,
+    user,
+    resetMessage,
+    isverified,
+    logoutMessage,
+  ]);
 
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto p-0 relative">
       <AnimatePresence>
-        {(isError || isGoogleError || isSuccess) && (
+        {(isError || isGoogleError || isSuccess || logoutMessage) && (
           <motion.div
             initial={{ opacity: 0, x: 1000 }}
             animate={{
@@ -52,6 +61,7 @@ function App() {
             {errorMessage.length < 100 && errorMessage}
             {resetMessage}
             {isverified?.data}
+            {logoutMessage}
           </motion.div>
         )}
       </AnimatePresence>

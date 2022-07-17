@@ -17,6 +17,7 @@ const initialState = {
   passwordResetEmail: null,
   userInfo: null,
   deliveryAddress: null,
+  logoutMessage: null,
 };
 
 export const register = createAsyncThunk(
@@ -161,6 +162,7 @@ const userSlice = createSlice({
       state.isGoogleError = false;
       state.verified = null;
       state.resetMessage = null;
+      state.logoutMessage = null;
     },
     addUserInfo: (state, action) => {
       state.userInfo = action.payload;
@@ -247,6 +249,7 @@ const userSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+        state.logoutMessage = "Logged Out Successfully";
       })
       .addCase(googleLogin.fulfilled, (state, action) => {
         state.google = action.payload.data;
