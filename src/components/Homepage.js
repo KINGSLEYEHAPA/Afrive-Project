@@ -21,11 +21,20 @@ const Homepage = () => {
         id="home"
       >
         <HeroSection />
-        {/* {user && <RecommendedBooks />} */}
-        <BookSection bookSectionName="Popular Books" />
-        <BookSection bookSectionName="BestSellers" />
-        <BookSection bookSectionName="New Arrivals" />
-        <BookSection bookSectionName="On Sale" emoji={fire} />
+        <RecommendedBooks />
+        {/* ? " mtab:mt-[-56px] tab:mt-[-20px]  lap:mt-[20.55px] desk:mt-[56px] " */}
+        <div
+          className={
+            user
+              ? " mt-[32.13px]  mobx:mt-[40.15px]  tab:mt-[56.55px]  lap:mt-[55px]   desk:mt-[56px]"
+              : "mt-[5.14px]  mobx:mt-[40.15px]  tab:mt-[56.55px]  lap:mt-[55px]   desk:mt-[56px]"
+          }
+        >
+          <BookSection bookSectionName="Popular Books" />
+          <BookSection bookSectionName="BestSellers" />
+          <BookSection bookSectionName="New Arrivals" />
+          <BookSection bookSectionName="On Sale" emoji={fire} />
+        </div>
         <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">
           <div className="  h-[96px] flex justify-start items-center gap-[5px]  ">
             <span className=" text-[15px]   lap:text-[25px]">

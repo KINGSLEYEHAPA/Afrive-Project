@@ -149,11 +149,11 @@ const BookSection = ({ bookSectionName, emoji }) => {
       ? 7
       : 7;
   return (
-    <div className="w-screen max-w-[1440px] mx-auto mt-[32.13px] mtab:mt-[40.15px] tab:mt-[55.51px] desk:mt-[56.51px] flex justify-center items-center">
+    <div className="w-screen max-w-[1440px] mx-auto mb-[32.13px] mtab:mb-[40.15px] tab:mb-[55.51px] desk:mb-[56.51px] flex justify-center items-center">
       {" "}
       <div className="  h-[306.97px] mobx:h-[360px] mtab-h-[389.44px] tab:h-[460.75px] lap:h-[447.39px]  desk:h-[469.54px] w-screen  tab:mx-[86px]      ml-[12.63%] mr-[12.63%]    lap:ml-[12.63%] lap:mr-[12.63%] p-0 flex flex-col   ">
         <div className=" w-full h-[32px]  flex justify-between  items-center  ">
-          <div className="flex items-center gap-[7px] translate-x-[-11%] mobx:translate-x-[-22%] moby:translate-x-[5%] mobm:translate-x-[-25%] ltab:translate-x-[20%] l2tab:translate-x-[50%] lap:translate-x-[0%]">
+          <div className="flex items-center gap-[7px] translate-x-[-11%] mobx:translate-x-[-20%] moby:translate-x-[8%] mobm:translate-x-[-20%] mtab:translate-x-[-8%] tab:translate-x-[10%] ltab:translate-x-[20%] l2tab:translate-x-[45%] lap:translate-x-[0%]">
             <h3 className="  text-bodyS mtab:text-bodyL tab:text-h4 desk:text-h3 font-reg text-neutral-70">
               {bookSectionName}
             </h3>
@@ -162,7 +162,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
             )}
           </div>
           <Link to={`/all-books/${bookSectionName}`}>
-            <p className=" ltab:translate-x-[-34%] l2tab:translate-x-[-70%] lap:translate-x-[0%]  text-neutral-30 hidden mtab:block  mtab:text-bodyN tab:text-bodyL hover:text-neutral-80 cursor-pointer">
+            <p className=" tab:translate-x-[-18%] ltab:translate-x-[-34%] l2tab:translate-x-[-70%] lap:translate-x-[0%]  text-neutral-30 hidden mtab:block  mtab:text-bodyN tab:text-bodyL hover:text-neutral-80 cursor-pointer">
               see more
             </p>
           </Link>

@@ -58,7 +58,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full ">
+    <div className="w-full h-[238.86px] mtab:h-[339px] tab:h-[495px] ">
       <PageSlider
         currentPage={currentPage}
         direction={direction}
