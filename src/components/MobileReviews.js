@@ -10,6 +10,7 @@ import LiveRating from "./LiveRating";
 import { Link as ALink } from "react-scroll";
 import {
   commentOnABook,
+  getAllBooks,
   sendComment,
   updateComment,
 } from "../features/books/bookSlice";
@@ -29,7 +30,7 @@ const MobileReviews = ({ book }) => {
   const [reviewInput, setReviewInput] = useState("");
 
   const comment = {
-    id: book.id,
+    id: book?.id,
     commentData: {
       comment: userReview,
       rate: rating,
@@ -37,7 +38,7 @@ const MobileReviews = ({ book }) => {
   };
 
   const commentUpdate = {
-    id: book.id,
+    id: book?.id,
     commentData: {
       comment: userReview,
       rate: rating,
@@ -117,6 +118,11 @@ const MobileReviews = ({ book }) => {
                 see more
               </p>
             </div>
+            {book?.bookRating?.ratings.length === 0 && (
+              <div className="mt-[72px] text-center text-neutral-30">
+                There is no review yet for this book.
+              </div>
+            )}
             <div className="mt-[24px]   overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[420px] my-[10px] ">
               {book?.bookRating?.ratings?.map((rating, index) => {
                 return (
@@ -237,7 +243,10 @@ const MobileReviews = ({ book }) => {
                 Your Review has been successfully submitted!{" "}
               </h4>
               <button
-                onClick={() => setWriteAReview(0)}
+                onClick={() => {
+                  setWriteAReview(0);
+                  dispatch(getAllBooks());
+                }}
                 className="h-[38px] w-[155px]  text-bodyS text-primary-50 rounded-[4px] border border-primary-40 "
               >
                 Back to Reviews

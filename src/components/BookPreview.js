@@ -35,7 +35,7 @@ const BookPreview = () => {
   let params = useParams();
   let navigate = useNavigate();
 
-  const selectedBook = availableBooks?.data.find((item) => {
+  const selectedBook = availableBooks?.data?.find((item) => {
     return item.title === params.bookId;
   });
 
@@ -91,6 +91,8 @@ const BookPreview = () => {
   //     dispatch(buyBookNow(book));
   //   }
   // };
+
+  console.log(selectedBook);
 
   const addItemToBag = (book, item) => {
     if (eBookPreview && format) {
@@ -233,7 +235,7 @@ const BookPreview = () => {
             </div>
             <div className=" h-[64px]   mtab:h-[57px]     lap:h-[64px] w-full mb-[18.18px]">
               <p className=" text-sub mtab:text-[16px] mtab:leading-[28px]     lap:text-[18px] lap:leading-8 font-reg text-neutral-70 w-full">
-                {selectedBook?.description}
+                {selectedBook?.description.slice(0, 150)}
               </p>
             </div>
             <div className=" moby:mt-[-30px] mtab:mt-[25px] w-full flex justify-start items-center h-[24px] gap-[0] tab:gap-[25px]     desk:gap-[40px]">
@@ -496,7 +498,7 @@ const BookPreview = () => {
 
         <CustomerBookReview book={selectedBook} />
         <MobileReviews book={selectedBook} />
-        <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-30 mt-[15px] " />
+        <hr className=" mtab:hidden w-[100%] mx-auto  h-0 border-1 border-primary-30 mt-[15px] mb-[25px] " />
         <BookSection bookSectionName="Similar Books" />
         <BookSection bookSectionName="BestSellers" />
         <div className="w-full mt-[72.51px] flex justify-end items-center pr-[24px] mtab:pr-[71.14px] lap:pr-[117.23px] mb-[-19px]">

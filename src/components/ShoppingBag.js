@@ -256,19 +256,20 @@ const ShoppingBag = () => {
                           {!book?.eBook?.status && (
                             <div className="w-[111px] h-[30px] mt-[53.86px] flex justify-between items-center gap-[11px]">
                               <span
-                                onClick={() => incrementQuantity(index)}
-                                className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
-                              >
-                                +
-                              </span>
-                              <span className="text-bodyL text-primary-50 font-reg">
-                                {book.quantity}
-                              </span>
-                              <span
                                 onClick={() => decrementQuantity(index)}
                                 className=" cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
                               >
                                 -
+                              </span>
+                              <span className="text-bodyL text-primary-50 font-reg">
+                                {book.quantity}
+                              </span>
+
+                              <span
+                                onClick={() => incrementQuantity(index)}
+                                className="cursor-pointer w-[30px] h-[30px] rounded-full bg-primary-50 flex items-center justify-center text-[18px] leading-5 text-neutral-white"
+                              >
+                                +
                               </span>
                             </div>
                           )}
@@ -439,19 +440,19 @@ const ShoppingBag = () => {
                           {!book?.eBook?.status && (
                             <div className="w-[75px] h-[24px]  flex justify-between items-center  gap-[10px]">
                               <span
-                                onClick={() => incrementQuantity(index)}
-                                className="cursor-pointer w-[24px] h-[24px] rounded-full bg-primary-40 flex items-center justify-center text-[14px] leading-4 text-neutral-white"
+                                onClick={() => decrementQuantity(index)}
+                                className=" cursor-pointer w-[24px] h-[24px] rounded-full bg-primary-40 flex items-center justify-center text-[14px] leading-4 text-neutral-white"
                               >
-                                +
+                                -
                               </span>
                               <span className="text-[14.63px] leading-5 text-primary-40 font-reg">
                                 {book.quantity}
                               </span>
                               <span
-                                onClick={() => decrementQuantity(index)}
-                                className=" cursor-pointer w-[24px] h-[24px] rounded-full bg-primary-40 flex items-center justify-center text-[14px] leading-4 text-neutral-white"
+                                onClick={() => incrementQuantity(index)}
+                                className="cursor-pointer w-[24px] h-[24px] rounded-full bg-primary-40 flex items-center justify-center text-[14px] leading-4 text-neutral-white"
                               >
-                                -
+                                +
                               </span>
                             </div>
                           )}

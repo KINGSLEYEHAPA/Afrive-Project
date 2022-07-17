@@ -154,9 +154,11 @@ const BookSection = ({ bookSectionName, emoji }) => {
       <div className="  h-[306.97px] mobx:h-[360px] mtab-h-[389.44px] tab:h-[460.75px] lap:h-[447.39px]  desk:h-[469.54px] w-screen  tab:mx-[86px]      ml-[12.63%] mr-[12.63%]    lap:ml-[12.63%] lap:mr-[12.63%] p-0 flex flex-col   ">
         <div className=" w-full h-[32px]  flex justify-between  items-center  ">
           <div className="flex items-center gap-[7px] translate-x-[-11%] mobx:translate-x-[-20%] moby:translate-x-[8%] mobm:translate-x-[-20%] mtab:translate-x-[-8%] tab:translate-x-[10%] ltab:translate-x-[20%] l2tab:translate-x-[45%] lap:translate-x-[0%]">
-            <h3 className="  text-bodyS mtab:text-bodyL tab:text-h4 desk:text-h3 font-reg text-neutral-70">
-              {bookSectionName}
-            </h3>
+            <Link to={`/all-books/${bookSectionName}`}>
+              <h3 className="  text-bodyS mtab:text-bodyL tab:text-h4 desk:text-h3 font-reg text-neutral-70">
+                {bookSectionName}
+              </h3>
+            </Link>
             {bookSectionName === "On Sale" && (
               <img className="w-[20px] h-[20px]" src={emoji} alt="" />
             )}

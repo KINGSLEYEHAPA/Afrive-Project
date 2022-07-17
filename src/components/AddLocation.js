@@ -40,7 +40,7 @@ const AddLocation = ({ setChangeLocation }) => {
           <AiOutlineClose />
         </span>
       </div>
-      <div className="flex items-center justify-between lap:block">
+      <div className=" w-full flex items-center justify-between lap:block ">
         <p className="font-medium text-neutral-70 text-bodyN  mb-[32px]    mtab:mb-[26px]   lap:mb-[22px]">
           Choose a Location
         </p>
@@ -51,7 +51,7 @@ const AddLocation = ({ setChangeLocation }) => {
           <AiOutlineClose />
         </span>
       </div>
-      <div className=" w-full mtab:w-[327px] tab:w-[350px]  lap:w-[424.71]  mtab:h-[171px]     lap:h-[207px]  ">
+      <div className=" w-full mtab:w-[327px] tab:w-[350px]  lap:w-[424.71] desk:w-[437px]  mtab:h-[171px]     lap:h-[207px] ">
         <input
           type="text"
           placeholder="House Address"

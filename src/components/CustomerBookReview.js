@@ -9,6 +9,7 @@ import { AnimateSharedLayout } from "framer-motion";
 import LiveRating from "./LiveRating";
 import {
   commentOnABook,
+  getAllBooks,
   sendComment,
   updateComment,
 } from "../features/books/bookSlice";
@@ -127,7 +128,7 @@ const CustomerBookReview = ({ book }) => {
   // };
 
   const comment = {
-    id: book.id,
+    id: book?.id,
     commentData: {
       comment: userReview,
       rate: rating,
@@ -135,7 +136,7 @@ const CustomerBookReview = ({ book }) => {
   };
 
   const commentUpdate = {
-    id: book.id,
+    id: book?.id,
     commentData: {
       comment: userReview,
       rate: rating,
@@ -205,6 +206,11 @@ const CustomerBookReview = ({ book }) => {
                   see more
                 </p>
               </div>
+              {book?.bookRating?.ratings.length === 0 && (
+                <div className="mt-[72px] text-center text-neutral-30 text-bodyN">
+                  There is no review yet for this book.
+                </div>
+              )}
               <div className=" overflow-hidden overflow-y-auto  scrollbar-hide w-full h-[348px] mtab:my-[-10px] tab:my-[20px] ">
                 {book?.bookRating?.ratings?.map((rating, index) => {
                   return (
@@ -287,7 +293,10 @@ const CustomerBookReview = ({ book }) => {
                 Your Review has been successfully submitted!{" "}
               </h4>
               <button
-                onClick={() => setWriteAReview(0)}
+                onClick={() => {
+                  setWriteAReview(0);
+                  dispatch(getAllBooks());
+                }}
                 className="h-[52px] w-[196px] text-primary-50 rounded-[4px] border border-primary-40 "
               >
                 Back to Reviews
