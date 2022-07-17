@@ -132,11 +132,11 @@ const BookSection = ({ bookSectionName, emoji }) => {
       : bookSectionName === "Similar Books" &&
         searchWidth.width <= 1366 &&
         searchWidth.width >= 540
-      ? 5
+      ? 19
       : bookSectionName === "Similar Books" &&
         searchWidth.width < 540 &&
         searchWidth.width >= 360
-      ? 19
+      ? 18
       : bookSectionName === "Similar Books"
       ? 4
       : bookSectionName === "Popular Books"

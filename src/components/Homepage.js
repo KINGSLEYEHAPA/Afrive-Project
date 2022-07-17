@@ -27,7 +27,7 @@ const Homepage = () => {
           className={
             user
               ? " mt-[32.13px]  mobx:mt-[40.15px]  tab:mt-[56.55px]  lap:mt-[55px]   desk:mt-[56px]"
-              : "mt-[5.14px]  mobx:mt-[40.15px]  tab:mt-[56.55px]  lap:mt-[55px]   desk:mt-[56px]"
+              : "mt-[25.14px]  mobx:mt-[40.15px]  tab:mt-[56.55px]  lap:mt-[55px]   desk:mt-[56px]"
           }
         >
           <BookSection bookSectionName="Popular Books" />

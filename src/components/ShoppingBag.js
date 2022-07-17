@@ -140,8 +140,8 @@ const ShoppingBag = () => {
             Your Shopping Bag
           </h4>
         </div>
-        <div className="w-full h-[753.86px] flex items-start justify-start gap-0 relative mtab:mt-[48px] tab:mt-[52px]  lap:mt-[72px]">
-          <div className="w-1/2 h-full mtab:pl-[72px] tab:pl-[86px] lap:pl-[193px]  desk:pl-[181px] mtab:pr-[24px] tab:pr-[50px]  lap:pr-[40px] desk:pr-[10px] overflow-hidden ">
+        <div className="w-full  h-[753.86px] flex items-start justify-start gap-0 relative mtab:mt-[48px] tab:mt-[52px]  lap:mt-[72px]">
+          <div className="w-1/2   h-full mtab:pl-[72px] tab:pl-[86px] lap:pl-[193px]  desk:pl-[181px] mtab:pr-[24px] tab:pr-[50px]  lap:pr-[40px] desk:pr-[10px] overflow-hidden   ">
             <div className=" overflow-y-auto scrollbar-hide w-full h-full ">
               <AnimatePresence>
                 {shoppingBagBooks.map((book, index) => {
@@ -291,7 +291,7 @@ const ShoppingBag = () => {
           </div>
 
           {/* <hr className="w-0 h-[753.86px] border border-primary-10 absolute rotate-180 left-[50%]    " /> */}
-          <div className="w-1/2 h-[353px]   mtab:pl-[24px]  tab:pl-[29px]    lap:pl-[31.67px]  mtab:pr-[85px] tab:pr-[192px]    lap:pr-[185.33px]  border-l border-primary-10       ">
+          <div className="w-1/2    h-[353px]   mtab:pl-[24px]  tab:pl-[29px]    lap:pl-[31.67px]  mtab:pr-[85px] tab:pr-[192px]    lap:pr-[185.33px]   border-l border-primary-10     ">
             <div className="w-full h-[24px] flex justify-between ">
               <p className="    mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Subtotal

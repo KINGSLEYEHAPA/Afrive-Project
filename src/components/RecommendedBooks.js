@@ -56,7 +56,7 @@ const RecommendedBooks = () => {
   return (
     <div className="w-screen max-w-[1440px] mx-auto  flex justify-center items-center">
       {" "}
-      <div className=" h-[619.94px]  mobx:h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px] lap:h-[532.52px] w-screen   mtab:max-w-[83.25%]    mobx:mx-[10%]   mtab-mx-[8.37%]      tab:max-w-[83.20%]   lap:max-w-[74.45%]      tab:mx-[8.39%]  lap:ml-[12.63%] lap:mr-[12.63%]     desk:ml-[12.77%] desk:mr-[12.76%]      p-0 mt-[5.14px] mobx:mt-[40px]   tab:mt-[56px]  lap:mt-[72px] ">
+      <div className=" h-[619.94px]  mobx:h-[309.97px] mtab:h-[389.04px] tab:h-[476.77px] lap:h-[532.52px] w-screen   mtab:max-w-[83.25%]    mobx:mx-[10%]   mtab-mx-[8.37%]      tab:max-w-[83.20%]   lap:max-w-[74.45%]      tab:mx-[8.39%]  lap:ml-[12.63%] lap:mr-[12.63%]     desk:ml-[12.77%] desk:mr-[12.76%]      p-0 mt-[25.14px] mobx:mt-[40px]   tab:mt-[56px]  lap:mt-[72px] ">
         <div className="w-full h-[32px]  flex justify-between items-center    ">
           <h3 className="font-medium text-bodyN tab:text-h3 text-neutral-30 whitespace-nowrap  hidden mobx:block mobx:translate-x-[1%] moby:translate-x-[5%] mobm:translate-x-[-25%] mtab:translate-x-[8%]  tab:translate-x-[5%] ltab:translate-x-[8%] l2tab:translate-x-[12%] lap:translate-x-[0%]">
             <span className="text-neutral-80">For you:</span> Recommended based
