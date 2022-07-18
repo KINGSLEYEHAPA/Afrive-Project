@@ -29,13 +29,12 @@ const ServerMessages = () => {
     }
 
     if (isSuccess) {
-      dispatch(reset());
-      setUrl(null);
-      if (location.state?.from) {
-        navigate(location.state.from);
-      } else {
+      setTimeout(() => {
+        dispatch(reset());
+        setUrl(null);
+
         navigate("/");
-      }
+      }, 4000);
     }
   }, [url]);
   useEffect(() => {
