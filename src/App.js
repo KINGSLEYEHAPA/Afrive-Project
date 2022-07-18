@@ -71,6 +71,8 @@ function App() {
             {errorMessage.length < 100 && errorMessage}
             {errorMessage.toLowerCase().includes("already exist") &&
               "Email already exist"}
+            {errorMessage.toLowerCase().includes("not found") &&
+              "User does not exist"}
             {resetMessage}
             {isverified?.data}
             {logoutMessage}
