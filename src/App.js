@@ -70,7 +70,6 @@ function App() {
             className=" text-bodyS   mtab:text-bodyL  tab:text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-50   w-[200px]  mtab:w-300px    tab:w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
           >
             {errorMessage === "Network Error" && "Please try again later."}
-            {errorMessage?.length < 100 && errorMessage}
             {errorMessage?.toLowerCase().includes("already exist") &&
               "Email already exist"}
             {errorMessage?.toLowerCase().includes("not found") &&
