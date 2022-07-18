@@ -20,6 +20,7 @@ const initialState = {
   logoutMessage: null,
   registerMessage: null,
   verifiedMessage: null,
+  loginMessage: null,
 };
 
 export const register = createAsyncThunk(
@@ -167,6 +168,7 @@ const userSlice = createSlice({
       state.logoutMessage = null;
       state.registerMessage = null;
       state.verifiedMessage = null;
+      state.loginMessage = null;
     },
     addUserInfo: (state, action) => {
       state.userInfo = action.payload;
@@ -246,6 +248,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
+        state.loginMessage = "Login was Successful";
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -267,6 +270,7 @@ const userSlice = createSlice({
       .addCase(verifyGoogleLogin.fulfilled, (state, action) => {
         state.isLoadingGoogle = false;
         state.isSuccess = true;
+        state.loginMessage = "Login was Successful";
         state.user = action.payload;
       })
       .addCase(verifyGoogleLogin.rejected, (state, action) => {

@@ -26,6 +26,7 @@ function App() {
     logoutMessage,
     registerMessage,
     verifiedMessage,
+    loginMessage,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -43,12 +44,17 @@ function App() {
     logoutMessage,
     errorMessage,
     verifiedMessage,
+    loginMessage,
   ]);
 
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto p-0 relative">
       <AnimatePresence>
-        {(isError || isGoogleError || isSuccess || logoutMessage,
+        {(isError ||
+          isGoogleError ||
+          isSuccess ||
+          logoutMessage ||
+          loginMessage,
         registerMessage,
         errorMessage) && (
           <motion.div
@@ -70,6 +76,7 @@ function App() {
             {logoutMessage}
             {registerMessage}
             {verifiedMessage}
+            {loginMessage}
           </motion.div>
         )}
       </AnimatePresence>
