@@ -97,7 +97,6 @@ const ShoppingBag = () => {
     });
   };
 
-  console.log(shoppingBagBooks);
   const removeBookAsFavorite = (book) => {
     dispatch(removeFavoriteBook(book));
   };
@@ -299,18 +298,18 @@ const ShoppingBag = () => {
                 N{totalCostOfBooks.toLocaleString("en-US")}
               </p>
             </div>
-            <div className="w-full h-[24px] flex justify-between mt-[24px] ">
-              <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-80">
-                Coupon Discount:
-              </p>
-              <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-70">
-                -N{discountCoupon.toLocaleString("en-US")}
-              </p>
-            </div>
-            {/* <div className="w-full h-[24px] flex justify-between mt-[26px] ">
-              <p className="text-bodyL text-neutral-80">Standard Delivery:</p>
-              <p className="text-bodyL text-neutral-70">N3000</p>
-            </div> */}
+            {shoppingBagBooks?.length !== 0 && (
+              <div className="w-full h-[24px] flex justify-between mt-[24px] ">
+                <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-80">
+                  Coupon Discount:
+                </p>
+
+                <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-70">
+                  -N{discountCoupon.toLocaleString("en-US")}
+                </p>
+              </div>
+            )}
+
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Total to Pay:

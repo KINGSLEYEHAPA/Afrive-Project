@@ -255,14 +255,16 @@ const BuyNowShoppingBag = () => {
                 N{selectedBook?.totalAmount?.toLocaleString("en-US") || 0}
               </p>
             </div>
-            <div className="w-full h-[24px] flex justify-between mt-[26px] ">
-              <p className="mtab:text-bodyN  tab:text-bodyL text-neutral-80">
-                Coupon Discount:
-              </p>
-              <p className="mtab:text-bodyN  tab:text-bodyL text-neutral-70">
-                -N{discountCoupon?.toLocaleString("en-US")}
-              </p>
-            </div>
+            {selectedBook && (
+              <div className="w-full h-[24px] flex justify-between mt-[26px] ">
+                <p className="mtab:text-bodyN  tab:text-bodyL text-neutral-80">
+                  Coupon Discount:
+                </p>
+                <p className="mtab:text-bodyN  tab:text-bodyL text-neutral-70">
+                  -N{discountCoupon?.toLocaleString("en-US")}
+                </p>
+              </div>
+            )}
             <div className="w-full h-[24px] flex justify-between mt-[40px] ">
               <p className="mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Total to Pay:

@@ -70,7 +70,7 @@ const MyOrders = () => {
             return (
               <div
                 key={order?.txn_ref}
-                className="w-full h-[84px]  py-[5px] flex "
+                className="w-full h-[84px]  py-[5px] flex  translate-y-[-72px] "
               >
                 <p className="text-bodyL text-neutral-black mr-[20px]">
                   {index + 1}.
