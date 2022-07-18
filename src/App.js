@@ -41,10 +41,8 @@ function App() {
     user,
     resetMessage,
     isverified,
-    logoutMessage,
+
     errorMessage,
-    verifiedMessage,
-    loginMessage,
   ]);
 
   return (
