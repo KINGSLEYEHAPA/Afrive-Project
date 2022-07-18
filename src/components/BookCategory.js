@@ -14,7 +14,7 @@ import Loading from "./Loading";
 
 const BookCategory = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [booksPerPage] = useState(20);
+  const [booksPerPage] = useState(10);
   let params = useParams();
   const navigate = useNavigate();
   const availableBooks = useSelector((state) => state.books.booksFromServer);

@@ -20,7 +20,7 @@ import AnimatePages from "./AnimatePages";
 import BookQuote from "./BookQuote";
 
 const BuyNowShoppingBag = () => {
-  const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [discountCoupon, setDiscountCoupon] = useState(250);
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const shoppingBagBuyNow = useSelector(

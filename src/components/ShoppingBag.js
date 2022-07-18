@@ -20,7 +20,7 @@ import BookQuote from "./BookQuote";
 const ShoppingBag = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [discountCoupon, setDiscountCoupon] = useState(250);
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
 
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
