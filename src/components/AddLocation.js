@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addDeliveryLocation } from "../features/user/userSlice";
+import { motion } from "framer-motion";
 
 const AddLocation = ({ setChangeLocation }) => {
   const [houseAddress, setHouseAddress] = useState("");
@@ -31,7 +32,11 @@ const AddLocation = ({ setChangeLocation }) => {
     // }, 2000);
   };
   return (
-    <div className="  rounded-tr-[14px] rounded-tl-[14px]   mtab:rounded-tr-[0px] mtab:rounded-tl-[0px]  absolute mtab:static w-screen bottom-0 h-[313px]    mtab:w-[384px]  tab:w-[423px]   mtab:h-[289px]   lap:w-[505px]   lap:h-[350px] bg-neutral-white rounded-md pt-[24px]  mtab:pt-[28px] mtab:py-[40px]  px-[23px]  mtab:px-[36px] lap:p-[34px]">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1.2 } }}
+      className="  rounded-tr-[14px] rounded-tl-[14px]   mtab:rounded-tr-[0px] mtab:rounded-tl-[0px]  absolute mtab:static w-screen bottom-0 h-[313px]    mtab:w-[384px]  tab:w-[423px]   mtab:h-[289px]   lap:w-[505px]   lap:h-[350px] bg-neutral-white rounded-md pt-[24px]  mtab:pt-[28px] mtab:py-[40px]  px-[23px]  mtab:px-[36px] lap:p-[34px]"
+    >
       <div className=" hidden w-full lap:flex justify-end h-[12px]  mb-[12px]">
         <span
           onClick={() => setChangeLocation(false)}
@@ -82,7 +87,7 @@ const AddLocation = ({ setChangeLocation }) => {
           Save
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
