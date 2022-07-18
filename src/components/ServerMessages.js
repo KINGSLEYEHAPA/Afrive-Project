@@ -30,7 +30,6 @@ const ServerMessages = () => {
 
     if (isSuccess) {
       setTimeout(() => {
-        dispatch(reset());
         setUrl(null);
 
         navigate("/");
