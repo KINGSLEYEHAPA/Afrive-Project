@@ -73,6 +73,8 @@ function App() {
               "Email already exist"}
             {errorMessage.toLowerCase().includes("not found") &&
               "User does not exist"}
+            {errorMessage.toLowerCase().includes("the 'salt'") &&
+              "Password Incorrect"}
             {resetMessage}
             {isverified?.data}
             {logoutMessage}
