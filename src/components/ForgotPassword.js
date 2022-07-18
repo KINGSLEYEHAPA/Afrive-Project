@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
 
   const [recoverLink, setRecoverLink] = useState(false);
-  console.log(user);
+
   const recoverPassword = (e) => {
     e.preventDefault();
 

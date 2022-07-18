@@ -19,7 +19,6 @@ const AllBooks = () => {
   const navigate = useNavigate();
   const availableBooks = useSelector((state) => state.books.booksFromServer);
   const { isLoading } = useSelector((state) => state.books);
-  console.log(availableBooks);
 
   //   const bookCategory = availableBooks?.data.filter((item) => {
   //     return item.category.includes(params.catName);

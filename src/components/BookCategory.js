@@ -19,7 +19,6 @@ const BookCategory = () => {
   const navigate = useNavigate();
   const availableBooks = useSelector((state) => state.books.booksFromServer);
   const { isLoading } = useSelector((state) => state.books);
-  console.log(availableBooks);
 
   const bookCategory = availableBooks?.data.filter((item) => {
     // const bookCategory = availableBooksDummy.filter((item) => {

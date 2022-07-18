@@ -17,7 +17,7 @@ const MyOrders = () => {
   };
 
   const customerOrders = useSelector((state) => state.books.customerOrders);
-  console.log(customerOrders);
+
   return (
     <AnimatePages>
       <MobileOrders />

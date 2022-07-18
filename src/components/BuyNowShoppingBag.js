@@ -30,7 +30,7 @@ const BuyNowShoppingBag = () => {
   const [couponVoucher, setCouponVoucher] = useState(false);
   const [voucher, setVoucher] = useState("");
   const [selectedBook, setSelectedBook] = useState(null);
-  console.log(selectedBook);
+
   useEffect(() => {
     const book = {
       ...shoppingBagBuyNow,

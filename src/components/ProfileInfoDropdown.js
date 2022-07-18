@@ -68,28 +68,28 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         </p>
       </div>
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-      {user && (
-        <>
-          <Link to="/orders" onClick={() => setShowProfileInfo(false)}>
-            <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px] cursor-pointer hover:bg-primary-10">
-              My Orders
-            </h3>
-          </Link>
-          <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-          <Link to="/billing-address" onClick={() => setShowProfileInfo(false)}>
-            <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px]  cursor-pointer hover:bg-primary-10">
-              Billing Address
-            </h3>
-          </Link>
 
-          <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-          <Link to="/coupon" onClick={() => setShowProfileInfo(false)}>
-            <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px] cursor-pointer hover:bg-primary-10">
-              Coupons & Vouchers
-            </h3>
-          </Link>
-        </>
-      )}
+      <>
+        <Link to="/orders" onClick={() => setShowProfileInfo(false)}>
+          <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px] cursor-pointer hover:bg-primary-10">
+            My Orders
+          </h3>
+        </Link>
+        <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
+        <Link to="/billing-address" onClick={() => setShowProfileInfo(false)}>
+          <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px]  cursor-pointer hover:bg-primary-10">
+            Billing Address
+          </h3>
+        </Link>
+
+        <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
+        <Link to="/coupon" onClick={() => setShowProfileInfo(false)}>
+          <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px] cursor-pointer hover:bg-primary-10">
+            Coupons & Vouchers
+          </h3>
+        </Link>
+      </>
+
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
       <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] lap:h-[68px] tab:h-[44px] h-[42px]  py-[12px] lap:py-[16px] rounded-br-[8px] rounded-bl-[8px]  cursor-pointer hover:bg-primary-10">
         Support

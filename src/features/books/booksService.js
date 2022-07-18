@@ -21,7 +21,6 @@ const getAllBookCategories = async () => {
 };
 
 const sendComment = async (token, commentData, id) => {
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -35,7 +34,6 @@ const sendComment = async (token, commentData, id) => {
 };
 
 const updateComment = async (token, commentData, id) => {
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -48,7 +46,6 @@ const updateComment = async (token, commentData, id) => {
   return response.data;
 };
 const sendOrder = async (token, userOrder) => {
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -58,7 +55,6 @@ const sendOrder = async (token, userOrder) => {
 };
 
 const getOrder = async (token) => {
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -67,7 +63,6 @@ const getOrder = async (token) => {
   return response.data;
 };
 const deleteOrder = async (token, orderId) => {
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -89,7 +84,6 @@ const deleteOrder = async (token, orderId) => {
 //   return response.data;
 // };
 const verifyPay = async (token, reference) => {
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };

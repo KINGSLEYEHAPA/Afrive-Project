@@ -22,7 +22,7 @@ const ShoppingBag = () => {
   const dispatch = useDispatch();
   const [discountCoupon, setDiscountCoupon] = useState(1000);
   const shoppingBag = useSelector((state) => state.books.shoppingBag);
-  console.log(shoppingBag);
+
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const addBookAsFavorite = (book) => {
     dispatch(addAFavoriteBook(book));
@@ -53,7 +53,6 @@ const ShoppingBag = () => {
       return null;
     });
   });
-  console.log(totalCostOfBooks);
 
   const decrementQuantity = (index) => {
     const book = shoppingBagBooks[index];

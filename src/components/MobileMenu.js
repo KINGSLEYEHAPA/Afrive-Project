@@ -67,18 +67,18 @@ const MobileMenu = ({ setOpenMobile }) => {
               </p>
               <span className=" w-[4.87px] h-[4.87px]  bg-primary-50 rounded-full"></span>
             </div>
-            {user && (
-              <>
+
+            <>
+              <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+                Billing/Payment
+              </p>
+              <Link to="/coupon">
                 <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-                  Billing/Payment
+                  Coupons & Vouchers
                 </p>
-                <Link to="/coupon">
-                  <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-                    Coupons & Vouchers
-                  </p>
-                </Link>{" "}
-              </>
-            )}
+              </Link>{" "}
+            </>
+
             <p className="text-bodyN text-neutral-70 hover:text-primary-50">
               Support
             </p>

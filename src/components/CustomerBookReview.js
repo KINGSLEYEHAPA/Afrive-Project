@@ -165,12 +165,6 @@ const CustomerBookReview = ({ book }) => {
     if (rating !== null && userReview !== "") {
       // dispatch(commentOnABook(bookForComment));
 
-      console.log(
-        customerRatedBook,
-        user.data.firstname,
-        commentUpdate,
-        comment
-      );
       if (customerRatedBook) {
         dispatch(updateComment(commentUpdate));
         setRating(null);

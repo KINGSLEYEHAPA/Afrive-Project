@@ -47,7 +47,7 @@ const PageSlider = ({ currentPage, setPage, direction }) => {
   const navigate = useNavigate();
 
   const randomNumber = Math.floor(Math.random() * availableBooks?.data?.length);
-  console.log(randomNumber, availableBooks?.data?.[randomNumber]);
+
   const buyBook = (book) => {
     const bookUpdate = {
       ...book,

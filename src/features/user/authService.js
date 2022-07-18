@@ -13,9 +13,6 @@ const RESET_PASSWORD =
 const register = async (userData) => {
   const response = await axios.post(API_URL + "register", userData);
 
-  if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
-  }
   return response.data;
 };
 
@@ -49,6 +46,9 @@ const verifyRegister = async (url) => {
   const response = await axios.get(
     "https://afrive-book-store.herokuapp.com" + url
   );
+  if (response.data) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
 
   return response.data;
 };

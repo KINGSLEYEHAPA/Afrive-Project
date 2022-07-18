@@ -23,7 +23,6 @@ const SignIn = ({ setUserState }) => {
     isSuccess,
     isGoogleError,
   } = useSelector((state) => state.user);
-  console.log(user);
 
   useEffect(() => {
     if (isSuccess) {
@@ -64,7 +63,6 @@ const SignIn = ({ setUserState }) => {
     },
   ];
 
-  console.log(loginValues);
   const handleSignIn = (e) => {
     e.preventDefault();
     dispatch(login(loginValues));

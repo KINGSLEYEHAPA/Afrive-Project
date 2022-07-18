@@ -13,7 +13,6 @@ const LikedbookSection = () => {
   const dispatch = useDispatch();
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
-  console.log(booksInShoppingBag);
 
   const removeBookAsFavorite = (book) => {
     dispatch(removeFavoriteBook(book));

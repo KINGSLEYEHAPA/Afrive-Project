@@ -104,9 +104,6 @@ const Signup = ({ setUserState }) => {
     },
   ];
 
-  console.log(google);
-  console.log(user);
-
   const handleSignUp = (e) => {
     e.preventDefault();
 
@@ -136,7 +133,7 @@ const Signup = ({ setUserState }) => {
     <AnimatePages>
       <div className="w-screen tab:w-full  max-w-[1440px]  mx-auto  h-[1024px] flex justify-center items-center ">
         <div
-          className="hidden tab:block  tab:w-[273px] lap:w-[553px] h-[1024px] tab:pt-[99.54px] lap:pt-0 tab:px-[69px] lap:px-0   lap:flex justify-center items-center"
+          className="hidden tab:block  tab:w-[273px] lap:w-[553px] h-[1500px] tab:pt-[99.54px] lap:pt-0 tab:px-[69px] lap:px-0   lap:flex justify-center items-center"
           style={{ background: `url(${bgId})`, backgroundSize: "cover" }}
         >
           <div className="tab:w-[140px] tab:h-[54px]   lap:h-[133px]    lap:w-[256px]">

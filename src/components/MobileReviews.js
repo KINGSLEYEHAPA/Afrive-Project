@@ -20,7 +20,7 @@ import * as timeago from "timeago.js";
 const MobileReviews = ({ book }) => {
   const [writeAReview, setWriteAReview] = useState(0);
   const [userReview, setUserReview] = useState("");
-  console.log(userReview);
+
   const [rateABook, setRateABook] = useState(false);
   const [rating, setRating] = useState(null);
   const dispatch = useDispatch();
@@ -73,12 +73,6 @@ const MobileReviews = ({ book }) => {
     if (rating !== null && userReview !== "") {
       // dispatch(commentOnABook(bookForComment));
 
-      console.log(
-        customerRatedBook,
-        user.data.firstname,
-        commentUpdate,
-        comment
-      );
       if (customerRatedBook) {
         dispatch(updateComment(commentUpdate));
         setRating(null);

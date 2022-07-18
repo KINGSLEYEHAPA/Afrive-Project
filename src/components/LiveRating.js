@@ -5,7 +5,7 @@ import uuid from "uuid-random";
 
 const LiveRating = ({ setRateABook, rating, setRating }) => {
   const [hover, setHover] = useState(null);
-  console.log(rating);
+
   const stars = [1, 2, 3, 4, 5];
 
   const randomNumber = Math.random() * 1000000 + uuid();

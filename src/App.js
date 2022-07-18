@@ -41,6 +41,10 @@ function App() {
     user,
     resetMessage,
     isverified,
+    logoutMessage,
+    registerMessage,
+    verifiedMessage,
+    loginMessage,
 
     errorMessage,
   ]);
@@ -51,10 +55,10 @@ function App() {
         {(isError ||
           isGoogleError ||
           isSuccess ||
+          errorMessage ||
           logoutMessage ||
-          loginMessage,
-        registerMessage,
-        errorMessage) && (
+          loginMessage ||
+          registerMessage) && (
           <motion.div
             initial={{ opacity: 0, x: 1000 }}
             animate={{
@@ -66,13 +70,15 @@ function App() {
             className=" text-bodyS   mtab:text-bodyL  tab:text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-50   w-[200px]  mtab:w-300px    tab:w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
           >
             {errorMessage === "Network Error" && "Please try again later."}
-            {errorMessage.length < 100 && errorMessage}
-            {errorMessage.toLowerCase().includes("already exist") &&
+            {errorMessage?.length < 100 && errorMessage}
+            {errorMessage?.toLowerCase().includes("already exist") &&
               "Email already exist"}
-            {errorMessage.toLowerCase().includes("not found") &&
+            {errorMessage?.toLowerCase().includes("not found") &&
               "User does not exist"}
-            {errorMessage.toLowerCase().includes("the 'salt'") &&
-              "Password Incorrect"}
+            {errorMessage?.toLowerCase().includes("incorrect password") &&
+              "Your Password is Incorrect"}
+            {errorMessage?.toLowerCase().includes("salt") &&
+              "Reset your password"}
             {resetMessage}
             {isverified?.data}
             {logoutMessage}

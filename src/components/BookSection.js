@@ -15,8 +15,7 @@ const BookSection = ({ bookSectionName, emoji }) => {
   const booksInShoppingBag = useSelector((state) => state.books.shoppingBag);
   const availableBooks = useSelector((state) => state.books.booksFromServer);
   const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
-  console.log(availableBooks);
-  console.log(booksInShoppingBag);
+
   const dispatch = useDispatch();
 
   const addBookAsFavorite = (book) => {
