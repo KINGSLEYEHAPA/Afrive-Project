@@ -17,7 +17,7 @@ import { HiOutlineInformationCircle } from "react-icons/hi";
 const BuyNowCheckout = () => {
   const navigate = useNavigate();
   const [deliveryFee, setDeliveryFee] = useState(3000);
-  const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [discountCoupon, setDiscountCoupon] = useState(250);
   const [chooseDeliveryAddress, setChooseDeliveryAddress] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);

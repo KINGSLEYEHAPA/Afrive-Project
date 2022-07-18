@@ -18,7 +18,7 @@ import AddCard from "./AddCard";
 const Checkout = () => {
   const navigate = useNavigate();
   const [deliveryFee, setDeliveryFee] = useState(3000);
-  const [discountCoupon, setDiscountCoupon] = useState(1000);
+  const [discountCoupon, setDiscountCoupon] = useState(250);
   const [showPayment, setShowPayment] = useState(false);
   const [changeLocation, setChangeLocation] = useState(false);
   const [chooseDeliveryAddress, setChooseDeliveryAddress] = useState(false);
