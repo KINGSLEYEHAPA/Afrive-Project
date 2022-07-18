@@ -118,6 +118,7 @@ const BookPreview = () => {
       // dispatch(addToCart(bookUpdate.id));
     }
   };
+
   return (
     <AnimatePages>
       <div
@@ -235,7 +236,7 @@ const BookPreview = () => {
             </div>
             <div className=" h-[64px]   mtab:h-[57px]     lap:h-[64px] w-full mb-[18.18px]">
               <p className=" text-sub mtab:text-[16px] mtab:leading-[28px]     lap:text-[18px] lap:leading-8 font-reg text-neutral-70 w-full">
-                {selectedBook?.description.slice(0, 150)}
+                {selectedBook?.description.slice(0, 120)}
               </p>
             </div>
             <div className=" moby:mt-[-30px] mtab:mt-[25px] w-full flex justify-start items-center h-[24px] gap-[0] tab:gap-[25px]     desk:gap-[40px]">

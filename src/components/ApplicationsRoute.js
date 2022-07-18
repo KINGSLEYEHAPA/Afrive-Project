@@ -36,7 +36,7 @@ const ApplicationsRoute = () => {
             <Route index element={<Homepage />} />
             <Route path="/mobile-category" element={<CategoriesMobile />} />
             <Route path="/ebook-mobile" element={<MobileEbook />} />
-            <Route path="/myorders-mobile" element={<MobileOrders />} />
+            {/* <Route path="/myorders-mobile" element={<MobileOrders />} /> */}
             <Route path="/category/:catName" element={<BookCategory />} />
             <Route path="/all-books/:trendName" element={<AllBooks />} />
             <Route

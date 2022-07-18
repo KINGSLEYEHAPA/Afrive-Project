@@ -24,6 +24,8 @@ function App() {
     resetMessage,
     isverified,
     logoutMessage,
+    registerMessage,
+    verifiedMessage,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -39,12 +41,16 @@ function App() {
     resetMessage,
     isverified,
     logoutMessage,
+    errorMessage,
+    verifiedMessage,
   ]);
 
   return (
     <div className="w-screen min-h-screen max-w-[1440px] mx-auto p-0 relative">
       <AnimatePresence>
-        {(isError || isGoogleError || isSuccess || logoutMessage) && (
+        {(isError || isGoogleError || isSuccess || logoutMessage,
+        registerMessage,
+        errorMessage) && (
           <motion.div
             initial={{ opacity: 0, x: 1000 }}
             animate={{
@@ -55,13 +61,15 @@ function App() {
             exit={{ opacity: 0, x: 1000, transition: { duration: 1 } }}
             className=" text-bodyS   mtab:text-bodyL  tab:text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-50   w-[200px]  mtab:w-300px    tab:w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
           >
-            {user?.message}
-            {(errorMessage === "Network Error" || errorMessage.length > 100) &&
-              "Please try again later."}
+            {errorMessage === "Network Error" && "Please try again later."}
             {errorMessage.length < 100 && errorMessage}
+            {errorMessage.toLowerCase().includes("already exist") &&
+              "Email already exist"}
             {resetMessage}
             {isverified?.data}
             {logoutMessage}
+            {registerMessage}
+            {verifiedMessage}
           </motion.div>
         )}
       </AnimatePresence>

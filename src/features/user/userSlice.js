@@ -18,6 +18,8 @@ const initialState = {
   userInfo: null,
   deliveryAddress: null,
   logoutMessage: null,
+  registerMessage: null,
+  verifiedMessage: null,
 };
 
 export const register = createAsyncThunk(
@@ -163,6 +165,8 @@ const userSlice = createSlice({
       state.verified = null;
       state.resetMessage = null;
       state.logoutMessage = null;
+      state.registerMessage = null;
+      state.verifiedMessage = null;
     },
     addUserInfo: (state, action) => {
       state.userInfo = action.payload;
@@ -184,6 +188,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
+        state.registerMessage = "Registration successful,Check your mail";
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
@@ -199,6 +204,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.verified = action.payload;
+        state.verifiedMessage = "Verification Successful";
       })
       .addCase(verifyRegister.rejected, (state, action) => {
         state.isLoading = false;
