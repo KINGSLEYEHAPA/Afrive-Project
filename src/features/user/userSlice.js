@@ -189,7 +189,6 @@ const userSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
         state.registerMessage = "Registration successful,Check your mail";
       })
       .addCase(register.rejected, (state, action) => {

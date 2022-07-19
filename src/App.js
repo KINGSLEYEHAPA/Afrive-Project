@@ -69,9 +69,9 @@ function App() {
             exit={{ opacity: 0, x: 1000, transition: { duration: 1 } }}
             className=" text-bodyS   mtab:text-bodyL  tab:text-h4 rounded-[4px] fixed z-50 top-[80px] right-[25px] text-neutral-white bg-primary-50   w-[200px]  mtab:w-300px    tab:w-[400px] h-[100px] flex justify-center items-center  p-[10px]"
           >
-            {errorMessage === "Network Error" && "Please try again later."}
+            {errorMessage === "Network Error" && "Please try again."}
             {errorMessage?.toLowerCase().includes("already exist") &&
-              "Email already exist"}
+              "User/Email already exist"}
             {errorMessage?.toLowerCase().includes("not found") &&
               "User does not exist"}
             {errorMessage
@@ -80,6 +80,10 @@ function App() {
               "Email or Password is incorrect"}
             {errorMessage?.toLowerCase().includes("salt") &&
               "Reset your password"}
+            {errorMessage
+              ?.toLowerCase()
+              .includes("duplicate key value violates") &&
+              "Choose another Username"}
             {resetMessage}
             {isverified?.data}
             {logoutMessage}

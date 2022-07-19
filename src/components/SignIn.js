@@ -22,13 +22,14 @@ const SignIn = ({ setUserState }) => {
     errorMessage,
     isSuccess,
     isGoogleError,
+    loginMessage,
   } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (loginMessage !== null) {
       navigate("/");
     }
-  }, [isSuccess]);
+  }, [loginMessage]);
   useEffect(() => {
     setTimeout(() => {
       dispatch(reset());
@@ -93,7 +94,7 @@ const SignIn = ({ setUserState }) => {
           </div>
         </div>
         <div className=" mx-[23px] moby:mx-0  tab:w-[745px]  pt-[53.30px]   lap:w-[887px] h-[1024px]  tab:px-[97px] tab:pt-[112.59px]   lap:pr-[181px] lap:pl-[165px]  lap:pt-[164.50px] pb-[20.41px]">
-          <div className="h-[839px]   w-full moby:w-[551px] ">
+          <div className="h-[839px]   w-full  moby:w-[551px] ">
             <div className="flex justify-center flex-col items-center tab:block ">
               <img
                 className=" tab:hidden   w-[30px] h-[40px] mb-[52.01px]"
@@ -118,7 +119,7 @@ const SignIn = ({ setUserState }) => {
                 <div className="flex items-center gap-[10px] text-bodyS text-primary-50">
                   <div className="w-[16px] h-[18px] border border-primary-30"></div>
 
-                  <span className="text-[18px] text-sub moby:text-bodyS text-neutral-70 font-reg">
+                  <span className=" text-sub moby:text-bodyS text-neutral-70 font-reg">
                     Remember Me{" "}
                   </span>
                 </div>

@@ -30,7 +30,6 @@ const BookPreview = () => {
   const [format, setFormat] = useState(false);
   const [showFormat, setShowFormat] = useState(false);
   const availableBooks = useSelector((state) => state.books.booksFromServer);
-  console.log(availableBooks);
 
   let params = useParams();
   let navigate = useNavigate();
@@ -40,7 +39,7 @@ const BookPreview = () => {
   });
 
   const favoriteBooks = useSelector((state) => state.books.likedBooks);
-  console.log(favoriteBooks);
+
   const dispatch = useDispatch();
 
   const addBookAsFavorite = (book) => {
