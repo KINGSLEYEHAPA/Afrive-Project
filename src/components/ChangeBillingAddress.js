@@ -13,6 +13,7 @@ const ChangeBillingAddress = () => {
   const [notification, setNotification] = useState(false);
   const [billingPage, setBillingPage] = useState("page");
   const dispatch = useDispatch();
+  const [searchWidth, setSearchWidth] = useState({ width: window.innerWidth });
   const [billingAddressValues, setBillingAddressValues] = useState({
     firstName: "",
     lastName: "",
@@ -30,6 +31,15 @@ const ChangeBillingAddress = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    function handleResize() {
+      // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+      setSearchWidth({ width: window.innerWidth });
+    }
+
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const inputs = [
     {
@@ -136,6 +146,8 @@ const ChangeBillingAddress = () => {
       cvv: "",
     });
 
+    setBillingPage("page");
+
     setNotification(true);
 
     setTimeout(() => {
@@ -158,11 +170,18 @@ const ChangeBillingAddress = () => {
             Back
           </p>
         </div>
-        <div className="w-full h-[32px] flex justify-center items-center">
-          <h4 className="text-h4 font-reg text-neutral-30 ">Billing Address</h4>
+        <div className="w-full  h-[24px]   tab:h-[32px] flex justify-center items-center mt-[9.92px]">
+          <h4 className=" text-bodyN  mtab:text-bodyL  tab:text-h4 font-reg text-neutral-30 ">
+            Billing Address
+          </h4>
         </div>
-        {billingPage === "page" && <ProfilePage />}
-        {billingPage === "form" && (
+        {billingPage === "page" && (
+          <ProfilePage
+            setBillingPage={setBillingPage}
+            currentWidth={searchWidth.width}
+          />
+        )}
+        {billingPage === "largeForm" && (
           <div className="w-full   mt-[40px] flex justify-center pb-[101px] h-[1118px]">
             <form
               onSubmit={saveBillingInfo}

@@ -5,11 +5,12 @@ import masterCardLogo from "../assets/mastercard2.webp";
 import { addUserAddress, addUserPayment } from "../features/user/userSlice";
 import FormInput from "./FormInput";
 
-const ProfilePage = () => {
-  const { user } = useSelector((state) => state.user);
+const ProfilePage = ({ setBillingPage, currentWidth }) => {
+  const { user, userInfo } = useSelector((state) => state.user);
   const [editForm, setEditForm] = useState(0);
   const [editType, setEditType] = useState(0);
   const dispatch = useDispatch();
+
   const [paymentData, setPaymentData] = useState({
     cardNumber: "",
     expiryDate: "",
@@ -129,12 +130,20 @@ const ProfilePage = () => {
   ];
 
   const editProfile = () => {
-    setEditForm(1);
-    setEditType(0);
+    if (currentWidth <= 860) {
+      setEditForm(1);
+      setEditType(0);
+    } else {
+      setBillingPage("largeForm");
+    }
   };
   const editPayment = () => {
-    setEditForm(1);
-    setEditType(1);
+    if (currentWidth <= 860) {
+      setEditForm(1);
+      setEditType(1);
+    } else {
+      setBillingPage("largeForm");
+    }
   };
 
   const processForm = (e) => {
@@ -163,7 +172,7 @@ const ProfilePage = () => {
   console.log(addressData, ".............", paymentData);
 
   return (
-    <div className=" pb-[51px] w-[327px] mobx:w-[500px] mtab:w-[431px]  min-h-[590px] mtab:h-[778.3px] mx-auto mt-[32px] mtab:mt-[40px] font-[450]">
+    <div className=" pb-[51px] w-[327px] mobx:w-[431px] mtab:w-[431px]  min-h-[590px] mtab:h-[778.3px] mx-auto mt-[32px] mtab:mt-[40px] font-[450]">
       {(editForm === 0 || (editForm === 1 && editType === 0)) && (
         <div key="2525" className="flex items-start justify-between">
           <p className="text-bodyS mtab:text-[18.46px] mtab:leading-6 text-primary-50">
@@ -191,7 +200,7 @@ const ProfilePage = () => {
               Name:
             </p>
             <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
-              Kingsley Patrick
+              {userInfo.firstName} {userInfo.lastName}
             </p>
           </div>
           <div className="mt-[18px]  mtab:mt-[31.88px] ">
@@ -199,7 +208,7 @@ const ProfilePage = () => {
               Email:
             </p>
             <p className="text-bodyN font-[450]  mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
-              kessity09@gmail.com
+              {userInfo.email}
             </p>
           </div>
           <div className="mt-[18px] mtab:mt-[31.88px]">
@@ -207,7 +216,7 @@ const ProfilePage = () => {
               State:
             </p>
             <p className="text-bodyN font-[450]  mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
-              Lagos
+              {userInfo.state}
             </p>
           </div>
           <div className="mt-[18px] mtab:mt-[31.88px]">
@@ -215,7 +224,7 @@ const ProfilePage = () => {
               Postal Code:
             </p>
             <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8  text-neutral-70">
-              101255
+              {userInfo.postalCode}
             </p>
           </div>
           <div className="mt-[18px] mtab:mt-[31.88px]">
@@ -223,7 +232,7 @@ const ProfilePage = () => {
               House Address:
             </p>
             <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8  text-neutral-70">
-              4, Oluwole ajakule, addo, ajah.
+              {userInfo.houseAddress}
             </p>
           </div>
         </div>

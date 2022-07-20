@@ -69,9 +69,11 @@ const MobileMenu = ({ setOpenMobile }) => {
             </div>
 
             <>
-              <p className="text-bodyN text-neutral-70 hover:text-primary-50">
-                Billing/Payment
-              </p>
+              <Link to="/billing-address">
+                <p className="text-bodyN text-neutral-70 hover:text-primary-50">
+                  Billing/Payment
+                </p>
+              </Link>
               <Link to="/coupon">
                 <p className="text-bodyN text-neutral-70 hover:text-primary-50">
                   Coupons & Vouchers
