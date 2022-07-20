@@ -32,6 +32,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
       [e.target.name]: e.target.value,
     });
   };
+
   const onChangePayment = (e) => {
     setPaymentData({
       ...paymentData,
@@ -207,7 +208,8 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               Name:
             </p>
             <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
-              {userInfo.firstName} {userInfo.lastName}
+              {userInfo?.firstName || user?.data?.firstname}{" "}
+              {userInfo?.lastName || user?.data?.lastname}
             </p>
           </div>
           <div className="mt-[18px]  mtab:mt-[31.88px] ">
@@ -215,7 +217,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               Email:
             </p>
             <p className="text-bodyN font-[450]  mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
-              {userInfo.email}
+              {userInfo?.email}
             </p>
           </div>
           <div className="mt-[18px] mtab:mt-[31.88px]">
@@ -223,7 +225,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               State:
             </p>
             <p className="text-bodyN font-[450]  mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
-              {userInfo.state}
+              {userInfo?.state}
             </p>
           </div>
           <div className="mt-[18px] mtab:mt-[31.88px]">
@@ -231,7 +233,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               Postal Code:
             </p>
             <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8  text-neutral-70">
-              {userInfo.postalCode}
+              {userInfo?.postalCode}
             </p>
           </div>
           <div className="mt-[18px] mtab:mt-[31.88px]">
@@ -239,7 +241,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               House Address:
             </p>
             <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8  text-neutral-70">
-              {userInfo.houseAddress}
+              {userInfo?.houseAddress}
             </p>
           </div>
         </motion.div>

@@ -33,6 +33,13 @@ const ChangeBillingAddress = () => {
     });
   };
 
+  // useEffect(()=>{
+  //   if(searchWidth.width>860){
+  //     setBillingPage()
+  //   }
+
+  // },[searchWidth])
+
   useEffect(() => {
     function handleResize() {
       // console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
