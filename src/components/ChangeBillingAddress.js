@@ -7,9 +7,11 @@ import SmallFormInput from "./SmallFormInput";
 
 import { addUserInfo } from "../features/user/userSlice";
 import { useDispatch } from "react-redux";
+import ProfilePage from "./ProfilePage";
 
 const ChangeBillingAddress = () => {
   const [notification, setNotification] = useState(false);
+  const [billingPage, setBillingPage] = useState("page");
   const dispatch = useDispatch();
   const [billingAddressValues, setBillingAddressValues] = useState({
     firstName: "",
@@ -28,7 +30,6 @@ const ChangeBillingAddress = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(billingAddressValues);
 
   const inputs = [
     {
@@ -119,7 +120,6 @@ const ChangeBillingAddress = () => {
     },
   ];
 
-  console.log(billingAddressValues);
   const saveBillingInfo = (e) => {
     e.preventDefault();
     dispatch(addUserInfo(billingAddressValues));
@@ -149,69 +149,72 @@ const ChangeBillingAddress = () => {
       <div className="w-screen max-w-[1440px]  mx-auto mt-[88px] pt-[32px] ">
         <div
           onClick={() => navigate(-1)}
-          className="w-full  h-[32px] flex justify-start items-center pl-[105px] gap-0  "
+          className="w-full h-16px] mtab:h-[96px] flex justify-start items-center pl-[22px] mtab:pl-[73.48px] tab:pl-[90px] lap:pl-[128px] desk:pl-[105px] gap-0  "
         >
           <span className="text-[25px]">
             <MdChevronLeft />
           </span>
-          <p className="text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
+          <p className=" text-bodyS mtab:text-bodyL  tab:text-h4 font-reg text-[#000000] cursor-pointer active:text-primary-50">
             Back
           </p>
         </div>
         <div className="w-full h-[32px] flex justify-center items-center">
           <h4 className="text-h4 font-reg text-neutral-30 ">Billing Address</h4>
         </div>
-        <div className="w-full   mt-[40px] flex justify-center pb-[101px] h-[1118px]">
-          <form
-            onSubmit={saveBillingInfo}
-            className="w-[538px] h-full  space-y-[24px] "
-          >
-            {inputs.slice(0, 6).map((input) => (
-              <FormInput
-                key={input.id}
-                {...input}
-                value={billingAddressValues[input.name]}
-                onChange={onChange}
-                formtyp="billing"
-              />
-            ))}
+        {billingPage === "page" && <ProfilePage />}
+        {billingPage === "form" && (
+          <div className="w-full   mt-[40px] flex justify-center pb-[101px] h-[1118px]">
+            <form
+              onSubmit={saveBillingInfo}
+              className="w-[538px] h-full  space-y-[24px] "
+            >
+              {inputs.slice(0, 6).map((input) => (
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  value={billingAddressValues[input.name]}
+                  onChange={onChange}
+                  formtyp="billing"
+                />
+              ))}
 
-            <div>
-              <div className="w-[538px.71] h-[283px] mt-[-20px] relative  ">
-                {inputs.slice(6, 7).map((input) => (
-                  <FormInput
-                    key={input.id}
-                    {...input}
-                    value={billingAddressValues[input.name]}
-                    onChange={onChange}
-                    formtyp="billing"
-                  />
-                ))}
-
-                <div className="w-full flex justify-between gap-[14.56px] mt-[-25px] mb-[32px]">
-                  {inputs.slice(7, 9).map((input) => (
-                    <SmallFormInput
+              <div>
+                <div className="w-[538px.71] h-[283px] mt-[-20px] relative  ">
+                  {inputs.slice(6, 7).map((input) => (
+                    <FormInput
                       key={input.id}
                       {...input}
                       value={billingAddressValues[input.name]}
                       onChange={onChange}
+                      formtyp="billing"
                     />
                   ))}
-                </div>
-                {notification && (
-                  <div className="absolute text-neutral-white bg-primary-50 rounded-[4px] text-bodyL p-[10px] w-full flex justify-center items-center">
-                    Your information has been saved
+
+                  <div className="w-full flex justify-between gap-[14.56px] mt-[-25px] mb-[32px]">
+                    {inputs.slice(7, 9).map((input) => (
+                      <SmallFormInput
+                        key={input.id}
+                        {...input}
+                        value={billingAddressValues[input.name]}
+                        onChange={onChange}
+                      />
+                    ))}
                   </div>
-                )}
-                <div className="flex justify-center items-center mt-[84px]">
-                  <button className="w-[390px] h-[65px] text-h4 medium bg-primary-50 text-neutral-white rounded-[4px]">
-                    Save Billing Info
-                  </button>
+                  {notification && (
+                    <div className="absolute text-neutral-white bg-primary-50 rounded-[4px] text-bodyL p-[10px] w-full flex justify-center items-center">
+                      Your information has been saved
+                    </div>
+                  )}
+                  <div className="flex justify-center items-center mt-[84px]">
+                    <button className="w-[390px] h-[65px] text-h4 medium bg-primary-50 text-neutral-white rounded-[4px]">
+                      Save Billing Info
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
+        )}
       </div>
     </AnimatePages>
   );

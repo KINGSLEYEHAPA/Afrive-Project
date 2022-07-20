@@ -91,8 +91,6 @@ const BookPreview = () => {
   //   }
   // };
 
-  console.log(selectedBook);
-
   const addItemToBag = (book, item) => {
     if (eBookPreview && format) {
       const ebook = {

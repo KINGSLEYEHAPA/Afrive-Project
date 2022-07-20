@@ -26,7 +26,7 @@ export const MobileSearch = ({ showSearch, setShowSearch }) => {
 
   const categoriesOptionRef = useRef();
   const authorsOptionRef = useRef();
-  console.log(searchResults);
+
   const filteredBooks = (e) => {
     setShowSearchOption(false);
     const searchedWord = e.target.value;
@@ -196,7 +196,7 @@ const Search = ({ showSearch, setShowSearch }) => {
 
   const categoriesOptionRef = useRef();
   const authorsOptionRef = useRef();
-  console.log(searchResults);
+
   const filteredBooks = (e) => {
     setShowSearchOption(false);
     const searchedWord = e.target.value;

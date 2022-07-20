@@ -2,12 +2,21 @@ import { HiOutlineInformationCircle } from "react-icons/hi";
 
 const FormInput = (props) => {
   const { label, onChange, errorMessage, fTyp, ...inputProps } = props;
+
   return (
-    <div className="w-full h-[86px] mt-[48px]">
+    <div
+      className={
+        fTyp === "mobile"
+          ? "w-full h-[86px] mt-[24px]"
+          : "w-full h-[86px] mt-[48px]"
+      }
+    >
       <label
         className={
           fTyp === "billing"
             ? "text-bodyN text-neutral-70"
+            : fTyp === "mobile"
+            ? "text-sub text-neutral-40 font-[450]"
             : "text-bodyS text-neutral-70"
         }
       >

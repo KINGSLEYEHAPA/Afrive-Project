@@ -27,6 +27,8 @@ function App() {
     registerMessage,
     verifiedMessage,
     loginMessage,
+    paymentDetailsMessage,
+    addressDetailsMessage,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -45,6 +47,8 @@ function App() {
     registerMessage,
     verifiedMessage,
     loginMessage,
+    paymentDetailsMessage,
+    addressDetailsMessage,
 
     errorMessage,
   ]);
@@ -58,7 +62,9 @@ function App() {
           errorMessage ||
           logoutMessage ||
           loginMessage ||
-          registerMessage) && (
+          registerMessage ||
+          addressDetailsMessage ||
+          paymentDetailsMessage) && (
           <motion.div
             initial={{ opacity: 0, x: 1000 }}
             animate={{
@@ -90,6 +96,8 @@ function App() {
             {registerMessage}
             {verifiedMessage}
             {loginMessage}
+            {paymentDetailsMessage}
+            {addressDetailsMessage}
           </motion.div>
         )}
       </AnimatePresence>
