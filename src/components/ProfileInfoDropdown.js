@@ -78,7 +78,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
         <Link to="/billing-address" onClick={() => setShowProfileInfo(false)}>
           <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg px-[24px] tab:py-[12px] lap:py-[16px]   py-[6px]  lap:h-[56px] tab:h-[48px] h-[32px]  cursor-pointer hover:bg-primary-10">
-            Billing Address
+            Billing Address/Profile
           </h3>
         </Link>
 

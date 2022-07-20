@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MdChevronLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import AnimatePages from "./AnimatePages";
+import { motion } from "framer-motion";
 import FormInput from "./FormInput";
 import SmallFormInput from "./SmallFormInput";
 
@@ -182,7 +183,11 @@ const ChangeBillingAddress = () => {
           />
         )}
         {billingPage === "largeForm" && (
-          <div className="w-full   mt-[40px] flex justify-center pb-[101px] h-[1118px]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.2 } }}
+            className="w-full   mt-[40px] flex justify-center pb-[101px] h-[1118px]"
+          >
             <form
               onSubmit={saveBillingInfo}
               className="w-[538px] h-full  space-y-[24px] "
@@ -232,7 +237,7 @@ const ChangeBillingAddress = () => {
                 </div>
               </div>
             </form>
-          </div>
+          </motion.div>
         )}
       </div>
     </AnimatePages>

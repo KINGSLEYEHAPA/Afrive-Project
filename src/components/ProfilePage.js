@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import masterCardLogo from "../assets/mastercard2.webp";
 import { addUserAddress, addUserPayment } from "../features/user/userSlice";
 import FormInput from "./FormInput";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ProfilePage = ({ setBillingPage, currentWidth }) => {
   const { user, userInfo } = useSelector((state) => state.user);
@@ -169,10 +170,12 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
     setEditType(0);
   };
 
-  console.log(addressData, ".............", paymentData);
-
   return (
-    <div className=" pb-[51px] w-[327px] mobx:w-[431px] mtab:w-[431px]  min-h-[590px] mtab:h-[778.3px] mx-auto mt-[32px] mtab:mt-[40px] font-[450]">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1.2 } }}
+      className=" pb-[51px] w-[327px] mobx:w-[431px] mtab:w-[431px]  min-h-[590px] mtab:h-[778.3px] mx-auto mt-[32px] mtab:mt-[40px] font-[450]"
+    >
       {(editForm === 0 || (editForm === 1 && editType === 0)) && (
         <div key="2525" className="flex items-start justify-between">
           <p className="text-bodyS mtab:text-[18.46px] mtab:leading-6 text-primary-50">
@@ -194,7 +197,11 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
       )}
 
       {editForm === 0 && (
-        <div key="1158">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1.2 } }}
+          key="1158"
+        >
           <div className="mt-[18px] mtab:mt-[31.88px]">
             <p className="text-bodyS mtab:text-[18.46px] mtab:leading-6 font-[450]  text-neutral-40">
               Name:
@@ -235,10 +242,14 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               {userInfo.houseAddress}
             </p>
           </div>
-        </div>
+        </motion.div>
       )}
       {editForm === 1 && editType === 0 && (
-        <div key="315">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1.2 } }}
+          key="315"
+        >
           <form onSubmit={processForm}>
             {mobileProfileInputs.slice(0, 6).map((input) => (
               <div key={input.id + 15}>
@@ -264,7 +275,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               Cancel
             </button>
           </form>
-        </div>
+        </motion.div>
       )}
 
       {(editForm === 0 || editType === 1) && (
@@ -290,7 +301,11 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
         />
       )}
       {editForm === 1 && editType === 1 && (
-        <div key="615">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1.2 } }}
+          key="615"
+        >
           <form onSubmit={processForm}>
             {mobilePaymentInputs.slice(0, 3).map((input) => (
               <div key={input.id + 100}>
@@ -316,7 +331,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
               Cancel
             </button>
           </form>
-        </div>
+        </motion.div>
       )}
       {editForm === 0 && (
         <div
@@ -347,7 +362,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
