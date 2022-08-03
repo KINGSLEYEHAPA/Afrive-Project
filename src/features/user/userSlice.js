@@ -200,7 +200,8 @@ const userSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.registerMessage = "Registration successful,Check your mail";
+        state.registerMessage =
+          "Registration successful, Please check your mail";
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;

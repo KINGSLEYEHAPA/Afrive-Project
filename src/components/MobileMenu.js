@@ -52,7 +52,7 @@ const MobileMenu = ({ setOpenMobile }) => {
               </p>
             </Link>
             {user && (
-              <Link to="/myorders-mobile">
+              <Link to="/orders">
                 <p
                   onClick={() => setOpenMobile(false)}
                   className="text-bodyN text-neutral-70 hover:text-primary-50"

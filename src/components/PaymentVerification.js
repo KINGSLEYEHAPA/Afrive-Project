@@ -78,7 +78,7 @@ const PaymentVerification = () => {
                 Your order has been processed and your transaction reference is{" "}
                 <span className="text-primary-60">
                   {" "}
-                  {paymentVerified?.data?.txn_ref}.
+                  {paymentVerified?.data?.txn_ref}.{" "}
                 </span>
                 <span className="text-primary-60 text-bodyS  moby:text-bodyN ">
                   Thank you for your purchase!
