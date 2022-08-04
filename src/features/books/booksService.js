@@ -88,7 +88,7 @@ const verifyPay = async (token, reference) => {
     headers: { Authorization: `Bearer ${token}` },
   };
   const response = await axios.get(
-    `${API_URL}order/${reference}/verify`,
+    `${API_URL}order/${reference}/verif`,
     config
   );
 
