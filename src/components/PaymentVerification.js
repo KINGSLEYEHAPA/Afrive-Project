@@ -110,14 +110,15 @@ const PaymentVerification = () => {
               <h3 className="text-primary-50  text-bodyL moby:text-h3    whitespace-nowrap">
                 Afrive Books WebStore
               </h3>
-              <span className=" text-[40px]   moby:text-[60px] text-primary-50">
+              <span className=" text-[40px]   moby:text-[60px] text-primary-50 mt-[50px]">
                 <ImWarning />
               </span>
               <h2 className="  text-bodyN  moby:text-h4 font-medium text-primary-50">
-                Payment not Verified
+                Payment not verified
               </h2>
               <p className=" text-bodyS  moby:text-bodyN text-neutral-40 leading-7">
-                You can see details of the failed transaction in the orders page
+                You can see details of the unverified transaction in the orders
+                page
               </p>
             </div>
             <button
