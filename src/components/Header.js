@@ -71,7 +71,7 @@ const Header = ({
 
       {openMobile && <MobileMenu setOpenMobile={setOpenMobile} />}
 
-      <div className=" w-[50px] mtab:w-[546px]  ml-[30.14px] mobx:pl-[20.14px]   mtab:pl-[68.69px] tab:pl-[99.69px] pr-[10]">
+      <div className=" w-[50px] mtab:w-[546px]   mobx:pl-[20.14px]   mtab:pl-[68.69px] tab:pl-[99.69px] pr-[10]">
         <div className="w-full h-full px-0 py-0 flex items-center justify-start gap-[50.95px] relative">
           <Link to="/">
             {" "}

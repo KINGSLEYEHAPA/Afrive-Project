@@ -64,7 +64,7 @@ const HeroSection = () => {
         direction={direction}
         setPage={setPage}
       />
-      <div className=" relative bottom-36 mobx:bottom-32 ">
+      <div className=" relative bottom-[100px] mobx:bottom-[92px] ">
         {" "}
         <Pagination currentPage={currentPage} setPage={setPage} />
       </div>
