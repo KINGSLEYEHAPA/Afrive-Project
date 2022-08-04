@@ -204,6 +204,12 @@ const BuyNowShoppingBag = () => {
                           </h3>
                         </Link>
                         <p className="mtab:text-bodyN     tab:text-bodyL whitespace-nowrap text-neutral-30">
+                          Price:&nbsp;{" "}
+                          <span className="text-primary-50">
+                            N{selectedBook?.price?.toLocaleString("en-US")}
+                          </span>
+                        </p>
+                        <p className="mtab:text-bodyN     tab:text-bodyL whitespace-nowrap text-neutral-30">
                           Total:&nbsp;{" "}
                           <span className="text-primary-50">
                             N
@@ -364,6 +370,7 @@ const BuyNowShoppingBag = () => {
                           {selectedBook?.title}
                         </h3>
                       </Link>
+
                       <p className="text-bodyN whitespace-nowrap text-neutral-30">
                         Total:&nbsp;{" "}
                         <span className="text-primary-50">

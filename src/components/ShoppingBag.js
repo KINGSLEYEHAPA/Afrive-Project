@@ -251,6 +251,12 @@ const ShoppingBag = () => {
                                 </h3>
                               </Link>
                               <p className=" mtab:text-bodyN     tab:text-bodyL whitespace-nowrap text-neutral-30">
+                                Price:&nbsp;{" "}
+                                <span className="text-primary-50">
+                                  N{book?.price.toLocaleString("en-US")}
+                                </span>
+                              </p>
+                              <p className=" mtab:text-bodyN     tab:text-bodyL whitespace-nowrap text-neutral-30">
                                 Total:&nbsp;{" "}
                                 <span className="text-primary-50">
                                   N{book.totalAmount.toLocaleString("en-US")}
@@ -321,7 +327,10 @@ const ShoppingBag = () => {
                   Total to Pay:
                 </p>
                 <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-70">
-                  N{totalCostOfBooks?.toLocaleString("en-US") || 0}
+                  N
+                  {(totalCostOfBooks - discountCoupon)?.toLocaleString(
+                    "en-US"
+                  ) || 0}
                 </p>
               </div>
               <div className="w-full mtab:h-[37px] tab:h-[46px] flex justify-center items-center  mt-[64px]">
@@ -423,6 +432,7 @@ const ShoppingBag = () => {
                                 {book?.title}
                               </h3>
                             </Link>
+
                             <p className="text-bodyN whitespace-nowrap text-neutral-30">
                               Total:&nbsp;{" "}
                               <span className="text-primary-50">
@@ -514,7 +524,9 @@ const ShoppingBag = () => {
                 Total to Pay:
               </p>
               <p className=" font-medium text-bodyN text-neutral-70">
-                N{totalCostOfBooks?.toLocaleString("en-US") || 0}
+                N
+                {(totalCostOfBooks - discountCoupon)?.toLocaleString("en-US") ||
+                  0}
               </p>
             </div>
             <div className="w-full h-[37px] flex justify-center items-center  mt-[40px]">
