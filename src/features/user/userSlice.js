@@ -182,6 +182,11 @@ const userSlice = createSlice({
     addDeliveryLocation: (state, action) => {
       state.deliveryAddress = action.payload;
     },
+    clearlogoutUserData: (state) => {
+      state.deliveryAddress = null;
+      state.userInfo = null;
+      state.paymentDetails = null;
+    },
 
     addUserAddress: (state, action) => {
       state.userInfo = action.payload;
@@ -300,6 +305,7 @@ export const {
   addDeliveryLocation,
   addUserAddress,
   addUserPayment,
+  clearlogoutUserData,
 } = userSlice.actions;
 
 export default userSlice.reducer;

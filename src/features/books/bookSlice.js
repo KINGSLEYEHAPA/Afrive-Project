@@ -718,6 +718,9 @@ export const bookSlice = createSlice({
     clearShoppingBag: (state) => {
       state.shoppingBag = [];
     },
+    clearLogoutData: (state) => {
+      state.customerOrders = null;
+    },
     bookReset: (state) => {
       state.isLoading = false;
       state.isError = false;
@@ -907,5 +910,6 @@ export const {
   clearUserPreference,
   bookReset,
   clearPaymentState,
+  clearLogoutData,
 } = bookSlice.actions;
 export default bookSlice.reducer;

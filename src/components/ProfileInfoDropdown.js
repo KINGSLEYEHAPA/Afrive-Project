@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { logout, reset } from "../features/user/userSlice";
+import { clearlogoutUserData, logout, reset } from "../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { clearUserPreference } from "../features/books/bookSlice";
+import {
+  clearLogoutData,
+  clearUserPreference,
+} from "../features/books/bookSlice";
 
 const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
   const dispatch = useDispatch();
@@ -11,6 +14,8 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
   const { user } = useSelector((state) => state.user);
 
   const onLogout = () => {
+    dispatch(clearlogoutUserData());
+    dispatch(clearLogoutData());
     dispatch(logout());
     dispatch(clearUserPreference());
     dispatch(reset());
@@ -27,7 +32,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
       className=" absolute top-[100px] right-[-25px]    mtab:w-[187px] mtab:h-[236px]    tab:w-[250.03px] tab:h-[314.97px]   lap:w-[308px] lap:h-[388px] bg-neutral-white border border-[rgba(0,0,0,0.1)] shadow-[0px 4px 22px rgba(0, 0, 0, 0.15)] rounded-[8px] p-0 "
     >
       <div className=" h-[43.86px] tab:h-[57px] lap:h-[72px] w-full p-[16.50px] tab:p-[20px] lap:p-[24px] flex justify-between">
-        <h3 className=" text-sub tab:text-bodyS lap:text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">
+        <h3 className=" capitalize text-sub tab:text-bodyS lap:text-bodyL text-neutral-80 font-reg w-[63px] whitespace-nowrap">
           Hi {user ? user.data.firstname : "Guest"}
         </h3>
         {user ? (
