@@ -56,8 +56,7 @@ const SignIn = ({ setUserState }) => {
       name: "password",
       type: "password",
       placeholder: "",
-      // errorMessage:
-      //   "Minimum eight characters, at least one letter and one number:",
+      errorMessage: "Enter password",
       label: "Your Password",
       // pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
       required: true,

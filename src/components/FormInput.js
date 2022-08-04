@@ -29,7 +29,7 @@ const FormInput = (props) => {
       />
 
       <div className="error">
-        <div className=" mt-[10px] flex justify-start items-center gap-[8.51px] text-sub  moby:text-bodyS text-primary-50 ">
+        <div className=" mt-[10px] flex justify-start items-center gap-[3.51px] text-sub  moby:text-bodyS text-primary-50 ">
           <span className="  text-[18px] ">
             {fTyp !== "billing" && <HiOutlineInformationCircle />}
           </span>

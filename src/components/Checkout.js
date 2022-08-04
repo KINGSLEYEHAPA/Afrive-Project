@@ -268,7 +268,7 @@ const Checkout = () => {
 
             <div className="w-full h-[46px] flex justify-center items-center  mt-[64px] relative">
               {isLoading && (
-                <div className="absolute top-[-170px]    tab:left-w/2   lap:left-[230px] z-20">
+                <div className="absolute top-[-170px]    tab:left-w/2   lap:left-w/2 z-20">
                   <SmallLoader loaderColor={"primary"} />
                 </div>
               )}
