@@ -8,7 +8,7 @@ const SmallFormInput = (props) => {
       <input
         onChange={onChange}
         {...inputProps}
-        className=" outline-none   w-[170px]  moby:w-[256px] h-[48px]   lap:h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-30 active:ring-1 ring-[#FFA599]"
+        className=" outline-none   w-[170px]  moby:w-[256px] h-[48px]   lap:h-[56px] mt-[12px] p-[15px] rounded-[4px] border-2 border-[#FFA599] text-bodyL text-neutral-80 active:ring-1 ring-[#FFA599]"
       />
       <div className="error">
         <div className=" mt-[10px] hidden moby:flex justify-start items-center gap-[8.51px] text-sub  moby:text-bodyS text-primary-50 ">
