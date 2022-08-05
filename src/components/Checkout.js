@@ -189,9 +189,10 @@ const Checkout = () => {
               <p className="whitespace-nowrap mt-[10px] mtab:text-bodyN   lap:text-h4 font-medium text-neutral-70">
                 Delivered To:
               </p>
-              {deliveryLocation?.address !== "" ||
-              deliveryLocation?.city !== "" ||
-              deliveryLocation?.state !== "" ? (
+              {deliveryLocation !== null &&
+              (deliveryLocation?.state !== "" ||
+                deliveryLocation?.city !== "" ||
+                deliveryLocation?.address !== "") ? (
                 <p className="mtab:text-[14px]   mtab:leading-6 tab:text-bodyN   lap:text-h4 font-reg text-neutral-60">
                   {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
                   <span>{deliveryLocation?.address}</span>{" "}
