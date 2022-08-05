@@ -92,7 +92,13 @@ const MyOrders = () => {
                   </div>
                 </div>
                 <div className="mtab:w-[280px]   tab:w-[320px] lap:w-[350px]    desk:w-[372px] h-full flex   justify-start items-center border-r-2 gap-[32px] border-r-primary-20  px-[46px]">
-                  <p className="text-neutral-60  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg ">
+                  <p
+                    className={
+                      order?.completed
+                        ? "text-[#17B169]  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg "
+                        : "text-[#FFC72C]  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg "
+                    }
+                  >
                     {order?.completed ? "Processed for delivery" : "Pending"}
                   </p>
                 </div>

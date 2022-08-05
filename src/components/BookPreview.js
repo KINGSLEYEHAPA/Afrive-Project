@@ -242,8 +242,8 @@ const BookPreview = () => {
                 <p>({selectedBook?.bookRating?.ratings?.length})</p>
               )}
             </div>
-            <div className="mt-[-14.57px] mtab:mt-[27.46px] tab:mt-[29.46px] lap:mt-[35.82px] desk:mt-[40px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
-              <p className="text-primary-50 text-bodyL  lap:text-h3 font-medium">
+            <div className="mt-[-14.57px] mtab:mt-[27.46px] tab:mt-[29.46px] lap:mt-[35.82px] desk:mt-[25px] flex w-full h-[32px] justify-start gap-[48px] items-center mb-[80px]">
+              <p className="text-primary-50 text-bodyL  lap:text-h2 font-medium">
                 N{selectedBook?.price.toLocaleString("en-US")}
               </p>
               <span className="  hidden  mtab:flex items-center justify-start mtab:text-bodyN text-neutral-60">

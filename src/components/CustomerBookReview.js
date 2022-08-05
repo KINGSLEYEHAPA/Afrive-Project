@@ -25,19 +25,19 @@ export const ViewReview = ({ title, comment, userRating, index, date }) => {
         transition: { duration: 0.5, delay: index * 0.5 },
       }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
-      className="w-full mtab:h-[129px]  tab:h-[117px] lap:h-[129px]   desk:h-[100px] mtab:mt-[24px] tab:mt-[40px]  desk:mt-[32px] flex gap-[20px]  mtab:mb-[24px]   tab:mb-[40px]    desk:mb-[61px]"
+      className="w-full  mtab:h-[129px]  tab:h-[117px] lap:h-[129px]   desk:h-[100px] mtab:mt-[24px] tab:mt-[40px]  desk:mt-[32px] flex gap-[20px]   mtab:mb-[24px]   tab:mb-[40px]    desk:mb-[61px]"
     >
       <div className="flex justify-start items-start  mtab:w-[134px] tab:w-[151px]  lap:w-[155px] desk:w-[201px] ">
-        <h3 className=" mtab:text-bodyN   tab:text-bodyL desk:text-h4 text-neutral-50 font-reg">
+        <h3 className=" capitalize mtab:text-bodyN   tab:text-bodyL desk:text-h4 text-neutral-50 font-reg">
           {title}
         </h3>
       </div>
 
-      <div className=" mtab:w-[551.1px] tab:w-[649px]  lap:w-[777px] desk:w-[871px] mtab:h-[108px]  tab:h-[96px] lap:h-[108px]  desk:h-[72px] ">
-        <div className="flex justify-between items-center gap-[40px]   ">
+      <div className=" mtab:mt-[5px]  desk:mt-[8px] mtab:w-[551.1px] tab:w-[649px]  lap:w-[777px] desk:w-[871px] mtab:h-[108px]  tab:h-[96px] lap:h-[108px]  desk:h-[72px] ">
+        <div className="flex items-center gap-[40px]   ">
           {" "}
           <UserStarRating userRating={userRating} />{" "}
-          <span className=" mtab:text-bodyN  lap:bodyL text-neutral-50 font-reg mr-[45px]">
+          <span className=" mtab:text-bodyS  lap:text-bodyS text-neutral-40 font-reg mr-[45px]">
             {timeago.format(new Date(date))}
           </span>
         </div>
@@ -76,7 +76,7 @@ export const WriteReview = ({ setUserReview, setWriteAReview }) => {
           onChange={(e) => {
             setReviewInput(e.target.value);
           }}
-          className="h-full w-full rounded-[8px] border border-primary-30 outline-none p-[24px] text-bodyS font-reg text-neutral-30 placeholder:text-bodyS placeholder:text-neutral-30 "
+          className="h-full w-full rounded-[8px] border border-primary-30 outline-none p-[24px] text-bodyS font-reg text-neutral-70 placeholder:text-bodyS placeholder:text-neutral-30 "
           type="text"
           placeholder="Type your review here"
         />

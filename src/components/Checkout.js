@@ -48,7 +48,7 @@ const Checkout = () => {
     }
     setTimeout(() => {
       setChooseDeliveryAddress(false);
-    }, 3000);
+    }, 2000);
   }, [chooseDeliveryAddress, isLoading, orderDispatched]);
 
   // const placeOrder = () => {
@@ -91,9 +91,9 @@ const Checkout = () => {
 
   const processOrder = () => {
     if (
-      deliveryLocation?.address !== "" ||
-      deliveryLocation?.state !== "" ||
-      deliveryLocation?.city !== "" ||
+      deliveryLocation.address !== "" ||
+      deliveryLocation.state !== "" ||
+      deliveryLocation.city !== "" ||
       userAddress !== null
     ) {
       dispatch(bookReset());
@@ -258,7 +258,7 @@ const Checkout = () => {
               <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Total to Pay:
               </p>
-              <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-70">
+              <p className=" mtab:text-bodyN  tab:text-h3 font-[600] text-neutral-70">
                 N
                 {(totalAmount + deliveryFee - discountCoupon).toLocaleString(
                   "en-US"

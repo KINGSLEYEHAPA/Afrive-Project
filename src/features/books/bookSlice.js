@@ -467,6 +467,8 @@ const initialState = {
   isOrderError: false,
   orderError: null,
   isPaymentLoading: false,
+  favStatus: null,
+  bagStatus: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -688,6 +690,7 @@ export const bookSlice = createSlice({
 
       if (bookExist.length === 0) {
         state.likedBooks.push(action.payload);
+        state.favStatus = "Item added to favorite books";
       }
       return state;
     },
@@ -697,6 +700,7 @@ export const bookSlice = createSlice({
       });
 
       state.likedBooks = otherbooks;
+      state.favStatus = "Item removed from favorite books";
     },
 
     addToBuyNowCheckOut: (state, action) => {
@@ -729,6 +733,10 @@ export const bookSlice = createSlice({
       state.orderMessage = null;
       state.orderSuccess = false;
     },
+    actionReset: (state) => {
+      state.favStatus = null;
+      state.bagStatus = null;
+    },
 
     clearUserPreference: (state) => {
       state.shoppingBag = [];
@@ -738,7 +746,7 @@ export const bookSlice = createSlice({
       state.shoppingBagBuyNow = null;
       state.buyNowCheckout = [];
       state.checkout = null;
-      state.isPaymentSuccessFull = false;
+      state.isPaymentSuccessfull = false;
       state.orderSuccess = false;
     },
 
@@ -749,6 +757,7 @@ export const bookSlice = createSlice({
 
       if (bookExist.length === 0) {
         state.shoppingBag.push(action.payload);
+        state.bagStatus = "Item added to shopping bag";
       }
       return state;
     },
@@ -758,6 +767,7 @@ export const bookSlice = createSlice({
       });
 
       state.shoppingBag = otherbooks;
+      state.bagStatus = "Item removed from shopping bag";
     },
 
     // commentOnABook: (state, action) => {
@@ -911,5 +921,6 @@ export const {
   bookReset,
   clearPaymentState,
   clearLogoutData,
+  actionReset,
 } = bookSlice.actions;
 export default bookSlice.reducer;

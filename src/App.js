@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "./features/user/userSlice";
+import { actionReset } from "./features/books/bookSlice";
 
 function App() {
   const [showCategories, setShowCategories] = useState(false);
@@ -30,12 +31,15 @@ function App() {
     paymentDetailsMessage,
     addressDetailsMessage,
   } = useSelector((state) => state.user);
+
+  const { favStatus, bagStatus } = useSelector((state) => state.books);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(reset());
-    }, 3000);
+      dispatch(actionReset());
+    }, 2000);
   }, [
     isError,
     isGoogleError,
@@ -51,6 +55,8 @@ function App() {
     addressDetailsMessage,
 
     errorMessage,
+    favStatus,
+    bagStatus,
   ]);
 
   return (
@@ -64,7 +70,9 @@ function App() {
           loginMessage ||
           registerMessage ||
           addressDetailsMessage ||
-          paymentDetailsMessage) && (
+          paymentDetailsMessage ||
+          favStatus ||
+          bagStatus) && (
           <motion.div
             initial={{ opacity: 0, x: 1000 }}
             animate={{
@@ -79,11 +87,11 @@ function App() {
             {errorMessage?.toLowerCase().includes("already exist") &&
               "User/Email already exist"}
             {errorMessage?.toLowerCase().includes("not found") &&
-              "User does not exist"}
+              "Email invalid"}
             {errorMessage
               ?.toLowerCase()
               .includes("username or password is invalid") &&
-              "Email or Password is incorrect"}
+              "Password is incorrect"}
             {errorMessage?.toLowerCase().includes("salt") &&
               "Reset your password"}
             {errorMessage
@@ -98,6 +106,8 @@ function App() {
             {loginMessage}
             {paymentDetailsMessage}
             {addressDetailsMessage}
+            {bagStatus}
+            {favStatus}
           </motion.div>
         )}
       </AnimatePresence>

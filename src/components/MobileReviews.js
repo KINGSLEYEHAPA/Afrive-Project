@@ -122,7 +122,7 @@ const MobileReviews = ({ book }) => {
                 return (
                   <div key={index} className="my-[24px]">
                     <div className="flex  items-center gap-[12px]">
-                      <h3 className="text-sub text-neutral-70 w-[100px]">
+                      <h3 className=" capitalize text-sub text-neutral-70 w-[100px]">
                         {rating?.name}
                       </h3>
                       <div className="flex items-center justify-between w-2/3">
@@ -202,7 +202,7 @@ const MobileReviews = ({ book }) => {
                 onChange={(e) => {
                   setReviewInput(e.target.value);
                 }}
-                className="h-full w-full  outline-none p-[24px] text-[14px] font-reg text-neutral-30 placeholder:text-[14px]  leading-[28px] placeholder:text-neutral-30 "
+                className="h-full w-full  outline-none p-[24px] text-[14px] font-reg text-neutral-70 placeholder:text-[14px]  leading-[28px] placeholder:text-neutral-30 "
                 type="text"
                 placeholder="Type your review here..."
               />

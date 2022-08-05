@@ -42,7 +42,7 @@ const BuyNowCheckout = () => {
     }
     setTimeout(() => {
       setChooseDeliveryAddress(false);
-    }, 3000);
+    }, 2000);
   }, [chooseDeliveryAddress, isLoading, orderDispatched]);
 
   const today = new Date();
@@ -74,9 +74,9 @@ const BuyNowCheckout = () => {
 
   const processOrder = () => {
     if (
-      deliveryLocation?.address !== "" ||
-      deliveryLocation?.state !== "" ||
-      deliveryLocation?.city !== "" ||
+      deliveryLocation.address !== "" ||
+      deliveryLocation.state !== "" ||
+      deliveryLocation.city !== "" ||
       userAddress !== null
     ) {
       dispatch(bookReset());
@@ -267,7 +267,7 @@ const BuyNowCheckout = () => {
               <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-80">
                 Total to Pay:
               </p>
-              <p className=" mtab:text-bodyN  tab:text-bodyL text-neutral-70">
+              <p className=" mtab:text-bodyN  tab:text-h3 font-[600] text-neutral-70">
                 N
                 {(
                   buyNowBooks?.[0]?.totalAmount +
