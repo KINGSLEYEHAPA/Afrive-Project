@@ -174,6 +174,7 @@ const userSlice = createSlice({
       state.loginMessage = null;
       state.paymentDetailsMessage = null;
       state.addressDetailsMessage = null;
+      state.deliveryAddress = null;
     },
     addUserInfo: (state, action) => {
       state.userInfo = action.payload;
