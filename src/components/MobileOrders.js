@@ -34,9 +34,9 @@ const MobileOrders = () => {
             return (
               <div key={order?.txn_ref} className="flex flex-col gap-[12px]">
                 <p className=" mx-[23px] text-h4 text-neutral-80">Order:</p>
-                {order?.book?.map((item) => {
+                {order?.book?.map((item, index) => {
                   return (
-                    <div key={item} className="mx-[23px]">
+                    <div key={index} className="mx-[23px]">
                       <h2 className=" text-bodyN text-neutral-80">
                         {item?.bookName}
                       </h2>

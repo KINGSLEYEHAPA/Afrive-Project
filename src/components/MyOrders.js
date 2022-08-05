@@ -7,7 +7,10 @@ import { FiArrowUpLeft } from "react-icons/fi";
 import { Link as ALink } from "react-scroll";
 import MobileOrders from "./MobileOrders";
 
+import uuid from "uuid-random";
+
 const MyOrders = () => {
+  const randomNumber = Math.random() * 1000000 + uuid();
   const navigate = useNavigate();
   let options = {
     weekday: "short",
@@ -69,7 +72,7 @@ const MyOrders = () => {
           {customerOrders?.data?.map((order, index) => {
             return (
               <div
-                key={order?.txn_ref}
+                key={order?.txn_ref + randomNumber}
                 className="w-full h-[84px]  py-[5px] flex  translate-y-[-72px] "
               >
                 <p className="text-bodyL text-neutral-black mr-[20px]">
@@ -78,10 +81,10 @@ const MyOrders = () => {
                 <div className="mtab:w-[350px] tab:w-[380px]    lap:w-[420px]    desk:w-[500px] h-full flex  justify-start items-center border-r-2 gap-[72px] border-r-primary-20 px-[46px]">
                   <div className="flex justify-center items-center gap-[32px]">
                     <div className="">
-                      {order?.book?.map((item) => {
+                      {order?.book?.map((item, index) => {
                         return (
                           <p
-                            key={item}
+                            key={index}
                             className="text-neutral-60  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg"
                           >
                             {item?.quantity} x {item?.bookName.slice(0, 30)}
