@@ -74,9 +74,9 @@ const BuyNowCheckout = () => {
 
   const processOrder = () => {
     if (
-      deliveryLocation.address !== "" ||
-      deliveryLocation.state !== "" ||
-      deliveryLocation.city !== "" ||
+      deliveryLocation !== null ||
+      deliveryLocation !== null ||
+      deliveryLocation !== null ||
       userAddress !== null
     ) {
       dispatch(bookReset());
