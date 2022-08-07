@@ -371,7 +371,7 @@ const BookPreview = () => {
             </div>
             <div className=" hidden mtab:flex mtab:mt-[12.73px]    lap:mt-[24px] w-[391px] h-[32px] justify-start items-center text-neutral-80 font-reg text-bodyN">
               <h3>Category: &nbsp;</h3>
-              <p className="text-primary-30 whitespace-nowrap mt-[24px]">
+              <p className="text-primary-30 whitespace-nowrap mb-[24px]">
                 {selectedBook?.category?.slice(0, 4).map((item) => {
                   return <span key={item}>{item},&nbsp;</span>;
                 })}
