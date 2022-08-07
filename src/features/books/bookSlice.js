@@ -690,7 +690,7 @@ export const bookSlice = createSlice({
 
       if (bookExist.length === 0) {
         state.likedBooks.push(action.payload);
-        state.favStatus = "Book added to favorite";
+        state.favStatus = "Book added to Favorite";
       }
       return state;
     },
@@ -700,7 +700,7 @@ export const bookSlice = createSlice({
       });
 
       state.likedBooks = otherbooks;
-      state.favStatus = "Book removed from favorite";
+      state.favStatus = "Book removed from Favorite";
     },
 
     addToBuyNowCheckOut: (state, action) => {
@@ -757,7 +757,7 @@ export const bookSlice = createSlice({
 
       if (bookExist.length === 0) {
         state.shoppingBag.push(action.payload);
-        state.bagStatus = "Book added to shopping bag";
+        state.bagStatus = "Book added to Shopping Bag";
       }
       return state;
     },
@@ -767,7 +767,7 @@ export const bookSlice = createSlice({
       });
 
       state.shoppingBag = otherbooks;
-      state.bagStatus = "Book removed from shopping bag";
+      state.bagStatus = "Book removed from Shopping Bag";
     },
 
     // commentOnABook: (state, action) => {
