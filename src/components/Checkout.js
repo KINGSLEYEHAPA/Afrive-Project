@@ -377,9 +377,11 @@ const Checkout = () => {
             <p className="whitespace-nowrap mt-[10px] text-bodyN    font-medium text-neutral-70">
               Delivered To:
             </p>
-            {deliveryLocation?.address !== "" ||
-            deliveryLocation?.city !== "" ||
-            deliveryLocation?.state !== "" ? (
+
+            {deliveryLocation !== null &&
+            (deliveryLocation?.state !== "" ||
+              deliveryLocation?.city !== "" ||
+              deliveryLocation?.address !== "") ? (
               <p className="text-bodyN  font-reg text-neutral-60">
                 {/* 1901 Thornridge Cir. Shiloh, Hawaii 81063 */}
                 <span>{deliveryLocation?.address}</span>{" "}
