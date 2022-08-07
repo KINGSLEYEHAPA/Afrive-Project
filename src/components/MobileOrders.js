@@ -53,8 +53,18 @@ const MobileOrders = () => {
                 <div className="mx-[23px] flex flex-col gap-[8px] ">
                   <p className="text-bodyS  text-neutral-50">
                     Status:&nbsp;
-                    <span className="text-neutral-80">
+                    <span
+                      className={
+                        order?.completed ? "text-[#17b169]" : "text-[#ffc72c]"
+                      }
+                    >
                       {order?.completed ? "Processed for delivery" : "Pending"}
+                    </span>
+                  </p>
+                  <p className="text-bodyS  text-neutral-50">
+                    Total Amount:&nbsp;
+                    <span className="text-neutral-80">
+                      N{order?.total_order_amount.toLocaleString("en-US")}
                     </span>
                   </p>
                   <p className="text-bodyS  text-neutral-50">
