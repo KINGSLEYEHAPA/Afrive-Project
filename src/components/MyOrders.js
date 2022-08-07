@@ -111,10 +111,18 @@ const MyOrders = () => {
                   </p>
                 </div>
                 <div className="mtab:w-[280px] tab:w-[320px]   w-[372px] h-full flex   justify-start items-center gap-[32px]  px-[46px]">
-                  <p className="text-neutral-60  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg">
-                    {new Date(
-                      order?.estimated_delivery_date
-                    ).toLocaleDateString("en-US", options)}
+                  <p
+                    className={
+                      order?.completed
+                        ? "text-neutral-60  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg"
+                        : "text-[#ff0000]  mtab:text-sub     lap:text-[14px] lap:leading-[21px] whitespace-nowrap font-reg"
+                    }
+                  >
+                    {order?.completed
+                      ? new Date(
+                          order?.estimated_delivery_date
+                        ).toLocaleDateString("en-US", options)
+                      : "Payment not verified"}
                   </p>
                 </div>
               </div>

@@ -69,11 +69,17 @@ const MobileOrders = () => {
                   </p>
                   <p className="text-bodyS  text-neutral-50">
                     Estimated Time of Delivery:&nbsp;
-                    <span className="text-neutral-80">
+                    <span
+                      className={
+                        order?.completed ? "text-neutral-80" : "text-[#ff0000]"
+                      }
+                    >
                       {" "}
-                      {new Date(
-                        order?.estimated_delivery_date
-                      ).toLocaleDateString("en-US", options)}
+                      {order?.completed
+                        ? new Date(
+                            order?.estimated_delivery_date
+                          ).toLocaleDateString("en-US", options)
+                        : "Payment not verified"}
                     </span>
                   </p>
                   <hr className="w-[100%] mx-auto  h-0 border-1 border-primary-20 mt-[20px] mb-[22px]" />

@@ -57,7 +57,7 @@ const MobileMenu = ({ setOpenMobile }) => {
                   onClick={() => setOpenMobile(false)}
                   className="text-bodyN text-neutral-70 hover:text-primary-50"
                 >
-                  Your Orders
+                  My Orders
                 </p>
               </Link>
             )}
