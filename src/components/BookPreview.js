@@ -372,7 +372,7 @@ const BookPreview = () => {
             <div className=" hidden mtab:flex mtab:mt-[12.73px]    lap:mt-[24px] w-[391px] h-[32px] justify-start items-center text-neutral-80 font-reg text-bodyN">
               <h3>Category: &nbsp;</h3>
               <p className="text-primary-30">
-                {selectedBook?.category.map((item) => {
+                {selectedBook?.category?.slice(0, 4).map((item) => {
                   return <span key={item}>{item},&nbsp;</span>;
                 })}
               </p>
@@ -382,7 +382,7 @@ const BookPreview = () => {
         <div className=" text-sub px-[24px] mobx:px-[40px] mtab:hidden mt-[24px] w-[391px] h-[32px] flex justify-start items-center text-neutral-80 font-reg ">
           <h3>Category: &nbsp;</h3>
           <p className="text-primary-30">
-            {selectedBook?.category.map((item) => {
+            {selectedBook?.category?.slice(0, 4).map((item) => {
               return <span key={item}>{item},&nbsp;</span>;
             })}
           </p>
