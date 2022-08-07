@@ -78,10 +78,10 @@ const PaymentVerification = () => {
                 <BsBagCheckFill />
               </span>
               <h2 className="  text-bodyN  moby:text-h4 font-medium text-primary-50">
-                Payment Verified
+                Payment is verified
               </h2>
               <p className=" text-bodyS  moby:text-bodyN text-neutral-40 leading-7">
-                Your order has been processed and your transaction reference is{" "}
+                Your Order has been processed and your Transaction Reference is{" "}
                 <span className="text-primary-60">
                   {" "}
                   {paymentVerified?.data?.txn_ref}.{" "}
@@ -117,8 +117,8 @@ const PaymentVerification = () => {
                 Payment not verified
               </h2>
               <p className=" text-bodyS  moby:text-bodyN text-neutral-40 leading-7">
-                You can see details of the unverified transaction in the orders
-                page
+                You can see details of the unverified transaction in the my
+                orders page
               </p>
             </div>
             <button
