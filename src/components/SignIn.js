@@ -171,10 +171,10 @@ const SignIn = ({ setUserState }) => {
                 </button> */}
               </div>
               <p className="text-center  mt-[206px]    lap:mt-[156.09px] text-bodyN text-neutral-black">
-                Don't have an Account?
+                Don't have an Account?&nbsp;
                 <span
                   onClick={() => setUserState(false)}
-                  className="cursor-pointer text-primary-50"
+                  className="cursor-pointer text-primary-50 hover:underline"
                 >
                   Sign Up
                 </span>
