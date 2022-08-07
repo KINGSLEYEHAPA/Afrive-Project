@@ -447,7 +447,7 @@ const Checkout = () => {
             <p className=" font-medium text-bodyN text-neutral-80">
               Total to Pay:
             </p>
-            <p className=" font-medium text-bodyN text-neutral-70">
+            <p className=" font-[600] text-h4 text-neutral-70">
               N
               {(totalAmount + deliveryFee - discountCoupon).toLocaleString(
                 "en-US"
