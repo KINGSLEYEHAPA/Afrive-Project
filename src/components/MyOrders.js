@@ -48,7 +48,7 @@ const MyOrders = () => {
           <div className="w-full h-[84px]  py-[5px] flex ">
             <div className="   mtab:w-[350px]  tab:w-[380px]     lap:w-[420px]    desk:w-[500px] h-full flex  justify-start items-center  gap-[72px]  ml-[80px] pr-[46px]">
               <div className="flex justify-center items-center gap-[32px]">
-                <p className=" mtab:text=sub  tab:text-bodyS  lap:text-bodyN   desk:text-bodyL text-neutral-70">
+                <p className=" mtab:text=sub  tab:text-bodyS  lap:text-bodyN   desk:text-bodyL text-neutral-black">
                   Order:
                 </p>
               </div>
