@@ -369,9 +369,9 @@ const BookPreview = () => {
                 Add to Bag
               </button>
             </div>
-            <div className=" hidden mtab:flex mtab:mt-[12.73px]    lap:mt-[24px] w-[391px] h-[32px] justify-start items-center text-neutral-80 font-reg text-bodyN">
+            <div className=" hidden mtab:flex mtab:mt-[12.73px]    lap:mt-[24px] w-full h-[32px] justify-start items-center text-neutral-80 font-reg text-bodyN">
               <h3>Category: &nbsp;</h3>
-              <p className="text-primary-30 whitespace-nowrap mb-[22px]">
+              <p className="text-primary-30 whitespace-nowrap ">
                 {selectedBook?.category?.slice(0, 4).map((item) => {
                   return <span key={item}>{item},&nbsp;</span>;
                 })}
@@ -381,7 +381,7 @@ const BookPreview = () => {
         </div>
         <div className=" text-sub px-[24px] mobx:px-[40px] mtab:hidden mt-[24px] w-[391px] h-[32px] flex justify-start items-center text-neutral-80 font-reg ">
           <h3>Category: &nbsp;</h3>
-          <p className="text-primary-30 whitespace-nowrap">
+          <p className="text-primary-30 whitespace-nowrap ">
             {selectedBook?.category?.slice(0, 4).map((item) => {
               return <span key={item}>{item},&nbsp;</span>;
             })}
