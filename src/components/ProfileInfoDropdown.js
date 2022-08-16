@@ -54,7 +54,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         )}
       </div>
       <hr className="w-[100%]  h-0 border-1 border-neutral-20" />
-      <div
+      {/* <div
         onClick={() => {
           user ? setShowQuiz(true) : navigate("/api/v1/auth");
           setShowProfileInfo(false);
@@ -71,7 +71,7 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
         <p className=" w-full text-neutral-30 text-[8.92px] leading-[13px]  lap:text-[11px] lap:leading-4 whitespace-nowrap mb-[16px] hidden tab:block">
           This would help us recommend better books for you.
         </p>
-      </div>
+      </div> */}
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
 
       <>
@@ -96,7 +96,8 @@ const ProfileInfoDropdown = ({ setShowQuiz, setShowProfileInfo }) => {
       </>
 
       <hr className="w-[80%] mx-auto  h-0 border-1 border-neutral-20" />
-      <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] lap:h-[68px] tab:h-[44px] h-[42px]  py-[12px] lap:py-[16px] rounded-br-[8px] rounded-bl-[8px]  cursor-pointer hover:bg-primary-10">
+      <h3 className="text-neutral-80 text-sub lap:text-bodyN font-reg  px-[24px] lap:h-[68px] tab:h-[44px] h-[42px]  py-[12px] lap:py-[16px]   cursor-pointer hover:bg-primary-10">
+        {/* rounded-br-[8px] rounded-bl-[8px] */}
         Support
       </h3>
     </motion.div>

@@ -61,12 +61,12 @@ const MobileMenu = ({ setOpenMobile }) => {
                 </p>
               </Link>
             )}
-            <div className="flex items-center justify-center gap-[6px]">
+            {/* <div className="flex items-center justify-center gap-[6px]">
               <p className="text-bodyN text-neutral-70 hover:text-primary-50">
                 Take our Quiz
               </p>
               <span className=" w-[4.87px] h-[4.87px]  bg-primary-50 rounded-full"></span>
-            </div>
+            </div> */}
 
             <>
               <Link to="/billing-address">

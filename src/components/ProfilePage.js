@@ -207,7 +207,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
             <p className="text-bodyS mtab:text-[18.46px] mtab:leading-6 font-[450]  text-neutral-40">
               Name:
             </p>
-            <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
+            <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8 text-neutral-70 capitalize">
               {userInfo?.firstName || user?.data?.firstname}{" "}
               {userInfo?.lastName || user?.data?.lastname}
             </p>
@@ -224,7 +224,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
             <p className="text-bodyS font-[450] mtab:text-[18.46px] mtab:leading-6  text-neutral-40">
               State:
             </p>
-            <p className="text-bodyN font-[450]  mtab:text-[21.10px] mtab:leading-8 text-neutral-70">
+            <p className="text-bodyN font-[450]  mtab:text-[21.10px] mtab:leading-8 text-neutral-70 capitalize">
               {userInfo?.state || "N/A"}
             </p>
           </div>
@@ -240,7 +240,7 @@ const ProfilePage = ({ setBillingPage, currentWidth }) => {
             <p className="text-bodyS font-[450] mtab:text-[18.46px] mtab:leading-6  text-neutral-40">
               House Address:
             </p>
-            <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8  text-neutral-70">
+            <p className="text-bodyN font-[450] mtab:text-[21.10px] mtab:leading-8  text-neutral-70 capitalize">
               {userInfo?.houseAddress || "N/A"}
             </p>
           </div>
