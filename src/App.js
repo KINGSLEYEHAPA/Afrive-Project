@@ -87,7 +87,7 @@ function App() {
             {errorMessage?.toLowerCase().includes("already exist") &&
               "User/Email already exist"}
             {errorMessage?.toLowerCase().includes("not found") &&
-              "Email invalid"}
+              "User does not exist"}
             {errorMessage
               ?.toLowerCase()
               .includes("username or password is invalid") &&

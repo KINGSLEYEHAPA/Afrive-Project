@@ -223,7 +223,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.verified = action.payload;
-        state.verifiedMessage = "Verification Successful";
+        state.verifiedMessage = "Verification successful";
       })
       .addCase(verifyRegister.rejected, (state, action) => {
         state.isLoading = false;
@@ -265,7 +265,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
-        state.loginMessage = "Login was Successful";
+        state.loginMessage = "Login was successful";
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -275,7 +275,7 @@ const userSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
-        state.logoutMessage = "Logged Out Successfully";
+        state.logoutMessage = "Logged out successfully";
       })
       .addCase(googleLogin.fulfilled, (state, action) => {
         state.google = action.payload.data;
@@ -287,7 +287,7 @@ const userSlice = createSlice({
       .addCase(verifyGoogleLogin.fulfilled, (state, action) => {
         state.isLoadingGoogle = false;
         state.isSuccess = true;
-        state.loginMessage = "Login was Successful";
+        state.loginMessage = "Login was successful";
         state.user = action.payload;
       })
       .addCase(verifyGoogleLogin.rejected, (state, action) => {
