@@ -70,19 +70,14 @@ const deleteOrder = async (token, orderId) => {
 
   return response.data;
 };
-// const pay = async (token, payData) => {
-//   console.log(token);
-//   const config = {
-//     headers: { Authorization: `Bearer ${token}` },
-//   };
-//   const response = await axios.post(
-//     `${API_URL}paystack/${payData.orderId}/pay/`,
-//     payData.payData,
-//     config
-//   );
 
-//   return response.data;
-// };
+const bookRecommendation = async () => {
+  const response = await axios.get(
+    "https://afrive-book-recommender.herokuapp.com/api/v1/predict"
+  );
+
+  return response.data;
+};
 const verifyPay = async (token, reference) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -105,6 +100,7 @@ const booksService = {
   verifyPay,
   deleteOrder,
   updateComment,
+  bookRecommendation,
 };
 
 export default booksService;

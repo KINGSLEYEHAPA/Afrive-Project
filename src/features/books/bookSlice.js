@@ -469,6 +469,7 @@ const initialState = {
   isPaymentLoading: false,
   favStatus: null,
   bagStatus: null,
+  recommendedBooksFromServer: null,
 };
 
 export const getAllBooks = createAsyncThunk(
@@ -642,24 +643,23 @@ export const deleteOrder = createAsyncThunk(
   }
 );
 
-// export const removeFromCart = createAsyncThunk(
-//   "books/removeFromCart",
-//   async (id, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().user.user.data.token;
-//       return await booksService.removeFromCart(token, id);
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString();
+export const bookRecommendation = createAsyncThunk(
+  "books/bookRecommendation",
+  async (_, thunkAPI) => {
+    try {
+      return await booksService.bookRecommendation();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
 
-//       return thunkAPI.rejectWithValue(message);
-//     }
-//   }
-// );
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 // export const getCart = createAsyncThunk(
 //   "books/getCart",
 //   async (_, thunkAPI) => {
@@ -808,6 +808,18 @@ export const bookSlice = createSlice({
       })
       .addCase(getAllBookCategories.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(bookRecommendation.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(bookRecommendation.fulfilled, (state, action) => {
+        state.isLoading = false;
+
+        state.recommendedBooksFromServer = action.payload;
+      })
+      .addCase(bookRecommendation.rejected, (state, action) => {
+        state.isError = true;
+        state.error = action.payload;
       })
 
       .addCase(getAllBookCategories.fulfilled, (state, action) => {

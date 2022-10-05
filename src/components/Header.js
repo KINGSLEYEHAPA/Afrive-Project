@@ -16,6 +16,7 @@ import OptionsModal from "./OptionsModal";
 import Quiz from "./Quiz";
 import { useEffect, useState } from "react";
 import {
+  bookRecommendation,
   getAllBookCategories,
   getAllBooks,
   getOrder,
@@ -52,7 +53,8 @@ const Header = ({
     dispatch(getAllBooks());
     dispatch(getAllBookCategories());
     dispatch(getOrder());
-  }, []);
+    user && dispatch(bookRecommendation());
+  }, [user]);
 
   const location = useLocation();
   const path = location.pathname;
